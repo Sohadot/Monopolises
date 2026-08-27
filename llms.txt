@@ -1,0 +1,19 @@
+# Monopolises
+
+Monopolises is a governed research project testing strategic replaceability.
+
+Current status: Gate 0 open. The category thesis is not yet ratified.
+
+Canonical public pages:
+- https://monopolises.com/
+- https://monopolises.com/thesis/
+- https://monopolises.com/methodology/
+- https://monopolises.com/sources/
+- https://monopolises.com/research/
+- https://monopolises.com/about/
+
+Core working proposition:
+Power is the time it takes to replace you.
+
+Important boundary:
+Monopolises does not infer legal monopoly status, wrongdoing, or market dominance from replacement difficulty. It does not publish replacement scores before the evidence method is validated.
