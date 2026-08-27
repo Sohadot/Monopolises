@@ -1,0 +1,14 @@
+# Source Register Additions — MON-G0-C02
+
+Proposed source rows for case `MON-G0-C02`.
+
+| Source ID | Publisher | Source class | Publication date | Canonical URL | Claim supported | Evidence class | Retrieved | Notes |
+|---|---|---|---|---|---|---|---|---|
+| MON-SRC-008 | U.S. DOE / Office of Nuclear Energy | Primary government program | current program page | https://www.energy.gov/ne/haleu-availability-program | Domestic HALEU supply gap; program purpose; advanced-reactor dependency | S0 | 2026-08-27 | Dynamic page; preserve retrieval date |
+| MON-SRC-009 | U.S. DOE / Office of Nuclear Energy | Primary government program | current allocation page | https://www.energy.gov/ne/us-department-energy-haleu-allocation-process | Program established in 2020; allocation rounds; domestic-supply objective | S0 | 2026-08-27 | Allocation is not synonymous with commercial production |
+| MON-SRC-010 | U.S. DOE / Office of Nuclear Energy | Primary government authority | 2023-11-07 | https://www.energy.gov/ne/articles/centrus-produces-nations-first-amounts-haleu | First 20 kg domestic HALEU production; demonstration status | S0 | 2026-08-27 | Production milestone, not commercial sufficiency |
+| MON-SRC-011 | U.S. DOE / Office of Nuclear Energy | Primary government authority | 2025-06-25 | https://www.energy.gov/ne/articles/centrus-reaches-900-kilogram-mark-haleu-production | 900 kg milestone; 2019 / 2022 contract chronology; no U.S. commercial HALEU source at that date | S0 | 2026-08-27 | Strong endpoint-negative evidence |
+| MON-SRC-012 | U.S. DOE | Primary government environmental analysis | 2024-10 | https://www.energy.gov/documents/final-eis-0559-haleu-summary-2024-10pdf | >40 MT needed by 2030; >50 MT/yr by 2035; >500 MT/yr by 2050; timing/coordination issue | S0 | 2026-08-27 | Demand context; not a replacement threshold |
+| MON-SRC-013 | U.S. DOE | Primary government allocation document | 2025-08 | https://www.energy.gov/documents/haleu-allocation-process-08282025 | Statutory staged objective to seek 21 MT availability; use of DOE inventories / supplies | S0 | 2026-08-27 | Government availability must not be mislabeled commercial replacement |
+| MON-SRC-014 | U.S. DOE | Primary government authority | 2026-01-05 | https://www.energy.gov/articles/us-department-energy-awards-27-billion-restore-american-uranium-enrichment | $900M HALEU task orders to ACO and General Matter to create domestic HALEU enrichment capacity | S0 | 2026-08-27 | Shows ongoing buildout |
+| MON-SRC-015 | U.S. DOE / Office of Nuclear Energy | Primary government program | current page | https://www.energy.gov/ne/haleu-enrichment-services | Limited commercial HALEU enrichment services; 2026 capacity-expansion task orders | S0 | 2026-08-27 | Enrichment services ≠ finished fabricated-fuel sufficiency |
