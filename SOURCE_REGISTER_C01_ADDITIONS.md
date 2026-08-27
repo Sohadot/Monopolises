@@ -1,0 +1,13 @@
+# Source Register Additions — MON-G0-C01
+
+These rows are proposed additions to `research/SOURCE_REGISTER.md` for case MON-G0-C01.
+
+| Source ID | Publisher | Source class | Publication date | Canonical URL | Locator / record | Claim supported | Evidence class | Retrieved | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| MON-SRC-001 | U.S. GAO | Primary government oversight | 2014 | https://www.gao.gov/assets/gao-14-776t.pdf | GAO-14-776T, RD-180 discussion | Atlas V used Russian RD-180; reducing reliance was under consideration; replacement could require new vehicle/infrastructure | S0 | 2026-08-27 | Strategic problem; not a formal program-start date |
+| MON-SRC-002 | U.S. GAO | Primary government oversight | 2024 | https://www.gao.gov/assets/880/874970.pdf | GAO-24-106831, NSSL timeline | 01/2016 new engine development; 10/2018 new launch vehicle development | S0 / supports S1 | 2026-08-27 | Timeline uses month-level precision |
+| MON-SRC-003 | U.S. GAO | Primary government legal/procurement record | 2019 | https://www.gao.gov/products/b-417839 | B-417839, NSSL acquisition history | Oct 2017 prototype RFP; Oct 2018 OTA agreements; strategy reassessed after Russian-engine restrictions | S0 / supports S1 | 2026-08-27 | Strong procurement anchors; does not define Replacement Horizon start |
+| MON-SRC-004 | U.S. GAO | Primary government oversight | 2025-06-30 | https://www.gao.gov/products/gao-25-107228 | Appendix II — NSSL eras | 2014 reliance concern; Vulcan delay; two 2024 certification flights; Mar 2025 certification | S0 | 2026-08-27 | Historical cross-check |
+| MON-SRC-005 | U.S. Space Force / SSC | Primary government authority | 2025-03-26 | https://www.ssc.spaceforce.mil/Newsroom/Article/4136016/u-s-space-force-ussf-certifies-united-launch-alliance-ula-vulcan-for-national-s | Certification announcement | Vulcan certified for NSSL; certification process and criteria | S0 | 2026-08-27 | Canonical endpoint |
+| MON-SRC-006 | U.S. Space Force / SSC | Primary government authority | 2024-10-04 | https://www.ssc.spaceforce.mil/Portals/3/FINAL%20FOR%20POSTING%20ONLINE-%20Certification%20Milestone%20Release%20%28Oct_4%2C%202024%29.pdf | Cert-2 release | Second certification flight occurred 04 Oct 2024 and was a critical certification requirement | S0 | 2026-08-27 | Qualification milestone |
+| MON-SRC-007 | U.S. Space Force | Primary government authority | 2024-01-08 | https://www.vandenberg.spaceforce.mil/News/Photos/igphoto/2003449448/mediaid/8050776/ | Cert-1 launch record | First Vulcan certification mission launched 08 Jan 2024 | S0 | 2026-08-27 | Qualification milestone |
