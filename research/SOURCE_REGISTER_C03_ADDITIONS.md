@@ -1,0 +1,14 @@
+# Source Register Additions — MON-G0-C03
+
+Proposed source rows for case `MON-G0-C03`.
+
+| Source ID | Publisher | Source class | Publication date | Canonical URL | Claim supported | Evidence class | Retrieved | Notes |
+|---|---|---|---|---|---|---|---|---|
+| MON-SRC-016 | U.S. Department of Defense | Primary government authority | 2024-03 | https://www.defense.gov/News/News-Stories/Article/Article/3700059/dod-looks-to-establish-mine-to-magnet-supply-chain-for-rare-earth-materials/ | Mine-to-magnet strategy; domestic supply-chain goal; defense requirement; 2027 goal | S0 | 2026-08-27 | Goal is not proof of achievement |
+| MON-SRC-017 | U.S. GAO | Primary government oversight | 2024 | https://www.gao.gov/products/gao-24-107176 | >95% rare-earth import reliance in referenced period; China share; supply-risk context | S0 | 2026-08-27 | Upstream rare earths, not direct permanent-magnet import share |
+| MON-SRC-018 | MP Materials / SEC | Statutory filing | 2025-02 | https://www.sec.gov/Archives/edgar/data/1801368/000180136825000009/mp-20241231.htm | Independence initial ~1,000 MT/year design capacity; 2024 electrowinning commissioning | S0 | 2026-08-27 | Company operational disclosure |
+| MON-SRC-019 | MP Materials / SEC | Statutory filing | 2026-02-26 | https://www.sec.gov/Archives/edgar/data/1801368/000180136826000008/mp-20251231.htm | Commercial-scale commissioning; NdFeB manufacturing commenced; 3,000 + 7,000 MT projected pathway | S0 / supports S1 | 2026-08-27 | Planned/scaled capacity must not be treated as current output |
+| MON-SRC-020 | MP Materials / SEC | Filed company announcement | 2025-07 | https://www.sec.gov/Archives/edgar/data/1801368/000119312525157310/d43796dex991.htm | 10X expected commissioning in 2028; estimated total U.S. MP capacity 10,000 MT/year when completed | S0 | 2026-08-27 | Future estimate |
+| MON-SRC-021 | MP Materials / SEC | Statutory filing | 2026 Q2 | https://www.sec.gov/Archives/edgar/data/1801368/000180136826000048/mp-20260630.htm | Independence final commissioning stages; industrial-scale magnet manufacturing begun; 10X construction commenced; future 10,000 MT/year state | S0 | 2026-08-27 | Strong current-state boundary |
+| MON-SRC-022 | U.S. Department of Defense / Office of Strategic Capital | Primary government authority | 2025-08-10 | https://www.defense.gov/News/Releases/Release/Article/4270722/office-of-strategic-capital-announces-first-loan-through-dod-agreement-with-mp/ | Wider July 2025 DOD-MP agreement; financing to strengthen domestic rare-earth chain | S0 | 2026-08-27 | Chain investment context, not completion |
+| MON-SRC-023 | U.S. GAO | Primary government oversight | 2025 | https://www.gao.gov/products/gao-25-107283 | Recent defense examples of Chinese-origin magnets and alternative-supplier mitigation | S0 | 2026-08-27 | Confirms continuing foreign-dependency risk in defense supply chains |
