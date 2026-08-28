@@ -1,5 +1,9 @@
 # Deployment Checklist — Monopolises v0.0.1
 
+**Status:** Historical / Completed
+
+> This checklist recorded the initial v0.0.1 launch: pushing the foundation, enabling GitHub Pages on `main`, configuring the `monopolises.com` custom domain, and the post-launch integrity and indexing checks. All of these steps have been completed — Pages deploys from `main` and the custom domain is live. Gate MON-G0-RH has since closed as FAIL (see `DECISION_LOG.md` DEC-004 and `research/GATE_0_CLOSEOUT.md`), so the Section F gate constraints below are also historical. The document is retained as a launch record and is not a set of pending operational instructions.
+
 ## A. Push the foundation
 
 Copy the **contents** of this folder into the root of `Sohadot/Monopolises` so that `index.html`, `CNAME`, `robots.txt`, and `sitemap.xml` are at repository root.
