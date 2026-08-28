@@ -25,7 +25,7 @@ Consequently:
 
 ```
 result = multiple_evidenced_layers
-  Layer A: capacity_control    — locus: China-dominated NdFeB magnet / value-chain capacity
+  Layer A: capacity_control    — locus: China-dominated NdFeB value-chain capacity, evidenced from 2020–2022 data (dated finding)
   Layer B: access_gatekeeping  — locus: U.S. defense procurement channel (source-origin admission restriction)
 
   qualification_control = NOT ESTABLISHED by this case
@@ -96,7 +96,7 @@ S6 does **not** evidence `qualification_control`. The report's "qualified"/"suff
 ## 6. Claim boundary
 
 ### Admissible record
-> NdFeB permanent magnets carry two independent, source-evidenced control layers: (A) a `capacity_control` layer at a **China-dominated NdFeB value-chain capacity** locus — China controlled ~92% of the 2020 magnet/alloy market and is the only country operating across all value-chain steps, while the U.S. has no domestic rare-earth oxide/metal production and a single small sintered-magnet producer; and (B) an `access_gatekeeping` layer in the **U.S. defense procurement channel** — 10 U.S.C. § 4872 / DFARS 252.225-7052 restrict, by source-origin, delivery of covered-nation (PRC/DPRK/Russia/Iran) NdFeB magnets to DoD, on a dated scope (melting-and-after through 2026; full chain from 2027) and subject to exceptions and a nonavailability determination.
+> NdFeB permanent magnets carry two independent, source-evidenced control layers: (A) a `capacity_control` layer at a **China-dominated NdFeB value-chain capacity** locus — the 2022 BIS report states that China controlled ~92% of the 2020 magnet/alloy market and was the only country operating across all value-chain steps, and that the U.S. had no domestic rare-earth oxide/metal production and a single small sintered-magnet producer; and (B) an `access_gatekeeping` layer in the **U.S. defense procurement channel** — 10 U.S.C. § 4872 / DFARS 252.225-7052 restrict, by source-origin, delivery of covered-nation (PRC/DPRK/Russia/Iran) NdFeB magnets to DoD, on a dated scope (melting-and-after through 2026; full chain from 2027) and subject to exceptions and a nonavailability determination.
 
 ### Not admissible
 - ❌ "China monopolises magnets." — a dominant, all-stage locus, not an evidenced sole producer (Japan and others hold small shares).
