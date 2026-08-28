@@ -58,7 +58,7 @@ Reached from source-native statutory text. **No S2 judgment is required** to ass
 - A dedicated federal regulatory part exists specifically to enforce and define the operation of the Private Express Statutes, including exceptions and suspensions.
 
 **Evidence class:** S0
-**Use:** Confirms the mechanism is an operative, enforced legal regime with defined boundaries, not merely a dormant statute.
+**Use:** Confirms an implementing regulatory regime with defined boundaries, exceptions, and suspensions. (The existence of the regulation establishes an enforcement framework; it does not by itself evidence active enforcement.)
 
 ### E04 — Operator's own summary of the mechanism
 **Publisher:** U.S. Postal Service
