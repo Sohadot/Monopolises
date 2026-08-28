@@ -2,121 +2,117 @@
 
 **Gate:** MON-G1-LI
 **Case ID:** MON-G1-S6
-**Role in set:** The test of whether `qualification_control` is a **real, independent** layer — or just a relabel of missing productive capacity, letting the Gate-0 sufficiency problem back in through the word "qualification."
-**Status:** Evidence extraction complete — provisional case result
+**Role in set:** The test of whether `qualification_control` is a **real, independent** layer — or whether the taxonomy will swallow any kind of "ineligibility" under that name and let the Gate-0 sufficiency problem back in.
+**Status:** Evidence extraction complete — provisional case result (revised after review)
 **Evidence rule:** S0 + reproducible S1 only; S2 may explain but may not classify
 **Frozen hypothesis under test:** `qualification_control` and/or `capacity_control`
 **Extraction order position:** 4 of 8
 
 ## 0. Governing extraction question
 
-> For NdFeB permanent magnets, is there a documented control layer classifiable from primary evidence — and specifically, does `qualification_control` exist as a mechanism **independent** of `capacity_control`, without smuggling back the Gate-0 sufficiency question?
+> For NdFeB permanent magnets, which control layers are classifiable from primary evidence — and does `qualification_control` (a certification/approval an existing alternative must hold and does not) actually appear, or only something that resembles it?
 
-## 0.1 The three things that must be kept apart
+## 0.1 What this revision changed and why
 
-The Gate-0 defect returns the moment these are blurred:
+The first version classified the defense sourcing restriction as `qualification_control` by reasoning "covered-country source → lacks approval → qualification_control." **The phrase "lacks approval" was added by the framework; it is not the instrument the law creates.** 10 U.S.C. § 4872 / DFARS 252.225-7052 do not test whether a magnet holds a certification — they restrict, by **source-origin**, what may be **delivered into the DoD procurement channel**. That is the frozen definition of **`access_gatekeeping`** ("a documented rule or control governing admission to a market, platform, or channel"), not `qualification_control`. The regime is a **prohibition + exceptions/waiver** (a nonavailability determination), not a certification regime — further confirming it is admission control, not qualification.
 
-1. **capacity exists** — can anyone produce the magnet at all, and where?  → `capacity_control` territory.
-2. **qualified supply exists** — is there a formal certification/approval an alternative must hold, that some existing alternative does **not**?  → `qualification_control` territory.
-3. **sufficient qualified supply exists** — is the qualified/domestic supply *enough to replace* the incumbent?  → **the Gate-0 replacement-sufficiency question. This is S2. It is excluded from every classification below.**
+Consequently:
+- Layer B is reclassified `qualification_control` → **`access_gatekeeping`**.
+- **`qualification_control` is recorded as NOT established by S6.** It is not rescued; it remains unproven until a case presents a genuine certification/approval/qualification an existing alternative fails.
+- Layer A keeps `capacity_control` but is re-grounded on a magnet-specific primary source (BIS Section 232 report) instead of an inference from U.S. facility losses alone.
 
-`qualification_control` is admissible **only** as (2): a documented approval barrier that an existing, capacity-holding alternative fails. It is **not** admissible as a rephrasing of (1) "there isn't enough domestic capacity," nor as (3) "the qualified supply isn't sufficient."
-
-## 1. Result (provisional)
+## 1. Result (provisional, revised)
 
 ```
 result = multiple_evidenced_layers
-  Layer A: capacity_control       — locus: offshore-concentrated NdFeB magnet-making capacity (general market), dated 2021
-  Layer B: qualification_control  — locus: U.S. defense procurement, via statutory sourcing disqualification
+  Layer A: capacity_control    — locus: China-dominated NdFeB magnet / value-chain capacity
+  Layer B: access_gatekeeping  — locus: U.S. defense procurement channel (source-origin admission restriction)
+
+  qualification_control = NOT ESTABLISHED by this case
 ```
 
-The two layers sit at **different loci** and rest on **different, independent** instruments. Establishing one does not establish the other — which is exactly what makes `qualification_control` a real layer here rather than a relabel.
-
 ---
 
-## 2. Layer A — capacity_control (general NdFeB magnet-making)
+## 2. Layer A — capacity_control (China-dominated NdFeB value chain)
 
-### S0 evidence
-**Source:** The White House / Department of Defense, *100-Day Reviews under Executive Order 14017* (critical-materials review), June 2021.
-- p. 174, verbatim: "from 1992 to 2020, the United States lost **at least four NdFeB production facilities**, and the United States also lost **at least three rare earth separation facilities**."
-- p. 174, verbatim: "In 2003, following acquisition by a conglomerate including a Chinese entity, **the United States' leading NdFeB magnet producer ceased operations and relocated its operations to China**."
-- p. 166, verbatim: China "stepped up its efforts to **capture the entire value chain** in a variety of modern technologies such as **permanent magnets**, batteries, and semiconductors."
+### S0 evidence (primary, magnet-specific)
+**Source:** U.S. Department of Commerce / BIS, *The Effect of Imports of Neodymium-Iron-Boron (NdFeB) Permanent Magnets on the National Security* (Section 232 investigation report, June 2022; published Federal Register 2023-02-14).
+- p. 7, verbatim: "The United States has **no domestic production of rare earth oxides or metal**. The United States is **dependent on foreign sources, especially China**, for NdFeB magnets. China dominates all steps of the global NdFeB magnet value chain. In 2020, China controlled about **92 percent** of the global NdFeB magnet and magnet alloy market."
+- p. 7, verbatim: "China is the **only country with operations in all steps** of the NdFeB magnet value chain … All other countries maintain operations in only some steps."
+- p. 6, verbatim: "There is currently **only one firm in the United States, Noveon** (formerly Urban Mining Company), that produces sintered NdFeB magnets"; and "In 2021, the United States imported **75 percent** of its sintered NdFeB magnet supply from China."
 
-### Three-element test (the frozen `capacity_control` definition)
+### Corroborating history (S0)
+2021 EO 14017 critical-materials review, p. 174: the U.S. lost ≥4 NdFeB production and ≥3 rare-earth separation facilities (1992–2020) and its leading NdFeB producer relocated to China (2003). Used as background to the BIS findings, not as the primary basis.
+
+### Three-element test (frozen `capacity_control` definition)
 | Element | Met? | Basis |
 |---|---|---|
-| documented facility/capacity | **Yes — S0** | US lost ≥4 NdFeB production + ≥3 separation facilities; leading producer relocated to China (p.174) |
-| function must pass through it | **Yes — S1** | domestic magnet-making capacity largely absent ⇒ NdFeB magnet supply must pass through offshore (China-concentrated) capacity |
-| hard to bypass | **Yes — S1** | the capacity was *lost* (facilities closed/relocated), so it cannot presently be routed domestically |
+| documented capacity | **Yes — S0** | China ~92% of the 2020 magnet/alloy market; only country across all value-chain steps; US has no domestic oxide/metal production and one small sintered producer (BIS 232, pp.6–7) |
+| function must pass through it | **Yes — S0** | US "dependent on foreign sources, especially China"; 75% of US sintered supply imported from China (BIS 232, pp.6–7) |
+| hard to bypass | **Yes — S1** | no domestic oxide/metal production + single small domestic magnet producer ⇒ the function cannot presently be routed off the China-dominated value chain |
 
 ### Classification derivation
-S0 facts (capacity lost/relocated, value chain captured) → **S1** conjunction → `capacity_control` at an offshore-concentrated **collective** locus. No S2.
+S0 (China-dominated value chain; no domestic upstream; single small US producer) → **S1** conjunction → `capacity_control` at a **China-dominated value-chain capacity** locus. Not a claim that China is the *sole* producer (Japan and others hold small shares) — a **dominant, all-stage** locus, which is what the definition requires.
 
 ### Excluded (S2 — the Gate-0 trap)
-- p. 192, verbatim: "Even if DoD limited all of its peacetime NdFeB procurement … to a single domestic producer, that arrangement **would not be sufficient to hedge the risk** to essential civilian industry …" — a **sufficiency/replacement** judgment. Excluded. (It also shows *a* domestic producer now exists, so Layer A is a concentration, not a literal zero — the claim is bounded accordingly.)
+Whether a domestic rebuild is or will be **sufficient to replace** the incumbent (e.g. 2021 review p.192, "would not be sufficient to hedge the risk") is the replacement-sufficiency question. Excluded.
 
 ---
 
-## 3. Layer B — qualification_control (U.S. defense procurement)
-
-This is the independent-qualification test. Here an alternative **exists and has abundant capacity** (covered-nation magnets), yet is barred from the defense function because it fails a **documented approval requirement** — the definition of `qualification_control`.
+## 3. Layer B — access_gatekeeping (U.S. defense procurement channel)
 
 ### S0 evidence
-- **Statute — 10 U.S.C. § 4872** ("Acquisition of sensitive materials from non-allied foreign nations"): prohibits DoD acquisition of covered sensitive materials — expressly including **samarium-cobalt and neodymium-iron-boron permanent magnets** — mined, refined, separated, melted, or produced in a covered nation.
-- **Implementing regulation — DFARS 252.225-7052** ("Restriction on the Acquisition of Certain Magnets, Tantalum, and Tungsten"), verbatim: "The Contractor **shall not deliver** under this contract any covered material melted or produced in any covered country, or any end item, manufactured in any covered country, that contains a covered material." For NdFeB specifically the restriction covers "melting neodymium with iron and boron" and "**all subsequent phases of production** of the magnets" (powder formation, pressing, sintering/bonding, magnetization).
-- **Covered countries** (DFARS 252.225-7052), verbatim: "(1) The Democratic People's Republic of North Korea; (2) The People's Republic of China; (3) The Russian Federation; or (4) The Islamic Republic of Iran."
+- **Statute — 10 U.S.C. § 4872** ("Acquisition of sensitive materials from non-allied foreign nations"): restricts DoD acquisition of covered sensitive materials — expressly including samarium-cobalt and **neodymium-iron-boron permanent magnets** — by **source-origin** (covered nations).
+- **Implementing clause — DFARS 252.225-7052 / 225.7018-2**, verbatim: "do not acquire any covered material melted or produced in any covered country, or any end item, manufactured in any covered country, that contains a covered material." Covered countries: "(1) The Democratic People's Republic of North Korea; (2) The People's Republic of China; (3) The Russian Federation; or (4) The Islamic Republic of Iran."
+- **Dated scope (important):** *through Dec 31, 2026* the NdFeB restriction covers "melting neodymium with iron and boron" and "all subsequent phases of production" (powder formation, pressing, sintering/bonding, magnetization). *Beginning Jan 1, 2027* it expands to "the entire supply chain from mining … through production of finished magnets."
+- **Exceptions / waiver:** the regime is prohibition-plus-exception — DFARS 225.7018-3 (Exceptions) and 225.7018-4 (Nonavailability Determination) permit acquisition in defined cases (e.g. certain COTS/commercial and electronic-device contexts, recycled/reclaimed material, and where compliant material of satisfactory quality/quantity/form is not available).
 
-### Why this is `qualification_control` and independent of capacity
-| Element | Basis |
-|---|---|
-| a documented approval/qualification the function requires | S0 — the statute/DFARS clause: a magnet must be a **compliant (non-covered-country) source** to be deliverable to DoD |
-| an existing alternative holds capacity but **not** the qualification | S1 — covered-nation NdFeB magnets have **abundant capacity** (Layer A), yet are **disqualified** for defense delivery |
-| independence from capacity | S1 — the barrier is **not** "capacity doesn't exist" (it does, in China); it is that the existing capacity is **approval-barred**. Removing the capacity shortage would not remove this barrier, and vice-versa. |
+### Why `access_gatekeeping` (frozen definition)
+The instrument is "a documented rule … governing admission to a … channel." It controls **which source-origin materials may be delivered into the DoD procurement channel**. It does not certify or qualify a supplier; it admits or excludes by origin, subject to exceptions.
 
-### Classification derivation
-S0 (statutory disqualification of covered-nation magnets) → **S1** (an existing, capacity-holding alternative fails a required approval) → `qualification_control` at the **defense-procurement** locus. No S2.
+### Why NOT `qualification_control`
+`qualification_control` requires a **certification/approval/qualification an alternative must hold and does not**. § 4872 defines no such credential; covered-nation magnets are not "unqualified," they are **origin-excluded from a channel** (and can even be admitted via a nonavailability determination). Calling that a qualification an alternative "lacks" would be the framework supplying the instrument.
 
-### Why not `legal_exclusivity` (the S8 layer)
-`legal_exclusivity` confers an exclusive **right** on an actor (as the Private Express Statutes do for USPS). § 4872 confers no right on anyone; it **disqualifies certain sources**. The effect is an approval barrier — only compliant sources qualify — which is `qualification_control`, not an exclusive right. (Two statutes, two different layers — useful evidence the framework separates mechanisms, not just cites laws.)
+### Why NOT `legal_exclusivity` (the S8 layer)
+No exclusive right is granted to anyone. § 4872 excludes sources from a channel; it does not confer a monopoly right (contrast the Private Express Statutes in S8, which grant USPS an exclusive right). Same source-type (statute), different layer.
 
 ### Excluded (S2)
-- Whether compliant/qualified magnet supply is **sufficient** to meet defense need — the Gate-0 sufficiency question. Excluded.
-- Enforcement intensity, waiver frequency, effectiveness — all S2.
+Whether compliant supply is **sufficient**, enforcement intensity, and waiver frequency — all S2.
 
 ---
 
-## 4. Per-claim ledger (S0 fact / S1 derivation / S2 excluded)
+## 4. `qualification_control` — explicitly NOT established
+
+S6 does **not** evidence `qualification_control`. The report's "qualified"/"sufficient" language does not supply it: p.179 is about **workers** ("enough qualified U.S. workers"); p.192 is **replacement sufficiency** (S2); and a nearby "only one factory … is qualified" line (p.173) is about a **high-modulus/high-strength material, not NdFeB**, so it is not used. The layer remains unproven and awaits a case with a genuine certification/approval/qualification barrier. Not rescuing it here is the point of the exercise.
+
+## 5. Per-claim ledger (S0 fact / S1 derivation / S2 excluded)
 
 | Claim | S0 fact | S1 derivation | S2 (excluded) |
 |---|---|---|---|
-| Domestic NdFeB magnet capacity was lost | ≥4 NdFeB + ≥3 separation facilities lost; leading producer relocated to China (p.174) | supply must pass through offshore capacity ⇒ `capacity_control` | whether a rebuild can *replace* it (p.192) |
-| Covered-nation magnets are barred from DoD delivery | 10 USC 4872; DFARS 252.225-7052 "shall not deliver … covered material … covered country"; countries = PRC/DPRK/Russia/Iran | an existing capacity-holding alternative fails a required approval ⇒ `qualification_control` | whether compliant supply is *sufficient* |
-| The two layers are independent | different instruments (industrial history vs statute), different loci (general vs defense) | neither classification implies the other | ranking which layer "matters more" |
-
-## 5. Direct answer to the governing question
-
-**Yes — `qualification_control` is a real, independent layer, but only under a strict test the evidence here happens to pass:** a *documented approval instrument* (10 USC 4872 / DFARS 252.225-7052) barring an *existing, capacity-holding* alternative. It is **not** established by the report's "qualified"/"sufficient" language — on inspection those refer to **workers** (p.179, "enough qualified U.S. workers") or to **sufficiency of replacement** (p.192), and one nearby "only one factory … is qualified" line (p.173) is about a high-modulus/high-strength material, **not** NdFeB, so it is not used here. Absent the statute, this case would have been `capacity_control` alone, and calling the capacity shortage "qualification" would have been the Gate-0 relabel we were guarding against.
+| China dominates the NdFeB value chain | ~92% of 2020 magnet/alloy market; only country across all steps; US no domestic oxide/metal; one small US sintered producer (BIS 232 pp.6–7) | function must pass through China-dominated capacity ⇒ `capacity_control` | whether a rebuild can *replace* it (S2) |
+| DoD channel excludes covered-origin magnets | 10 USC 4872; DFARS 252.225-7052/225.7018-2 "do not acquire … covered material … covered country"; PRC/DPRK/Russia/Iran | a documented rule governs admission to the procurement channel ⇒ `access_gatekeeping` | sufficiency of compliant supply; waiver frequency |
+| It is not qualification_control | the instrument is origin-based admission + exceptions, not a credential test | no certification an alternative "lacks" is present ⇒ layer NOT established | — |
 
 ## 6. Claim boundary
 
 ### Admissible record
-> NdFeB permanent magnets carry two independent, source-evidenced control layers: (A) a `capacity_control` layer at offshore-concentrated magnet-making capacity — the U.S. lost its domestic NdFeB production and separation facilities and its leading producer relocated to China (dated 2021); and (B) a `qualification_control` layer in U.S. defense procurement — 10 U.S.C. § 4872 and DFARS 252.225-7052 disqualify covered-nation (PRC/DPRK/Russia/Iran) NdFeB magnets from delivery to DoD, so an existing, capacity-holding source fails a required approval.
+> NdFeB permanent magnets carry two independent, source-evidenced control layers: (A) a `capacity_control` layer at a **China-dominated NdFeB value-chain capacity** locus — China controlled ~92% of the 2020 magnet/alloy market and is the only country operating across all value-chain steps, while the U.S. has no domestic rare-earth oxide/metal production and a single small sintered-magnet producer; and (B) an `access_gatekeeping` layer in the **U.S. defense procurement channel** — 10 U.S.C. § 4872 / DFARS 252.225-7052 restrict, by source-origin, delivery of covered-nation (PRC/DPRK/Russia/Iran) NdFeB magnets to DoD, on a dated scope (melting-and-after through 2026; full chain from 2027) and subject to exceptions and a nonavailability determination.
 
 ### Not admissible
-- ❌ "China monopolises magnets." — Layer A is a capacity concentration, not an evidenced single-source monopoly; a domestic producer exists (p.192).
-- ❌ Any **sufficiency / replacement** claim ("domestic supply can't replace," "not enough qualified supply") — Gate-0 S2.
-- ❌ Treating Layer A's capacity shortage **as** qualification, or extending Layer B beyond defense procurement.
-- ❌ Calling Layer B `legal_exclusivity` — it is a disqualification, not a granted right.
+- ❌ "China monopolises magnets." — a dominant, all-stage locus, not an evidenced sole producer (Japan and others hold small shares).
+- ❌ "Covered-country magnets are banned from DoD" without qualification — the restriction is dated and carries exceptions / a nonavailability waiver.
+- ❌ Calling Layer B `qualification_control` (no credential test) or `legal_exclusivity` (no granted right).
+- ❌ Any **sufficiency / replacement** claim — Gate-0 S2.
 
 ## 7. Running gate picture (four of eight)
 
 - S8 → `legal_exclusivity` (single-actor, statutory right)
 - S1 → `capacity_control` (single-actor locus)
 - S2 → `capacity_control` (collective locus)
-- S6 → `multiple_evidenced_layers`: `capacity_control` (offshore) + `qualification_control` (defense)
+- S6 → `multiple_evidenced_layers`: `capacity_control` (China-dominated value chain) + `access_gatekeeping` (defense procurement channel)
 
-Three distinct mechanisms now appear across four cases (`legal_exclusivity`, `capacity_control`, `qualification_control`), and S6 shows two of them **co-locating in one system at different loci**. This is real progress on the "genuine layer diversity" pass condition — and, more importantly, `qualification_control` survived its independence test instead of collapsing into capacity. Still four cases; the gate verdict waits on the full fixed set.
+Layers evidenced so far: `legal_exclusivity`, `capacity_control`, `access_gatekeeping` (three distinct mechanisms). **`qualification_control` and the other frozen layers remain unproven.** The discipline that produced this — refusing to let "ineligibility" be relabelled as qualification — is the result that matters more than the count. Still four cases; the gate verdict waits on the full fixed set.
 
 ## 8. Next step
 
-Stop at S6 for review before extracting the next case in the frozen order (MON-G1-S4 — native app distribution). Do not batch.
+Stop at S6 for review before extracting MON-G1-S4 (native app distribution), per the frozen order. Do not batch.
