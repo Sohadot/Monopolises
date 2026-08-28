@@ -1,33 +1,58 @@
 # Source Register — Monopolises
 
-**Version:** 0.1  
-**Status:** Gate 0 register
+**Version:** 0.2
+**Status:** Gate 0 closed register
+**Gate:** MON-G0-RH
+**Admitted sources:** 38
+**Cases covered:** MON-G0-C01 through MON-G0-C05
 
-This register begins empty by design. A source is admitted when it is attached to an actual Gate 0 case, not because it is generally reputable.
+Sources are admitted because they support an actual Gate 0 case, not because the publisher is generally reputable.
 
-## Admission priority
-
-1. Primary government / regulator / public authority records
-2. Statutory filings and official company disclosures
-3. Official project, capacity, commissioning, licensing, or procurement records
-4. Primary technical documentation
-5. Secondary research only as context or locator assistance
-
-## Source admission fields
-
-| Field | Requirement |
-|---|---|
-| Source ID | Stable internal identifier |
-| Publisher | Named publisher |
-| Source class | Primary / filing / technical / secondary-context |
-| Publication date | Where available |
-| URL | Canonical source URL |
-| Locator | Section, page, table, paragraph, or record identifier |
-| Claim supported | Narrow statement the source actually supports |
-| Evidence class | S0 / supports S1 derivation / context only |
-| Retrieved | Retrieval date |
-| Notes | Limits, revisions, archival status |
+The case-specific `SOURCE_REGISTER_C0x_ADDITIONS.md` files remain as admission provenance. This file is the consolidated Gate 0 register.
 
 ## Rule
 
 A prestigious publisher does not upgrade a weak claim. Source authority and claim fit are separate judgments.
+
+## Admitted sources
+
+| Source ID | Case | Publisher | Source class | Publication date | Canonical URL | Locator / record | Claim supported | Evidence class | Retrieved | Notes |
+|---|---|---|---|---|---|---|---|---|---|---|
+| MON-SRC-001 | MON-G0-C01 | U.S. GAO | Primary government oversight | 2014 | https://www.gao.gov/assets/gao-14-776t.pdf | GAO-14-776T, RD-180 discussion | Atlas V used Russian RD-180; reducing reliance was under consideration; replacement could require new vehicle/infrastructure | S0 | 2026-08-27 | Strategic problem; not a formal program-start date |
+| MON-SRC-002 | MON-G0-C01 | U.S. GAO | Primary government oversight | 2024 | https://www.gao.gov/assets/880/874970.pdf | GAO-24-106831, NSSL timeline | 01/2016 new engine development; 10/2018 new launch vehicle development | S0 / supports S1 | 2026-08-27 | Timeline uses month-level precision |
+| MON-SRC-003 | MON-G0-C01 | U.S. GAO | Primary government legal/procurement record | 2019 | https://www.gao.gov/products/b-417839 | B-417839, NSSL acquisition history | Oct 2017 prototype RFP; Oct 2018 OTA agreements; strategy reassessed after Russian-engine restrictions | S0 / supports S1 | 2026-08-27 | Strong procurement anchors; does not define Replacement Horizon start |
+| MON-SRC-004 | MON-G0-C01 | U.S. GAO | Primary government oversight | 2025-06-30 | https://www.gao.gov/products/gao-25-107228 | Appendix II — NSSL eras | 2014 reliance concern; Vulcan delay; two 2024 certification flights; Mar 2025 certification | S0 | 2026-08-27 | Historical cross-check |
+| MON-SRC-005 | MON-G0-C01 | U.S. Space Force / SSC | Primary government authority | 2025-03-26 | https://www.ssc.spaceforce.mil/Newsroom/Article/4136016/u-s-space-force-ussf-certifies-united-launch-alliance-ula-vulcan-for-national-s | Certification announcement | Vulcan certified for NSSL; certification process and criteria | S0 | 2026-08-27 | Canonical endpoint |
+| MON-SRC-006 | MON-G0-C01 | U.S. Space Force / SSC | Primary government authority | 2024-10-04 | https://www.ssc.spaceforce.mil/Portals/3/FINAL%20FOR%20POSTING%20ONLINE-%20Certification%20Milestone%20Release%20%28Oct_4%2C%202024%29.pdf | Cert-2 release | Second certification flight occurred 04 Oct 2024 and was a critical certification requirement | S0 | 2026-08-27 | Qualification milestone |
+| MON-SRC-007 | MON-G0-C01 | U.S. Space Force | Primary government authority | 2024-01-08 | https://www.vandenberg.spaceforce.mil/News/Photos/igphoto/2003449448/mediaid/8050776/ | Cert-1 launch record | First Vulcan certification mission launched 08 Jan 2024 | S0 | 2026-08-27 | Qualification milestone |
+| MON-SRC-008 | MON-G0-C02 | U.S. DOE / Office of Nuclear Energy | Primary government program | current program page | https://www.energy.gov/ne/haleu-availability-program | HALEU Availability Program | Domestic HALEU supply gap; program purpose; advanced-reactor dependency | S0 | 2026-08-27 | Dynamic page; preserve retrieval date |
+| MON-SRC-009 | MON-G0-C02 | U.S. DOE / Office of Nuclear Energy | Primary government program | current allocation page | https://www.energy.gov/ne/us-department-energy-haleu-allocation-process | HALEU Allocation Process | Program established in 2020; allocation rounds; domestic-supply objective | S0 | 2026-08-27 | Allocation is not synonymous with commercial production |
+| MON-SRC-010 | MON-G0-C02 | U.S. DOE / Office of Nuclear Energy | Primary government authority | 2023-11-07 | https://www.energy.gov/ne/articles/centrus-produces-nations-first-amounts-haleu | Centrus first HALEU amounts | First 20 kg domestic HALEU production; demonstration status | S0 | 2026-08-27 | Production milestone, not commercial sufficiency |
+| MON-SRC-011 | MON-G0-C02 | U.S. DOE / Office of Nuclear Energy | Primary government authority | 2025-06-25 | https://www.energy.gov/ne/articles/centrus-reaches-900-kilogram-mark-haleu-production | Centrus 900 kg milestone | 900 kg milestone; 2019 / 2022 contract chronology; no U.S. commercial HALEU source at that date | S0 | 2026-08-27 | Strong endpoint-negative evidence |
+| MON-SRC-012 | MON-G0-C02 | U.S. DOE | Primary government environmental analysis | 2024-10 | https://www.energy.gov/documents/final-eis-0559-haleu-summary-2024-10pdf | Final EIS-0559 HALEU summary | >40 MT needed by 2030; >50 MT/yr by 2035; >500 MT/yr by 2050; timing/coordination issue | S0 | 2026-08-27 | Demand context; not a replacement threshold |
+| MON-SRC-013 | MON-G0-C02 | U.S. DOE | Primary government allocation document | 2025-08 | https://www.energy.gov/documents/haleu-allocation-process-08282025 | HALEU Allocation Process 08/28/2025 | Statutory staged objective to seek 21 MT availability; use of DOE inventories / supplies | S0 | 2026-08-27 | Government availability must not be mislabeled commercial replacement |
+| MON-SRC-014 | MON-G0-C02 | U.S. DOE | Primary government authority | 2026-01-05 | https://www.energy.gov/articles/us-department-energy-awards-27-billion-restore-american-uranium-enrichment | DOE uranium-enrichment awards | $900M HALEU task orders to ACO and General Matter to create domestic HALEU enrichment capacity | S0 | 2026-08-27 | Shows ongoing buildout |
+| MON-SRC-015 | MON-G0-C02 | U.S. DOE / Office of Nuclear Energy | Primary government program | current page | https://www.energy.gov/ne/haleu-enrichment-services | HALEU Enrichment Services | Limited commercial HALEU enrichment services; 2026 capacity-expansion task orders | S0 | 2026-08-27 | Enrichment services ≠ finished fabricated-fuel sufficiency |
+| MON-SRC-016 | MON-G0-C03 | U.S. Department of Defense | Primary government authority | 2024-03 | https://www.defense.gov/News/News-Stories/Article/Article/3700059/dod-looks-to-establish-mine-to-magnet-supply-chain-for-rare-earth-materials/ | DOD mine-to-magnet article | Mine-to-magnet strategy; domestic supply-chain goal; defense requirement; 2027 goal | S0 | 2026-08-27 | Goal is not proof of achievement |
+| MON-SRC-017 | MON-G0-C03 | U.S. GAO | Primary government oversight | 2024 | https://www.gao.gov/products/gao-24-107176 | GAO-24-107176 | >95% rare-earth import reliance in referenced period; China share; supply-risk context | S0 | 2026-08-27 | Upstream rare earths, not direct permanent-magnet import share |
+| MON-SRC-018 | MON-G0-C03 | MP Materials / SEC | Statutory filing | 2025-02 | https://www.sec.gov/Archives/edgar/data/1801368/000180136825000009/mp-20241231.htm | 2024 Form 10-K | Independence initial ~1,000 MT/year design capacity; 2024 electrowinning commissioning | S0 | 2026-08-27 | Company operational disclosure |
+| MON-SRC-019 | MON-G0-C03 | MP Materials / SEC | Statutory filing | 2026-02-26 | https://www.sec.gov/Archives/edgar/data/1801368/000180136826000008/mp-20251231.htm | 2025 Form 10-K | Commercial-scale commissioning; NdFeB manufacturing commenced; 3,000 + 7,000 MT projected pathway | S0 / supports S1 | 2026-08-27 | Planned/scaled capacity must not be treated as current output |
+| MON-SRC-020 | MON-G0-C03 | MP Materials / SEC | Filed company announcement | 2025-07 | https://www.sec.gov/Archives/edgar/data/1801368/000119312525157310/d43796dex991.htm | Filed 10X announcement | 10X expected commissioning in 2028; estimated total U.S. MP capacity 10,000 MT/year when completed | S0 | 2026-08-27 | Future estimate |
+| MON-SRC-021 | MON-G0-C03 | MP Materials / SEC | Statutory filing | 2026 Q2 | https://www.sec.gov/Archives/edgar/data/1801368/000180136826000048/mp-20260630.htm | 2026 Q2 Form 10-Q | Independence final commissioning stages; industrial-scale magnet manufacturing begun; 10X construction commenced; future 10,000 MT/year state | S0 | 2026-08-27 | Strong current-state boundary |
+| MON-SRC-022 | MON-G0-C03 | U.S. Department of Defense / Office of Strategic Capital | Primary government authority | 2025-08-10 | https://www.defense.gov/News/Releases/Release/Article/4270722/office-of-strategic-capital-announces-first-loan-through-dod-agreement-with-mp/ | OSC / MP Materials release | Wider July 2025 DOD-MP agreement; financing to strengthen domestic rare-earth chain | S0 | 2026-08-27 | Chain investment context, not completion |
+| MON-SRC-023 | MON-G0-C03 | U.S. GAO | Primary government oversight | 2025 | https://www.gao.gov/products/gao-25-107283 | GAO-25-107283 | Recent defense examples of Chinese-origin magnets and alternative-supplier mitigation | S0 | 2026-08-27 | Confirms continuing foreign-dependency risk in defense supply chains |
+| MON-SRC-024 | MON-G0-C04 | U.S. GAO | Primary government oversight | 2026 | https://www.gao.gov/products/gao-26-107882 | GAO-26-107882 | 0% U.S. global leading-edge logic share in 2022; 20% Commerce estimate for 2030; Arizona leading-edge facility complete Jun 2025; 2–5 year fab operational timeframe | S0 | 2026-08-27 | Core national baseline and capacity context |
+| MON-SRC-025 | MON-G0-C04 | TSMC | Primary company disclosure | 2020-05-15 | https://pr.tsmc.com/english/news/2033 | Arizona fab announcement | Initial Arizona advanced-fab announcement; strategic U.S. leading-edge manufacturing rationale | S0 | 2026-08-27 | Candidate start anchor only |
+| MON-SRC-026 | MON-G0-C04 | U.S. Department of Commerce | Primary government award | 2024-11-15 | https://www.commerce.gov/news/press-releases/2024/11/biden-harris-administration-announces-chips-incentives-award-tsmc | Final CHIPS incentives award to TSMC Arizona | Final TSMC CHIPS award; Arizona leading-edge cluster; future N2/A16 capacity | S0 | 2026-08-27 | Policy/award milestone, not technical HVM date |
+| MON-SRC-027 | MON-G0-C04 | TSMC | Primary company project disclosure | current page | https://www.tsmc.com/static/abouttsmcaz/index.htm | TSMC Arizona project page | Fab 1 N4 HVM Q4 2024; Fab 2 N3 H2 2027 target; Fab 3 N2/A16 by end of decade; additional advanced fabs planned | S0 | 2026-08-27 | Dynamic page; preserve retrieval date |
+| MON-SRC-028 | MON-G0-C04 | TSMC | Annual report / primary company filing | 2026 | https://investor.tsmc.com/static/annualReports/2025/english/index.html | 2025 Annual Report | N2 global HVM Q4 2025; N2P/A16 H2 2026 schedule; Arizona Fab 1 HVM; later Arizona fabs | S0 | 2026-08-27 | Establishes moving global frontier |
+| MON-SRC-029 | MON-G0-C04 | TSMC | Investor disclosure | 2025-07-17 | https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1f4f86c935f1de837672a6973154e64b26bdae57/TSMC%202Q25%20Transcript.pdf | Q2 2025 transcript | Planned ~30% of TSMC 2nm-and-more-advanced capacity in Arizona after expansion | S0 | 2026-08-27 | Future state, not current capacity |
+| MON-SRC-030 | MON-G0-C04 | TSMC | Primary company results | 2026-07-16 | https://pr.tsmc.com/english/news/3326 | Q2 2026 results | 2nm already contributing to wafer revenue in Q2 2026; advanced-node production mix | S0 | 2026-08-27 | Current frontier context |
+| MON-SRC-031 | MON-G0-C05 | U.S. Department of Energy / LPO | Primary government project record | current project page | https://www.energy.gov/edf/syrah-vidalia | Syrah Vidalia project record | $102.1M July 2022 loan; first-of-kind U.S. AAM processing project; supply-chain rationale | S0 | 2026-08-28 | Project page retains 2022 baseline |
+| MON-SRC-032 | MON-G0-C05 | U.S. Department of Energy | Primary government environmental assessment | 2022 | https://www.energy.gov/sites/default/files/2022-04/fonsi-and-ea-2181-syrah-tech-active-node-material-manufacturing-facility-2022-04.pdf | DOE/EA-2181 | Commercial-scale facility designed for ~11,250 t/year AAM | S0 | 2026-08-28 | Nameplate/design capacity, not actual output |
+| MON-SRC-033 | MON-G0-C05 | Syrah Resources / ASX | Primary company market disclosure | 2024-02-09 | https://announcements.asx.com.au/asxpdf/20240209/pdf/06079z3vxv0tdd.pdf | AAM production commencement announcement | AAM production commenced; 11.25 ktpa facility; Mozambique feedstock; qualification/ramp-up conditions | S0 | 2026-08-28 | Capability milestone |
+| MON-SRC-034 | MON-G0-C05 | Syrah Resources / ASX | Primary company annual disclosure | 2026-03-26 | https://announcements.asx.com.au/asxpdf/20260326/pdf/06xv29j0wp3tr8.pdf | 2025 annual disclosure | 618 t produced and 433 t delivered in 2025; qualification-constrained operations; no major-offtake commercial sales in 2025 | S0 | 2026-08-28 | Strong actual-output/qualification boundary |
+| MON-SRC-035 | MON-G0-C05 | Syrah Resources | Primary company facility disclosure | current page | https://www.syrahresources.com.au/our-business/vidalia-active-anode-material-facility | Vidalia facility page | 11.25 ktpa operational capacity; Q1 2024 production start; potential 45 ktpa expansion | S0 | 2026-08-28 | Dynamic page; preserve retrieval date |
+| MON-SRC-036 | MON-G0-C05 | U.S. Geological Survey | Primary government statistics | 2026 | https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-graphite.pdf | Mineral Commodity Summaries 2026 — Graphite (Natural) | 2025 U.S. natural-graphite mine production zero; 100% net import reliance; 71,000 t apparent consumption; AAM import context | S0 | 2026-08-28 | Feedstock boundary; natural graphite statistics, not identical to AAM demand |
+| MON-SRC-037 | MON-G0-C05 | U.S. Department of Energy / LPO | Primary government program statement | 2023 | https://www.energy.gov/edf/articles/lpos-advanced-technology-vehicles-manufacturing-loan-program | LPO ATVM program statement | Fully built-out Syrah project expected to supply ~25% of U.S. graphite need in 2030 | S0 | 2026-08-28 | Strategic scale context; do not convert to current AAM replacement percentage |
+| MON-SRC-038 | MON-G0-C05 | U.S. Department of Energy | Primary government investment disclosure | 2025 | https://www.energy.gov/articles/department-energy-shares-applicant-self-disclosed-projects-receiving-clean-energy | Section 48C project disclosure | ~$164.5M Section 48C allocation for Syrah natural-graphite AAM production/expansion | S0 | 2026-08-28 | Ongoing buildout, not completion |
