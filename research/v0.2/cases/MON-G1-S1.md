@@ -37,7 +37,7 @@ The case must not jump from "ASML is the sole producer of EUV scanners" to "ASML
 **Evidence class:** S0
 **Use:** Establishes both the sole-production fact **and** the essentiality of the tool to the leading-edge function — the two elements `capacity_control` requires. This is more than a market-share statement.
 
-### E02 — Independent restatement of single-source supply
+### E02 — Second statement within the same primary document
 **Publisher:** The White House / Department of Commerce (same report)
 **Source:** 100-Day Reviews under EO 14017, June 2021, p. 54.
 **Verbatim:** "only ASML supplies EUV equipment, and the top three providers (ASML, Nikon, Canon) account for virtually all of the overall market share."
@@ -61,7 +61,7 @@ layer  = capacity_control
 ### Control mechanism
 > Sole present productive capacity for the EUV lithography scanner — the exposure tool a primary U.S. government review states is essential for producing integrated circuits at ≤5 nm and is produced by only one supplier — with the EUV light source vertically integrated into the same producer.
 
-Reached from source-native government statements. **No S2 is required** to assign the layer: the sole-production fact and the essentiality are both stated in the source.
+**Classification derivation:** S1 — a mechanical conjunction of two S0 facts (sole production of the EUV scanner + that scanner being essential for ≤5 nm patterning). The underlying **facts are S0**; the `capacity_control` **label is not written verbatim in the source** — it is applied by the frozen layer-classification rule. This is a reproducible S1 derivation, not S2 interpretation: **no domain judgment** is needed to conclude that a sole, essential, presently-unsubstitutable productive capacity is a capacity chokepoint. **No S2 is required.** (This distinction matters: a taxonomy label is not "source-native" merely because the facts beneath it are — the label's status is S1 here, and must be shown to be S1 in every future case, never assumed.)
 
 ## 4. Claim boundary
 
@@ -89,9 +89,10 @@ Reached from source-native government statements. **No S2 is required** to assig
 
 ## 7. Result and honest limitations
 
-- **Case result:** `evidenced_control_layer` / `capacity_control`, at the EUV-scanner-production locus, from S0 government-primary evidence, no S2 needed for classification.
+- **Case result:** `evidenced_control_layer` / `capacity_control`, at the EUV-scanner-production locus. Facts are S0 government-primary; the layer label is an S1 mechanical derivation from those facts; no S2 needed for classification.
 - **Why not `ambiguous_layer`:** the source does not merely state market share; it ties sole production to essentiality for the ≤5 nm function, which is the specific capacity mechanism the gate requires.
 - **Limitation to note for review:** the source-native "sole producer / only ASML" language is carried by a **single authoritative primary document** (the June 2021 EO 14017 review). Notably, ASML's own investor materials and Form 20-F reviewed for this case do **not** self-characterize as the "only/sole" EUV producer, so no operator self-statement is admitted as corroboration (unlike the USPS corroboration in S8). Before this case is treated as final rather than provisional, a second independent primary source (e.g. a later government supply-chain assessment or a competition-authority finding quoting primary evidence) should be admitted to confirm the single-source fact still holds and is not artifact of one document's phrasing.
+- **Recommended corroboration (pending verification):** an older U.S. International Trade Commission (USITC) assessment reportedly also describes ASML as a sole-source EUV supplier. It is a genuinely independent government primary source and would strengthen this case, but it is **not** admitted here because its exact locator was not verified in this pass. It is recorded as a lead, not as evidence, and is **not** a requirement for closing the gate. Its age also means it corroborates the mechanism, not current freshness.
 
 ## 8. What this case tells us about the framework
 
