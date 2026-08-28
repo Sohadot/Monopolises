@@ -8,11 +8,15 @@
 **Frozen hypothesis under test:** `access_gatekeeping`
 **Extraction order position:** 5 of 8
 
-## 0. Scope fixed BEFORE evidence (jurisdiction + date + OS)
+## 0. Scope (jurisdiction + date + OS)
 
-> **Native iOS app distribution to users in the United States — dated 2026.**
+> **General-public native iOS app distribution to users in the United States — dated 2026.**
 
 Jurisdiction is load-bearing here: Apple's own rules differ by region, so "iOS distribution" without a jurisdiction is not a classifiable object. This case is **US-scoped**. It makes **no** claim about the EU, Brazil, or Japan, where Apple's rules differ (see §3).
+
+### 0.0 Correction notice (this revision)
+
+The scope originally read "native iOS app distribution to US users." Reviewing the exceptions (§6) showed that was too broad: Apple documents **Enterprise (in-house)**, **Custom/unlisted**, and **TestFlight** as separate native routes distinct from public App Store distribution. The unit is therefore narrowed to **general-public** native distribution. This narrowing happened **after** seeing the evidence and is recorded as a correction — it is not presented as a scope that was frozen before extraction.
 
 ## 0.1 Governing extraction question
 
@@ -29,38 +33,43 @@ The bar: the classification must rest on a documented **admission rule** and a d
 
 ## 2. S0 evidence (Apple's own documents)
 
-### E01 — App Review is the admission control; Apple reviews every app
-**Source:** Apple, *App Review Guidelines* (2025), Introduction.
+### E01 — App Review is the admission control for the App Store
+**Source:** Apple, *App Review Guidelines* (current version; retrieved 2026-08-28, Apple lists Last Updated June 8, 2026), Introduction.
 **Verbatim:** "We do this by offering a highly curated App Store where **every app is reviewed by experts** …"
-**Class:** S0. Apple reviews (and can reject) every app before it appears on the App Store.
+**Class:** S0. Apple reviews (and can reject) every app **distributed through the App Store**.
 
 ### E02 — Alternative distribution exists only "in some markets" (not universal)
-**Source:** Apple, *App Review Guidelines* (2025), Introduction.
+**Source:** Apple, *App Review Guidelines* (2026), Introduction.
 **Verbatim:** "In **some markets and on certain platforms**, developers can also distribute notarized apps from alternative app marketplaces and directly from their website."
 **Class:** S0. Alternative native distribution is the exception, limited to named markets — establishing that it is **not** available everywhere.
 
-### E03 — The named markets are EU / Brazil / Japan — the U.S. is not among them
+### E03 — Alternative distribution is exhaustively limited to Brazil / Japan / the EU
 **Source:** Apple Support, *Installing apps through alternative app distribution* (support.apple.com/en-us/117767).
-**Verbatim:** "Alternative app distribution is available in **Brazil, Japan, and the countries or regions of the European Union**."
-**Class:** S0. The U.S. is not listed. So for US users in 2026, alternative marketplaces and web distribution of native iOS apps are **not** available.
+**Verbatim:** "**Only** users based in Brazil, Japan, or the European Union are able to install apps through alternative app distribution."
+**Class:** S0. This is an **exhaustive** boundary ("Only … Brazil, Japan, or the European Union"), not an inference from absence: US users cannot install native iOS apps through alternative distribution in 2026, so the App Store is the sole route for general-public native apps.
+
+### E04 — Alternative distribution is itself Apple-gated (Notarization)
+**Source:** Apple Support, *Installing apps through alternative app distribution* (support.apple.com/en-us/117767).
+**Verbatim:** "**All apps available through alternative app distribution are submitted to a Notarization process with Apple**."
+**Class:** S0. Recorded to show that where alternative distribution exists (EU/Brazil/Japan), Apple still operates an admission mechanism (Notarization) — a **different** instrument, not the absence of a gate. Used only to bound §3; it carries no US classification.
 
 ## 3. Why jurisdiction is decisive (the discipline this case enforces)
 
-E03 is the reason the case is US-scoped. In the EU, Brazil, and Japan, Apple permits alternative app marketplaces and/or web distribution — so in those jurisdictions the "single sanctioned channel" premise **fails**, and `access_gatekeeping` at the iOS-distribution locus would **not** be cleanly evidenced (there are multiple admitted routes). Classifying "iOS globally" would therefore be wrong. The layer holds only where the evidence shows a single admitted channel — here, the **US**.
+E03 is the reason the case is US-scoped. In the EU, Brazil, and Japan, Apple permits alternative app marketplaces and/or web distribution, so the **single-App-Store-channel mechanism tested here does not apply** in those jurisdictions. **Those jurisdictions are not classified by this case.** This is *not* a finding that there is no gate there: E04 shows alternative distribution is itself Apple-gated via **Notarization** — a **different** Apple-controlled admission mechanism. The important lesson: `access_gatekeeping` does **not** mean "single channel" as such; it means a **rule-controlled admission point**. In the US that shows up as the App Store + App Review; in the EU/Brazil/Japan it may show up as App Store + Notarization/alternative-distribution rules — a separate question this case does not decide. Classifying "iOS globally" from the US mechanism would therefore be wrong.
 
 ## 4. Classification (provisional)
 
 ```
 result = evidenced_control_layer
 layer  = access_gatekeeping
-locus  = native iOS app distribution to US users (dated 2026)
+locus  = general-public native iOS app distribution to US users (dated 2026)
 ```
 
 ### Control mechanism
-> Apple's App Review Guidelines require native iOS apps to reach users through the App Store, where Apple reviews and approves/rejects every app; and within the US scope no alternative marketplace or web-distribution route is available (alternative distribution is limited to the EU, Brazil, and Japan). Apple therefore controls admission to the sole sanctioned channel for native iOS apps to US users.
+> Apple's App Review Guidelines require general-public native iOS apps to reach users through the App Store, where Apple reviews and approves/rejects every app distributed through the App Store; and within the US scope no alternative marketplace or web-distribution route is available (only Brazil, Japan, and the EU can install apps through alternative distribution). Apple therefore controls admission to the sole sanctioned channel for general-public native iOS apps to US users.
 
 ### Classification derivation
-S0 facts (every app reviewed; alternative distribution limited to named non-US markets) → **S1** conjunction (US native app distribution has one admitted channel, and Apple decides admission to it) → `access_gatekeeping`. No S2.
+S0 facts (every App Store app reviewed; alternative distribution limited exhaustively to Brazil/Japan/EU) → **S1** conjunction (US general-public native app distribution has one admitted channel, and Apple decides admission to it) → `access_gatekeeping`. No S2.
 
 ### Why this is a rule-based gate, not a market-power observation
 The classification cites **Apple's own admission rule** (App Review) and Apple's **own statement** of where alternative routes exist. It does **not** use the App Store's market share, iOS's install base, or Apple's size. A platform whose rules admitted multiple native-distribution routes in-scope (as Apple's do in the EU/Brazil/Japan) would fail this test — which is exactly why the result is jurisdiction-bounded.
@@ -69,9 +78,9 @@ The classification cites **Apple's own admission rule** (App Review) and Apple's
 
 | Claim | S0 fact | S1 derivation | S2 (excluded) |
 |---|---|---|---|
-| Apple reviews/approves every app | "every app is reviewed by experts" (Guidelines) | Apple holds admission authority | whether review is applied fairly / anticompetitively |
+| Apple reviews/approves every App Store app | "every app is reviewed by experts" (Guidelines) | Apple holds admission authority over the App Store channel | whether review is applied fairly / anticompetitively |
 | Alternative distribution is not universal | "in some markets and on certain platforms" (Guidelines) | alternative native routes are the exception | — |
-| US has no alternative native route (2026) | "available in Brazil, Japan, and the … EU" (Apple Support); US not listed | US native app distribution has one admitted channel ⇒ `access_gatekeeping` | whether the single channel is an antitrust "monopoly" |
+| US has no alternative native route (2026) | "Only users based in Brazil, Japan, or the European Union are able to install apps through alternative app distribution" (Apple Support) | US general-public native app distribution has one admitted channel ⇒ `access_gatekeeping` | whether the single channel is an antitrust "monopoly" |
 | Payment-link (anti-steering) changes ≠ distribution channel | Apple's 2025 US guideline update concerns external links/buttons | steering/payment ≠ the distribution gate | market-power / normative conclusions |
 
 ## 6. Exceptions (recorded, do not defeat the gate)
@@ -87,7 +96,7 @@ These are exceptions to, not defeaters of, a gate on **general public native app
 ## 7. Claim boundary
 
 ### Admissible record (dated, US-scoped)
-> For native iOS app distribution to users in the **United States** in **2026**, Apple's App Review Guidelines and support documentation establish an `access_gatekeeping` layer: every app is reviewed and approved/rejected by Apple, and the App Store is the sole Apple-sanctioned channel for reaching US users, since alternative app marketplaces and web distribution are available only in the EU, Brazil, and Japan — subject to narrow enterprise/custom/TestFlight exceptions and the separate non-native web route.
+> For **general-public** native iOS app distribution to users in the **United States** in **2026**, Apple's App Review Guidelines and support documentation establish an `access_gatekeeping` layer: every app distributed through the App Store is reviewed and approved/rejected by Apple, and the App Store is the sole Apple-sanctioned channel for reaching US users, since "Only users based in Brazil, Japan, or the European Union are able to install apps through alternative app distribution" — subject to narrow enterprise/custom/TestFlight exceptions and the separate non-native web route.
 
 ### Not admissible
 - ❌ "Apple monopolises apps." — a normative/market-power claim (S2); the record classifies an admission gate, not a monopoly.
@@ -102,9 +111,9 @@ These are exceptions to, not defeaters of, a gate on **general public native app
 - S1 → `capacity_control` (single-actor locus)
 - S2 → `capacity_control` (collective locus)
 - S6 → `capacity_control` + `access_gatekeeping` (defense procurement channel)
-- S4 → `access_gatekeeping` (native iOS app distribution to US users, 2026)
+- S4 → `access_gatekeeping` (general-public native iOS app distribution to US users, 2026)
 
-`access_gatekeeping` now appears twice — but at **very different loci** (a government procurement channel vs a consumer app-distribution channel), each on a **documented admission rule**, and S4's is explicitly jurisdiction-bounded to avoid stamping the label on "iOS" as a whole. That the same layer recurs on distinct, separately-evidenced instruments is a sign of a real category, not a lazy default. Three mechanisms evidenced across five cases (`legal_exclusivity`, `capacity_control`, `access_gatekeeping`); `qualification_control`, `standard_interface_control`, and `temporal_constraint` remain unproven. The gate verdict waits on the full fixed set.
+`access_gatekeeping` now appears twice — but at **very different loci** (a government procurement channel vs a consumer app-distribution channel), each on a **documented admission rule**, and S4's is explicitly jurisdiction- and audience-bounded (US, general-public) to avoid stamping the label on "iOS" as a whole. S4 also sharpens the layer's meaning: `access_gatekeeping` is **not** "there is only one channel" — it is a **rule-controlled admission point**. The US shows it as App Store + App Review; the EU/Brazil/Japan may show it as App Store + Notarization/alternative-distribution rules (a separate, un-classified question). That the same layer recurs on distinct, separately-evidenced instruments is a sign of a real category, not a lazy default. Three mechanisms evidenced across five cases (`legal_exclusivity`, `capacity_control`, `access_gatekeeping`); `qualification_control`, `standard_interface_control`, and `temporal_constraint` remain unproven. The gate verdict waits on the full fixed set.
 
 ## 9. Next step
 
