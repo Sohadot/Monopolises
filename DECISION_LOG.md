@@ -29,7 +29,9 @@ The raw evidence from that pre-repository test is not yet imported into this rep
 ## DEC-002 — Open Strategic Replaceability as a Research Hypothesis
 
 **Date:** 2026-08-27  
-**Status:** Active / Unratified
+**Status:** Superseded by DEC-004 (was Active / Unratified)
+
+> Superseded by DEC-004 on 2026-08-28: Gate MON-G0-RH closed as FAIL and Strategic Replaceability v0.1 was rejected as the primary measurement thesis. The hypothesis and its candidate terms are retained below as research provenance; none is a ratified category primitive.
 
 ### Decision
 Test **Strategic Replaceability** as the current category hypothesis for Monopolises.
@@ -48,7 +50,9 @@ No term becomes a standard, score, public dataset, or scaled SEO surface until G
 ## DEC-003 — Run Public Foundation and Research in Parallel
 
 **Date:** 2026-08-27  
-**Status:** Active
+**Status:** Superseded by DEC-004 (was Active)
+
+> Superseded by DEC-004 on 2026-08-28: Gate 0 research has concluded with MON-G0-RH closed as FAIL. The parallel-publication constraint requiring public pages to identify the thesis as "under validation" no longer applies — the public foundation now reflects the closed FAIL state. Retained below as provenance.
 
 ### Decision
 Publish a small, truthful, indexable foundation while Gate 0 research proceeds.
