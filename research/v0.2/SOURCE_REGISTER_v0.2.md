@@ -3,8 +3,8 @@
 **Version:** v0.2
 **Status:** Open register — accrues as MON-G1-LI cases are extracted
 **Gate:** MON-G1-LI (Layer Identifiability)
-**Cases covered so far:** MON-G1-S8, MON-G1-S1
-**Admitted sources:** 5
+**Cases covered so far:** MON-G1-S8, MON-G1-S1, MON-G1-S2
+**Admitted sources:** 6
 
 Sources are admitted because they support an actual v0.2 case classification, not because the publisher is generally reputable. A prestigious publisher does not upgrade a weak claim; source authority and claim fit are separate judgments.
 
@@ -19,6 +19,7 @@ Each row records which case the source serves, the exact claim it supports, and 
 | MON2-SRC-003 | MON-G1-S8 | Code of Federal Regulations | Primary regulatory instrument | 39 CFR Part 310 — Enforcement of the Private Express Statutes | https://www.ecfr.gov (Title 39, Part 310) | A dedicated federal regulatory part implements the Private Express Statutes with defined boundaries, exceptions, and suspensions | S0 | 2026-08-28 | Establishes an implementing/enforcement framework; does not by itself evidence active enforcement |
 | MON2-SRC-004 | MON-G1-S8 | U.S. Postal Service | Operator statement of legal regime | USPS description of the Private Express Statutes | https://www.usps.com (Private Express Statutes summary) | USPS summarizes that carrying letters over post routes by a non–Postal Service entity is generally unlawful except under defined conditions, exceptions, and suspensions | S0 (corroborative) | 2026-08-28 | Plain-language corroboration of the statutes; not relied on beyond the statutory text |
 | MON2-SRC-005 | MON-G1-S1 | The White House / U.S. Dept. of Commerce | Primary government supply-chain review | *Building Resilient Supply Chains … 100-Day Reviews under Executive Order 14017*, June 2021, pp. 50–54 | https://www.govinfo.gov/content/pkg/GOVPUB-PR-PURL-gpo156599/pdf/GOVPUB-PR-PURL-gpo156599.pdf | ASML is the sole producer of EUV stepper/scanners, essential for ICs at ≤5 nm (p.51); "only ASML supplies EUV equipment" while the broader lithography market is a top-three oligopoly (p.54); Cymer produces the EUV light source and is an ASML operating unit since 2013 (p.50) | S0 | 2026-08-28 | Single authoritative document carrying the sole-producer fact; second independent primary source recommended before treating S1 as final |
+| MON2-SRC-006 | MON-G1-S2 | The White House / U.S. Dept. of Commerce | Primary government supply-chain review | *100-Day Reviews under Executive Order 14017*, June 2021, pp. 39, 40, 64 | https://www.govinfo.gov/content/pkg/GOVPUB-PR-PURL-gpo156599/pdf/GOVPUB-PR-PURL-gpo156599.pdf | At the 2021 frontier (5 nm) the leading logic node had **two** HVM producers — "only TSMC … and Samsung … currently operate" (p.39) and "only two companies … producing volume" (p.64); TSMC is the dominant supplier ("especially TSMC", p.39); SMIC only at 14 nm (p.40) | S0 | 2026-08-28 | Same document as MON2-SRC-005, different pages/claim; supports the **negative** S2 result (multi-producer leading edge ⇒ no single-source capacity layer). Frontier dated 2021 = 5 nm |
 
 ## Admission rules (v0.2)
 
@@ -26,3 +27,4 @@ Each row records which case the source serves, the exact claim it supports, and 
 2. For a `legal_exclusivity` layer, the primary legal instrument (statute/regulation) is the admissible basis; operator or secondary summaries are corroborative only.
 3. Evidence class is recorded per source. S2 sources may be listed to explain uncertainty but may not carry a layer classification.
 4. Canonical citations are authoritative; access-point URLs are conveniences to be verified against the official publisher.
+5. Trade-press or secondary reporting used only to date a moving frontier (e.g. the 2 nm-class present-frontier reporting in MON-G1-S2 §3) is **context, not admitted evidence**, carries no classification, and is deliberately kept out of this register.
