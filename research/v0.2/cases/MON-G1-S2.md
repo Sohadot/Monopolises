@@ -2,122 +2,137 @@
 
 **Gate:** MON-G1-LI
 **Case ID:** MON-G1-S2
-**Role in set:** The real stress test. This is where the moving frontier — the defect that sank part of v0.1 — could pull us back into an analyst-defined monopoly claim. The gate must survive it without S2.
-**Status:** Evidence extraction complete — provisional case result
+**Role in set:** The real stress test. This is where the moving frontier — the defect that sank part of v0.1 — could pull us back into an analyst-defined monopoly claim.
+**Status:** Evidence extraction complete — provisional case result (revised after review)
 **Evidence rule:** S0 + reproducible S1 only; S2 may explain but may not classify
 **Frozen hypothesis under test:** `capacity_control` at high-volume manufacturing (HVM) of the leading logic node
 **Extraction order position:** 3 of 8
 
 ## 0. Governing extraction question
 
-> Can a present-tense capacity-control layer be identified at a **specifically dated** leading-edge logic node from primary evidence, **without turning moving-frontier leadership into an analyst-defined monopoly claim**?
+> Can a capacity-control layer be identified at a **specifically dated** leading-edge logic node from primary evidence, **without turning moving-frontier leadership into an analyst-defined monopoly claim**?
+
+## 0.1 Correction notice (this revision)
+
+The first version of this case introduced a rule the gate never contained — "two producers ⇒ not single-source ⇒ no `capacity_control`" — and reached `no_evidenced_control_layer` from it. That imported the **single-source** condition from the EUV case (S1). **The frozen gate has no single-company requirement.** The frozen definition is:
+
+> `capacity_control` — a documented facility, node, or capacity **that the function must pass through and that is hard to bypass**.
+
+and the v0.2 unit is `System × Layer × Control Mechanism × Evidence`, which asks *where control is concentrated*, not whether one actor owns it. This revision deletes the single-source rule and re-applies the frozen definition literally. A layer may be held by a **small set** of actors (an oligopolistic chokepoint); reducing "monopolised" to "one company" would undo the whole reason for moving to layered monopolisation.
 
 ## 1. The moving-frontier discipline — four separated truths
 
-"Leading-edge foundry" is not one fact. The gate is defeated if these four are blurred. Each is tagged with its evidence status.
-
 | # | Truth | What it asks | Status here |
 |---|---|---|---|
-| 1 | **node capability** | Who can *actually fabricate* a specific node? | S0 — dated |
-| 2 | **HVM status** | Is it *high-volume* production, or announced/ramping/pilot? | S0 — dated |
-| 3 | **capacity locus** | Where is the *measurable* productive capacity, and is it single-source? | S0/S1 — see result |
-| 4 | **frontier date** | What counted as "leading-edge" *on the date of the evidence*? | S0 — must be fixed per source |
+| 1 | **node capability** | Who can *actually fabricate* a specific node? | S0 — dated 2021 |
+| 2 | **HVM status** | *High-volume* production, or announced/ramping/pilot? | S0 — dated 2021 |
+| 3 | **capacity locus** | Where is the *measurable* capacity, and must the function pass through it? | S0/S1 |
+| 4 | **frontier date** | What counted as "leading-edge" *on the date of the evidence*? | S0 — fixed at 2021 = 5 nm |
 
-The cardinal rule: **`capacity_control` may not be inferred from market share or technological leadership alone.** A dominant share is not, without S2, a control instrument.
+Cardinal rule (unchanged): `capacity_control` may not be inferred from market share or technological leadership **alone**. But a documented capacity the function must pass through and cannot presently route around **is** the definition — whether that capacity sits in one producer or a small set.
 
-## 2. S0 evidence
+## 2. The frozen definition, applied literally — three elements
 
-### E01 — At the 2021 frontier (5 nm), the leading node had *two* HVM producers
-**Publisher:** The White House / Department of Commerce
-**Source:** *100-Day Reviews under Executive Order 14017*, June 2021, p. 39.
-**Verbatim:** "The United States lacks semiconductor production capability at the most advanced semiconductor process node—currently 5 nm—at which **only TSMC (Taiwan) and Samsung (South Korea) currently operate**."
-**Frontier date:** 2021 → leading node = 5 nm.
-**Evidence class:** S0.
-**Use:** Fixes the dated frontier (5 nm) and — decisively — that **two** firms operate at it, not one.
+`capacity_control` requires three things, each testable from S0/S1:
 
-### E02 — Independent-of-share confirmation of "only two" at the leading edge
-**Publisher:** The White House / Department of Commerce (same report)
-**Source:** 100-Day Reviews under EO 14017, June 2021, p. 64.
-**Verbatim:** "Samsung is one of **only two companies that are producing volume** in the leading edge 7 nm and 5 nm chips."
-**Evidence class:** S0.
-**Use:** Second source-native statement (same document) that leading-edge HVM at the 2021 frontier is a **two-producer** structure. Confirms HVM status (truth #2), not merely capability.
+1. **a documented facility / node / capacity** — S0?
+2. **the function must pass through it** — S0?
+3. **hard to bypass** — S0/S1, or does it need S2?
 
-### E03 — TSMC is the dominant share, but that is stated as *reliance/leadership*, not a control instrument
-**Publisher:** The White House / Department of Commerce (same report)
-**Source:** 100-Day Reviews under EO 14017, June 2021, p. 39.
-**Verbatim:** "U.S. fabless chip companies now rely **almost exclusively** on Asian producers (especially TSMC) for production of the most advanced (7 nm or less) chips."
-**Evidence class:** S0 for the *reliance/dominance fact*.
-**Use:** Records that TSMC is the dominant supplier — but the source frames this as reliance and leadership, **not** as an exclusive right, a required qualification, or a single-source capacity. Converting "especially TSMC" into "TSMC controls the layer" is an S2 step (see §5), which the gate forbids.
+The classification stands only if all three are met without S2.
 
-### E04 — Context: no third producer was at the leading edge in 2021
-**Publisher:** The White House / Department of Commerce (same report)
-**Source:** 100-Day Reviews under EO 14017, June 2021, p. 40.
-**Verbatim:** China's "most advanced pure-play foundry, Semiconductor Manufacturing International Corporation (SMIC), can only produce at the 14 nm node, with limited capacity."
-**Evidence class:** S0.
-**Use:** Confirms the 2021 leading edge was a **two-producer** set (not one, not many). Rules out a "many producers" reading without making it single-source.
+## 3. S0 evidence (all from the same primary document, dated 2021)
 
-## 3. Present-frontier context (dated 2025–2026) — NOT admitted as S0
+**Source throughout:** The White House / Department of Commerce, *Building Resilient Supply Chains … 100-Day Reviews under Executive Order 14017*, June 2021.
 
-The 2021 evidence is five years old; the frontier has moved. To avoid classifying a stale frontier, the present node is dated from current reporting. **This is trade-press reporting, not a primary source, and is used only to date the present frontier — it carries no part of the classification.**
+### E01 — Dated frontier + the HVM capacity set (elements 1 & 2)
+p. 39, verbatim: "The United States lacks semiconductor production capability at the most advanced semiconductor process node—currently 5 nm—at which **only TSMC (Taiwan) and Samsung (South Korea) currently operate**."
+**Class:** S0. Fixes frontier = 5 nm (2021) and that leading-edge production operates at the TSMC+Samsung capacity set.
 
-- The present leading edge is the **2 nm class**, and as of late 2025–2026 it is entered by **three** producers: **TSMC N2**, **Samsung SF2**, and **Intel 18A**, all having begun volume/HVM production in 2025. (Trade press: Tom's Hardware and others.)
+### E02 — HVM status confirmed (element 2)
+p. 64, verbatim: "Samsung is one of **only two companies that are producing volume** in the leading edge 7 nm and 5 nm chips."
+**Class:** S0. Confirms *high-volume* (not pilot/announced) at the two-producer set.
 
-Direction of the correction: moving from the 2021 frontier to the present frontier makes the structure **more** contested (two producers → three), not less. Whatever the exact current shares, the leading node is **not** single-source at either date.
+### E03 — Hard to bypass: the largest non-participant economy lacks the capability (element 3)
+p. 39, verbatim: "The most advanced fabs in the United States are **10 nm** operated by Intel, which does not expect to enter full 7 nm production until 2023 …"; and "U.S. fabless chip companies now rely **almost exclusively** on Asian producers (especially TSMC) for production of the most advanced (7 nm or less) chips."
+**Class:** S0. The U.S. — a major economy with strong domestic firms — cannot presently route leading-edge logic around this capacity set.
 
-## 4. Classification (provisional)
+### E04 — Hard to bypass: the nearest alternative foundry is two nodes behind (element 3)
+p. 40, verbatim: China's "most advanced pure-play foundry, Semiconductor Manufacturing International Corporation (SMIC), **can only produce at the 14 nm node, with limited capacity**."
+**Class:** S0. No third HVM producer exists at the frontier; the nearest alternative is ~two nodes back with limited capacity.
+
+## 4. Three-element test — result
+
+| Element | Met? | Basis |
+|---|---|---|
+| Documented facility/node/capacity | **Yes — S0** | "most advanced … 5 nm" node; the operating capacity of TSMC and Samsung (E01, E02) |
+| Function must pass through it | **Yes — S0** | leading-edge logic HVM operates *only* at this set; US fabless "rely almost exclusively" on it (E01, E03) |
+| Hard to bypass | **Yes — S1 from S0 facts** | only two HVM producers exist (E01/E02); the US lacks the capability (E03); the nearest alternative foundry is stuck at 14 nm (E04) — so there is **no present alternative route**. This is a mechanical reading of absence-of-alternative facts, not a viability judgment. |
+
+All three elements are met from S0/S1.
+
+## 5. Classification (provisional, revised)
 
 ```
-result = no_evidenced_control_layer
-hypothesis capacity_control = NOT SUPPORTED at the "leading logic node" framing
+result = evidenced_control_layer
+layer  = capacity_control
+locus  = COLLECTIVE — dated 2021 leading-edge (5 nm) HVM logic capacity
 ```
 
-**The frozen `capacity_control` hypothesis fails on its own evidence.** At every frontier we can date from primary sources, the leading logic node has **more than one** HVM producer. There is no single-source productive capacity and no control instrument that primary evidence ties to one actor. The only way to reach `capacity_control` here is to treat TSMC's larger share as "control" — an S2 market-share/leadership judgment, which the gate excludes.
+### Control mechanism
+> Leading-edge logic HVM at the 2021 frontier (5 nm) is a documented productive capacity through which that function must pass, concentrated in the **only two source-evidenced HVM producers (TSMC and Samsung)**, and presently hard to bypass — the largest non-participant economy (the U.S.) lacks the capability and the nearest alternative foundry (SMIC) is two nodes behind.
 
-## 5. Per-claim evidence ledger (S0 fact / S1 derivation / S2 excluded)
+The layer is **not** `TSMC → capacity_control`. It is:
+
+> Leading-edge HVM → `capacity_control` → **TSMC/Samsung capacity set** (TSMC the dominant share within the set).
+
+**Classification derivation:** the underlying facts are S0; the three-element conjunction that yields the `capacity_control` label is an **S1 mechanical derivation** (as in S1/EUV, the label is not written verbatim in the source). No S2 is used.
+
+## 6. Per-claim ledger (S0 fact / S1 derivation / S2 excluded)
 
 | Claim | S0 fact | S1 derivation | S2 (excluded) |
 |---|---|---|---|
-| Leading node in 2021 was 5 nm | "most advanced … currently 5 nm" (p.39) | — | — |
-| Leading-edge HVM was a two-producer set (2021) | "only TSMC … and Samsung … currently operate" (p.39); "only two companies … producing volume" (p.64) | Two named HVM producers ⇒ **not single-source** ⇒ capacity_control not mechanically derivable | Judging TSMC's lead as "control" |
-| TSMC is the dominant supplier | "rely almost exclusively … especially TSMC" (p.39) | Dominant share ≠ control instrument (no S1 path from share to control) | "TSMC controls / monopolises advanced chips" |
-| Present frontier is 2 nm class, multi-producer | *(trade press, not S0)* | — | Any present-tense single-source claim |
-| Therefore no single-actor control layer | conjunction of the above S0 facts | **S1:** absence of a single-source locus ⇒ `no_evidenced_control_layer` | Supplying the missing control via analyst judgment |
+| Frontier 2021 = 5 nm | "most advanced … currently 5 nm" (p.39) | — | — |
+| HVM operates only at TSMC+Samsung | "only … currently operate" (p.39); "only two companies … producing volume" (p.64) | function passes through this set | which of the two "controls" more |
+| No present alternative route | US most-advanced fab 10 nm (p.39); SMIC 14 nm (p.40) | ⇒ **hard to bypass** now | whether it *will remain* hard to bypass; new-entrant viability |
+| ⇒ capacity_control at collective locus | conjunction of the above | **S1:** three elements met ⇒ `evidenced_control_layer` | coordinated conduct; that the set is a "monopoly" |
+| TSMC is dominant within the set | "especially TSMC" (p.39) | dominance sits *inside* the layer; it does not *define* it | "TSMC monopolises advanced chips" |
 
-Note the asymmetry with S1 (EUV): there, an S0 **sole-producer** fact plus an S0 **essentiality** fact yielded a valid S1 capacity_control derivation. Here the parallel S0 fact is the opposite — **two/three producers** — so the same rule mechanically yields *no* control layer. Same rule, opposite input, honest opposite result.
+## 7. Why this is not "any oligopoly = control"
 
-## 6. Why not the other outcomes
+The result does **not** say every small-number market is a control layer. It clears the bar only because the source supplies **absence-of-alternative** evidence for element 3: the U.S. lacks the capability (E03) and the nearest alternative is two nodes behind (E04). An oligopoly *without* such source-native no-alternative evidence would fail "hard to bypass" and land in `ambiguous_layer` or `no_evidenced_control_layer`. This is the principle for every future oligopolistic chokepoint: concentration in a small set is a layer **only when the function's inability to route around that set is itself source-evidenced**, never assumed from headcount or share.
 
-- **Why not `evidenced_control_layer`:** no primary evidence of single-source capacity or a control instrument at the leading node; the node is multi-producer at every dated frontier.
-- **Why not `ambiguous_layer`:** reviewers would not disagree about *which* layer applies — they would agree that **no** control layer is source-native without S2. Ambiguity of layer is not the problem; absence of an evidenced layer is.
-- **Why `no_evidenced_control_layer` is not "there is no concentration":** the same government report is *about* concentration and supply-chain risk (geographic concentration in Taiwan/Korea). But geographic concentration and market dominance are **not** an evidenced single-actor capacity-control layer. The gate result is about layer identifiability, not about whether risk exists.
+## 8. Why not the other outcomes
 
-## 7. Claim boundary
+- **Why not `no_evidenced_control_layer` (the earlier answer):** that answer depended entirely on the deleted single-source rule. Under the frozen definition, the three elements are met.
+- **Why not `ambiguous_layer` (the conservative fallback):** ambiguity would apply if "hard to bypass" needed S2 — i.e. if establishing no-alternative required judging viability/equivalence. Here it does not: the source *states* the U.S. lacks the capability and SMIC is at 14 nm. If a reviewer judges that "hard to bypass" still imports a viability judgment, the correct fallback is `ambiguous_layer`, **not** `no_evidenced`. This case is logged as `evidenced_control_layer`; the S1/S2 line for element 3 is the single point a reviewer should check.
 
-### Admissible record
-> At the leading logic node, primary evidence (dated 2021, frontier = 5 nm) shows a **two-producer** HVM structure (TSMC and Samsung), with TSMC the dominant supplier; the present frontier (2 nm class) is entered by three producers. No single-source capacity or control instrument is evidenced at the leading node, so **no capacity-control layer is established** without analyst judgment.
+## 9. Claim boundary
 
-### Not admissible (exceeds the evidence)
-- ❌ "TSMC monopolises advanced chips." — the leading node is multi-producer; this requires S2.
-- ❌ "There is a capacity_control layer at the leading node." — not evidenced; would need to convert dominance into control.
-- ❌ Any classification that fixes "leading-edge" without a date — the frontier moves.
+### Admissible record (dated)
+> At the **2021** leading-edge frontier (5 nm), a `capacity_control` layer sits at leading-edge logic HVM capacity, held collectively by the only two source-evidenced HVM producers (TSMC and Samsung, TSMC dominant), through which leading-edge logic production must pass and which was presently hard to bypass (the U.S. lacked the capability; SMIC was two nodes behind).
 
-## 8. What this case tells us about the framework
+### Not admissible
+- ❌ "TSMC monopolises advanced chips." — the layer is a **two-producer** set; TSMC's dominance is *within* the layer, not the layer itself.
+- ❌ Attributing the whole layer to any single actor.
+- ❌ Any **undated** "leading-edge" claim — the frontier moves.
+- ❌ Any claim of **permanence** — whether it stays hard to bypass is S2.
+- ❌ Using 2025–26 information in the classification (see §10).
 
-This is the result the gate most needed to produce. For the single most famous "dominance" case in the set, the framework returns an honest **negative** — `no_evidenced_control_layer` — because dominance is not source-native control, and because the moving frontier was handled by **dating** every frontier rather than freezing a reputation. The v0.1 defect (letting an analyst define the answer at a moving frontier) is not repeated: no S2 judgment was smuggled in to manufacture a layer.
+## 10. Freshness note (2025–26) — NOT part of the classification
 
-Two genuine leads are recorded but **not** classified (doing so would be scope expansion mid-gate):
-- The **EUV tool** feeding these fabs is a distinct upstream locus — already captured as S1 (`capacity_control`), a different layer than "the foundry node."
-- **Advanced packaging** (e.g. CoWoS) may be more concentrated than front-end fabrication and could carry its own layer — a candidate for a future, separately-gated case, not this one.
+The admitted evidence is dated 2021. The classification above is therefore a **2021-dated finding**, not a present-tense claim. Present reporting (trade press, **not S0**) indicates the present frontier is the 2 nm class, entered by three producers (TSMC N2, Samsung SF2, Intel 18A). This is recorded only to flag freshness; it plays **no** role in the result and is **not** in the admissible record. Direction of travel: a small (2→3) producer set persists, so the collective-locus reading is not contradicted — but a **current primary source** (government assessment or company/regulatory filing) must be admitted before this finding is restated in the present tense. Recorded as a limitation, exactly as the second-source limitation in S1.
 
-## 9. Result and next step
+## 11. Result and next step
 
-- **Case result:** `no_evidenced_control_layer`; the frozen `capacity_control` hypothesis is **not supported** at the leading-logic-node framing, on present S0 evidence, without S2.
+- **Case result:** `evidenced_control_layer` / `capacity_control` at a **collective** locus — dated 2021 leading-edge (5 nm) HVM logic capacity (TSMC + Samsung), from S0 facts via an S1 derivation, no S2 used.
+- **Dated scope / limitation:** 2021 finding; present-tense restatement requires a current primary source (not yet admitted).
 - Stop at S2 for review before extracting MON-G1-S6 (rare-earth magnets), per the frozen order. Do not batch.
 
-## 10. Running gate picture (three of eight)
+## 12. Running gate picture (three of eight)
 
-- S8 → `evidenced_control_layer` / `legal_exclusivity`
-- S1 → `evidenced_control_layer` / `capacity_control` (S1-derived label)
-- S2 → `no_evidenced_control_layer`
+- S8 → `evidenced_control_layer` / `legal_exclusivity` (single-actor, by statute)
+- S1 → `evidenced_control_layer` / `capacity_control` (single-actor locus: EUV scanner production)
+- S2 → `evidenced_control_layer` / `capacity_control` (**collective** locus: 2021 leading-edge HVM, two producers)
 
-The set is now producing **both** evidenced layers and an honest negative, of **different** kinds — early signs of a discriminating instrument rather than a monopoly-finding machine. Still three cases; the gate verdict waits on the full fixed set.
+S1 and S2 are the same layer reached two ways — a single-actor capacity chokepoint and a small-set capacity chokepoint. That the framework accommodates both, without collapsing "concentrated" into "one company," is the structural point this review surfaced. Still three cases; the gate verdict waits on the full fixed set, and S2's "hard to bypass" S1/S2 line is the item most worth a second reviewer's eye.
