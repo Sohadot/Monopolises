@@ -1,37 +1,37 @@
 # Monopolises
 
-Monopolises is being developed as a governed strategic-reference asset around **strategic replaceability**: the proposition that economic and geopolitical power can emerge when viable alternatives arrive too late.
+Monopolises is a governed strategic-reference asset.
 
-> **Power is the time it takes to replace you.**
+Its first repository-era category thesis — **Strategic Replaceability / Replacement Horizon** — was subjected to a fixed five-case evidentiary Gate and **did not pass**.
 
 ## Current status
 
-- **Phase:** Foundation / Gate 0
-- **Public thesis status:** Hypothesis under validation
-- **Build policy:** No scale, scoring, or derived claims before evidence gates pass.
+- **Phase:** Gate 0 closed
+- **Gate:** `MON-G0-RH`
+- **Verdict:** **FAIL**
+- **Active successor thesis:** None
+- **Build policy:** No scale, scoring, or derived category claims until a new thesis passes its own evidence gate.
 
-## Working category
+## What Gate 0 found
 
-**Strategic Replaceability / Strategic Optionality Intelligence**
+All five cases produced useful source-backed transition records.
 
-Candidate concepts under test:
+None produced a single canonical strategic Replacement Horizon without an unresolved methodological choice about start event, replacement endpoint, sufficiency, qualification, moving technological frontier, or supply-chain boundary.
 
-- Replacement Horizon
-- Replacement Asymmetry
-- Option Compression
+The failed thesis is retained as research provenance rather than rewritten into a pass.
 
-These are research terms, not yet ratified standards.
+## Governance
 
-## Repository doctrine
+GitHub is the source of truth.
 
-GitHub is the source of truth for the asset. Public pages must be traceable to governed repository content. The public interface may explain the thesis, but it must not outrun the evidence.
+Binding records:
 
-The current Gate 0 asks:
-
-> Can a replacement horizon be evidenced reproducibly from public primary sources without requiring subjective analyst judgment?
-
-See `FOUNDATION_THESIS.md`, `DECISION_LOG.md`, and `research/GATE_0.md`.
+- `DECISION_LOG.md` — DEC-004
+- `research/GATE_0.md`
+- `research/GATE_0_CLOSEOUT.md`
+- `research/SOURCE_REGISTER.md`
+- `research/cases/MON-G0-C01.md` through `MON-G0-C05.md`
 
 ## Public site
 
-The public site is intentionally small during Gate 0. It exists to establish a truthful, indexable reference foundation while research proceeds. No synthetic SEO pages are permitted.
+The public site remains intentionally small. It records the Gate 0 outcome. No successor category thesis is currently authorized.
