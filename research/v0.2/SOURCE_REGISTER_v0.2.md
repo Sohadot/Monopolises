@@ -3,8 +3,8 @@
 **Version:** v0.2
 **Status:** Open register — accrues as MON-G1-LI cases are extracted
 **Gate:** MON-G1-LI (Layer Identifiability)
-**Cases covered so far:** MON-G1-S8, MON-G1-S1, MON-G1-S2, MON-G1-S6
-**Admitted sources:** 10
+**Cases covered so far:** MON-G1-S8, MON-G1-S1, MON-G1-S2, MON-G1-S6, MON-G1-S4
+**Admitted sources:** 12
 
 Sources are admitted because they support an actual v0.2 case classification, not because the publisher is generally reputable. A prestigious publisher does not upgrade a weak claim; source authority and claim fit are separate judgments.
 
@@ -25,6 +25,9 @@ Each row records which case the source serves, the exact claim it supports, and 
 | MON2-SRC-008 | MON-G1-S6 | United States Code (federal statute) | Primary legal instrument | 10 U.S.C. § 4872 — Acquisition of sensitive materials from non-allied foreign nations | https://uscode.house.gov (Title 10 § 4872) | Restricts DoD acquisition of covered sensitive materials — expressly incl. samarium-cobalt and neodymium-iron-boron permanent magnets — by source-origin (covered nations); supports Layer B `access_gatekeeping` | S0 | 2026-08-28 | Source-origin admission restriction to a channel, not a granted right and not a credential test — `access_gatekeeping`, not legal_exclusivity or qualification_control |
 | MON2-SRC-009 | MON-G1-S6 | U.S. DoD / DFARS (federal regulation) | Primary regulatory instrument | DFARS 252.225-7052 / 225.7018-2 — Restriction on the Acquisition of Certain Magnets, Tantalum, and Tungsten | https://www.acquisition.gov/dfars/252.225-7052 | "do not acquire any covered material melted or produced in any covered country …"; NdFeB scope dated — melting + subsequent production **through 2026**, entire chain from mining **from 2027**; covered countries = DPRK, PRC, Russia, Iran; exceptions and nonavailability determination at 225.7018-3/-4 | S0 | 2026-08-28 | Implementing clause for § 4872; supplies the dated scope, covered-country list, and exception/waiver mechanism — supports Layer B `access_gatekeeping` |
 
+| MON2-SRC-011 | MON-G1-S4 | Apple Inc. | Operator rule document (platform-native rule) | *App Review Guidelines* (2025), Introduction | https://developer.apple.com/app-store/review/guidelines/ | "every app is reviewed by experts" (Apple reviews/approves each app); "In some markets and on certain platforms, developers can also distribute notarized apps from alternative app marketplaces and directly from their website" (alternative native distribution is the exception, not universal) | S0 | 2026-08-28 | The admission rule + carve-out language; supports Layer `access_gatekeeping`, US-scoped |
+| MON2-SRC-012 | MON-G1-S4 | Apple Inc. | Operator support documentation | *Installing apps through alternative app distribution* | https://support.apple.com/en-us/117767 | "Alternative app distribution is available in Brazil, Japan, and the countries or regions of the European Union" — the United States is not listed, so native iOS apps reach US users only via the App Store (2026) | S0 | 2026-08-28 | Pins the US single-channel scope; jurisdiction is load-bearing — the layer is not asserted for iOS globally |
+
 ## Admission rules (v0.2)
 
 1. A source is admitted only when it supports a specific claim in a specific case record.
@@ -32,3 +35,4 @@ Each row records which case the source serves, the exact claim it supports, and 
 3. Evidence class is recorded per source. S2 sources may be listed to explain uncertainty but may not carry a layer classification.
 4. Canonical citations are authoritative; access-point URLs are conveniences to be verified against the official publisher.
 5. Trade-press or secondary reporting used only to date a moving frontier (e.g. the 2 nm-class present-frontier reporting in MON-G1-S2 §10) is **context, not admitted evidence**, carries no classification, and is deliberately kept out of this register.
+6. For an `access_gatekeeping` layer created by a **platform-native rule**, the operator's own binding rule/support document (e.g. Apple's App Review Guidelines) **is the primary instrument** — the rule itself is the gate — not a mere corroborative summary (contrast rule 2, where for `legal_exclusivity` the statute is primary and an operator summary is corroborative). Jurisdiction and date must be fixed, since platform rules vary by region and change over time.
