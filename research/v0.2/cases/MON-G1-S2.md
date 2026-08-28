@@ -57,9 +57,9 @@ p. 64, verbatim: "Samsung is one of **only two companies that are producing volu
 p. 39, verbatim: "The most advanced fabs in the United States are **10 nm** operated by Intel, which does not expect to enter full 7 nm production until 2023 …"; and "U.S. fabless chip companies now rely **almost exclusively** on Asian producers (especially TSMC) for production of the most advanced (7 nm or less) chips."
 **Class:** S0. The U.S. — a major economy with strong domestic firms — cannot presently route leading-edge logic around this capacity set.
 
-### E04 — Hard to bypass: the nearest alternative foundry is two nodes behind (element 3)
+### E04 — Hard to bypass: a major alternative foundry cited by the source was well behind the frontier (element 3)
 p. 40, verbatim: China's "most advanced pure-play foundry, Semiconductor Manufacturing International Corporation (SMIC), **can only produce at the 14 nm node, with limited capacity**."
-**Class:** S0. No third HVM producer exists at the frontier; the nearest alternative is ~two nodes back with limited capacity.
+**Class:** S0. A major alternative foundry named by the source (SMIC) was at 14 nm with limited capacity — i.e. not at the frontier. This is corroborating context; the source does not establish SMIC as the "nearest global alternative," and the result does not rest on that stronger claim (E01/E02 already establish that no third producer operated at 5 nm).
 
 ## 4. Three-element test — result
 
@@ -67,7 +67,7 @@ p. 40, verbatim: China's "most advanced pure-play foundry, Semiconductor Manufac
 |---|---|---|
 | Documented facility/node/capacity | **Yes — S0** | "most advanced … 5 nm" node; the operating capacity of TSMC and Samsung (E01, E02) |
 | Function must pass through it | **Yes — S0** | leading-edge logic HVM operates *only* at this set; US fabless "rely almost exclusively" on it (E01, E03) |
-| Hard to bypass | **Yes — S1 from S0 facts** | only two HVM producers exist (E01/E02); the US lacks the capability (E03); the nearest alternative foundry is stuck at 14 nm (E04) — so there is **no present alternative route**. This is a mechanical reading of absence-of-alternative facts, not a viability judgment. |
+| Hard to bypass | **Yes — S1 from S0 facts** | only two HVM producers operate at the frontier (E01/E02); the US lacks the capability (E03); a major alternative foundry cited by the source (SMIC) was at 14 nm (E04) — so there is **no present alternative route** for the dated function. This is a mechanical reading of absence-of-alternative facts, not a viability judgment. |
 
 All three elements are met from S0/S1.
 
@@ -80,7 +80,7 @@ locus  = COLLECTIVE — dated 2021 leading-edge (5 nm) HVM logic capacity
 ```
 
 ### Control mechanism
-> Leading-edge logic HVM at the 2021 frontier (5 nm) is a documented productive capacity through which that function must pass, concentrated in the **only two source-evidenced HVM producers (TSMC and Samsung)**, and presently hard to bypass — the largest non-participant economy (the U.S.) lacks the capability and the nearest alternative foundry (SMIC) is two nodes behind.
+> Leading-edge logic HVM at the 2021 frontier (5 nm) is a documented productive capacity through which that function must pass, concentrated in the **only two source-evidenced HVM producers (TSMC and Samsung)**, and presently hard to bypass — the largest non-participant economy (the U.S.) lacks the capability and a major alternative foundry cited by the source (SMIC) was at 14 nm, i.e. not at the frontier.
 
 The layer is **not** `TSMC → capacity_control`. It is:
 
@@ -100,7 +100,7 @@ The layer is **not** `TSMC → capacity_control`. It is:
 
 ## 7. Why this is not "any oligopoly = control"
 
-The result does **not** say every small-number market is a control layer. It clears the bar only because the source supplies **absence-of-alternative** evidence for element 3: the U.S. lacks the capability (E03) and the nearest alternative is two nodes behind (E04). An oligopoly *without* such source-native no-alternative evidence would fail "hard to bypass" and land in `ambiguous_layer` or `no_evidenced_control_layer`. This is the principle for every future oligopolistic chokepoint: concentration in a small set is a layer **only when the function's inability to route around that set is itself source-evidenced**, never assumed from headcount or share.
+The result does **not** say every small-number market is a control layer. It clears the bar only because the source supplies **absence-of-alternative** evidence for element 3: only two producers operate at the frontier (E01/E02), the U.S. lacks the capability (E03), and a major alternative foundry cited by the source was at 14 nm (E04). An oligopoly *without* such source-native no-alternative evidence would fail "hard to bypass" and land in `ambiguous_layer` or `no_evidenced_control_layer`. This is the principle for every future oligopolistic chokepoint: concentration in a small set is a layer **only when the function's inability to route around that set is itself source-evidenced**, never assumed from headcount or share.
 
 ## 8. Why not the other outcomes
 
@@ -110,7 +110,7 @@ The result does **not** say every small-number market is a control layer. It cle
 ## 9. Claim boundary
 
 ### Admissible record (dated)
-> At the **2021** leading-edge frontier (5 nm), a `capacity_control` layer sits at leading-edge logic HVM capacity, held collectively by the only two source-evidenced HVM producers (TSMC and Samsung, TSMC dominant), through which leading-edge logic production must pass and which was presently hard to bypass (the U.S. lacked the capability; SMIC was two nodes behind).
+> At the **2021** leading-edge frontier (5 nm), a `capacity_control` layer sits at leading-edge logic HVM capacity, held collectively by the only two source-evidenced HVM producers (TSMC and Samsung, TSMC dominant), through which leading-edge logic production must pass and which was presently hard to bypass (the U.S. lacked the capability; a major alternative foundry cited by the source, SMIC, was at 14 nm).
 
 ### Not admissible
 - ❌ "TSMC monopolises advanced chips." — the layer is a **two-producer** set; TSMC's dominance is *within* the layer, not the layer itself.
