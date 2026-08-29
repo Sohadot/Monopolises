@@ -277,3 +277,66 @@ DEC-005 build order remains: **ontology → interface thesis → data architectu
 ### Next-gate rule
 
 Data architecture may proceed only under a **new falsifiable gate**. MON-G3-IT is not reopened, broadened, or retroactively redefined to authorize work beyond interface-thesis adoption and opening that successor gate.
+
+---
+
+## DEC-008 — Close MON-G4-DA and Adopt the Layered Monopolisation Data Architecture v0.2
+
+**Date:** 2026-08-29
+**Status:** Closed / Binding
+**Gate:** MON-G4-DA — Closed / PASS
+**Supersedes:** nothing in DEC-005's taxonomy, DEC-006's ontology adoption, or DEC-007's interface-thesis adoption (DEC-005, DEC-006, and DEC-007 stand; this decision completes the data-architecture step DEC-007's successor gate authorized)
+
+### Decision
+
+Close gate `MON-G4-DA` (Data Architecture Fidelity) **PASS**, and adopt the **tested** logical data architecture version `mon-g4-da-candidate-v0.2` as the Layered Monopolisation data architecture conforming to DEC-005 / DEC-006 / DEC-007.
+
+### Basis
+
+Evaluation `research/v0.2/GATE_MON-G4-DA_EVALUATION.md` (Accepted 2026-08-29), machine report `research/v0.2/data-architecture/persistence-report.json`:
+
+- **8/8** canonical `SystemRecord` round-trip PASS (write → generic retrieval → direct canonical compare)
+- **8/8** locked-GT full-content compare PASS (after semantic canonicalization)
+- **8/8** interface composability PASS (retrieved canonical read model → adopted interface grammar without case-specific adapter)
+- **`ambiguous_layer` structural conformance PASS** (outside the 8/8 denominator)
+- **History-preservation structural PASS** (outside the 8/8 denominator)
+- **W1/W2 write-integrity structural PASS** (outside the 8/8 denominator)
+- **No** MON-G4-DA falsifier triggered (including tautology / case-id branching in write/read paths)
+- **No** return to Step 2 required
+
+Governing-question answer: the adopted ontology and interface thesis can be carried by a data architecture that stores and retrieves bounded `SystemRecord`s **without** loss, inflation, semantic distortion, hidden inference, entity-centric restructuring, or destructive loss of dated history on the fixed MON-G1-LI eight-case set and frozen structural fixtures.
+
+### Adopted artifact (exact tested version)
+
+- Canonical: `research/v0.2/CANDIDATE_DATA_ARCHITECTURE.md`
+- **`architecture_id`:** `mon-g4-da-candidate-v0.2` — **unchanged** (no untested renumbering)
+
+### Unchanged by this decision
+
+- DEC-005 active taxonomy remains exactly four layers: `legal_exclusivity`, `capacity_control`, `access_gatekeeping`, `switching_dependency`
+- DEC-006 adopted ontology `mon-g2-of-candidate-v0.2` remains unchanged
+- DEC-007 adopted interface thesis `mon-g3-it-candidate-v0.2` remains unchanged
+- Research candidates remain outside the active taxonomy
+- MON-G1-LI, MON-G2-OF, and MON-G3-IT remain Closed PASS; their artifacts are not reopened or rewritten
+- MON-G4-DA PASS criteria, falsifiers, fixtures, and fixed test set are not amended after close
+
+### Construction consequence
+
+**Data-architecture step complete. The tested logical architecture `mon-g4-da-candidate-v0.2` is adopted. This decision does not authorize production implementation. Any production database, API, UI/interface implementation, publishing system, or other operationalization requires separate authorization under a new falsifiable gate or binding decision.**
+
+This decision does **not** authorize:
+
+- Production database implementation or deployment
+- APIs, services, or caching layers as product surfaces
+- Interface **implementation**, site redesign, or production pages
+- Publishing system or operational data pipeline build-out
+- Scores, rankings, severity, dominance levels, or monopoly probability
+- Entity or sector pages
+- Admission of new layers without a new gate
+- Monetization
+
+DEC-005 build order **ontology → interface thesis → data architecture** is complete at the logical/specification layer.
+
+### Next-gate rule
+
+Any move from **adopted data architecture** to **production implementation** requires a **new falsifiable gate or binding decision**. MON-G4-DA is not reopened, broadened, or retroactively redefined to authorize work beyond data-architecture adoption.

@@ -2,17 +2,18 @@
 
 **Gate ID:** MON-G4-DA
 **Version:** 0.2
-**Status:** **DESIGN FROZEN — accepted 2026-08-29** (revision 2)
+**Status:** **Closed — PASS**
 **Opened:** 2026-08-29
-**Closed:** —
+**Closed:** 2026-08-29
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, DEC-005) via adopted ontology `mon-g2-of-candidate-v0.2` (DEC-006) and adopted interface thesis `mon-g3-it-candidate-v0.2` (DEC-007)
-**Evaluation:** `GATE_MON-G4-DA_EVALUATION.md` (**Accepted — 2026-08-29**)
-**Decision:** pending gate close
+**Evaluation:** `GATE_MON-G4-DA_EVALUATION.md` — **Accepted** (2026-08-29): 8/8 canonical SystemRecord round-trip PASS; 8/8 locked-GT PASS; 8/8 interface composability PASS; ambiguity / history / W1-W2 structural PASS (outside 8/8); no falsifiers triggered
+**Decision:** `DECISION_LOG.md` DEC-008
 **Predecessor gate:** MON-G3-IT — Closed PASS (`INTERFACE_THESIS_GATE.md`, DEC-007)
 **Adopted ontology:** `research/v0.2/ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` (`schema_version`: `mon-g2-of-candidate-v0.2`)
 **Adopted interface thesis:** `research/v0.2/CANDIDATE_INTERFACE_THESIS.md` (`thesis_id`: `mon-g3-it-candidate-v0.2`)
+**Adopted data architecture:** `mon-g4-da-candidate-v0.2` (tested version; `architecture_id` unchanged)
 
-> This gate tests whether the **adopted Layered Monopolisation ontology and interface thesis** can be carried by a **data architecture** that stores and retrieves bounded `SystemRecord`s without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate logical data architecture** is **Accepted** (2026-08-29). **Step 3 — persistence/retrieval fidelity evaluation** is **Accepted** (2026-08-29) (`GATE_MON-G4-DA_EVALUATION.md`). **Step 4 — closeout** is **Authorized — next step**. The gate remains **open** until Step 4 closeout.
+> **Verdict.** Yes — the adopted Layered Monopolisation ontology and interface thesis can be carried by a data architecture that stores and retrieves bounded `SystemRecord`s without loss, inflation, semantic distortion, hidden inference, entity-centric restructuring, or destructive loss of dated history. On the fixed eight-case set under blind persistence/retrieval (`GATE_MON-G4-DA_EVALUATION.md`), **8/8 canonical SystemRecord round-trip PASS**, **8/8 locked-GT PASS**, and **8/8 interface composability PASS**; ambiguity, history-preservation, and W1/W2 write-integrity structural conformance **PASS** (outside 8/8); **no MON-G4-DA falsifier triggered**. The tested architecture version `mon-g4-da-candidate-v0.2` is adopted as the data architecture conforming to DEC-005 / DEC-006 / DEC-007. This closeout does **not** reopen MON-G1-LI, MON-G2-OF, or MON-G3-IT, alter the four-layer taxonomy, or amend PASS criteria, falsifiers, fixtures, or the fixed test set. **Production implementation is not authorized.**
 
 ## Governing question
 
@@ -393,7 +394,7 @@ The gate FAILS if **any** of the following hold:
 | 1 | This gate spec (`DATA_ARCHITECTURE_GATE.md`) | **Frozen — accepted 2026-08-29** (revision 2) |
 | 2 | Candidate logical data architecture meeting **Step 2 artifact requirements** (`CANDIDATE_DATA_ARCHITECTURE.md`) | **Accepted — 2026-08-29** |
 | 3 | Persistence/retrieval fidelity evaluation on S8…S7 + structural checks (`GATE_MON-G4-DA_EVALUATION.md`) | **Accepted — 2026-08-29** |
-| 4 | Gate closeout decision | **Authorized — next step** |
+| 4 | Gate closeout decision | **Closed — PASS — 2026-08-29** (DEC-008) |
 
 **Do not skip steps.** A DB build before Step 1 freeze / Step 2 acceptance is out of process. A Step 2 document without the required logical contracts is incomplete.
 
@@ -419,6 +420,6 @@ Any move from **adopted data architecture** to **production implementation** req
 | MON-G1-LI | Can control layers be identified reproducibly from primary evidence? → **PASS** |
 | MON-G2-OF | Can those identifications survive formal ontology without distortion? → **PASS** |
 | MON-G3-IT | Can that ontology be translated into an interface thesis that stays legible without making overclaim easier? → **PASS** |
-| MON-G4-DA | Can that ontology + interface thesis be carried by a data architecture that stores/retrieves bounded SystemRecords without semantic ownership loss? → **design frozen; under test** |
+| MON-G4-DA | Can that ontology + interface thesis be carried by a data architecture that stores/retrieves bounded SystemRecords without semantic ownership loss? → **PASS** |
 
 MON-G4-DA does not re-test identifiability, ontology fidelity, or interface grammar. It tests whether **storage and retrieval** preserve what the **instrument**, **container**, and **surface** already proved.
