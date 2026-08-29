@@ -1,0 +1,31 @@
+{
+  "schema_version": "mon-g2-of-candidate-v0.2",
+  "system": {
+    "scope": "Structural conformance fixture — not a MON-G1 evaluation case",
+    "date": {
+      "label": "fixture-only"
+    },
+    "outcome": "ambiguous_layer",
+    "evidenced_layer_records": [],
+    "ambiguity_assessment": {
+      "competing_interpretations": [
+        {
+          "interpretation": "Reading A — source-defensible but not separable as evidenced layer",
+          "active_layer_type_considered": "access_gatekeeping"
+        },
+        {
+          "interpretation": "Reading B — alternate source-defensible reading of the same record",
+          "active_layer_type_considered": "switching_dependency"
+        }
+      ],
+      "separation_gap": "Competing readings cannot be separated into an evidenced layer without inventing a decisive fact not in the record.",
+      "claim_boundary": {
+        "admissible": "Zero evidenced layers; ambiguity assessment only.",
+        "excluded": [
+          "Promoting either competing reading to an evidenced layer panel.",
+          "Treating this fixture as a ninth evaluation case."
+        ]
+      }
+    }
+  }
+}

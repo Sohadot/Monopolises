@@ -6,12 +6,12 @@
 **Opened:** 2026-08-29
 **Closed:** —
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, DEC-005) via adopted ontology `mon-g2-of-candidate-v0.2` (DEC-006)
-**Evaluation:** `GATE_MON-G3-IT_EVALUATION.md` (not yet created)
+**Evaluation:** `GATE_MON-G3-IT_EVALUATION.md` (**Accepted — 2026-08-29**)
 **Decision:** pending gate close
 **Predecessor gate:** MON-G2-OF — Closed PASS (`ONTOLOGY_FIDELITY_GATE.md`, DEC-006)
 **Adopted ontology:** `research/v0.2/ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` (`schema_version`: `mon-g2-of-candidate-v0.2`)
 
-> This gate tests whether the **adopted Layered Monopolisation ontology** can be translated into an **interface thesis** that makes bounded control legible without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate interface thesis** — is now authorized. Step 3 (semantic/readback evaluation) and Step 4 (closeout) remain blocked until Step 2 exists and is complete.
+> This gate tests whether the **adopted Layered Monopolisation ontology** can be translated into an **interface thesis** that makes bounded control legible without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate interface thesis** is **Accepted** (2026-08-29). **Step 3 — blind semantic/readback evaluation** is **Accepted** (2026-08-29). **Step 4 — closeout** is **Authorized — next step**. Gate remains **open** (not Closed PASS) until Step 4.
 
 ## Governing question
 
@@ -224,8 +224,8 @@ The gate FAILS if **any** of the following hold:
 |---|---|---|
 | 1 | This gate spec (`INTERFACE_THESIS_GATE.md`) | **Frozen — accepted 2026-08-29 (revision 2)** |
 | 2 | Candidate interface thesis meeting **Step 2 artifact requirements** (`CANDIDATE_INTERFACE_THESIS.md`) | **Accepted — 2026-08-29** |
-| 3 | Semantic/readback evaluation on S8…S7 + `ambiguous_layer` structural conformance (`GATE_MON-G3-IT_EVALUATION.md`) | **Authorized — next step** |
-| 4 | Gate closeout decision | Blocked until Step 3 complete |
+| 3 | Semantic/readback evaluation on S8…S7 + `ambiguous_layer` structural conformance (`GATE_MON-G3-IT_EVALUATION.md`) | **Accepted — 2026-08-29** |
+| 4 | Gate closeout decision | **Authorized — next step** |
 
 **Do not skip steps.** A UI build before Step 2 acceptance is out of process. A Step 2 document without the required interface grammar is incomplete.
 
