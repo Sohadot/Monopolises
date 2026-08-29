@@ -401,7 +401,7 @@ Round-trip evaluation proceeds in the same order as MON-G1-LI extraction (not a 
 | Step | Artifact | Status |
 |---|---|---|
 | 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Frozen — accepted 2026-08-29 (revision 4)** |
-| 2 | Candidate ontology schema (classes, fields, constraints) | **Authorized — next step** |
+| 2 | Candidate ontology schema (`ontology/CANDIDATE_ONTOLOGY_SCHEMA.md`, `ontology/candidate-schema.json`) | **Draft for review** (branch `research/mon-g2-of-candidate-schema`) |
 | 3 | Round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) | Blocked until Step 2 exists |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
 
