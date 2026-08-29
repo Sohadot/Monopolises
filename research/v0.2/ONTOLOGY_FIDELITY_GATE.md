@@ -2,7 +2,7 @@
 
 **Gate ID:** MON-G2-OF
 **Version:** 0.2
-**Status:** **Open — draft for review** (not frozen; revision 2 pending acceptance)
+**Status:** **Open — draft for review** (not frozen; revision 3 pending acceptance)
 **Opened:** 2026-08-29
 **Closed:** —
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, ratified by DEC-005)
@@ -28,7 +28,7 @@ This gate tests **representational fidelity**, not re-classification. The MON-G1
 | Preserving evidence boundaries from MON-G1-LI | Interface implementation or UI surfaces |
 | Round-tripping the eight frozen cases | Scores, rankings, entity pages, monetization |
 | Structural separation of ontology primitives | Admitting new layers or research candidates |
-| Representing negatives (`no_evidenced_control_layer`) | Re-opening MON-G1-LI classifications |
+| Representing negatives (`no_evidenced_control_layer`) and ambiguity (`ambiguous_layer`) | Re-opening MON-G1-LI classifications |
 
 ## Active taxonomy (frozen — exactly four layers)
 
@@ -49,6 +49,8 @@ Only these four values may appear in the **active-layer enum**. They are layer t
 
 Non-proof is information, not a reason to hold a slot in the production structure.
 
+**Refused/research candidate references:** A refused or research candidate may appear **only** as an assessment reference inside a negative, ambiguity, or refusal assessment. Such a reference is **not** an active-layer value, schema slot, placeholder class, or classifiable layer record. This preserves refusal history without re-admitting the three research candidates through the back door.
+
 ## Outcome vs Layer (mandatory invariant)
 
 **Classification outcome and active-layer type are separate primitives.** This is the central structural invariant of MON-G2-OF.
@@ -60,27 +62,45 @@ Non-proof is information, not a reason to hold a slot in the production structur
 
 ### Outcome enum (case-level)
 
-Each system/case resolves to exactly one outcome:
+Each system/case resolves to exactly one outcome (frozen from MON-G1-LI — all four):
 
 - `evidenced_control_layer` — one evidenced layer record is present.
 - `multiple_evidenced_layers` — two or more independent evidenced layer records are present.
+- `ambiguous_layer` — **zero** evidenced layer records; a complete ambiguity assessment.
 - `no_evidenced_control_layer` — **zero** evidenced layer records; a complete negative assessment.
 
-`no_evidenced_control_layer` is **not** a fifth layer, **not** a null layer, **not** an empty enum value, and **not** a "pending" state. It is a first-class outcome that requires an explicit negative assessment.
+`ambiguous_layer` and `no_evidenced_control_layer` are **not** layer types, **not** null layers, **not** empty enum values, and **not** "pending" states. They are first-class outcomes that require explicit assessments. Neither may be collapsed into the other: genuine ambiguity is not a negative, and a clean negative is not ambiguity.
+
+### Ambiguity assessment (required when outcome = `ambiguous_layer`)
+
+When outcome is `ambiguous_layer`, the ontology must carry **zero** evidenced layer records and a populated **ambiguity assessment** recording:
+
+1. The two or more source-defensible layer interpretations that remain in play.
+2. Why no source-native rule separates them (the specific evidentiary gap).
+3. A claim boundary (admissible record + explicit exclusions).
+
+**Candidate interpretations recorded in an ambiguity assessment must not become evidenced layer records.** They are assessment references only — the framework declines to classify, not to provisionally classify.
+
+The frozen eight-case round-trip set contains no `ambiguous_layer` instance (all eight resolved to a definite outcome). Structural support for this outcome is nonetheless required: MON-G1-LI allowed it, and an ontology that cannot represent it would force real ambiguity into a false positive or false negative.
+
+### Negative assessment (required when outcome = `no_evidenced_control_layer`)
+
+When outcome is `no_evidenced_control_layer`, the ontology must carry **zero** evidenced layer records and a populated **negative assessment** recording what was examined, what was refused or not triggered, and what the claim boundary excludes. S3 is the canonical test.
 
 ### Evidenced layer records (0..n per system)
 
 **Invariant:** A system carries **0..n evidenced layer records**, where *n* is the count of independently evidenced control layers — not the outcome label.
 
-| Outcome | Evidenced layer record count |
-|---|---|
-| `evidenced_control_layer` | 1 |
-| `multiple_evidenced_layers` | ≥ 2 |
-| `no_evidenced_control_layer` | **0** |
+| Outcome | Evidenced layer record count | Required assessment |
+|---|---|---|
+| `evidenced_control_layer` | 1 | — |
+| `multiple_evidenced_layers` | ≥ 2 | — |
+| `ambiguous_layer` | **0** | Ambiguity assessment |
+| `no_evidenced_control_layer` | **0** | Negative assessment |
 
-**Zero evidenced layer records does not mean missing data.** When the count is zero, the ontology must carry an explicit negative assessment: what was examined, what was refused or not triggered, and what the claim boundary excludes. S3 is the canonical test: a complete, valid record with zero layer records and a populated negative assessment.
+**Zero evidenced layer records does not mean missing data.** When the count is zero, the ontology must carry an explicit ambiguity assessment or negative assessment — never an empty shell. S3 is the canonical negative test: a complete, valid record with zero layer records and a populated negative assessment.
 
-The outcome field summarizes the layer-record count; it does not substitute for layer records and must not be the only place negative results live.
+The outcome field summarizes the classification result; it does not substitute for layer records and must not be the only place zero-record outcomes live.
 
 ## Ontology primitives (mandatory separation)
 
@@ -89,12 +109,13 @@ The ontology must maintain **strict separation** among these primitives. A primi
 ```
 System (mandatory date, scope; jurisdiction when load-bearing)
   ├── Outcome (case-level classification result — separate from active-layer enum)
-  ├── Negative assessment (required when evidenced layer record count = 0)
+  ├── Ambiguity assessment (required when outcome = ambiguous_layer)
+  ├── Negative assessment (required when outcome = no_evidenced_control_layer)
   └── Evidenced Layer Record (0..n)
         ├── Layer (one of four active types)
-        ├── Control Mechanism (named source-native instrument)
+        ├── Control Mechanism (concrete instrument/mechanism from S0 or S1 — not the evidence source)
         ├── Locus (where control sits — not who holds it)
-        ├── Holder / Actor (who occupies or holds the locus, when evidenced)
+        ├── Holder / Actor (who occupies or holds the locus — optional; present only when evidenced at discrete-actor level)
         ├── Evidence bindings (S0/S1 facts bound to specific claims)
         ├── Claim Boundary (admissible record + explicit exclusions — per layer record)
         └── Layer-scoped metadata (date, scope, jurisdiction — per layer record when they differ)
@@ -105,15 +126,16 @@ System (mandatory date, scope; jurisdiction when load-bearing)
 | Primitive | Role | Must not become |
 |---|---|---|
 | **System** | The bounded function or market structure under analysis (with mandatory date and scope) | A company, sector, or "the market" |
-| **Outcome** | Case-level classification result (`evidenced_control_layer`, `multiple_evidenced_layers`, `no_evidenced_control_layer`) | A fifth layer type; a null; a synonym for "no data" |
+| **Outcome** | Case-level classification result (`evidenced_control_layer`, `multiple_evidenced_layers`, `ambiguous_layer`, `no_evidenced_control_layer`) | A layer type; a null; a synonym for "no data" |
 | **Evidenced Layer Record** | One independently evidenced control layer with its own mechanism, locus, holders, evidence, and boundary | A bag of layers sharing one evidence pool |
 | **Layer** | One of the four active control types, assigned only when evidenced | A synonym for dominance, concentration, or "moat" |
-| **Control Mechanism** | The named, source-native instrument that creates the layer (statute, capacity chokepoint, admission rule, switching barrier) | A paraphrase of the layer label |
+| **Control Mechanism** | The concrete control instrument or mechanism established from S0 facts or a reproducible S1 derivation (statute, capacity chokepoint, admission rule, switching barrier; or a conjunction of source-native facts that establishes the mechanism) | A paraphrase of the layer label; an evidence source citation; S2 synthesis |
 | **Locus** | The specific place or capacity inside the system where control sits — the **where** | A company name, actor identity, or "who controls" |
-| **Holder / Actor** | The entity or set of entities that hold, operate, or occupy the locus — the **who** (final class name TBD at schema step) | The locus itself; a dominance ranking |
+| **Holder / Actor** | The entity or set of entities that hold, operate, or occupy the locus — the **who** (final class name TBD at schema step). **Optional:** present only when discrete actors are evidenced; absent when the admitted evidence resolves only to a geography/capacity structure | The locus itself; a geography or capacity structure standing in for actors; a dominance ranking |
 | **Evidence bindings** | S0 facts and reproducible S1 derivations, each bound to a specific claim within the layer record | A system-level `evidence[]` bag unattached to claims; S2 synthesis |
 | **Claim Boundary** | The admissible record and explicit exclusions for **this layer record** | A system-level narrative; an open-ended free-text field |
-| **Negative assessment** | Explicit statement of what was examined, refused, and excluded when layer record count = 0 | Absence of data; a null outcome |
+| **Ambiguity assessment** | Explicit statement of source-defensible competing interpretations, why no source-native rule separates them, and claim boundary — when outcome = `ambiguous_layer` | Provisional layer records; a forced classification |
+| **Negative assessment** | Explicit statement of what was examined, refused, and excluded — when outcome = `no_evidenced_control_layer` | Absence of data; a null outcome; a synonym for `ambiguous_layer` |
 
 ### Locus vs Holder invariant
 
@@ -124,8 +146,9 @@ System (mandatory date, scope; jurisdiction when load-bearing)
 | S2 | 2021 5 nm HVM capacity | TSMC, Samsung |
 | S7 | Provider-specific data-egress / switching boundary | Named cloud provider(s) |
 | S1 | EUV scanner production capacity | ASML (single holder) |
+| S6 Layer A | China-dominated NdFeB value-chain capacity | **Absent** — not resolved at discrete-actor level from admitted evidence |
 
-If the schema places TSMC/Samsung inside `locus` only, it confuses **where** with **who**. If it places the provider name inside `locus` in S7, it loses the boundary-specific locus. The Holder primitive (or an equivalent structurally separate field) is required; its final class name is deferred to the schema step, but the **invariant** is fixed here: locus must not carry actor identity.
+If the schema places TSMC/Samsung inside `locus` only, it confuses **where** with **who**. If it places "China-dominated value chain" in `holder`, it confuses a **capacity structure** with **actors**. Holder is a primitive that may be absent when evidence does not resolve discrete actors — not a field that must be filled with the locus relabeled. If it places the provider name inside `locus` in S7, it loses the boundary-specific locus. The Holder primitive (or an equivalent structurally separate field) is required; its final class name is deferred to the schema step, but the **invariant** is fixed here: locus must not carry actor identity.
 
 This does not open entity pages. It preserves the meaning of the original case records.
 
@@ -190,6 +213,7 @@ The ontology under test must **not** include any of the following. Their presenc
 | Company-as-primary-key or `Company × Monopoly Score` as unit of record | Forbidden unit of record from MON-G1-LI |
 | `expected_layer`, `original_result`, `raw_case`, `ground_truth`, `case_id` as extractable fields, or any free-text blob used to reconstruct answers on round-trip | Serialization fidelity, not ontology fidelity (see Falsifier 12) |
 | System-level evidence or claim-boundary bags shared across multiple layer records without per-record bindings | Destroys per-layer fidelity (S6 test) |
+| Evidence source cited as Control Mechanism (e.g. report name standing in for the mechanism) | Destroys mechanism/evidence separation (S6 Layer A test) |
 
 ## Representational requirements (must-support cases)
 
@@ -218,8 +242,8 @@ The ontology must represent a multi-holder locus without reducing holders to the
 
 One system → outcome `multiple_evidenced_layers` → **two** independent evidenced layer records:
 
-- Layer A: `capacity_control` — locus: China-dominated NdFeB value-chain capacity; holders: (China-dominated value chain); mechanism: BIS Section 232 findings; evidence bindings and claim boundary **specific to Layer A**; dated 2020–2022.
-- Layer B: `access_gatekeeping` — locus: U.S. defense procurement channel; mechanism: 10 U.S.C. § 4872 / DFARS 252.225-7052 source-origin restriction; evidence bindings and claim boundary **specific to Layer B**; jurisdiction load-bearing (U.S. DoD channel).
+- Layer A: `capacity_control` — locus: China-dominated NdFeB value-chain capacity; holder: **absent** (not resolved at discrete-actor level); mechanism: concentrated all-stage NdFeB productive capacity that the function must pass through and was hard to bypass within the dated scope; evidence: BIS Section 232 findings (bindings **specific to Layer A**); claim boundary **specific to Layer A**; dated 2020–2022.
+- Layer B: `access_gatekeeping` — locus: U.S. defense procurement channel; holder: **absent** (channel locus; no discrete actor set evidenced); mechanism: source-origin admission restriction governing delivery into the DoD procurement channel; evidence: 10 U.S.C. § 4872 / DFARS 252.225-7052 (bindings **specific to Layer B**); claim boundary **specific to Layer B**; jurisdiction load-bearing (U.S. DoD channel).
 
 **R3 round-trip requirement (explicit):** Each layer record must independently reproduce its own mechanism, locus, holder(s), evidence bindings, and claim boundary. Shared system-level evidence or boundary fields fail this requirement even if layer names round-trip correctly.
 
@@ -258,7 +282,7 @@ Jurisdiction is recorded on the layer record when it matters and is absent (not 
 
 **Cases:** S6 (`qualification_control` NOT ESTABLISHED), S5 (`standard_interface_control` NOT ESTABLISHED), S3 (both refused)
 
-The ontology must record that a candidate layer was **considered and declined** without reserving a slot for it in the active taxonomy.
+The ontology must record that a candidate layer was **considered and declined** without reserving a slot for it in the active taxonomy. Refusal references appear only inside negative, ambiguity, or refusal assessments — never as active-layer values, schema slots, placeholder classes, or classifiable layer records (see Research candidates above).
 
 ## Round-trip test (primary success criterion)
 
@@ -279,9 +303,10 @@ Round-trip comparison operates on these fields, normalized to a canonical form b
 |---|---|---|
 | **outcome** | System | Same outcome enum value |
 | **evidenced_layer_count** | System | Matches outcome (0, 1, or ≥2) |
-| **negative_assessment** | System | Present and complete when count = 0; includes refused/triggered probes |
+| **ambiguity_assessment** | System | Present and complete when outcome = `ambiguous_layer`; competing interpretations not promoted to layer records |
+| **negative_assessment** | System | Present and complete when outcome = `no_evidenced_control_layer`; includes refused/triggered probes |
 | **layer_type** | Layer record | Same active layer(s); same refused/untriggered probes |
-| **mechanism** | Layer record | Same named source-native instrument(s) |
+| **mechanism** | Layer record | Same concrete control instrument/mechanism (from S0/S1); distinct from evidence source citations |
 | **locus** | Layer record | Same **where** — without actor identity smuggled in |
 | **holder** | Layer record | Same **who** — when evidenced; absent when not |
 | **evidence_bindings** | Layer record | Same S0/S1 facts bound to same claims; no unattached evidence |
@@ -302,7 +327,7 @@ Any loss, inflation, distortion, or tautological pass on any case → gate **FAI
 | S8 | `evidenced_control_layer` | `legal_exclusivity` | letters over post routes | USPS (statutory grantee) | positive control baseline |
 | S1 | `evidenced_control_layer` | `capacity_control` | EUV scanner production | ASML | single holder |
 | S2 | `evidenced_control_layer` | `capacity_control` | 2021 5 nm HVM capacity set | TSMC, Samsung | **R2: locus ≠ holders** |
-| S6 | `multiple_evidenced_layers` | `capacity_control` + `access_gatekeeping` | China value chain; US defense procurement channel | (value-chain actors); DoD channel | **R3: per-record independence** |
+| S6 | `multiple_evidenced_layers` | `capacity_control` + `access_gatekeeping` | China value chain; US defense procurement channel | absent (both layers) | **R3: per-record independence; mechanism ≠ evidence** |
 | S4 | `evidenced_control_layer` | `access_gatekeeping` | general-public App Store channel | Apple (platform operator) | **R6: jurisdiction on layer record** |
 | S5 | `evidenced_control_layer` | `access_gatekeeping` | Visa-network admission | Visa (network operator) | **R7: refused standard_interface** |
 | S3 | `no_evidenced_control_layer` | **(zero records)** | — | — | **R5: negative assessment required** |
@@ -319,10 +344,12 @@ The gate PASSES only if **all** of the following hold:
 5. **Per-layer-record ownership.** Each evidenced layer record independently carries its own evidence bindings and claim boundary. S6 round-trips both records without shared bags.
 6. **Four-layer ceiling.** Only the four active layers appear as classifiable layer-type values. Research candidates do not appear as reserved schema slots.
 7. **Negative representability.** `no_evidenced_control_layer` (zero layer records + negative assessment) and refused-layer outcomes are first-class.
-8. **Metadata discipline.** Date and scope are mandatory; jurisdiction is present only when load-bearing, at the appropriate record level.
-9. **No prohibited features.** No score, severity, ranking, dominance, probability, disguised quantitative field, or round-trip escape hatch.
-10. **No silent inference.** The schema cannot derive classifications from fields that would require S2 or from market-share/dominance inputs alone.
-11. **No case-specific tailoring.** Every primitive is semantically general; extraction logic does not branch on case identity.
+8. **Ambiguity representability.** `ambiguous_layer` (zero layer records + ambiguity assessment) is first-class. The ontology must represent genuine ambiguity without forcing classification into a positive or negative outcome. Competing interpretations stay in the assessment; they do not become evidenced layer records.
+9. **Mechanism/evidence separation.** Control Mechanism is distinct from Evidence bindings. A source citation (e.g. a government report) is evidence, not a mechanism.
+10. **Metadata discipline.** Date and scope are mandatory; jurisdiction is present only when load-bearing, at the appropriate record level.
+11. **No prohibited features.** No score, severity, ranking, dominance, probability, disguised quantitative field, or round-trip escape hatch.
+12. **No silent inference.** The schema cannot derive classifications from fields that would require S2 or from market-share/dominance inputs alone.
+13. **No case-specific tailoring.** Every primitive is semantically general; extraction logic does not branch on case identity.
 
 ## Falsifier
 
@@ -332,17 +359,20 @@ The gate FAILS if **any** of the following hold:
 2. **Loss on round-trip.** Any case loses outcome, mechanism, locus, holder, evidence-binding, or claim-boundary content on encode → extract.
 3. **Inflation on round-trip.** The ontology adds classification content not in the MON-G1 evidence record (e.g. S3 gains a layer record; S2 locus collapses to "TSMC dominates").
 4. **Layer → entity collapse.** A layer field becomes a generic "control present" flag or a company/sector descriptor rather than a typed control mechanism.
-5. **Outcome conflated with layer.** `no_evidenced_control_layer` appears as a fifth layer value, null layer, or empty enum rather than a separate outcome with zero layer records.
-6. **Cannot represent negatives.** S3 requires a workaround, null hack, or "unclassified" bucket that implies pending classification.
-7. **Cannot represent multiples.** S6's two independent layer records cannot coexist without merge, ranking, or primary/secondary hierarchy; or share a single evidence/boundary bag.
-8. **Locus carries who.** S2 places TSMC/Samsung in locus without a separate holder field; S7 places provider name in locus without a distinct egress-boundary locus.
-9. **Cannot represent collective holders.** S2's multi-actor holder set cannot be expressed without reducing to a single actor.
-10. **Cannot represent provider-specific scope.** S7's per-provider egress boundary cannot be scoped without lifting to market level.
-11. **Reserved research slots.** Schema includes enum values, nullable fields, or placeholder classes for `qualification_control`, `standard_interface_control`, or `temporal_constraint`.
-12. **Tautological round-trip / extraction escape hatch.** Extraction requires any of: case-specific exception; `expected_layer`, `original_result`, `raw_case`, `ground_truth`, or equivalent stored answer fields; opaque free-text blob from which the answer is reconstructed; or logic that branches on case identity (`S1`…`S8`) to recover ground truth. **If extraction must know which case it is handling to succeed → FAIL.**
-13. **Prohibited quantitative surface.** Any score, severity, dominance level, ranking, probability, or composite metric appears — explicit or disguised.
-14. **Inference beyond evidence.** Schema includes rules, defaults, or computed fields that assign layers from dominance, market share, popularity, or antitrust conclusions.
-15. **Case-specific tailoring.** Any field, cardinality rule, or exception exists only because one case required it and is not semantically general.
+5. **Outcome conflated with layer.** `ambiguous_layer` or `no_evidenced_control_layer` appears as a layer value, null layer, or empty enum rather than a separate outcome with zero layer records.
+6. **Cannot represent ambiguity.** Genuine ambiguity is forced into a positive layer assignment or collapsed into `no_evidenced_control_layer`; competing interpretations become evidenced layer records; or `ambiguous_layer` requires a workaround that implies pending classification.
+7. **Cannot represent negatives.** S3 requires a workaround, null hack, or "unclassified" bucket that implies pending classification.
+8. **Mechanism conflated with evidence.** A source citation stands in for the control mechanism (e.g. "BIS Section 232 findings" as mechanism rather than as evidence binding).
+9. **Cannot represent multiples.** S6's two independent layer records cannot coexist without merge, ranking, or primary/secondary hierarchy; or share a single evidence/boundary bag.
+10. **Locus carries who.** S2 places TSMC/Samsung in locus without a separate holder field; S7 places provider name in locus without a distinct egress-boundary locus; S6 Layer A places a capacity structure in holder.
+11. **Cannot represent collective holders.** S2's multi-actor holder set cannot be expressed without reducing to a single actor.
+12. **Holder invented when absent.** A geography, capacity structure, or channel is placed in `holder` because the field exists, when admitted evidence does not resolve discrete actors (S6 Layer A).
+13. **Cannot represent provider-specific scope.** S7's per-provider egress boundary cannot be scoped without lifting to market level.
+14. **Reserved research slots.** Schema includes enum values, nullable fields, or placeholder classes for `qualification_control`, `standard_interface_control`, or `temporal_constraint`; or refusal references appear as classifiable layer records.
+15. **Tautological round-trip / extraction escape hatch.** Extraction requires any of: case-specific exception; `expected_layer`, `original_result`, `raw_case`, `ground_truth`, or equivalent stored answer fields; opaque free-text blob from which the answer is reconstructed; or logic that branches on case identity (`S1`…`S8`) to recover ground truth. **If extraction must know which case it is handling to succeed → FAIL.**
+16. **Prohibited quantitative surface.** Any score, severity, dominance level, ranking, probability, or composite metric appears — explicit or disguised.
+17. **Inference beyond evidence.** Schema includes rules, defaults, or computed fields that assign layers from dominance, market share, popularity, or antitrust conclusions.
+18. **Case-specific tailoring.** Any field, cardinality rule, or exception exists only because one case required it and is not semantically general.
 
 ## Freeze rules
 
@@ -370,7 +400,7 @@ Round-trip evaluation proceeds in the same order as MON-G1-LI extraction (not a 
 
 | Step | Artifact | Status |
 |---|---|---|
-| 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Current — draft for review (revision 2)** |
+| 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Current — draft for review (revision 3)** |
 | 2 | Candidate ontology schema (classes, fields, constraints) | Blocked until Step 1 accepted |
 | 3 | Round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) | Blocked until Step 2 exists |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
