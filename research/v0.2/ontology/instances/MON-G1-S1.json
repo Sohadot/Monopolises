@@ -1,0 +1,58 @@
+{
+  "schema_version": "mon-g2-of-candidate-v0.2",
+  "system": {
+    "scope": "Leading-edge (≤5 nm) semiconductor patterning — production of the EUV lithography scanner",
+    "date": { "as_of": "2021-06-01", "label": "EO 14017 100-Day Reviews, June 2021" },
+    "outcome": "evidenced_control_layer",
+    "evidenced_layer_records": [
+      {
+        "layer_type": "capacity_control",
+        "control_mechanism": {
+          "statement": "Sole present productive capacity for the EUV lithography scanner — the exposure tool a primary U.S. government review states is essential for producing integrated circuits at ≤5 nm and is produced by only one supplier — with the EUV light source vertically integrated into the same producer."
+        },
+        "locus": {
+          "statement": "EUV scanner production (manufacture of the complete EUV stepper/scanner system)"
+        },
+        "holders": [
+          { "label": "ASML" }
+        ],
+        "evidence_bindings": [
+          {
+            "claim": "Sole production of EUV scanners essential for ≤5 nm patterning",
+            "evidence_class": "S0",
+            "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 51",
+            "fact": "for lithography, ASML (Netherlands) is the sole producer of EUV stepper/scanners, which are essential for producing integrated circuits with a linewidth of 5 nm or less."
+          },
+          {
+            "claim": "Only ASML supplies EUV equipment (contrasted with broader lithography oligopoly)",
+            "evidence_class": "S0",
+            "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 54",
+            "fact": "only ASML supplies EUV equipment, and the top three providers (ASML, Nikon, Canon) account for virtually all of the overall market share."
+          },
+          {
+            "claim": "EUV light-source capacity is vertically integrated into the scanner producer",
+            "evidence_class": "S0",
+            "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 50",
+            "fact": "Cymer produces the lasers (light source) for ASML's EUV stepper/scanner machines; ASML acquired Cymer in 2013; Cymer remains a separate operating unit within ASML."
+          },
+          {
+            "claim": "Sole essential presently-unsubstitutable productive capacity is a capacity chokepoint",
+            "evidence_class": "S1",
+            "source": "Conjunction of EO 14017 S0 facts (pp. 50–54)",
+            "fact": "Sole production of the EUV scanner + that scanner being essential for ≤5 nm patterning + light source vertically integrated.",
+            "derivation": "Mechanical conjunction of S0 sole-production and essentiality facts under the frozen capacity_control definition yields a capacity chokepoint label; no domain judgment required."
+          }
+        ],
+        "claim_boundary": {
+          "admissible": "Within leading-edge (≤5 nm) semiconductor patterning, a capacity_control layer sits at EUV scanner production: a primary U.S. government review states that ASML is the sole producer of EUV stepper/scanners essential for ≤5 nm linewidths, with no present alternative supplier and the EUV light source vertically integrated into the same producer.",
+          "excluded": [
+            "ASML monopolises advanced semiconductors.",
+            "ASML controls lithography.",
+            "Any claim of permanence / future unbypassability."
+          ]
+        },
+        "date": { "as_of": "2021-06-01", "label": "June 2021 EO 14017 review finding" }
+      }
+    ]
+  }
+}
