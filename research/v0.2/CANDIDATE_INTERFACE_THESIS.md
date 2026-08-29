@@ -52,16 +52,15 @@ A single **System Reading Unit** is encountered top-to-bottom in this **mandator
       scope (function) · date (anchor)
 2. Outcome state banner
       outcome enum (categorical)
-3. Bounds reminder (if jurisdiction load-bearing anywhere in the unit)
-      jurisdiction statement(s) from layer record(s) that carry them
-      — placed early so the unit cannot be read as timeless/global before bounds are seen
-4. Body (exactly one branch by outcome — see §3)
+3. Body (exactly one branch by outcome — see §3)
       A. Evidenced body (1 or ≥2 layer panels), or
       B. Negative result body, or
       C. Ambiguity result body
-5. System-level refusal notes (if RefusalAssessment present on positive outcomes)
+4. System-level refusal notes (if RefusalAssessment present on positive outcomes)
       after layer panels; never as layer marks
 ```
+
+**Jurisdiction rule:** `jurisdiction` is **layer-scoped only**. It must appear **inside the Layer panel that owns it** (panel item d). Do **not** promote layer jurisdictions to a system-level bounds reminder or summary. System header carries only `scope` + `date` (+ outcome banner). A system with multiple layers may have jurisdiction on some panels and none on others (e.g. one layer bounded to a DoD channel; another without jurisdiction).
 
 ### Inside each Layer panel (positive outcomes)
 
@@ -79,7 +78,7 @@ g. Claim–evidence rows (each EvidenceBinding)
 
 **Boundary salience rule:** Layer-scoped bounds and the Claim Boundary appear **before** the Who list (or may be presented in parallel with it in a non-linear layout, but **never after** holder/entity interpretation in the linear order). A reader must not encounter holder/company interpretation before recovering bounds and admissible-vs-excluded boundary from the same panel.
 
-**Hierarchy rule for falsifiers:** The primary takeaway of the unit is **outcome + bounded system + (for evidenced cases) locus + mechanism + bounds/boundary**. An unbounded holder/company name must not appear above or instead of steps 1–3 and panel items b–e as the headline of the unit.
+**Hierarchy rule for falsifiers:** The primary takeaway of the unit is **outcome + bounded system (scope/date) + (for evidenced cases) locus + mechanism + layer bounds/boundary**. An unbounded holder/company name must not appear above or instead of steps 1–2 and panel items b–e as the headline of the unit.
 
 ---
 
@@ -215,18 +214,19 @@ ASCII sketch of grammar only — not a component spec:
 ┌─ System Reading Unit ─────────────────────────────────────┐
 │ [scope: function]                    [date: anchor]       │
 │ OUTCOME: <categorical enum>                               │
-│ [jurisdiction bounds if load-bearing]                     │
 │                                                           │
 │ ┌─ Layer panel ─────────────────────────────────────────┐ │
 │ │ TYPE: <ActiveLayerType>                               │ │
 │ │ INSTRUMENT: <mechanism statement>                     │ │
 │ │ WHERE: <locus>                                        │ │
-│ │ [layer date/scope/jurisdiction if present]            │ │
+│ │ [layer date/scope/jurisdiction if present on THIS panel]│ │
 │ │ BOUNDARY: admissible / excluded…                      │ │
 │ │ WHO: <holders…> | “not resolved at discrete-actor…” │ │
 │ │ Claim–evidence rows…                                  │ │
 │ └───────────────────────────────────────────────────────┘ │
-│ (repeat panel for multiple_evidenced_layers)              │
+│ (repeat panel for multiple_evidenced_layers;            │
+│  jurisdiction only on panels that own it — no system    │
+│  jurisdiction summary)                                    │
 │ — or Negative / Ambiguity body instead of panels —        │
 │ Refusal notes (if any)…                                   │
 └───────────────────────────────────────────────────────────┘
@@ -248,7 +248,7 @@ These notes show how the grammar *intends* to carry known pressures. They are **
 | S6 two layers | Two equal panels; holders absent shown explicitly; qualification refusal = Refusal note after panels |
 | S3 negative | Negative body + zero layers; not blank; no invented EvidenceBinding rows |
 | S7 provider boundary | WHERE = egress/switching boundary; WHO = named providers; no market-level outcome banner |
-| S4/S5 jurisdiction | Bounds (including jurisdiction) in strip / layer labels before unconstrained reading; boundary before WHO in panel order |
+| S4/S5 jurisdiction | Jurisdiction appears **only inside the owning Layer panel** (before boundary/WHO) — never as a system-level strip derived from layers |
 | S8 legal exclusivity | TYPE + INSTRUMENT stay statute-bounded; excluded list blocks “USPS monopolises delivery” |
 | Ambiguity (structural) | Ambiguity body only; ≥2 option lines; no layer panels; no EvidenceBinding rows |
 
