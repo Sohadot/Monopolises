@@ -4,23 +4,43 @@
 **Gate spec:** `ONTOLOGY_FIDELITY_GATE.md` (DESIGN FROZEN — accepted 2026-08-29)
 **Schema under test:** `ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` + `ontology/candidate-schema.json` (`schema_version`: `mon-g2-of-candidate-v0.2`)
 **Evaluation date:** 2026-08-29
+**Revision:** full-content compare (requested changes on PR #15)
 **Branch checkpoint base:** `bed909b` (candidate schema merge)
-**Method:** Encode → Validate → Generic extract → Normalize → Field-by-field compare
-**Runner:** `ontology/tools/run_roundtrip.py`
+**Method:** Encode → Validate → Generic extract → Normalize → **Full-content** field-by-field compare
+**Runner:** `ontology/tools/run_roundtrip.py` (`compare_mode: full_content`)
 **Machine report:** `ontology/roundtrip-report.json`
+**Ground truth:** `ontology/ground-truth/normalized-fields.json` (see `ground-truth/README.md`)
 
-> This evaluation tests **representational fidelity**. It does not re-classify MON-G1-LI cases. MON-G1 ground truth is fixed. No schema amendment was made during this step. No case was altered to fit the schema.
+> This evaluation tests **representational fidelity**. It does not re-classify MON-G1-LI cases. MON-G1 ground truth is fixed. **No schema amendment and no instance amendment** were made in this revision. The comparator and locked ground truth were strengthened; the eight instances are unchanged.
 
 ## 0. Pipeline (fixed)
 
-1. **Encode** — eight instances in `ontology/instances/MON-G1-S{1-8}.json` from the frozen MON-G1-LI case records (no reinterpretation).
-2. **Validate** — each instance against `candidate-schema.json` (JSON Schema draft 2020-12).
+1. **Encode** — eight instances in `ontology/instances/MON-G1-S{1-8}.json` from the frozen MON-G1-LI case records (unchanged in this revision).
+2. **Validate** — each instance against `candidate-schema.json`.
 3. **Generic extract** — `extract_normalized(instance)` only; no case-id argument; no filename read inside the extractor; no branching on `S1`…`S8`.
-4. **Normalize** — structural fields listed in the gate (outcome, layer count, layers, refusals, assessments, metadata presence).
-5. **Compare** — after extract, map file stem → `ground-truth/normalized-fields.json` for comparison selection only.
-6. **Record** — three separate levels per case (below).
+4. **Normalize** — full structural content (not counts/presence alone).
+5. **Compare** — after extract, map file stem → locked ground truth for comparison selection only.
+6. **Record** — three separate levels per case.
 
-**Tautology control:** static scan of `extract_normalized` forbids tokens `MON-G1-S`, `case_id`, `expected_outcome`, `expected_layer`, `ground_truth`, `EVALUATION_ORDER`. Result: no flags.
+### Full-content comparison target
+
+| Field | Compare mode |
+|---|---|
+| `outcome`, layer count | exact |
+| system `scope`, `date` | exact object/string |
+| per-layer `layer_type`, `mechanism`, `locus`, `holders` | exact (holders sorted) |
+| per-layer `scope`, `date`, `jurisdiction` | exact value or null |
+| each `evidence_bindings[]` | `claim`, `evidence_class`, `source`, `fact`; `derivation` required/compared for S1, forbidden for S0 |
+| each `claim_boundary` | full `admissible` + ordered `excluded[]` |
+| refusal references | `candidate_label` + `status` + `reason` |
+| `negative_assessment` (S3) | `examined` + full claim boundary |
+| `ambiguity_assessment` | full body when present |
+
+### Tautology control
+
+- Static scan of `extract_normalized` forbids tokens `MON-G1-S`, `case_id`, `expected_outcome`, `expected_layer`, `ground_truth`, `EVALUATION_ORDER`.
+- **Any tautology flag forces that case's `structural_round_trip` to FAIL** and records **Falsifier 15** (fixed: previously summary could reject while per-case stayed PASS).
+- Result this run: no flags.
 
 ---
 
@@ -29,18 +49,16 @@
 | Level | Result |
 |---|---|
 | Schema validation | **8/8 PASS** |
-| Structural round-trip | **8/8 PASS** |
+| Structural round-trip (full content) | **8/8 PASS** |
 | Gate falsifiers triggered | **None** |
 | Blocker (return to Step 2) | **No** |
-| Gate closeout | **Not enacted** — this file is the evaluation for review; Step 4 decision remains separate |
+| Gate closeout | **Not enacted** — awaiting review; Step 4 blocked |
 
-**Provisional evaluation verdict (not a closeout decision):** the candidate ontology version `mon-g2-of-candidate-v0.2` survived lossless structural round-trip on the fixed eight-case set with no falsifier trigger under this run.
+**Provisional evaluation verdict (not a closeout decision):** under full-content compare, candidate ontology `mon-g2-of-candidate-v0.2` survived lossless structural round-trip on the fixed eight-case set with no falsifier trigger.
 
 ---
 
 ## 2. Per-case results
-
-Evaluation order matches the gate (not a priority ranking).
 
 | Case | Schema validation | Structural round-trip | Loss | Inflation | Distortion | Tautology | Gate falsifiers | Case verdict |
 |---|---|---|---|---|---|---|---|---|
@@ -53,152 +71,73 @@ Evaluation order matches the gate (not a priority ranking).
 | S3 | PASS | PASS | no | no | no | no | none | **PASS** |
 | S7 | PASS | PASS | no | no | no | no | none | **PASS** |
 
-### MON-G1-S8 — legal exclusivity (positive control)
+### Pressure-case notes (full content)
 
-- **Encoded:** `evidenced_control_layer` / `legal_exclusivity`; locus letters over post routes; holder USPS; three S0 bindings; claim boundary intact.
-- **Schema validation:** PASS
-- **Structural round-trip:** PASS — outcome, layer type, mechanism, locus, holder, evidence bindings, claim boundary recovered.
-- **Gate falsifiers:** none
-- **Case verdict:** PASS
-
-### MON-G1-S1 — EUV capacity (single holder)
-
-- **Encoded:** `evidenced_control_layer` / `capacity_control`; locus EUV scanner production; holder ASML; S0+S1 bindings; mechanism ≠ source citation.
-- **Schema validation:** PASS
-- **Structural round-trip:** PASS
-- **Gate falsifiers:** none
-- **Case verdict:** PASS
-
-### MON-G1-S2 — collective holders; locus ≠ who
-
-- **Encoded:** `evidenced_control_layer` / `capacity_control`; locus `2021 leading-edge (5 nm) HVM logic capacity set`; holders TSMC + Samsung (sorted on extract); locus does not carry actor identity.
-- **Schema validation:** PASS
-- **Structural round-trip:** PASS
-- **Gate falsifiers:** none (Falsifier 10/11 not triggered)
-- **Case verdict:** PASS
-
-### MON-G1-S6 — multiple layers; per-record ownership; R7 refusal
-
-- **Encoded:** `multiple_evidenced_layers`; Layer A `capacity_control` (mechanism = concentrated all-stage capacity; evidence = BIS 232; holders `[]`); Layer B `access_gatekeeping` (mechanism = source-origin admission restriction; evidence = statute/DFARS; jurisdiction present); `refusal_assessment` for `qualification_control` `not_established`.
-- **Schema validation:** PASS
-- **Structural round-trip:** PASS — both records independently recovered; refusal recovered without entering active-layer enum.
-- **Gate falsifiers:** none (Falsifier 8/9/12/14 not triggered)
-- **Case verdict:** PASS
-
-### MON-G1-S4 — jurisdiction-bounded access
-
-- **Encoded:** `access_gatekeeping`; US jurisdiction on layer record; holder Apple.
-- **Schema validation:** PASS
-- **Structural round-trip:** PASS
-- **Gate falsifiers:** none
-- **Case verdict:** PASS
-
-### MON-G1-S5 — positive outcome + refusal (R7)
-
-- **Encoded:** `access_gatekeeping`; `refusal_assessment` for `standard_interface_control` `not_established` (not a layer record).
-- **Schema validation:** PASS
-- **Structural round-trip:** PASS — refusal path on positive outcome works.
-- **Gate falsifiers:** none
-- **Case verdict:** PASS
-
-### MON-G1-S3 — zero records + negative assessment
-
-- **Encoded:** `no_evidenced_control_layer`; `evidenced_layer_records: []`; populated `negative_assessment` with refusals (`standard_interface_control` not_established; `switching_dependency` probe_not_triggered).
-- **Schema validation:** PASS
-- **Structural round-trip:** PASS — empty array present (not null/omission); negative assessment recovered.
-- **Gate falsifiers:** none (Falsifier 5/7 not triggered)
-- **Case verdict:** PASS
-
-### MON-G1-S7 — provider-specific switching; locus ≠ provider-as-locus
-
-- **Encoded:** `switching_dependency`; locus = provider-specific data-egress / switching boundary; holders AWS/Microsoft/Google/Civo (named in CMA Appendix N); jurisdiction UK; refusal of `standard_interface_control`.
-- **Schema validation:** PASS
-- **Structural round-trip:** PASS
-- **Gate falsifiers:** none (Falsifier 10/13 not triggered)
-- **Case verdict:** PASS
+- **S2:** locus text recovered as capacity set (not actor names); holders `["Samsung","TSMC"]` exact; all five bindings (claim/source/fact + S1 derivation) match.
+- **S6:** two independent records; Layer A mechanism is capacity statement (not BIS title); BIS appears only in evidence `source`/`fact`; holders `[]`; Layer B jurisdiction string exact; refusal `qualification_control` / `not_established` / full `reason` match.
+- **S3:** `evidenced_layer_records` length 0; `negative_assessment.examined` and full claim boundary match; both refusal reasons match.
+- **S7:** locus = egress boundary string; holders named providers; UK jurisdiction; refusal reason for `standard_interface_control` match.
 
 ---
 
 ## 3. Three-level assessment
 
-### 3.1 Schema validation
+### 3.1 Schema validation — PASS (8/8)
 
-All eight instances validate against `candidate-schema.json`, including:
+Unchanged instances still validate, including INV-1 cardinalities, S0/S1 derivation discipline, refusal placement, and explicit `[]` for zero-record outcomes.
 
-- Outcome ↔ cardinality constraints (INV-1)
-- S0 forbids `derivation` / S1 requires `derivation` (INV-6)
-- `refusal_assessment` allowed on positive outcomes; forbidden on S3
-- Zero-record outcomes use explicit `[]`
+### 3.2 Structural round-trip — PASS (8/8)
 
-**Level result: PASS (8/8)**
+Full-content compare (not count/presence projection). No loss, inflation, distortion, or tautology.
 
-### 3.2 Structural round-trip
+### 3.3 Gate falsifiers — none triggered
 
-Compared normalized fields: outcome, evidenced_layer_count, layer_type, mechanism, locus, holders (sorted), evidence_binding_count / evidence_classes, claim_boundary excluded count + admissible presence, jurisdiction presence, refusal references (label+status), negative/ambiguity assessment presence, system scope/date presence.
+Including Falsifier 15 (tautology path now fails the case when flagged). Falsifier 6 (`ambiguous_layer`) remains structurally supported but unexercised by the fixed set (no ambiguity instance).
 
-No loss, inflation, distortion, or tautology on any case.
+---
 
-**Level result: PASS (8/8)**
+## 4. What changed in this revision (Step 3 only)
 
-### 3.3 Gate verdict (falsifier scan)
-
-| Falsifier (gate) | Triggered? |
+| Changed | Unchanged |
 |---|---|
-| 1 History changed to fit schema | No — cases unchanged |
-| 2 Loss on round-trip | No |
-| 3 Inflation on round-trip | No |
-| 4 Layer → entity collapse | No |
-| 5 Outcome conflated with layer | No |
-| 6 Cannot represent ambiguity | Not exercised by fixed set (structural support present; no instance required) |
-| 7 Cannot represent negatives | No — S3 PASS |
-| 8 Mechanism conflated with evidence | No — S6 Layer A mechanism ≠ BIS citation |
-| 9 Cannot represent multiples | No — S6 PASS |
-| 10 Locus carries who | No — S2/S6/S7 PASS |
-| 11 Cannot represent collective holders | No — S2 PASS |
-| 12 Holder invented when absent | No — S6 holders `[]` |
-| 13 Cannot represent provider-specific scope | No — S7 PASS |
-| 14 Reserved research slots | No — refusals assessment-only |
-| 15 Tautological round-trip | No — extractor static check clean |
-| 16 Prohibited quantitative surface | No — absent from schema/instances |
-| 17 Inference beyond evidence | No |
-| 18 Case-specific tailoring | No — general schema; generic extract |
-
-**Level result: no falsifier triggered**
+| `run_roundtrip.py` — full-content extract/compare; tautology fails case | Schema |
+| `ground-truth/normalized-fields.json` — full bindings, boundaries, metadata, reasons | All eight instances |
+| This evaluation + report | MON-G1 case classifications |
+| Gate header blockquote bookkeeping (Step 2 accepted / Step 3 awaiting review) | Gate design / falsifier set |
 
 ---
 
-## 4. Honest limits of this evaluation
+## 5. Honest limits
 
-1. **Semantic paraphrase:** mechanism/locus comparison uses the encoded statements (faithful transcriptions of MON-G1 admissible wording). This tests whether the schema **can carry** those statements without structural loss — not whether an independent human would paraphrase them identically.
-2. **`ambiguous_layer`:** structural support exists in the schema; the fixed eight-case set contains no ambiguity instance, so that outcome was not round-tripped with live data (same limitation noted in the frozen gate).
-3. **This is not Step 4.** A PASS evaluation does not itself adopt the ontology or open the interface-thesis gate. Closeout requires a separate decision after review of this file.
+1. Ground truth is a **locked expected normalize form** of the MON-G1 encode (see `ground-truth/README.md`). It is not live-derived from instances at runtime; editing instances without updating GT must fail.
+2. **`ambiguous_layer`** still has no live instance in the fixed set.
+3. **This is not Step 4.** Acceptance of this evaluation is required before closeout.
 
 ---
 
-## 5. Artifact inventory
+## 6. Artifact inventory
 
 | Artifact | Role |
 |---|---|
-| `ontology/instances/MON-G1-S{1-8}.json` | Encoded instances |
-| `ontology/ground-truth/normalized-fields.json` | Post-extract comparison targets |
-| `ontology/tools/run_roundtrip.py` | Validate + generic extract + compare |
+| `ontology/instances/MON-G1-S{1-8}.json` | Encoded instances (**unchanged**) |
+| `ontology/ground-truth/normalized-fields.json` | Full-content comparison targets |
+| `ontology/ground-truth/README.md` | Provenance |
+| `ontology/tools/run_roundtrip.py` | Validate + generic extract + full compare |
 | `ontology/roundtrip-report.json` | Machine-readable run output |
 | This file | Human evaluation record |
 
 ---
 
-## 6. Recommended disposition (for review — not enacted)
+## 7. Recommended disposition (for review — not enacted)
 
-If this evaluation is accepted:
+If this strengthened evaluation is accepted:
 
-1. Record a gate closeout decision (Step 4) adopting `mon-g2-of-candidate-v0.2` as the ontology conforming to DEC-005.
-2. Only then open the successor gate for the **interface thesis**.
-3. Do **not** open data architecture, scores, entity pages, or monetization from this evaluation alone.
-
-If review finds a fidelity defect not caught here: return to Step 2; do not amend cases.
+1. Proceed to **Step 4 closeout only** — adopt `mon-g2-of-candidate-v0.2` as conforming to DEC-005.
+2. Only then open the successor gate for the interface thesis.
+3. Do not open data architecture, scores, entity pages, or monetization from this evaluation alone.
 
 ---
 
-## 7. Stop point
+## 8. Stop point
 
-Step 3 execution complete: **8 instances + this evaluation**. Awaiting review before Step 4 closeout.
+Step 3 revision complete: **comparator strengthened; instances untouched; 8/8 full-content PASS provisional.** Awaiting review before Step 4.

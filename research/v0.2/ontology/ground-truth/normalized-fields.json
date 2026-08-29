@@ -1,165 +1,554 @@
 {
-  "_comment": "Normalized ground truth from MON-G1-LI case records / gate closeout. Used ONLY after generic extract, keyed by audit case id for comparison selection — never as extract input.",
+  "_comment": "Normalized full-content ground truth for MON-G2-OF Step 3. Authored expected form of MON-G1-LI case records (research/v0.2/cases/). Not regenerated from instances at runtime. Instance files are the encode under test; this file is the comparison target locked for full-content fidelity (claim, fact, source, derivation, claim_boundary text, scope/date/jurisdiction, refusal reasons, negative assessment).",
+  "_provenance": {
+    "MON-G1-S8": "research/v0.2/cases/MON-G1-S8.md",
+    "MON-G1-S1": "research/v0.2/cases/MON-G1-S1.md",
+    "MON-G1-S2": "research/v0.2/cases/MON-G1-S2.md",
+    "MON-G1-S6": "research/v0.2/cases/MON-G1-S6.md",
+    "MON-G1-S4": "research/v0.2/cases/MON-G1-S4.md",
+    "MON-G1-S5": "research/v0.2/cases/MON-G1-S5.md",
+    "MON-G1-S3": "research/v0.2/cases/MON-G1-S3.md",
+    "MON-G1-S7": "research/v0.2/cases/MON-G1-S7.md"
+  },
   "cases": {
     "MON-G1-S8": {
       "outcome": "evidenced_control_layer",
       "evidenced_layer_count": 1,
+      "scope": "U.S. carriage of defined letters over post routes",
+      "date": {
+        "label": "Private Express Statutes as presently in force (U.S.C. / CFR)"
+      },
       "layers": [
         {
           "layer_type": "legal_exclusivity",
           "mechanism": "Statutory restriction on compensated private carriage of letters over post routes, with legislatively and regulatorily defined exceptions and suspensions.",
           "locus": "Letters over post routes",
-          "holders": ["USPS"],
-          "jurisdiction_present": false,
-          "evidence_binding_count": 3,
-          "evidence_classes": ["S0", "S0", "S0"],
-          "claim_boundary_excluded_count": 3
+          "holders": [
+            "USPS"
+          ],
+          "scope": null,
+          "date": null,
+          "jurisdiction": null,
+          "evidence_bindings": [
+            {
+              "claim": "Federal law restricts private express carriage of letters over post routes",
+              "evidence_class": "S0",
+              "source": "18 U.S.C. § 1696 — Private express for letters and packets",
+              "fact": "Federal law establishes penalties for establishing a private express for the conveyance of letters or packets over post routes, subject to enumerated statutory exceptions."
+            },
+            {
+              "claim": "Exclusivity is bounded and conditional for letters carried out of the mail",
+              "evidence_class": "S0",
+              "source": "39 U.S.C. § 601 — Letters carried out of the mail",
+              "fact": "Defines the conditions under which a letter may lawfully be carried out of the mail (including specified price/weight and other regulatory conditions and exceptions)."
+            },
+            {
+              "claim": "An implementing regulatory regime defines exceptions and suspensions",
+              "evidence_class": "S0",
+              "source": "39 CFR Part 310 — Enforcement of the Private Express Statutes",
+              "fact": "A dedicated federal regulatory part exists specifically to enforce and define the operation of the Private Express Statutes, including exceptions and suspensions."
+            }
+          ],
+          "claim_boundary": {
+            "admissible": "Within the U.S. letter-carriage system, federal law creates a legal-exclusivity layer by restricting private carriage of defined letters over post routes, subject to enumerated exceptions and suspensions.",
+            "excluded": [
+              "USPS monopolises delivery.",
+              "USPS has a legal monopoly over all mail.",
+              "Any claim extending the layer to parcels, freight, or electronic communication."
+            ]
+          }
         }
       ],
       "refusal_references": [],
-      "negative_assessment_present": false,
-      "ambiguity_assessment_present": false
+      "negative_assessment": null,
+      "ambiguity_assessment": null,
+      "refusal_assessment_present": false
     },
     "MON-G1-S1": {
       "outcome": "evidenced_control_layer",
       "evidenced_layer_count": 1,
+      "scope": "Leading-edge (≤5 nm) semiconductor patterning — production of the EUV lithography scanner",
+      "date": {
+        "as_of": "2021-06-01",
+        "label": "EO 14017 100-Day Reviews, June 2021"
+      },
       "layers": [
         {
           "layer_type": "capacity_control",
           "mechanism": "Sole present productive capacity for the EUV lithography scanner — the exposure tool a primary U.S. government review states is essential for producing integrated circuits at ≤5 nm and is produced by only one supplier — with the EUV light source vertically integrated into the same producer.",
           "locus": "EUV scanner production (manufacture of the complete EUV stepper/scanner system)",
-          "holders": ["ASML"],
-          "jurisdiction_present": false,
-          "evidence_binding_count": 4,
-          "evidence_classes": ["S0", "S0", "S0", "S1"],
-          "claim_boundary_excluded_count": 3
+          "holders": [
+            "ASML"
+          ],
+          "scope": null,
+          "date": {
+            "as_of": "2021-06-01",
+            "label": "June 2021 EO 14017 review finding"
+          },
+          "jurisdiction": null,
+          "evidence_bindings": [
+            {
+              "claim": "Sole production of EUV scanners essential for ≤5 nm patterning",
+              "evidence_class": "S0",
+              "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 51",
+              "fact": "for lithography, ASML (Netherlands) is the sole producer of EUV stepper/scanners, which are essential for producing integrated circuits with a linewidth of 5 nm or less."
+            },
+            {
+              "claim": "Only ASML supplies EUV equipment (contrasted with broader lithography oligopoly)",
+              "evidence_class": "S0",
+              "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 54",
+              "fact": "only ASML supplies EUV equipment, and the top three providers (ASML, Nikon, Canon) account for virtually all of the overall market share."
+            },
+            {
+              "claim": "EUV light-source capacity is vertically integrated into the scanner producer",
+              "evidence_class": "S0",
+              "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 50",
+              "fact": "Cymer produces the lasers (light source) for ASML's EUV stepper/scanner machines; ASML acquired Cymer in 2013; Cymer remains a separate operating unit within ASML."
+            },
+            {
+              "claim": "Sole essential presently-unsubstitutable productive capacity is a capacity chokepoint",
+              "evidence_class": "S1",
+              "source": "Conjunction of EO 14017 S0 facts (pp. 50–54)",
+              "fact": "Sole production of the EUV scanner + that scanner being essential for ≤5 nm patterning + light source vertically integrated.",
+              "derivation": "Mechanical conjunction of S0 sole-production and essentiality facts under the frozen capacity_control definition yields a capacity chokepoint label; no domain judgment required."
+            }
+          ],
+          "claim_boundary": {
+            "admissible": "Within leading-edge (≤5 nm) semiconductor patterning, a capacity_control layer sits at EUV scanner production: a primary U.S. government review states that ASML is the sole producer of EUV stepper/scanners essential for ≤5 nm linewidths, with no present alternative supplier and the EUV light source vertically integrated into the same producer.",
+            "excluded": [
+              "ASML monopolises advanced semiconductors.",
+              "ASML controls lithography.",
+              "Any claim of permanence / future unbypassability."
+            ]
+          }
         }
       ],
       "refusal_references": [],
-      "negative_assessment_present": false,
-      "ambiguity_assessment_present": false
+      "negative_assessment": null,
+      "ambiguity_assessment": null,
+      "refusal_assessment_present": false
     },
     "MON-G1-S2": {
       "outcome": "evidenced_control_layer",
       "evidenced_layer_count": 1,
+      "scope": "High-volume manufacturing of leading-edge logic at the dated frontier",
+      "date": {
+        "as_of": "2021-06-01",
+        "label": "2021 leading-edge frontier = 5 nm (EO 14017)"
+      },
       "layers": [
         {
           "layer_type": "capacity_control",
           "mechanism": "Leading-edge logic HVM at the 2021 frontier (5 nm) is a documented productive capacity through which that function must pass, concentrated in the only two source-evidenced HVM producers, and presently hard to bypass — the largest non-participant economy (the U.S.) lacks the capability and a major alternative foundry cited by the source (SMIC) was at 14 nm, i.e. not at the frontier.",
           "locus": "2021 leading-edge (5 nm) HVM logic capacity set",
-          "holders": ["Samsung", "TSMC"],
-          "jurisdiction_present": false,
-          "evidence_binding_count": 5,
-          "evidence_classes": ["S0", "S0", "S0", "S0", "S1"],
-          "claim_boundary_excluded_count": 5
+          "holders": [
+            "Samsung",
+            "TSMC"
+          ],
+          "scope": null,
+          "date": {
+            "as_of": "2021-06-01",
+            "label": "2021-dated finding"
+          },
+          "jurisdiction": null,
+          "evidence_bindings": [
+            {
+              "claim": "Documented 5 nm frontier capacity operates only at TSMC and Samsung",
+              "evidence_class": "S0",
+              "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 39",
+              "fact": "The United States lacks semiconductor production capability at the most advanced semiconductor process node—currently 5 nm—at which only TSMC (Taiwan) and Samsung (South Korea) currently operate."
+            },
+            {
+              "claim": "High-volume production confirmed at the two-producer set",
+              "evidence_class": "S0",
+              "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 64",
+              "fact": "Samsung is one of only two companies that are producing volume in the leading edge 7 nm and 5 nm chips."
+            },
+            {
+              "claim": "U.S. lacks capability to route around the set",
+              "evidence_class": "S0",
+              "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 39",
+              "fact": "The most advanced fabs in the United States are 10 nm operated by Intel, which does not expect to enter full 7 nm production until 2023; U.S. fabless chip companies now rely almost exclusively on Asian producers (especially TSMC) for production of the most advanced (7 nm or less) chips."
+            },
+            {
+              "claim": "A major alternative foundry cited by the source was not at the frontier",
+              "evidence_class": "S0",
+              "source": "White House / Dept. of Commerce, 100-Day Reviews under EO 14017, June 2021, p. 40",
+              "fact": "China's most advanced pure-play foundry, Semiconductor Manufacturing International Corporation (SMIC), can only produce at the 14 nm node, with limited capacity."
+            },
+            {
+              "claim": "Hard to bypass — no present alternative route for the dated function",
+              "evidence_class": "S1",
+              "source": "Conjunction of EO 14017 S0 facts (pp. 39–40, 64)",
+              "fact": "Only two HVM producers operate at the frontier; the U.S. lacks the capability; SMIC was at 14 nm.",
+              "derivation": "Mechanical reading of absence-of-alternative S0 facts under the frozen three-element capacity_control test yields hard-to-bypass; no viability judgment required."
+            }
+          ],
+          "claim_boundary": {
+            "admissible": "At the 2021 leading-edge frontier (5 nm), a capacity_control layer sits at leading-edge logic HVM capacity, held collectively by the only two source-evidenced HVM producers (TSMC and Samsung, TSMC dominant), through which leading-edge logic production must pass and which was presently hard to bypass (the U.S. lacked the capability; a major alternative foundry cited by the source, SMIC, was at 14 nm).",
+            "excluded": [
+              "TSMC monopolises advanced chips.",
+              "Attributing the whole layer to any single actor.",
+              "Any undated leading-edge claim.",
+              "Any claim of permanence.",
+              "Using 2025–26 information in the classification."
+            ]
+          }
         }
       ],
       "refusal_references": [],
-      "negative_assessment_present": false,
-      "ambiguity_assessment_present": false
+      "negative_assessment": null,
+      "ambiguity_assessment": null,
+      "refusal_assessment_present": false
     },
     "MON-G1-S6": {
       "outcome": "multiple_evidenced_layers",
       "evidenced_layer_count": 2,
+      "scope": "NdFeB permanent magnets and their upstream processing / defense-channel delivery",
+      "date": {
+        "label": "BIS Section 232 (2022) and 10 U.S.C. § 4872 / DFARS regime (through 2026 scope)"
+      },
       "layers": [
         {
           "layer_type": "capacity_control",
           "mechanism": "Concentrated all-stage NdFeB productive capacity that the function must pass through and was hard to bypass within the dated scope.",
           "locus": "China-dominated NdFeB value-chain capacity",
           "holders": [],
-          "jurisdiction_present": false,
-          "evidence_binding_count": 3,
-          "evidence_classes": ["S0", "S0", "S1"],
-          "claim_boundary_excluded_count": 2
+          "scope": null,
+          "date": {
+            "start": "2020-01-01",
+            "end": "2022-06-30",
+            "label": "2020–2022 BIS-dated finding"
+          },
+          "jurisdiction": null,
+          "evidence_bindings": [
+            {
+              "claim": "Documented China-dominated all-stage NdFeB capacity",
+              "evidence_class": "S0",
+              "source": "U.S. Dept. of Commerce / BIS, Section 232 NdFeB Permanent Magnets report, June 2022, p. 7",
+              "fact": "The United States has no domestic production of rare earth oxides or metal. The United States is dependent on foreign sources, especially China, for NdFeB magnets. China dominates all steps of the global NdFeB magnet value chain. In 2020, China controlled about 92 percent of the global NdFeB magnet and magnet alloy market. China is the only country with operations in all steps of the NdFeB magnet value chain."
+            },
+            {
+              "claim": "U.S. dependence and limited domestic sintered production",
+              "evidence_class": "S0",
+              "source": "U.S. Dept. of Commerce / BIS, Section 232 NdFeB Permanent Magnets report, June 2022, p. 6",
+              "fact": "There is currently only one firm in the United States, Noveon (formerly Urban Mining Company), that produces sintered NdFeB magnets; in 2021, the United States imported 75 percent of its sintered NdFeB magnet supply from China."
+            },
+            {
+              "claim": "Hard to bypass — function cannot presently be routed off the China-dominated value chain",
+              "evidence_class": "S1",
+              "source": "Conjunction of BIS Section 232 S0 facts (pp. 6–7)",
+              "fact": "No domestic oxide/metal production + single small domestic magnet producer + China all-stage dominance.",
+              "derivation": "Mechanical conjunction of S0 no-domestic-upstream and all-stage-dominance facts under the frozen capacity_control three-element test."
+            }
+          ],
+          "claim_boundary": {
+            "admissible": "A capacity_control layer at a China-dominated NdFeB value-chain capacity locus — the 2022 BIS report states that China controlled ~92% of the 2020 magnet/alloy market and was the only country operating across all value-chain steps, and that the U.S. had no domestic rare-earth oxide/metal production and a single small sintered-magnet producer.",
+            "excluded": [
+              "China monopolises magnets.",
+              "Any sufficiency / replacement claim."
+            ]
+          }
         },
         {
           "layer_type": "access_gatekeeping",
           "mechanism": "Source-origin admission restriction governing delivery of covered-nation NdFeB magnets into the DoD procurement channel, subject to exceptions and a nonavailability determination.",
           "locus": "U.S. defense procurement channel",
           "holders": [],
-          "jurisdiction_present": true,
-          "evidence_binding_count": 3,
-          "evidence_classes": ["S0", "S0", "S1"],
-          "claim_boundary_excluded_count": 3
+          "scope": null,
+          "date": {
+            "label": "through Dec 31, 2026 melting-and-after scope; expands Jan 1, 2027"
+          },
+          "jurisdiction": "United States — DoD procurement channel",
+          "evidence_bindings": [
+            {
+              "claim": "Statute restricts DoD acquisition of covered sensitive materials including NdFeB by source-origin",
+              "evidence_class": "S0",
+              "source": "10 U.S.C. § 4872 — Acquisition of sensitive materials from non-allied foreign nations",
+              "fact": "Restricts DoD acquisition of covered sensitive materials — expressly including neodymium-iron-boron permanent magnets — by source-origin (covered nations)."
+            },
+            {
+              "claim": "Implementing DFARS prohibits acquisition of covered material from covered countries",
+              "evidence_class": "S0",
+              "source": "DFARS 252.225-7052 / 225.7018-2",
+              "fact": "do not acquire any covered material melted or produced in any covered country, or any end item, manufactured in any covered country, that contains a covered material. Covered countries include DPRK, PRC, Russian Federation, Iran."
+            },
+            {
+              "claim": "A documented rule governing admission to the procurement channel is access_gatekeeping",
+              "evidence_class": "S1",
+              "source": "Conjunction of 10 U.S.C. § 4872 and DFARS 252.225-7052 S0 facts",
+              "fact": "Origin-based restriction on delivery into the DoD procurement channel with exceptions/waiver (nonavailability determination).",
+              "derivation": "The instrument is a documented rule governing admission to a channel under the frozen access_gatekeeping definition; it is not a credential test."
+            }
+          ],
+          "claim_boundary": {
+            "admissible": "An access_gatekeeping layer in the U.S. defense procurement channel — 10 U.S.C. § 4872 / DFARS 252.225-7052 restrict, by source-origin, delivery of covered-nation (PRC/DPRK/Russia/Iran) NdFeB magnets to DoD, on a dated scope (melting-and-after through 2026; full chain from 2027) and subject to exceptions and a nonavailability determination.",
+            "excluded": [
+              "Covered-country magnets are banned from DoD without qualification.",
+              "Calling this layer qualification_control or legal_exclusivity.",
+              "Any sufficiency of compliant supply or waiver-frequency claim."
+            ]
+          }
         }
       ],
       "refusal_references": [
-        { "candidate_label": "qualification_control", "status": "not_established" }
+        {
+          "candidate_label": "qualification_control",
+          "status": "not_established",
+          "reason": "The defense instrument is origin-based admission plus exceptions/waiver, not a certification/approval/qualification an alternative must hold and does not. No credential test is present in 10 U.S.C. § 4872 / DFARS."
+        }
       ],
-      "negative_assessment_present": false,
-      "ambiguity_assessment_present": false
+      "negative_assessment": null,
+      "ambiguity_assessment": null,
+      "refusal_assessment_present": true
     },
     "MON-G1-S4": {
       "outcome": "evidenced_control_layer",
       "evidenced_layer_count": 1,
+      "scope": "General-public native iOS app distribution to users in the United States",
+      "date": {
+        "as_of": "2026-08-28",
+        "label": "2026 — App Review Guidelines (Last Updated June 8, 2026) and Apple Support retrieved 2026-08-28"
+      },
       "layers": [
         {
           "layer_type": "access_gatekeeping",
           "mechanism": "Apple's App Review Guidelines require general-public native iOS apps to reach users through the App Store, where Apple reviews and approves/rejects every app distributed through the App Store; and within the US scope no alternative marketplace or web-distribution route is available (only Brazil, Japan, and the EU can install apps through alternative distribution). Apple therefore controls admission to the sole sanctioned channel for general-public native iOS apps to US users.",
           "locus": "General-public App Store channel for native iOS app distribution to US users",
-          "holders": ["Apple"],
-          "jurisdiction_present": true,
-          "evidence_binding_count": 4,
-          "evidence_classes": ["S0", "S0", "S0", "S1"],
-          "claim_boundary_excluded_count": 5
+          "holders": [
+            "Apple"
+          ],
+          "scope": null,
+          "date": {
+            "as_of": "2026-08-28",
+            "label": "2026"
+          },
+          "jurisdiction": "United States",
+          "evidence_bindings": [
+            {
+              "claim": "Apple reviews every app distributed through the App Store",
+              "evidence_class": "S0",
+              "source": "Apple, App Review Guidelines (Last Updated June 8, 2026), Introduction",
+              "fact": "We do this by offering a highly curated App Store where every app is reviewed by experts."
+            },
+            {
+              "claim": "Alternative native distribution is limited to some markets",
+              "evidence_class": "S0",
+              "source": "Apple, App Review Guidelines (2026), Introduction",
+              "fact": "In some markets and on certain platforms, developers can also distribute notarized apps from alternative app marketplaces and directly from their website."
+            },
+            {
+              "claim": "US users cannot use alternative app distribution (exhaustive boundary)",
+              "evidence_class": "S0",
+              "source": "Apple Support, Installing apps through alternative app distribution (support.apple.com/en-us/117767)",
+              "fact": "Only users based in Brazil, Japan, or the European Union are able to install apps through alternative app distribution."
+            },
+            {
+              "claim": "US general-public native distribution has one admitted channel with Apple admission authority",
+              "evidence_class": "S1",
+              "source": "Conjunction of Apple App Review Guidelines and Apple Support S0 facts",
+              "fact": "Every App Store app is reviewed; alternative distribution is exhaustively limited to Brazil/Japan/EU.",
+              "derivation": "S0 conjunction yields one admitted channel for US general-public native apps and Apple decides admission to it under frozen access_gatekeeping."
+            }
+          ],
+          "claim_boundary": {
+            "admissible": "For general-public native iOS app distribution to users in the United States in 2026, Apple's App Review Guidelines and support documentation establish an access_gatekeeping layer: every app distributed through the App Store is reviewed and approved/rejected by Apple, and the App Store is the sole Apple-sanctioned channel for reaching US users, since Only users based in Brazil, Japan, or the European Union are able to install apps through alternative app distribution — subject to narrow enterprise/custom/TestFlight exceptions and the separate non-native web route.",
+            "excluded": [
+              "Apple monopolises apps.",
+              "Extending the layer to iOS globally.",
+              "Any claim resting on App Store market share or iOS install base.",
+              "Reading US anti-steering/payment-link changes as opening the distribution channel.",
+              "Any undated claim."
+            ]
+          }
         }
       ],
       "refusal_references": [],
-      "negative_assessment_present": false,
-      "ambiguity_assessment_present": false
+      "negative_assessment": null,
+      "ambiguity_assessment": null,
+      "refusal_assessment_present": false
     },
     "MON-G1-S5": {
       "outcome": "evidenced_control_layer",
       "evidenced_layer_count": 1,
+      "scope": "Acceptance of transactions on the Visa network in the United States",
+      "date": {
+        "as_of": "2026-04-18",
+        "label": "Visa Core Rules effective 18 April 2026"
+      },
       "layers": [
         {
           "layer_type": "access_gatekeeping",
           "mechanism": "Visa controls admission to the Visa network: access to Visa systems is limited to Visa-approved use; direct participation requires a Visa-issued BIN or Acquiring Identifier license; and merchants are admitted to acceptance through a licensed acquiring relationship that Visa holds responsible for their compliance.",
           "locus": "Visa-network admission — direct participation and sponsored acceptance access",
-          "holders": ["Visa"],
-          "jurisdiction_present": true,
-          "evidence_binding_count": 4,
-          "evidence_classes": ["S0", "S0", "S0", "S1"],
-          "claim_boundary_excluded_count": 6
+          "holders": [
+            "Visa"
+          ],
+          "scope": null,
+          "date": {
+            "as_of": "2026-04-18"
+          },
+          "jurisdiction": "United States",
+          "evidence_bindings": [
+            {
+              "claim": "Access to Visa systems is limited to Visa-approved use",
+              "evidence_class": "S0",
+              "source": "Visa Core Rules and Visa Product and Service Rules, 18 April 2026, §1.1.1.6",
+              "fact": "Any entity that accesses or uses a Visa system and/or service must both: Restrict its use of the Visa system and/or service to purposes expressly approved by Visa; Comply with Visa requirements and documentation for system and/or service access and use."
+            },
+            {
+              "claim": "Direct participation requires a Visa-issued license",
+              "evidence_class": "S0",
+              "source": "Visa Core Rules, 18 April 2026, §1.2.1 / §2.2 (BIN and Acquiring Identifier License)",
+              "fact": "Direct participation requires a Visa-issued BIN or Acquiring Identifier license; a BIN or an Acquiring Identifier may have only one Licensee; a Principal-Type Member is responsible and liable for all activity under any BIN/Acquiring Identifier it licenses."
+            },
+            {
+              "claim": "Merchants are admitted to acceptance through a licensed acquiring relationship",
+              "evidence_class": "S0",
+              "source": "Visa Core Rules, 18 April 2026, Introduction (rule-reading convention) and merchant-obligation clause",
+              "fact": "'A Merchant must…' means 'An Acquirer must ensure that its Merchant…'. A Merchant must Comply with the Visa Rules regarding Visa acceptance and Transaction processing."
+            },
+            {
+              "claim": "Visa's admission rules govern reaching the network on both paths",
+              "evidence_class": "S1",
+              "source": "Conjunction of Visa Core Rules S0 facts (§1.1.1.6, §1.2.1/§2.2, acquiring-chain convention)",
+              "fact": "Restricted Visa-approved system use + licensed direct participation + merchant admission via licensed acquirer.",
+              "derivation": "In both paths, reaching the network is governed by Visa's admission rules under frozen access_gatekeeping; no S2."
+            }
+          ],
+          "claim_boundary": {
+            "admissible": "For acceptance of transactions on the Visa network in the United States in 2026, the Visa Core Rules establish an access_gatekeeping layer held by the network operator: access to Visa systems is limited to Visa-approved use; direct participation requires a Visa-issued license (BIN/Acquiring Identifier); and merchants are admitted to acceptance through a licensed acquiring relationship that Visa holds responsible for their compliance.",
+            "excluded": [
+              "Visa monopolises payments / Visa controls card acceptance.",
+              "Every entity must be Visa-licensed.",
+              "Classifying standard_interface_control from the mandatory rulebook.",
+              "Using the DOJ monopolization allegation or Visa's transaction share as classification evidence.",
+              "Extending the layer to Mastercard/Amex/Discover.",
+              "Any undated claim."
+            ]
+          }
         }
       ],
       "refusal_references": [
-        { "candidate_label": "standard_interface_control", "status": "not_established" }
+        {
+          "candidate_label": "standard_interface_control",
+          "status": "not_established",
+          "reason": "Mandatory Visa Rules are binding governance, not a named standard/protocol/interface required to operate for general US acceptance. No such named technical instrument was cited from Visa's own rules for general US acceptance."
+        }
       ],
-      "negative_assessment_present": false,
-      "ambiguity_assessment_present": false
+      "negative_assessment": null,
+      "ambiguity_assessment": null,
+      "refusal_assessment_present": true
     },
     "MON-G1-S3": {
       "outcome": "no_evidenced_control_layer",
       "evidenced_layer_count": 0,
+      "scope": "GPU compute for AI workloads via the NVIDIA CUDA accelerated-computing software ecosystem",
+      "date": {
+        "label": "NVIDIA Form 10-K, FY2025"
+      },
       "layers": [],
       "refusal_references": [
-        { "candidate_label": "standard_interface_control", "status": "not_established" },
-        { "candidate_label": "switching_dependency", "status": "probe_not_triggered" }
+        {
+          "candidate_label": "standard_interface_control",
+          "status": "not_established",
+          "reason": "CUDA is a named proprietary interface, but admitted primary evidence does not establish that the frozen function (GPU compute for AI workloads) requires CUDA; control significance would rest on an undocumented lock/switching element (S2)."
+        },
+        {
+          "candidate_label": "switching_dependency",
+          "status": "probe_not_triggered",
+          "reason": "NVIDIA documents ecosystem value (increases the value of our platform to our customers), not a documented switching cost or barrier. No source-native switching-cost instrument is present in the admitted evidence."
+        }
       ],
-      "negative_assessment_present": true,
-      "ambiguity_assessment_present": false
+      "negative_assessment": {
+        "examined": "Whether primary evidence (NVIDIA Form 10-K, FY2025) establishes a source-native control layer — a named interface/ecosystem required to operate the frozen function, or a documented switching-cost barrier — as distinct from popularity, installed base, or ecosystem value.",
+        "claim_boundary": {
+          "admissible": "For the NVIDIA CUDA accelerated-computing ecosystem (2025), primary evidence (NVIDIA's 10-K) establishes a named, proprietary, widely-adopted programming platform with 5.9M+ developers that NVIDIA states strengthens its ecosystem and increases platform value. It does not establish a source-native control layer: the admitted evidence does not show that the frozen function (GPU compute for AI workloads) requires CUDA, nor does it document a switching-cost barrier. No control layer is classifiable without S2 → no_evidenced_control_layer.",
+          "excluded": [
+            "CUDA is a monopoly / control layer.",
+            "Switching off CUDA is prohibitively costly as a classification basis.",
+            "Any claim resting on NVIDIA's GPU market share or performance leadership.",
+            "Any undated claim."
+          ]
+        }
+      },
+      "ambiguity_assessment": null,
+      "refusal_assessment_present": false
     },
     "MON-G1-S7": {
       "outcome": "evidenced_control_layer",
       "evidenced_layer_count": 1,
+      "scope": "Large-scale general-purpose (IaaS) cloud infrastructure",
+      "date": {
+        "as_of": "2025-07-31",
+        "label": "UK CMA cloud services final decision, 31 July 2025"
+      },
       "layers": [
         {
           "layer_type": "switching_dependency",
           "mechanism": "Egress charges incurred in moving workload data away from an incumbent provider for switching and/or multi-cloud, remaining applicable in 2025 outside bounded, conditional free-switching programme exemptions.",
           "locus": "Provider-specific data-egress / switching boundary",
-          "holders": ["AWS", "Civo", "Google", "Microsoft"],
-          "jurisdiction_present": true,
-          "evidence_binding_count": 4,
-          "evidence_classes": ["S0", "S0", "S0", "S1"],
-          "claim_boundary_excluded_count": 5
+          "holders": [
+            "AWS",
+            "Civo",
+            "Google",
+            "Microsoft"
+          ],
+          "scope": null,
+          "date": {
+            "as_of": "2025-07-31",
+            "label": "2025"
+          },
+          "jurisdiction": "United Kingdom",
+          "evidence_bindings": [
+            {
+              "claim": "A charge is incurred to transfer data out for switching and/or multi-cloud",
+              "evidence_class": "S0",
+              "source": "UK CMA, Cloud services market investigation — Summary of Final Decision, 31 July 2025, para 26",
+              "fact": "the presence and magnitude of egress fees required to transfer data between cloud providers for the purposes of switching and/or multi-cloud."
+            },
+            {
+              "claim": "Switching friction coexists with multi-cloud",
+              "evidence_class": "S0",
+              "source": "UK CMA final decision, 31 July 2025, para 24",
+              "fact": "Very few customers switch between clouds: less than 1% of customers switch provider each year. Use of multiple cloud providers is more prevalent than switching but it is still uncommon for small and medium sized customers."
+            },
+            {
+              "claim": "Free-switching programmes are bounded; egress remained applicable outside exemptions in 2025",
+              "evidence_class": "S0",
+              "source": "UK CMA Appendix N — Egress fees: free switching programmes",
+              "fact": "Free egress for switching is only available (and subject to requirements and restrictions in some cases) for the customers of AWS, Microsoft, Google and Civo. Ongoing multi-cloud use (non-switching) is Not eligible under standard programmes for AWS and Google; programmes turn on full-exit conditions and provider discretion."
+            },
+            {
+              "claim": "A switch-linked egress charge is a cost of leaving ⇒ switching_dependency",
+              "evidence_class": "S1",
+              "source": "Conjunction of CMA final decision / Appendix N S0 facts",
+              "fact": "Egress charge incurred specifically in moving data away for switching/multi-cloud; programmes leave charges applicable outside bounded exemptions in 2025.",
+              "derivation": "A charge incurred specifically in leaving/moving data away from the current provider is mechanically a cost of switching under the frozen switching_dependency definition; no magnitude judgment required."
+            }
+          ],
+          "claim_boundary": {
+            "admissible": "For UK large-scale (IaaS) cloud infrastructure in 2025, primary evidence (UK CMA final decision, 31 July 2025) establishes a switching_dependency layer at the provider-specific data-egress boundary: an egress charge is incurred in moving workload data away from an incumbent provider for switching and/or multi-cloud; the providers' free-switching programmes universally cover full exit, but partial switching is provider-specific and restricted and ongoing multi-cloud is not eligible under the standard programmes, so egress charges remained applicable in 2025 outside those bounded, conditional exemptions.",
+            "excluded": [
+              "Cloud is monopolised / AWS or Microsoft controls cloud.",
+              "Using the egress cost to assert decisive lock-in, market power, or an anticompetitive effect.",
+              "Using the CMA's competition not working well / AEC / SMS findings as classification evidence.",
+              "Importing the EU Data Act 2027 prohibition as governing the UK 2025 case.",
+              "Any undated claim."
+            ]
+          }
         }
       ],
       "refusal_references": [
-        { "candidate_label": "standard_interface_control", "status": "not_established" }
+        {
+          "candidate_label": "standard_interface_control",
+          "status": "not_established",
+          "reason": "CMA cites differentiation of features and interfaces as a market-wide competition assessment, not a named standard/protocol/interface required to operate held by one actor."
+        }
       ],
-      "negative_assessment_present": false,
-      "ambiguity_assessment_present": false
+      "negative_assessment": null,
+      "ambiguity_assessment": null,
+      "refusal_assessment_present": true
     }
   }
 }

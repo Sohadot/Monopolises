@@ -10,7 +10,7 @@
 **Decision:** pending gate close (Step 4)
 **Predecessor gate:** MON-G1-LI — Closed PASS (`LAYER_IDENTIFIABILITY_GATE.md`, `GATE_MON-G1-LI_EVALUATION.md`)
 
-> This gate tests whether the four ratified control layers can be **represented as a stable ontology** without losing the evidence boundaries that made MON-G1-LI reproducible. The gate **design is frozen** as of 2026-08-29 (revision 4). **Step 2 — candidate ontology schema** — is now authorized. Step 3 (round-trip evaluation) and gate closeout remain blocked until Step 2 exists.
+> This gate tests whether the four ratified control layers can be **represented as a stable ontology** without losing the evidence boundaries that made MON-G1-LI reproducible. The gate **design is frozen** as of 2026-08-29 (revision 4). **Step 2 — candidate ontology schema** is **Accepted** (2026-08-29). **Step 3 — round-trip evaluation** is **complete and awaiting review**. Step 4 (gate closeout) remains blocked until Step 3 is accepted.
 
 ## Governing question
 

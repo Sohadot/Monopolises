@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-MON-G2-OF Step 3 round-trip runner.
+MON-G2-OF Step 3 round-trip runner (full-content compare).
 
 Pipeline (fixed order):
   1. Validate instance against candidate-schema.json
   2. Generic extract (no case-id branching; filename never read by extractor)
   3. After extract, map path stem → ground truth for comparison only
-  4. Field-by-field compare; record loss/inflation/distortion/tautology flags
+  4. Field-by-field full-content compare; record loss / inflation / distortion / tautology
 
-Extraction is intentionally dumb: it reads only schema-defined structural fields
-from the instance object it is given.
+Ground truth is an authored artifact derived from MON-G1-LI case records
+(research/v0.2/cases/), not regenerated from instances at runtime.
 """
 
 from __future__ import annotations
@@ -19,7 +19,6 @@ import sys
 from pathlib import Path
 
 try:
-    import jsonschema
     from jsonschema import Draft202012Validator
 except ImportError:
     print("ERROR: jsonschema package required", file=sys.stderr)
@@ -49,6 +48,24 @@ def load_json(path: Path):
         return json.load(f)
 
 
+def norm_date(date_obj: dict | None) -> dict | None:
+    if date_obj is None:
+        return None
+    return {k: date_obj[k] for k in ("as_of", "start", "end", "label") if k in date_obj}
+
+
+def extract_binding(b: dict) -> dict:
+    out = {
+        "claim": b["claim"],
+        "evidence_class": b["evidence_class"],
+        "source": b["source"],
+        "fact": b["fact"],
+    }
+    if b["evidence_class"] == "S1":
+        out["derivation"] = b["derivation"]
+    return out
+
+
 def collect_refusal_references(system: dict) -> list[dict]:
     refs = []
     if "refusal_assessment" in system:
@@ -58,7 +75,11 @@ def collect_refusal_references(system: dict) -> list[dict]:
     if "ambiguity_assessment" in system:
         refs.extend(system["ambiguity_assessment"].get("refusal_references", []))
     return [
-        {"candidate_label": r["candidate_label"], "status": r["status"]}
+        {
+            "candidate_label": r["candidate_label"],
+            "status": r["status"],
+            "reason": r["reason"],
+        }
         for r in refs
     ]
 
@@ -75,85 +96,229 @@ def extract_normalized(instance: dict) -> dict:
                 "mechanism": rec["control_mechanism"]["statement"],
                 "locus": rec["locus"]["statement"],
                 "holders": holders,
-                "jurisdiction_present": "jurisdiction" in rec,
-                "evidence_binding_count": len(rec["evidence_bindings"]),
-                "evidence_classes": [b["evidence_class"] for b in rec["evidence_bindings"]],
-                "claim_boundary_excluded_count": len(rec["claim_boundary"]["excluded"]),
-                "claim_boundary_admissible_present": bool(rec["claim_boundary"].get("admissible")),
-                "scope_override_present": "scope" in rec,
-                "date_override_present": "date" in rec,
+                "scope": rec.get("scope"),
+                "date": norm_date(rec.get("date")),
+                "jurisdiction": (
+                    rec["jurisdiction"]["statement"] if "jurisdiction" in rec else None
+                ),
+                "evidence_bindings": [extract_binding(b) for b in rec["evidence_bindings"]],
+                "claim_boundary": {
+                    "admissible": rec["claim_boundary"]["admissible"],
+                    "excluded": list(rec["claim_boundary"]["excluded"]),
+                },
             }
         )
+
+    negative = None
+    if "negative_assessment" in system:
+        na = system["negative_assessment"]
+        negative = {
+            "examined": na["examined"],
+            "claim_boundary": {
+                "admissible": na["claim_boundary"]["admissible"],
+                "excluded": list(na["claim_boundary"]["excluded"]),
+            },
+        }
+
+    ambiguity = None
+    if "ambiguity_assessment" in system:
+        aa = system["ambiguity_assessment"]
+        ambiguity = {
+            "separation_gap": aa["separation_gap"],
+            "competing_interpretations": [
+                {
+                    "interpretation": c["interpretation"],
+                    "active_layer_type_considered": c.get("active_layer_type_considered"),
+                }
+                for c in aa["competing_interpretations"]
+            ],
+            "claim_boundary": {
+                "admissible": aa["claim_boundary"]["admissible"],
+                "excluded": list(aa["claim_boundary"]["excluded"]),
+            },
+        }
 
     return {
         "outcome": system["outcome"],
         "evidenced_layer_count": len(system["evidenced_layer_records"]),
-        "scope_present": bool(system.get("scope")),
-        "date_present": "date" in system,
+        "scope": system["scope"],
+        "date": norm_date(system["date"]),
         "layers": layers,
         "refusal_references": sorted(
             collect_refusal_references(system),
-            key=lambda r: (r["candidate_label"], r["status"]),
+            key=lambda r: (r["candidate_label"], r["status"], r["reason"]),
         ),
-        "negative_assessment_present": "negative_assessment" in system,
-        "ambiguity_assessment_present": "ambiguity_assessment" in system,
+        "negative_assessment": negative,
+        "ambiguity_assessment": ambiguity,
         "refusal_assessment_present": "refusal_assessment" in system,
     }
 
 
+def note_diff(diffs: list, counters: dict, kind: str, field: str, detail: str) -> None:
+    diffs.append({"kind": kind, "field": field, "detail": detail})
+    counters[kind] = True
+
+
+def compare_value(diffs, counters, field, got, exp) -> None:
+    if got == exp:
+        return
+    if got in (None, [], "", {}) and exp not in (None, [], "", {}):
+        note_diff(diffs, counters, "loss", field, f"missing; expected {exp!r}")
+    elif exp in (None, [], "", {}) and got not in (None, [], "", {}):
+        note_diff(diffs, counters, "inflation", field, f"unexpected {got!r}")
+    else:
+        note_diff(diffs, counters, "distortion", field, f"{got!r} != {exp!r}")
+
+
+def compare_bindings(diffs, counters, prefix: str, got_list: list, exp_list: list) -> None:
+    if len(got_list) != len(exp_list):
+        note_diff(
+            diffs,
+            counters,
+            "distortion",
+            f"{prefix}.evidence_bindings.length",
+            f"{len(got_list)} != {len(exp_list)}",
+        )
+        return
+    for i, (got, exp) in enumerate(zip(got_list, exp_list)):
+        p = f"{prefix}.evidence_bindings[{i}]"
+        for key in ("claim", "evidence_class", "source", "fact"):
+            compare_value(diffs, counters, f"{p}.{key}", got.get(key), exp.get(key))
+        if exp.get("evidence_class") == "S1" or got.get("evidence_class") == "S1":
+            compare_value(
+                diffs, counters, f"{p}.derivation", got.get("derivation"), exp.get("derivation")
+            )
+        elif "derivation" in got:
+            note_diff(
+                diffs,
+                counters,
+                "inflation",
+                f"{p}.derivation",
+                "S0 binding must not carry derivation",
+            )
+
+
+def compare_claim_boundary(diffs, counters, prefix: str, got: dict, exp: dict) -> None:
+    compare_value(
+        diffs, counters, f"{prefix}.admissible", got.get("admissible"), exp.get("admissible")
+    )
+    g_ex = list(got.get("excluded", []))
+    e_ex = list(exp.get("excluded", []))
+    if g_ex != e_ex:
+        missing = [x for x in e_ex if x not in g_ex]
+        extra = [x for x in g_ex if x not in e_ex]
+        if missing:
+            note_diff(diffs, counters, "loss", f"{prefix}.excluded", f"missing {missing!r}")
+        if extra:
+            note_diff(diffs, counters, "inflation", f"{prefix}.excluded", f"extra {extra!r}")
+        if not missing and not extra:
+            # same multiset but different order — still distortion for exact fidelity
+            note_diff(
+                diffs,
+                counters,
+                "distortion",
+                f"{prefix}.excluded",
+                f"order/content mismatch {g_ex!r} != {e_ex!r}",
+            )
+
+
 def compare(extracted: dict, expected: dict) -> dict:
     diffs = []
-    loss = inflation = distortion = False
+    counters = {"loss": False, "inflation": False, "distortion": False}
 
-    def note(kind: str, field: str, detail: str):
-        nonlocal loss, inflation, distortion
-        diffs.append({"kind": kind, "field": field, "detail": detail})
-        if kind == "loss":
-            loss = True
-        elif kind == "inflation":
-            inflation = True
-        elif kind == "distortion":
-            distortion = True
+    compare_value(diffs, counters, "outcome", extracted["outcome"], expected["outcome"])
+    compare_value(
+        diffs,
+        counters,
+        "evidenced_layer_count",
+        extracted["evidenced_layer_count"],
+        expected["evidenced_layer_count"],
+    )
+    compare_value(diffs, counters, "scope", extracted["scope"], expected["scope"])
+    compare_value(diffs, counters, "date", extracted["date"], expected["date"])
 
-    if extracted["outcome"] != expected["outcome"]:
-        note("distortion", "outcome", f"{extracted['outcome']!r} != {expected['outcome']!r}")
-
-    if extracted["evidenced_layer_count"] != expected["evidenced_layer_count"]:
-        note(
-            "distortion",
-            "evidenced_layer_count",
-            f"{extracted['evidenced_layer_count']} != {expected['evidenced_layer_count']}",
-        )
-
-    if extracted["negative_assessment_present"] != expected["negative_assessment_present"]:
-        note(
-            "distortion",
-            "negative_assessment_present",
-            f"{extracted['negative_assessment_present']} != {expected['negative_assessment_present']}",
-        )
-
-    if extracted["ambiguity_assessment_present"] != expected["ambiguity_assessment_present"]:
-        note(
-            "distortion",
-            "ambiguity_assessment_present",
-            f"{extracted['ambiguity_assessment_present']} != {expected['ambiguity_assessment_present']}",
-        )
-
+    # Refusals: full label + status + reason
     exp_refs = sorted(
         expected["refusal_references"],
-        key=lambda r: (r["candidate_label"], r["status"]),
+        key=lambda r: (r["candidate_label"], r["status"], r["reason"]),
     )
-    if extracted["refusal_references"] != exp_refs:
-        # missing expected = loss; extra = inflation
-        exp_set = {(r["candidate_label"], r["status"]) for r in exp_refs}
-        got_set = {(r["candidate_label"], r["status"]) for r in extracted["refusal_references"]}
-        if exp_set - got_set:
-            note("loss", "refusal_references", f"missing {sorted(exp_set - got_set)}")
-        if got_set - exp_set:
-            note("inflation", "refusal_references", f"extra {sorted(got_set - exp_set)}")
+    got_refs = extracted["refusal_references"]
+    if got_refs != exp_refs:
+        exp_keys = {(r["candidate_label"], r["status"], r["reason"]) for r in exp_refs}
+        got_keys = {(r["candidate_label"], r["status"], r["reason"]) for r in got_refs}
+        if exp_keys - got_keys:
+            note_diff(
+                diffs, counters, "loss", "refusal_references", f"missing {sorted(exp_keys - got_keys)}"
+            )
+        if got_keys - exp_keys:
+            note_diff(
+                diffs,
+                counters,
+                "inflation",
+                "refusal_references",
+                f"extra {sorted(got_keys - exp_keys)}",
+            )
+
+    # Negative assessment full content
+    exp_neg = expected.get("negative_assessment")
+    got_neg = extracted.get("negative_assessment")
+    if (exp_neg is None) != (got_neg is None):
+        note_diff(
+            diffs,
+            counters,
+            "distortion",
+            "negative_assessment",
+            f"present={got_neg is not None} expected={exp_neg is not None}",
+        )
+    elif exp_neg is not None:
+        compare_value(
+            diffs, counters, "negative_assessment.examined", got_neg["examined"], exp_neg["examined"]
+        )
+        compare_claim_boundary(
+            diffs,
+            counters,
+            "negative_assessment.claim_boundary",
+            got_neg["claim_boundary"],
+            exp_neg["claim_boundary"],
+        )
+
+    exp_amb = expected.get("ambiguity_assessment")
+    got_amb = extracted.get("ambiguity_assessment")
+    if (exp_amb is None) != (got_amb is None):
+        note_diff(
+            diffs,
+            counters,
+            "distortion",
+            "ambiguity_assessment",
+            f"present={got_amb is not None} expected={exp_amb is not None}",
+        )
+    elif exp_amb is not None:
+        compare_value(
+            diffs,
+            counters,
+            "ambiguity_assessment.separation_gap",
+            got_amb["separation_gap"],
+            exp_amb["separation_gap"],
+        )
+        compare_value(
+            diffs,
+            counters,
+            "ambiguity_assessment.competing_interpretations",
+            got_amb["competing_interpretations"],
+            exp_amb["competing_interpretations"],
+        )
+        compare_claim_boundary(
+            diffs,
+            counters,
+            "ambiguity_assessment.claim_boundary",
+            got_amb["claim_boundary"],
+            exp_amb["claim_boundary"],
+        )
 
     if len(extracted["layers"]) != len(expected["layers"]):
-        note(
+        note_diff(
+            diffs,
+            counters,
             "distortion",
             "layers.length",
             f"{len(extracted['layers'])} != {len(expected['layers'])}",
@@ -161,36 +326,19 @@ def compare(extracted: dict, expected: dict) -> dict:
     else:
         for i, (got, exp) in enumerate(zip(extracted["layers"], expected["layers"])):
             prefix = f"layers[{i}]"
-            for key in (
-                "layer_type",
-                "mechanism",
-                "locus",
-                "holders",
-                "jurisdiction_present",
-                "evidence_binding_count",
-                "evidence_classes",
-                "claim_boundary_excluded_count",
-            ):
-                if got[key] != exp[key]:
-                    kind = "distortion"
-                    if key in ("mechanism", "locus") and not got[key]:
-                        kind = "loss"
-                    note(kind, f"{prefix}.{key}", f"{got[key]!r} != {exp[key]!r}")
-            if not got.get("claim_boundary_admissible_present"):
-                note("loss", f"{prefix}.claim_boundary.admissible", "missing admissible record")
+            for key in ("layer_type", "mechanism", "locus", "holders", "scope", "date", "jurisdiction"):
+                compare_value(diffs, counters, f"{prefix}.{key}", got.get(key), exp.get(key))
+            compare_bindings(
+                diffs, counters, prefix, got["evidence_bindings"], exp["evidence_bindings"]
+            )
+            compare_claim_boundary(
+                diffs, counters, f"{prefix}.claim_boundary", got["claim_boundary"], exp["claim_boundary"]
+            )
 
-    if not extracted.get("scope_present"):
-        note("loss", "scope", "system scope missing")
-    if not extracted.get("date_present"):
-        note("loss", "date", "system date missing")
-
-    structural_pass = not diffs
     return {
-        "structural_round_trip": "PASS" if structural_pass else "FAIL",
-        "loss": loss,
-        "inflation": inflation,
-        "distortion": distortion,
-        "tautology": False,  # set by caller if extract used case-id branching (it does not)
+        "loss": counters["loss"],
+        "inflation": counters["inflation"],
+        "distortion": counters["distortion"],
         "diffs": diffs,
     }
 
@@ -206,11 +354,11 @@ def check_tautology_controls(extractor_source: str) -> list[str]:
         "ground_truth",
         "EVALUATION_ORDER",
     ]
-    # extract_normalized body only — approximate by ensuring function source has no case tokens
-    # We inspect this file's extract_normalized by reading our own source around the function.
     start = extractor_source.find("def extract_normalized")
-    end = extractor_source.find("\ndef compare")
-    body = extractor_source[start:end] if start != -1 and end != -1 else extractor_source
+    end = extractor_source.find("\ndef note_diff")
+    if end == -1:
+        end = extractor_source.find("\ndef compare")
+    body = extractor_source[start:end] if start != -1 and end != -1 else ""
     for token in forbidden:
         if token in body:
             flags.append(f"extractor contains forbidden token {token!r}")
@@ -272,9 +420,11 @@ def main() -> int:
         # Case identity used only here — to select ground truth for comparison.
         expected = ground[case_id]
         cmp = compare(extracted, expected)
-        if tautology_flags:
-            cmp["tautology"] = True
-            cmp["diffs"].append(
+
+        tautology = bool(tautology_flags)
+        diffs = list(cmp["diffs"])
+        if tautology:
+            diffs.append(
                 {
                     "kind": "tautology",
                     "field": "extractor",
@@ -282,15 +432,18 @@ def main() -> int:
                 }
             )
 
-        row["structural_round_trip"] = cmp["structural_round_trip"]
+        content_ok = not cmp["loss"] and not cmp["inflation"] and not cmp["distortion"]
+        structural_pass = content_ok and not tautology
+
+        row["structural_round_trip"] = "PASS" if structural_pass else "FAIL"
         row["loss"] = cmp["loss"]
         row["inflation"] = cmp["inflation"]
         row["distortion"] = cmp["distortion"]
-        row["tautology"] = cmp["tautology"]
-        row["diffs"] = cmp["diffs"]
+        row["tautology"] = tautology
+        row["diffs"] = diffs
         row["extracted"] = extracted
 
-        if cmp["structural_round_trip"] != "PASS":
+        if not structural_pass:
             row["blocker"] = True
             any_blocker = True
             if cmp["loss"]:
@@ -298,21 +451,27 @@ def main() -> int:
             if cmp["inflation"]:
                 row["gate_falsifiers_triggered"].append("Falsifier 3 — Inflation on round-trip")
             if cmp["distortion"]:
-                row["gate_falsifiers_triggered"].append("Falsifier 2/3 — Distortion on round-trip")
-            if cmp["tautology"]:
+                row["gate_falsifiers_triggered"].append(
+                    "Falsifier 2/3 — Distortion on round-trip"
+                )
+            if tautology:
                 row["gate_falsifiers_triggered"].append(
                     "Falsifier 15 — Tautological round-trip / extraction escape hatch"
                 )
 
-        # Structural checks against known gate falsifiers even on PASS
         if extracted["outcome"] == "no_evidenced_control_layer":
-            if extracted["evidenced_layer_count"] != 0 or not extracted["negative_assessment_present"]:
+            if extracted["evidenced_layer_count"] != 0 or extracted["negative_assessment"] is None:
                 row["gate_falsifiers_triggered"].append("Falsifier 7 — Cannot represent negatives")
                 row["blocker"] = True
+                row["structural_round_trip"] = "FAIL"
                 any_blocker = True
-        if extracted["outcome"] == "multiple_evidenced_layers" and extracted["evidenced_layer_count"] < 2:
+        if (
+            extracted["outcome"] == "multiple_evidenced_layers"
+            and extracted["evidenced_layer_count"] < 2
+        ):
             row["gate_falsifiers_triggered"].append("Falsifier 9 — Cannot represent multiples")
             row["blocker"] = True
+            row["structural_round_trip"] = "FAIL"
             any_blocker = True
 
         results.append(row)
@@ -325,6 +484,7 @@ def main() -> int:
         "total_cases": len(results),
         "any_blocker": any_blocker,
         "extractor_tautology_flags": tautology_flags,
+        "compare_mode": "full_content",
         "gate_verdict_candidate": (
             "PASS"
             if (
@@ -347,8 +507,10 @@ def main() -> int:
             f"roundtrip={r['structural_round_trip']} blocker={r['blocker']}"
         )
         if r.get("diffs"):
-            for d in r["diffs"]:
-                print(f"  - {d['kind']}: {d['field']}: {d['detail']}")
+            for d in r["diffs"][:12]:
+                print(f"  - {d['kind']}: {d['field']}: {d['detail'][:200]}")
+            if len(r["diffs"]) > 12:
+                print(f"  ... {len(r['diffs']) - 12} more diffs")
         if r.get("validation_errors"):
             for e in r["validation_errors"]:
                 print(f"  - validation: {e['path']}: {e['message']}")
