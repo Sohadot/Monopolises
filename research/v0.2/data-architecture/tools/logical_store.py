@@ -88,11 +88,18 @@ class LogicalStore:
     return self._validator
 
   def write(self, instance: dict, lineage_key: str | None = None) -> str:
-    """Canonical write. Returns snapshot_id. Raises WriteRejected on invalid input."""
+    """Canonical write. Returns snapshot_id. Raises WriteRejected on invalid input.
+
+    Validation here is machine-readable structural check (candidate-schema.json)
+    plus frozen gating probes W1/W2. Full semantic ontology validity of the eight
+    frozen cases is inherited from the adopted ontology instances — this store
+    does not re-adjudicate every INV-1…INV-11 rejection class in Step 3.
+    """
     errors = sorted(self._validator_instance().iter_errors(instance), key=lambda e: list(e.path))
     if errors:
       raise WriteRejected(
-        "ontology validation failed: " + "; ".join(e.message for e in errors[:3])
+        "structural schema validation failed: "
+        + "; ".join(e.message for e in errors[:3])
       )
 
     system = instance["system"]

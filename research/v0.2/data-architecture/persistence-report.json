@@ -14,6 +14,8 @@
   "cases": [
     {
       "case_id": "MON-G1-S8",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
       "persistence_round_trip": "PASS",
       "interface_composability": "PASS",
       "gate_falsifiers_triggered": [],
@@ -22,11 +24,12 @@
       "inflation": false,
       "distortion": false,
       "tautology": false,
-      "diffs": [],
-      "snapshot_id": "snap-94dd972313e3"
+      "diffs": []
     },
     {
       "case_id": "MON-G1-S1",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
       "persistence_round_trip": "PASS",
       "interface_composability": "PASS",
       "gate_falsifiers_triggered": [],
@@ -35,11 +38,12 @@
       "inflation": false,
       "distortion": false,
       "tautology": false,
-      "diffs": [],
-      "snapshot_id": "snap-1537d4cad8ba"
+      "diffs": []
     },
     {
       "case_id": "MON-G1-S2",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
       "persistence_round_trip": "PASS",
       "interface_composability": "PASS",
       "gate_falsifiers_triggered": [],
@@ -48,11 +52,12 @@
       "inflation": false,
       "distortion": false,
       "tautology": false,
-      "diffs": [],
-      "snapshot_id": "snap-306e77e86947"
+      "diffs": []
     },
     {
       "case_id": "MON-G1-S6",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
       "persistence_round_trip": "PASS",
       "interface_composability": "PASS",
       "gate_falsifiers_triggered": [],
@@ -61,11 +66,12 @@
       "inflation": false,
       "distortion": false,
       "tautology": false,
-      "diffs": [],
-      "snapshot_id": "snap-3e8ed67ea619"
+      "diffs": []
     },
     {
       "case_id": "MON-G1-S4",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
       "persistence_round_trip": "PASS",
       "interface_composability": "PASS",
       "gate_falsifiers_triggered": [],
@@ -74,11 +80,12 @@
       "inflation": false,
       "distortion": false,
       "tautology": false,
-      "diffs": [],
-      "snapshot_id": "snap-21f09a6cdea6"
+      "diffs": []
     },
     {
       "case_id": "MON-G1-S5",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
       "persistence_round_trip": "PASS",
       "interface_composability": "PASS",
       "gate_falsifiers_triggered": [],
@@ -87,11 +94,12 @@
       "inflation": false,
       "distortion": false,
       "tautology": false,
-      "diffs": [],
-      "snapshot_id": "snap-e96a4048cca7"
+      "diffs": []
     },
     {
       "case_id": "MON-G1-S3",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
       "persistence_round_trip": "PASS",
       "interface_composability": "PASS",
       "gate_falsifiers_triggered": [],
@@ -100,11 +108,12 @@
       "inflation": false,
       "distortion": false,
       "tautology": false,
-      "diffs": [],
-      "snapshot_id": "snap-1db23fee8b75"
+      "diffs": []
     },
     {
       "case_id": "MON-G1-S7",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
       "persistence_round_trip": "PASS",
       "interface_composability": "PASS",
       "gate_falsifiers_triggered": [],
@@ -113,8 +122,7 @@
       "inflation": false,
       "distortion": false,
       "tautology": false,
-      "diffs": [],
-      "snapshot_id": "snap-5acf812793f2"
+      "diffs": []
     }
   ],
   "ambiguous_layer_structural": {

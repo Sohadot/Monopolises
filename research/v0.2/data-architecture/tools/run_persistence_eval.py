@@ -191,6 +191,11 @@ def canonicalize_normalized(extracted: dict) -> dict:
 
 
 def check_tautology_controls(source: str) -> list[str]:
+    """Scan entire logical_store.py — write/read helpers included.
+
+    The evaluation runner may legitimately contain EVALUATION_ORDER / ground-truth
+    selection after retrieve; that file is not scanned here.
+    """
     flags = []
     forbidden = [
         "MON-G1-S",
@@ -200,15 +205,9 @@ def check_tautology_controls(source: str) -> list[str]:
         "ground_truth",
         "EVALUATION_ORDER",
     ]
-    for fn in ("def write", "def read"):
-        start = source.find(fn)
-        end = source.find("\n  def ", start + 1)
-        if end == -1:
-            end = source.find("\ndef ", start + 1)
-        body = source[start:end] if start != -1 else ""
-        for token in forbidden:
-            if token in body:
-                flags.append(f"{fn} contains forbidden token {token!r}")
+    for token in forbidden:
+        if token in source:
+            flags.append(f"logical_store.py contains forbidden token {token!r}")
     return flags
 
 
@@ -270,6 +269,8 @@ def main() -> int:
         path = INSTANCES_DIR / f"{case_id}.json"
         row = {
             "case_id": case_id,
+            "canonical_system_round_trip": None,
+            "locked_gt_compare": None,
             "persistence_round_trip": None,
             "interface_composability": None,
             "gate_falsifiers_triggered": [],
@@ -283,18 +284,27 @@ def main() -> int:
             retrieved = store.read(sid)
         except WriteRejected as e:
             row["persistence_round_trip"] = "FAIL"
+            row["canonical_system_round_trip"] = "FAIL"
+            row["locked_gt_compare"] = "FAIL"
             row["blocker"] = True
             row["error"] = str(e)
             any_blocker = True
             results.append(row)
             continue
 
+        # Direct SystemRecord fidelity (presence/ownership/serialization) — gating.
+        canonical_ok = systems_semantically_equal(retrieved, instance["system"])
+        row["canonical_system_round_trip"] = "PASS" if canonical_ok else "FAIL"
+
+        # Locked GT independence check — gating; does not replace direct compare.
         canon = canonicalize_system(retrieved)
         extracted = canonicalize_normalized(
             extract_normalized({"system": canon})
         )
         expected = canonicalize_normalized(ground[case_id])
         cmp = compare(extracted, expected)
+        content_ok = not cmp["loss"] and not cmp["inflation"] and not cmp["distortion"]
+        row["locked_gt_compare"] = "PASS" if content_ok else "FAIL"
 
         try:
             render_representation(
@@ -311,9 +321,8 @@ def main() -> int:
             )
 
         tautology = bool(tautology_flags)
-        content_ok = not cmp["loss"] and not cmp["inflation"] and not cmp["distortion"]
         iface_ok = row["interface_composability"] == "PASS"
-        passed = content_ok and iface_ok and not tautology
+        passed = canonical_ok and content_ok and iface_ok and not tautology
 
         row["persistence_round_trip"] = "PASS" if passed else "FAIL"
         row["loss"] = cmp["loss"]
@@ -321,19 +330,21 @@ def main() -> int:
         row["distortion"] = cmp["distortion"]
         row["tautology"] = tautology
         row["diffs"] = cmp["diffs"]
-        row["snapshot_id"] = sid
+        # snapshot_id is technical/non-semantic — omitted for deterministic reports
 
         if not passed:
             row["blocker"] = True
             any_blocker = True
+            if not canonical_ok:
+                row["gate_falsifiers_triggered"].append(
+                    "Canonical SystemRecord round-trip mismatch (serialization/presence fidelity)"
+                )
             if cmp["loss"]:
-                row["gate_falsifiers_triggered"].append("Loss on persistence round-trip")
+                row["gate_falsifiers_triggered"].append("Loss on locked-GT compare")
             if cmp["inflation"]:
-                row["gate_falsifiers_triggered"].append("Inflation on persistence round-trip")
+                row["gate_falsifiers_triggered"].append("Inflation on locked-GT compare")
             if cmp["distortion"]:
-                row["gate_falsifiers_triggered"].append("Distortion on persistence round-trip")
-            if not iface_ok:
-                pass  # already recorded
+                row["gate_falsifiers_triggered"].append("Distortion on locked-GT compare")
             if tautology:
                 row["gate_falsifiers_triggered"].append("Falsifier 15 — tautological write/read")
 
@@ -356,8 +367,13 @@ def main() -> int:
         comps = retrieved.get("ambiguity_assessment", {}).get("competing_interpretations", [])
         if len(comps) < 2:
             ambiguity_row["failures"].append("fewer than 2 competing interpretations")
-        if "=== LAYER PANEL ===" in render_representation(amb_inst):
-            ambiguity_row["failures"].append("unexpected layer panels in render")
+        # Interface check on retrieved system (write → read → interface), not original fixture.
+        amb_wrapped = {
+            "schema_version": "mon-g2-of-candidate-v0.2",
+            "system": retrieved,
+        }
+        if "=== LAYER PANEL ===" in render_representation(amb_wrapped):
+            ambiguity_row["failures"].append("unexpected layer panels in render of retrieved")
         if not ambiguity_row["failures"]:
             ambiguity_row["verdict"] = "PASS"
     except Exception as e:
@@ -451,7 +467,9 @@ def main() -> int:
     print(json.dumps(summary, indent=2))
     for r in results:
         print(
-            f"{r['case_id']}: roundtrip={r['persistence_round_trip']} "
+            f"{r['case_id']}: canonical={r.get('canonical_system_round_trip')} "
+            f"gt={r.get('locked_gt_compare')} "
+            f"roundtrip={r['persistence_round_trip']} "
             f"iface={r['interface_composability']} blocker={r['blocker']}"
         )
     print(f"ambiguity: {ambiguity_row['verdict']} (outside 8/8)")
