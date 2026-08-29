@@ -164,3 +164,59 @@ This PASS authorizes, **in order**, and only from this decision onward: a layer 
 ### Next-gate rule
 
 Any scored, ranked, or scaled surface — or admission of a new layer — requires a **new decision and a new falsifiable gate**. MON-G1-LI is not reopened, broadened, or retroactively redefined.
+
+---
+
+## DEC-006 — Close MON-G2-OF and Adopt the Layered Monopolisation Ontology v0.2
+
+**Date:** 2026-08-29
+**Status:** Closed / Binding
+**Gate:** MON-G2-OF — Closed / PASS
+**Supersedes:** nothing in DEC-005's taxonomy or thesis ratification (DEC-005 stands; this decision completes the ontology step DEC-005 authorized)
+
+### Decision
+
+Close gate `MON-G2-OF` (Ontology Fidelity) **PASS**, and adopt the **tested** schema version `mon-g2-of-candidate-v0.2` as the Layered Monopolisation ontology conforming to DEC-005.
+
+### Basis
+
+Evaluation `research/v0.2/GATE_MON-G2-OF_EVALUATION.md` (Accepted 2026-08-29), machine report `research/v0.2/ontology/roundtrip-report.json`:
+
+- **8/8** schema validation PASS against `candidate-schema.json`
+- **8/8** full-content structural round-trip PASS (generic extract; no case-id branching)
+- **No** MON-G2-OF falsifier triggered (including tautology / Falsifier 15)
+- **No** return to Step 2 required
+
+Governing-question answer: the four ratified control layers can be represented as a stable ontology **without** loss, inflation, distortion, or tautology on the fixed MON-G1-LI eight-case set.
+
+### Adopted artifact (exact tested version)
+
+- Canonical: `research/v0.2/ontology/CANDIDATE_ONTOLOGY_SCHEMA.md`
+- Machine-readable companion: `research/v0.2/ontology/candidate-schema.json`
+- **`schema_version`:** `mon-g2-of-candidate-v0.2` — **unchanged** (no untested `v0.2-final` renumbering)
+
+### Unchanged by this decision
+
+- DEC-005 active taxonomy remains exactly four layers: `legal_exclusivity`, `capacity_control`, `access_gatekeeping`, `switching_dependency`
+- Research candidates remain outside the active taxonomy
+- MON-G1-LI remains Closed PASS; its case classifications are not reopened or rewritten
+- MON-G2-OF PASS criteria, falsifiers, and fixed test set are not amended after close
+
+### Construction consequence
+
+**Ontology step complete. Authorization now extends only to opening the successor falsifiable gate for the interface thesis.**
+
+This decision does **not** authorize:
+
+- Interface implementation or UI surfaces
+- Data architecture or production surfaces
+- Scores, rankings, severity, dominance levels, or monopoly probability
+- Entity or sector pages
+- Admission of new layers without a new gate
+- Monetization
+
+DEC-005 build order remains: **ontology → interface thesis → data architecture**.
+
+### Next-gate rule
+
+The interface thesis may proceed only under a **new falsifiable gate**. MON-G2-OF is not reopened, broadened, or retroactively redefined to authorize work beyond ontology adoption and opening that successor gate.
