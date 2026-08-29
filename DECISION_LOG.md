@@ -120,3 +120,47 @@ Until a new thesis is separately authorized:
 Any successor thesis must begin with a new decision and a new falsifiable gate.
 
 MON-G0-RH is not reopened, broadened, or retroactively redefined to produce a pass.
+
+---
+
+## DEC-005 — Ratify Layered Monopolisation as the Monopolises v0.2 thesis
+
+**Date:** 2026-08-29
+**Status:** Closed / Binding
+**Gate:** MON-G1-LI — Closed / PASS
+**Supersedes:** DEC-004 as the active thesis posture (DEC-004's closure of MON-G0-RH stands unchanged)
+
+### Decision
+
+Ratify **Layered Monopolisation** as the Monopolises v0.2 thesis: control concentrates **layer by layer**, recorded as `System × Layer × Control Mechanism × Evidence`, classifiable from public primary evidence without inferring legal monopoly status.
+
+Gate `MON-G1-LI` is closed **PASS** on the performance of the fixed eight-case set (`research/v0.2/GATE_MON-G1-LI_EVALUATION.md`): all four pass conditions hold; no falsifier triggers.
+
+### Active taxonomy (exactly four evidenced layers)
+
+- `legal_exclusivity` — evidenced by MON-G1-S8
+- `capacity_control` — evidenced by MON-G1-S1 (single-actor) and MON-G1-S2 (collective)
+- `access_gatekeeping` — evidenced by MON-G1-S6, MON-G1-S4, MON-G1-S5
+- `switching_dependency` — the held-out probe, triggered by a named source-native instrument in MON-G1-S7, is admitted
+
+### Research candidates (outside the active taxonomy — not placeholders)
+
+- `qualification_control` — not evidenced (the S6 legal candidate was `access_gatekeeping`; "qualified/sufficient" language did not establish it)
+- `standard_interface_control` — not evidenced (no primary source showed a named interface *required to operate* the frozen function; a rulebook (S5) and a named-but-not-required interface (S3/CUDA) both failed)
+- `temporal_constraint` — never targeted by a case; untested, not refuted
+
+Non-proof is information, not a reserved slot. A candidate enters the active taxonomy only when a case evidences it under a gate.
+
+### Construction consequence
+
+This PASS authorizes, **in order**, and only from this decision onward: a layer ontology, an interface thesis, and a data architecture — each built on the four active layers only. It does **not** authorize scores, rankings, entity/sector pages, a ratified standard, or monetization.
+
+### Discipline for the successor build
+
+- Every published record carries `System × Layer × Control Mechanism × Evidence` with a **dated, jurisdiction-scoped** claim boundary.
+- No market-share/dominance figure **alone**, and no antitrust/competition conclusion, may carry a classification (S2 stays excluded).
+- Dated findings are records of their date; later change does not erase them, and present-tense restatement requires current primary evidence.
+
+### Next-gate rule
+
+Any scored, ranked, or scaled surface — or admission of a new layer — requires a **new decision and a new falsifiable gate**. MON-G1-LI is not reopened, broadened, or retroactively redefined.
