@@ -6,10 +6,11 @@ Pipeline (fixed):
   1. Load ontology instance
   2. Logical write (candidate architecture)
   3. Generic retrieval → canonical SystemRecord
-  4. Semantic canonicalization (case-independent)
-  5. Full-content compare to locked ground truth (after case id mapping only)
-  6. Interface composability (retrieved → interface grammar render)
-  7. Structural: ambiguity fixture, history A/B, W1/W2 write-integrity (outside 8/8)
+  4. Direct canonical SystemRecord round-trip compare (pre-canonicalization)
+  5. Semantic canonicalization (case-independent)
+  6. Full-content compare to locked ground truth (after case id mapping only)
+  7. Interface composability (retrieved → interface grammar render)
+  8. Structural: ambiguity fixture, history A/B, W1/W2 write-integrity (outside 8/8)
 """
 
 from __future__ import annotations

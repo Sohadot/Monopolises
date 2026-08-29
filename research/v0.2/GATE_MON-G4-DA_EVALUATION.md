@@ -5,7 +5,7 @@
 **Architecture under test:** `CANDIDATE_DATA_ARCHITECTURE.md` (`architecture_id`: `mon-g4-da-candidate-v0.2`) — **Accepted for Step 3 — 2026-08-29** (unchanged in this evaluation)
 **Ontology binding:** `mon-g2-of-candidate-v0.2` (DEC-006); interface binding `mon-g3-it-candidate-v0.2` (DEC-007)
 **Evaluation date:** 2026-08-29
-**Status:** **Draft for review** (Step 3 complete for human acceptance; Step 4 blocked)
+**Status:** **Accepted — 2026-08-29**
 **Branch checkpoint base:** `a5a9a67` (candidate architecture merge)
 **Method:** Instance → logical write → generic retrieval → canonical SystemRecord → semantic canonicalization → **direct SystemRecord compare** + locked-GT full-content compare + interface composability
 **Runner:** `data-architecture/tools/run_persistence_eval.py`
@@ -159,6 +159,6 @@ If a **contract** defect is found: reject evaluation and return formally to **St
 
 ## 8. Disposition
 
-**Step 3 — awaiting review.** Provisional: 8/8 canonical + locked-GT PASS; interface composability 8/8; structural checks PASS (outside 8/8); no falsifiers; architecture unchanged.
+**Step 3 — Accepted — 2026-08-29.** 8/8 canonical SystemRecord round-trip PASS; 8/8 locked-GT PASS; interface composability 8/8; structural checks PASS (outside 8/8); no falsifiers; architecture unchanged.
 
-**Step 4 — Blocked** until Step 3 is accepted.
+**Step 4 — Authorized — next step.** Gate remains open until closeout.

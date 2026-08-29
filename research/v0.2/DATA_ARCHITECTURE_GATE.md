@@ -6,13 +6,13 @@
 **Opened:** 2026-08-29
 **Closed:** —
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, DEC-005) via adopted ontology `mon-g2-of-candidate-v0.2` (DEC-006) and adopted interface thesis `mon-g3-it-candidate-v0.2` (DEC-007)
-**Evaluation:** `GATE_MON-G4-DA_EVALUATION.md` (**Draft for review** — Step 3)
+**Evaluation:** `GATE_MON-G4-DA_EVALUATION.md` (**Accepted — 2026-08-29**)
 **Decision:** pending gate close
 **Predecessor gate:** MON-G3-IT — Closed PASS (`INTERFACE_THESIS_GATE.md`, DEC-007)
 **Adopted ontology:** `research/v0.2/ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` (`schema_version`: `mon-g2-of-candidate-v0.2`)
 **Adopted interface thesis:** `research/v0.2/CANDIDATE_INTERFACE_THESIS.md` (`thesis_id`: `mon-g3-it-candidate-v0.2`)
 
-> This gate tests whether the **adopted Layered Monopolisation ontology and interface thesis** can be carried by a **data architecture** that stores and retrieves bounded `SystemRecord`s without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate logical data architecture** is **Accepted** (2026-08-29). **Step 3 — persistence/retrieval fidelity evaluation** is **Draft for review** (`GATE_MON-G4-DA_EVALUATION.md`). Step 4 (closeout) remains blocked until Step 3 is accepted.
+> This gate tests whether the **adopted Layered Monopolisation ontology and interface thesis** can be carried by a **data architecture** that stores and retrieves bounded `SystemRecord`s without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate logical data architecture** is **Accepted** (2026-08-29). **Step 3 — persistence/retrieval fidelity evaluation** is **Accepted** (2026-08-29) (`GATE_MON-G4-DA_EVALUATION.md`). **Step 4 — closeout** is **Authorized — next step**. The gate remains **open** until Step 4 closeout.
 
 ## Governing question
 
@@ -392,8 +392,8 @@ The gate FAILS if **any** of the following hold:
 |---|---|---|
 | 1 | This gate spec (`DATA_ARCHITECTURE_GATE.md`) | **Frozen — accepted 2026-08-29** (revision 2) |
 | 2 | Candidate logical data architecture meeting **Step 2 artifact requirements** (`CANDIDATE_DATA_ARCHITECTURE.md`) | **Accepted — 2026-08-29** |
-| 3 | Persistence/retrieval fidelity evaluation on S8…S7 + structural checks (`GATE_MON-G4-DA_EVALUATION.md`) | **Draft for review** |
-| 4 | Gate closeout decision | Blocked until Step 3 complete |
+| 3 | Persistence/retrieval fidelity evaluation on S8…S7 + structural checks (`GATE_MON-G4-DA_EVALUATION.md`) | **Accepted — 2026-08-29** |
+| 4 | Gate closeout decision | **Authorized — next step** |
 
 **Do not skip steps.** A DB build before Step 1 freeze / Step 2 acceptance is out of process. A Step 2 document without the required logical contracts is incomplete.
 
