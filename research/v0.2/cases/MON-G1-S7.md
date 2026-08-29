@@ -1,86 +1,98 @@
-# MON-G1-S7 — Cloud hyperscaler dependency (the deliberate skeptical case, UK/EU evidence, 2025)
+# MON-G1-S7 — Cloud hyperscaler dependency (UK, dated 2025)
 
 **Gate:** MON-G1-LI
 **Case ID:** MON-G1-S7
-**Role in set:** The built-in guard against confirmation bias. A large, concentrated, heavily-investigated market is the easiest place to *assume* control. This case exists to check that the framework can return **`no_evidenced_control_layer`** where the evidence does not support a documented control layer.
-**Status:** Evidence extraction complete — provisional case result
+**Role in set:** The pre-registered skeptical case — and, on the evidence, the case that **first triggers the held-out `switching_dependency` probe**. The real success of a skeptical case is that it *changes* the expectation when a specific, source-native instrument appears.
+**Status:** Evidence extraction complete — provisional case result (revised after review)
 **Evidence rule:** S0 + reproducible S1 only; S2 may explain but may not classify
-**Frozen hypothesis under test:** deliberate skeptical case — `no_evidenced_control_layer` is a live outcome; any evidenced layer more likely `switching_dependency`/`standard_interface_control` at a specific mechanism, not the market as a whole
+**Frozen hypothesis under test:** skeptical case — `no_evidenced_control_layer` live; any evidenced layer more likely a specific-mechanism `switching_dependency`/`standard_interface_control`, not market-wide control
 **Extraction order position:** 8 of 8 (final)
 
 ## 0. Scope
 
-> **Large-scale general-purpose (IaaS) cloud infrastructure — UK/EU evidence, dated 2025.**
+> **Large-scale general-purpose (IaaS) cloud infrastructure — United Kingdom, dated 2025.**
 
-The market is global, but the strongest primary evidence is the UK CMA cloud-services market investigation (final decision, 31 July 2025) and the EU Data Act. Dating matters here: the main candidate switching instrument is changing fast (see §4).
+Jurisdiction and date are load-bearing. The governing evidence is the **UK** CMA cloud-services market investigation (final decision, 31 July 2025). The **EU** Data Act (switching-fee prohibition from 12 Jan 2027) is **regulatory-trajectory context**, not a governing instrument for the UK case. Provider free-switching programmes documented by the CMA are used to **bound** the claim, not to govern it.
 
-## 0.1 Governing extraction question
+## 0.1 Correction notice (this revision)
 
-> Is there a source-native, single-actor control layer in general-purpose cloud infrastructure — or is this a **concentrated but contested** market whose frictions are (a) a regulator's *competition assessment* (S2) and (b) a switching cost currently being removed by regulation?
+The first version returned `no_evidenced_control_layer`. Review identified two methodological errors, now fixed:
+1. **A smuggled "durability" requirement.** The first version rejected the egress switching cost because it is "being regulated away." But a documented **2025** switching cost is real in 2025; its future removal makes it a **dated** mechanism, not an absent one — the same dating discipline applied to the 5 nm frontier (S2) and the NdFeB value chain (S6). Remediation ≠ absence of instrument. (The EU Data Act itself allows **reduced** switching charges until 12 Jan 2027; the full ban starts only then.)
+2. **A single-actor / "alternatives exist" test that does not belong to this layer.** `switching_dependency` does not ask "do alternatives exist?"; it asks "is there a documented **cost/difficulty of leaving the incumbent**, *despite* alternatives?" Multi-cloud and switching friction coexist. Using AWS/Microsoft plurality and multi-cloud **against** the layer was the wrong test.
 
-## 1. Result (provisional)
+## 0.2 Governing extraction question
+
+> Is there a source-native, **documented cost or difficulty of moving away from an incumbent cloud provider** — an instrument that justifies triggering the held-out `switching_dependency` layer — as distinct from a regulator's competition *assessment*?
+
+## 1. Result (provisional, revised)
 
 ```
-result = no_evidenced_control_layer
-  market-level single-actor control  = NOT EVIDENCED (contested, dynamic oligopoly; concentration ≠ control)
-  switching_dependency probe          = NOT TRIGGERED for a present-tense layer (candidate egress fee is being regulated away)
-  standard_interface_control          = NOT ESTABLISHED (no named required interface; "technical barriers" are a market-wide S2 assessment)
-```
+result = evidenced_control_layer
+  held-out probe: switching_dependency = TRIGGERED (first evidenced instance in the set)
+  locus  = the provider-specific data-egress / switching boundary within UK large-scale (IaaS) cloud, dated 2025
+  mechanism = egress charges incurred in moving workload data away from an incumbent provider for switching and/or multi-cloud
 
-This is a **layer-identifiability** result. It does **not** say cloud is unconcentrated or unproblematic — a regulator has found the opposite. It says: **no control layer is classifiable from primary evidence without S2.**
+  market-level single-actor control = NOT the claim (and not needed)
+  standard_interface_control        = NOT ESTABLISHED
+```
 
 ## 2. S0 evidence
 
-**Source:** UK Competition and Markets Authority, *Cloud services market investigation — Summary of Final Decision*, 31 July 2025.
-- **Contested, dynamic oligopoly:** "the two largest providers, Microsoft and AWS, **each has a high share of supply at [30-40]%** in 2024. **Microsoft has grown its share while AWS' share has decreased** since 2020."
-- **Multi-cloud exists, especially for large customers:** "Use of multiple cloud providers is more prevalent than switching … **Large cloud customers are more likely than smaller ones to use multiple clouds**."
-- **The documented commercial switching instrument is egress fees:** "A key commercial barrier is the **presence and magnitude of egress fees** required to transfer data between cloud providers for the purposes of switching and/or multi-cloud."
+### E01 — A charge specifically incurred to move data out for switching/multi-cloud (the instrument)
+**Source:** UK CMA, *Cloud services market investigation — Summary of Final Decision*, 31 July 2025, para 26.
+**Verbatim:** "the presence and magnitude of **egress fees required to transfer data between cloud providers for the purposes of switching and/or multi-cloud**."
+**Class:** S0. A charge incurred in moving data **out** to switch or multi-cloud is a documented switching cost. (Dated 31 July 2025 — *after* the 2024 free-switching programmes, so the instrument was **present in 2025**.)
 
-## 3. Market-level control — NOT evidenced
+### E02 — Switching friction coexists with multi-cloud (factual context)
+**Source:** CMA final decision, para 24.
+**Verbatim:** "Very few customers switch between clouds: **less than 1% of customers switch provider each year**. Use of multiple cloud providers is more prevalent than switching but it is still uncommon for small and medium sized customers."
+**Class:** S0 (factual observation). Establishes that switching friction and multi-cloud coexist — so plurality does not negate a switching cost.
 
-- Two providers at **[30-40]% each** (plus Google and others) is a **concentrated oligopoly**, not single-actor control; and the shares are **moving in opposite directions** (Microsoft up, AWS down since 2020) — the opposite of an entrenched single controller.
-- **Multi-cloud is common among large customers**, so the function does not pass through one provider.
-- Treating "concentration" as "control" is the S2 market-power inference the gate forbids (the same discipline as S2-foundry, where a two-producer set only became `capacity_control` once *no-alternative* evidence appeared — which is **absent** here, since multi-cloud exists).
+### E03 — The free-switching programmes are bounded (claim-limiting, not layer-defeating)
+**Source:** CMA *Appendix N — Egress fees: free switching programmes*.
+**Verbatim:** "Free egress for switching is **only available (and subject to requirements and restrictions in some cases)** for the customers of AWS, Microsoft, Google and Civo. UK customers of other cloud providers do not benefit"; the programme matrix marks **"Ongoing multi-cloud use (non-switching)" as "Not eligible"** (AWS, Google); Google's programme "applies to customers who want to do a **complete exit** from Google Cloud"; AWS requires customers to "**delete all remaining data and workloads**."
+**Class:** S0. The remediation covers **full exit only** — not ongoing multi-cloud, and partial switching is restricted — so the egress switching cost **persists in 2025** for the uncovered cases.
 
-## 4. switching_dependency probe — candidate found, NOT triggered for a present-tense layer
+## 3. Layer classification — switching_dependency (held-out probe → TRIGGERED)
 
-- **Held-out probe:** switching cost / difficulty of migration. The candidate instrument is **egress fees** (E-CMA above).
-- **Why it is not a durable present-tense control instrument:** the egress switching cost is **being removed under regulation**. The **EU Data Act** (in force 11 Jan 2024) requires removing obstacles to effective switching; Google, AWS, and Microsoft each introduced **free-switching / waived-egress programmes in 2024** (documented in the CMA's own Appendix N, "Egress fees – free switching programmes"); and from **12 Jan 2027** providers serving EU customers are prohibited from charging switching fees, including egress.
-- So the probe **surfaces a candidate but it fails the durability/present-tense test**: a switching cost that is actively being regulated out of existence in the dated scope is not a source-native *control layer*. (Dated at ~2022 it might have been a stronger candidate — the dating discipline is load-bearing, as in S2.)
-- Even at its peak, egress was a **pricing friction**, not single-actor control; and it was charged by all providers, not a mechanism one actor uses to control the others.
+- **Held-out probe:** switching cost / difficulty of migration. `switching_dependency` is not one of the six frozen layers; the thesis holds it out, to be added **only if a case shows it is genuinely needed and distinct**. This case is that test.
+- **Instrument (S0):** an egress charge incurred **specifically in moving workload data away** from an incumbent provider, for switching and/or multi-cloud (E01), still applicable in 2025 outside the bounded free-switching programmes (E03).
+- **Derivation (S1):** a charge incurred specifically in **leaving/moving data away** from the current provider is *mechanically* a cost of switching ⇒ `switching_dependency`. No S2 judgment about magnitude is needed to identify the mechanism.
+- **Why this is the first trigger:** unlike CUDA (S3), where **no** specific switching instrument was in the admitted evidence, here the instrument is **named and source-native** (a per-provider egress charge tied to data exit). The held-out layer was **not** a theoretical addition — the data demanded it. This satisfies the thesis's condition for adding `switching_dependency` to the taxonomy.
+- **Locus is provider-specific, not market-wide:** each incumbent's egress pricing raises the cost of leaving **that** provider. Consistent with the S2 lesson (Monopolises does not require a single actor), the layer is a mechanism instantiated at each provider's exit boundary, not a claim that one firm controls the market.
+
+## 4. What is deliberately excluded (S2)
+
+- Whether the egress cost is **"large enough"** to create market power, decisive lock-in, or an anticompetitive effect — magnitude/effect judgments, all S2. The layer is identified from the **existence** of a switch-linked charge, not its sufficiency.
+- The CMA's **"competition is not working well,"** its three **Adverse Effects on Competition**, its "key commercial barrier" characterisation, and its **Strategic Market Status** recommendations are **competition conclusions** — S2, excluded. (We do **not** rely on "key commercial barrier" to establish the layer; the switch-linked charge itself suffices.)
+- Market shares and entrenchment findings — S2.
 
 ## 5. standard_interface_control — NOT established
 
-The CMA also cites **technical barriers** ("differentiation of features and interfaces"). But that is the CMA's **competition assessment** of a market-wide friction, not a **named standard/protocol/interface required to operate** held by one actor. No single named interface instrument is present. (Same bar S5 set: a named interface, not a general friction.)
+The CMA also cites "differentiation of features and interfaces." That is a market-wide competition **assessment**, not a **named standard/protocol/interface required to operate** held by one actor. No named interface instrument is present — same bar S5 set (a named interface, not a general friction). Not established.
 
-## 6. What is deliberately excluded (S2)
-
-- The CMA's headline conclusion — "**competition is not working well**" — and its three **Adverse Effects on Competition** (market concentration/barriers to entry; switching barriers; committed-spend discounts and software-licensing practices) are **competition conclusions**, the exact S2 the gate forbids for classification. Noted as context; not used to classify.
-- The CMA's recommendation to open **Strategic Market Status** investigations into AWS and Microsoft is a regulatory-process step, not a documented control instrument.
-- Market shares, entrenchment judgments, and "market power" findings — all S2.
-
-## 7. Per-claim ledger (S0 fact / S1 derivation / S2 excluded)
+## 6. Per-claim ledger (S0 fact / S1 derivation / S2 excluded)
 
 | Claim | S0 fact | S1 derivation | S2 (excluded) |
 |---|---|---|---|
-| Two providers ~30-40% each, shares diverging | CMA: "[30-40]% … Microsoft has grown … AWS' share has decreased" | contested, dynamic oligopoly ⇒ no single-actor control | "the market is monopolised" |
-| Multi-cloud common for large customers | CMA: "more likely … to use multiple clouds" | function not routed through one provider | — |
-| Egress fees are the switching instrument | CMA: "presence and magnitude of egress fees" | candidate `switching_dependency` | that this is decisive control |
-| Egress is being removed | EU Data Act (2024); provider programmes (CMA Appendix N); 2027 prohibition | candidate fails present-tense durability ⇒ probe not triggered | whether removal is sufficient |
-| No named required interface | only a market-wide "technical barriers" assessment | `standard_interface_control` not established | the AEC competition conclusion |
+| A charge is incurred to move data out for switching | CMA para 26: "egress fees required to transfer data … for the purposes of switching and/or multi-cloud" | a cost of leaving ⇒ `switching_dependency` | whether the cost is "large enough" to lock in |
+| The charge persisted in 2025 | CMA final decision dated 31 Jul 2025; Appendix N: free egress is full-exit-only, ongoing multi-cloud "Not eligible" | dated-2025 instrument, not removed | whether remediation is sufficient |
+| Switching friction coexists with multi-cloud | "less than 1% … switch … multi-cloud more prevalent … still uncommon" | plurality does not negate a switching cost | the AEC / market-power conclusion |
+| No named required interface | only a market-wide "technical barriers" assessment | `standard_interface_control` not established | the competition assessment |
 
-## 8. Claim boundary
+## 7. Claim boundary
 
-### Admissible record
-> For general-purpose (IaaS) cloud infrastructure (UK/EU, 2025), primary evidence (UK CMA final decision) shows a **concentrated but contested and dynamic** market — the two largest providers each at [30-40]% with shares diverging, and multi-cloud common among large customers — whose principal documented switching instrument (egress fees) is **being removed** under the EU Data Act (provider programmes from 2024; switching-fee prohibition from 2027). **No source-native single-actor control layer is classifiable without S2** → `no_evidenced_control_layer`.
+### Admissible record (dated, UK)
+> For UK large-scale (IaaS) cloud infrastructure in **2025**, primary evidence (UK CMA final decision, 31 July 2025) establishes a `switching_dependency` layer at the **provider-specific data-egress boundary**: an egress charge is incurred in moving workload data away from an incumbent provider for switching and/or multi-cloud; the providers' free-switching programmes cover **full exit only** (ongoing multi-cloud not covered, partial switching restricted), so the cost persisted in 2025. This triggers the previously held-out `switching_dependency` layer for the first time.
 
 ### Not admissible
-- ❌ "Cloud is monopolised" / "AWS or Microsoft controls cloud." — concentration and a regulator's competition concern are **not** a documented control layer (S2).
+- ❌ "Cloud is monopolised" / "AWS or Microsoft controls cloud." — market-level single-actor control is **not** the claim.
+- ❌ Using the egress cost to assert decisive lock-in, market power, or an anticompetitive effect — magnitude/effect is S2.
 - ❌ Using the CMA's "competition not working well" / AEC / SMS findings as classification evidence.
-- ❌ Treating egress fees as a present control layer while they are being regulated away.
-- ❌ Any undated claim — the switching landscape is changing (2024 removals; 2027 prohibition).
+- ❌ Importing the EU Data Act 2027 prohibition as governing the **UK 2025** case — it is regulatory-trajectory context (freshness), not a governing instrument.
+- ❌ Any undated claim — the switching landscape is changing (2024 bounded programmes; EU 2027 prohibition).
 
-## 9. Running gate picture (eight of eight — set complete)
+## 8. Running gate picture (eight of eight — set complete)
 
 - S8 → `legal_exclusivity`
 - S1 → `capacity_control` (single-actor locus)
@@ -89,10 +101,10 @@ The CMA also cites **technical barriers** ("differentiation of features and inte
 - S4 → `access_gatekeeping`
 - S5 → `access_gatekeeping`
 - S3 → `no_evidenced_control_layer`
-- S7 → `no_evidenced_control_layer`
+- S7 → `switching_dependency` (held-out probe **triggered**)
 
-The skeptical case did its job: faced with a concentrated market a regulator itself calls uncompetitive, the framework still returned **no evidenced control layer**, because the regulator's finding is a competition conclusion (S2), the market is contested/dynamic, and the one concrete switching instrument is being regulated away. Two of eight cases return the negative — the framework is not a monopoly-finding machine.
+The skeptical case did the deeper job: it did not merely "resist" a control finding — it **discriminated**. Where CUDA (S3) offered no source-native switching instrument and returned the negative, cloud (S7) offered a **named, source-native** one (per-provider data-egress on exit) and **triggered the held-out layer**. `switching_dependency` was therefore not a theoretical add-on; the evidence demanded it — exactly the thesis's condition for admitting it. **Four mechanisms are now evidenced** (`legal_exclusivity`, `capacity_control`, `access_gatekeeping`, `switching_dependency`); `standard_interface_control`, `qualification_control`, and `temporal_constraint` remain unproven; one case (S3) returned the honest negative.
 
-## 10. Next step
+## 9. Next step
 
-The fixed set is complete (8/8). **Do not** jump to a gate verdict from the layer count. Stop at S7 for review, then run a **full-set MON-G1-LI gate evaluation** against the pass condition and falsifier as a whole (reviewer reproducibility, genuine layer diversity, bounded S2, locus usefulness; and the four falsifier conditions), producing the gate closeout.
+The fixed set is complete (8/8). **Do not** close the gate from the layer count. After review of this revised S7, run a **full-set MON-G1-LI gate evaluation** against the pass condition and falsifier as a whole — reviewer reproducibility, genuine layer diversity, bounded S2, locus usefulness, and the four falsifier conditions — including the meta-finding that `switching_dependency` was evidenced and now warrants admission to the taxonomy. Then decide PASS/FAIL and what actually enters DEC-005.
