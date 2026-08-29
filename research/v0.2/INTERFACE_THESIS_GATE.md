@@ -2,7 +2,7 @@
 
 **Gate ID:** MON-G3-IT
 **Version:** 0.2
-**Status:** **Open — draft for review** (not frozen; revision 2 pending acceptance; Step 1 — gate specification only)
+**Status:** **DESIGN FROZEN — accepted 2026-08-29** (revision 2)
 **Opened:** 2026-08-29
 **Closed:** —
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, DEC-005) via adopted ontology `mon-g2-of-candidate-v0.2` (DEC-006)
@@ -11,7 +11,7 @@
 **Predecessor gate:** MON-G2-OF — Closed PASS (`ONTOLOGY_FIDELITY_GATE.md`, DEC-006)
 **Adopted ontology:** `research/v0.2/ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` (`schema_version`: `mon-g2-of-candidate-v0.2`)
 
-> This gate tests whether the **adopted Layered Monopolisation ontology** can be translated into an **interface thesis** that makes bounded control legible without semantic distortion. It is deliberately small and fail-fast. **Step 1 is this gate specification only.** No candidate interface thesis, mockups, HTML/CSS/JS, site changes, component system, or data architecture may proceed until this gate design is reviewed and frozen.
+> This gate tests whether the **adopted Layered Monopolisation ontology** can be translated into an **interface thesis** that makes bounded control legible without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate interface thesis** — is now authorized. Step 3 (semantic/readback evaluation) and Step 4 (closeout) remain blocked until Step 2 exists and is complete.
 
 ## Governing question
 
@@ -211,7 +211,7 @@ The gate FAILS if **any** of the following hold:
 
 ## Freeze rules
 
-1. This gate **design** freezes only upon review acceptance (`DESIGN FROZEN`). Until then it is draft for review.
+1. This gate **design is frozen** as of 2026-08-29 (revision 2). Amendments require a documented revision and re-review before Step 2 proceeds further or restarts.
 2. The eight MON-G1 cases are the only readback evaluation set. No ninth case. No re-classification. `ambiguous_layer` is structural conformance only.
 3. Candidate interface thesis (Step 2) must derive from DEC-005 + DEC-006 + adopted ontology — not from archived `INTERFACE_THESIS.md` as binding input — and must satisfy the Step 2 artifact requirements above.
 4. No production interface, component system, site change, or data architecture until this gate closes PASS (and even then, PASS authorizes only adoption of the interface thesis and opening a **data-architecture gate** — not implementation).
@@ -222,12 +222,12 @@ The gate FAILS if **any** of the following hold:
 
 | Step | Artifact | Status |
 |---|---|---|
-| 1 | This gate spec (`INTERFACE_THESIS_GATE.md`) | **Current — draft for review (revision 2)** |
-| 2 | Candidate interface thesis meeting **Step 2 artifact requirements** (optional illustrative wires only) | Blocked until Step 1 **DESIGN FROZEN** |
+| 1 | This gate spec (`INTERFACE_THESIS_GATE.md`) | **Frozen — accepted 2026-08-29 (revision 2)** |
+| 2 | Candidate interface thesis meeting **Step 2 artifact requirements** (optional illustrative wires only) | **Authorized — next step** |
 | 3 | Semantic/readback evaluation on S8…S7 + `ambiguous_layer` structural conformance (`GATE_MON-G3-IT_EVALUATION.md`) | Blocked until Step 2 exists and is complete |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
 
-**Do not skip steps.** A UI build before this gate freezes is out of process. A Step 2 document without the required interface grammar is incomplete.
+**Do not skip steps.** A UI build before Step 2 acceptance is out of process. A Step 2 document without the required interface grammar is incomplete.
 
 ## What a PASS authorizes — and only then
 
