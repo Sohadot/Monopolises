@@ -6,6 +6,35 @@ GitHub is the **source of truth**. Binding decisions live in [`DECISION_LOG.md`]
 
 ---
 
+## Quick Start (~10 min)
+
+**For:** external research readers — journalists, policy or competition analysts, or anyone curious about the project (e.g. a first visit from a link).
+
+**Goal:** understand **one complete record** — system, layer, mechanism, locus, evidence, and claim boundary — without prior context.
+
+**Start with S8** (U.S. Private Express Statutes). It is the clearest positive control: a named legal instrument, bounded locus, and explicit claim boundary. It does not represent all of Monopolises, but it is the least ambiguous entry point.
+
+| Step | Read | What you get |
+|---|---|---|
+| 1 | This page (above) | What Monopolises is — and what it is **not** (no legal monopoly finding) |
+| 2 | [`cases/MON-G1-S8.md`](research/v0.2/cases/MON-G1-S8.md) | The full case record: system, layer, mechanism, S0 evidence, claim boundary |
+| 3 | [`interface/representations/MON-G1-S8.md`](research/v0.2/interface/representations/MON-G1-S8.md) | How the record is presented under the adopted interface grammar |
+| 4 | [`SOURCE_REGISTER_v0.2.md`](research/v0.2/SOURCE_REGISTER_v0.2.md) — rows MON2-SRC-001…004 | Primary sources behind the evidence |
+| 5 | [`research/v0.2/README.md`](research/v0.2/README.md) | Full methodology — gates, ontology, evaluations (when you want the *how*) |
+
+**Self-check** — after ~10 minutes, you should be able to state correctly:
+
+- **System:** carriage of defined letters over U.S. post routes
+- **Layer:** `legal_exclusivity`
+- **Mechanism:** statutory restriction on compensated private carriage of letters over post routes
+- **Locus:** letters over post routes
+- **Evidence:** 18 U.S.C. § 1696, 39 U.S.C. § 601, 39 CFR Part 310 (S0)
+- **Not admissible:** e.g. "USPS monopolises delivery," monopoly over all mail, or extension to parcels/freight/electronic communication
+
+All eight cases: [`research/v0.2/cases/README.md`](research/v0.2/cases/README.md).
+
+---
+
 ## What is currently adopted? (v0.2)
 
 The active research line is **Layered Monopolisation v0.2**. Its logical specification chain is **complete**:
@@ -41,9 +70,11 @@ These lines are **not** the current adopted thesis. They explain why the project
 
 ## Where should I start reading?
 
-**Start here:** [`research/v0.2/README.md`](research/v0.2/README.md) — the v0.2 **Research Reading Map**.
+**New here?** Follow [Quick Start (~10 min)](#quick-start-10-min) above — one complete record (S8) first.
 
-Short path:
+**Full methodology:** [`research/v0.2/README.md`](research/v0.2/README.md) — the v0.2 Research Reading Map.
+
+Short path (internal / research order):
 
 1. [Thesis](research/v0.2/THESIS_CANDIDATE.md) — what Layered Monopolisation claims
 2. [Eight evidence cases](research/v0.2/cases/) — how the thesis was tested (MON-G1-LI)
