@@ -3,8 +3,8 @@
 **Version:** v0.2
 **Status:** Open register — accrues as MON-G1-LI cases are extracted
 **Gate:** MON-G1-LI (Layer Identifiability)
-**Cases covered so far:** MON-G1-S8, MON-G1-S1, MON-G1-S2, MON-G1-S6, MON-G1-S4, MON-G1-S5
-**Admitted sources:** 13
+**Cases covered so far:** MON-G1-S8, MON-G1-S1, MON-G1-S2, MON-G1-S6, MON-G1-S4, MON-G1-S5, MON-G1-S3
+**Admitted sources:** 14
 
 Sources are admitted because they support an actual v0.2 case classification, not because the publisher is generally reputable. A prestigious publisher does not upgrade a weak claim; source authority and claim fit are separate judgments.
 
@@ -29,6 +29,8 @@ Each row records which case the source serves, the exact claim it supports, and 
 | MON2-SRC-012 | MON-G1-S4 | Apple Inc. | Operator support documentation | *Installing apps through alternative app distribution* | https://support.apple.com/en-us/117767 | "**Only** users based in Brazil, Japan, or the European Union are able to install apps through alternative app distribution" (exhaustive — US excluded, so general-public native iOS apps reach US users only via the App Store, 2026); "All apps available through alternative app distribution are submitted to a Notarization process with Apple" (alt distribution is itself Apple-gated) | S0 | 2026-08-28 | Exhaustive boundary pins the US single-channel scope; the Notarization line bounds §3 (other jurisdictions may carry a different Apple-controlled admission mechanism, not none) |
 
 | MON2-SRC-013 | MON-G1-S5 | Visa Inc. | Operator rule document (network-native rules) | *Visa Core Rules and Visa Product and Service Rules*, effective 18 April 2026 — §1.1.1.6 (Restricted Use of Visa Systems and Services), §1.2.1/§2.2 (Licensing; BIN/Acquiring Identifier), Merchant-obligation and rule-reading provisions | https://usa.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf | Access to Visa systems limited to Visa-approved use (§1.1.1.6); direct participation requires a Visa BIN/Acquiring Identifier license; merchants are admitted to acceptance through a licensed acquiring relationship — supports `access_gatekeeping`. Mandatory rule compliance does not name a required standard/protocol/interface, so `standard_interface_control` is NOT established | S0 | 2026-08-28 | Network-native binding rules are the primary instrument (as with the platform rule in S4); classification rests on the rules, not on Visa's share or the DOJ monopolization suit (S2, excluded); scoped to the Visa network, US, 2026 |
+
+| MON2-SRC-014 | MON-G1-S3 | NVIDIA Corporation | Primary corporate filing (Form 10-K) | NVIDIA Form 10-K, FY2025 | https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm | "CUDA programming model that runs on all NVIDIA GPUs"; "over 5.9 million developers … using CUDA"; "The large and growing number of developers and installed base … strengthens our ecosystem and increases the value of our platform to our customers" | S0 | 2026-08-28 | Establishes a named, popular, proprietary platform (ecosystem value / installed base) — i.e. leadership/popularity, **not** a documented control instrument; supports the `no_evidenced_control_layer` result for MON-G1-S3 |
 
 ## Admission rules (v0.2)
 
