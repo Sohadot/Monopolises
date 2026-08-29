@@ -105,7 +105,7 @@ The result does **not** say every small-number market is a control layer. It cle
 ## 8. Why not the other outcomes
 
 - **Why not `no_evidenced_control_layer` (the earlier answer):** that answer depended entirely on the deleted single-source rule. Under the frozen definition, the three elements are met.
-- **Why not `ambiguous_layer` (the conservative fallback):** ambiguity would apply if "hard to bypass" needed S2 — i.e. if establishing no-alternative required judging viability/equivalence. Here it does not: the source *states* the U.S. lacks the capability and SMIC is at 14 nm. If a reviewer judges that "hard to bypass" still imports a viability judgment, the correct fallback is `ambiguous_layer`, **not** `no_evidenced`. This case is logged as `evidenced_control_layer`; the S1/S2 line for element 3 is the single point a reviewer should check.
+- **The conservative fallback is `no_evidenced_control_layer`, not `ambiguous_layer`:** if a reviewer judges that "hard to bypass" still imports an S2 viability judgment, then no control layer is establishable without S2, and — since no *competing* layer is on offer for the same evidence — the correct fallback is `no_evidenced_control_layer`. `ambiguous_layer` applies only when two reviewers could source-defensibly assign **two different layers** to the same evidence with no rule separating them, which is not the situation here. This case is logged as `evidenced_control_layer` on the reading that the source *states* the U.S. lacks the capability and SMIC is at 14 nm (S0), making "hard to bypass" an S1 derivation; the S1/S2 line for element 3 is the single point a reviewer should check.
 
 ## 9. Claim boundary
 
