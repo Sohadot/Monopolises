@@ -1,0 +1,147 @@
+{
+  "summary": {
+    "persistence_round_trip_pass_count": 8,
+    "total_cases": 8,
+    "denominator": 8,
+    "any_blocker": false,
+    "write_read_tautology_flags": [],
+    "ambiguous_layer_structural": "PASS",
+    "history_preservation_structural": "PASS",
+    "write_integrity_structural": "PASS",
+    "compare_mode": "full_content_after_semantic_canonicalization",
+    "gate_verdict_candidate": "PASS"
+  },
+  "cases": [
+    {
+      "case_id": "MON-G1-S8",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": []
+    },
+    {
+      "case_id": "MON-G1-S1",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": []
+    },
+    {
+      "case_id": "MON-G1-S2",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": []
+    },
+    {
+      "case_id": "MON-G1-S6",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": []
+    },
+    {
+      "case_id": "MON-G1-S4",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": []
+    },
+    {
+      "case_id": "MON-G1-S5",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": []
+    },
+    {
+      "case_id": "MON-G1-S3",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": []
+    },
+    {
+      "case_id": "MON-G1-S7",
+      "canonical_system_round_trip": "PASS",
+      "locked_gt_compare": "PASS",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": []
+    }
+  ],
+  "ambiguous_layer_structural": {
+    "verdict": "PASS",
+    "outside_8_of_8": true,
+    "failures": []
+  },
+  "history_preservation_structural": {
+    "verdict": "PASS",
+    "outside_8_of_8": true,
+    "failures": []
+  },
+  "write_integrity_structural": {
+    "verdict": "PASS",
+    "outside_8_of_8": true,
+    "probes": {
+      "W1": "PASS — rejected",
+      "W2": "PASS — rejected"
+    },
+    "failures": []
+  }
+}
