@@ -1,0 +1,25 @@
+=== SYSTEM READING UNIT ===
+SYSTEM_SCOPE: GPU compute for AI workloads via the NVIDIA CUDA accelerated-computing software ecosystem
+SYSTEM_DATE: {"label": "NVIDIA Form 10-K, FY2025"}
+OUTCOME: no_evidenced_control_layer
+
+=== NEGATIVE RESULT BODY ===
+ZERO_EVIDENCED_LAYERS: true
+EXAMINED: Whether primary evidence (NVIDIA Form 10-K, FY2025) establishes a source-native control layer — a named interface/ecosystem required to operate the frozen function, or a documented switching-cost barrier — as distinct from popularity, installed base, or ecosystem value.
+
+=== REFUSAL NOTE ===
+CANDIDATE_LABEL: standard_interface_control
+STATUS: not_established
+REASON: CUDA is a named proprietary interface, but admitted primary evidence does not establish that the frozen function (GPU compute for AI workloads) requires CUDA; control significance would rest on an undocumented lock/switching element (S2).
+
+=== REFUSAL NOTE ===
+CANDIDATE_LABEL: switching_dependency
+STATUS: probe_not_triggered
+REASON: NVIDIA documents ecosystem value (increases the value of our platform to our customers), not a documented switching cost or barrier. No source-native switching-cost instrument is present in the admitted evidence.
+
+BOUNDARY_ADMISSIBLE: For the NVIDIA CUDA accelerated-computing ecosystem (2025), primary evidence (NVIDIA's 10-K) establishes a named, proprietary, widely-adopted programming platform with 5.9M+ developers that NVIDIA states strengthens its ecosystem and increases platform value. It does not establish a source-native control layer: the admitted evidence does not show that the frozen function (GPU compute for AI workloads) requires CUDA, nor does it document a switching-cost barrier. No control layer is classifiable without S2 → no_evidenced_control_layer.
+BOUNDARY_EXCLUDED:
+- CUDA is a monopoly / control layer.
+- Switching off CUDA is prohibitively costly as a classification basis.
+- Any claim resting on NVIDIA's GPU market share or performance leadership.
+- Any undated claim.
