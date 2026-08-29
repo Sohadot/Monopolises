@@ -3,7 +3,7 @@
 **Gate:** MON-G2-OF (Ontology Fidelity)
 **Schema ID:** `mon-g2-of-candidate-v0.2`
 **Version:** 0.2-candidate
-**Status:** **Accepted for Step 3 — 2026-08-29** (candidate ontology version under test; `schema_version` unchanged until gate PASS)
+**Status:** **Accepted for Step 3 — 2026-08-29**; Step 3 evaluation **Accepted — 2026-08-29**; candidate ontology version under test until Step 4 closeout (`schema_version` unchanged)
 **Gate spec:** `../ONTOLOGY_FIDELITY_GATE.md` (DESIGN FROZEN — accepted 2026-08-29)
 **Machine-readable companion:** `candidate-schema.json` (JSON Schema draft 2020-12; validation aid only)
 **Opened:** 2026-08-29
@@ -413,7 +413,7 @@ The candidate schema **does not define** and **must not be extended** with:
 |---|---|---|
 | 1 | `ONTOLOGY_FIDELITY_GATE.md` | Frozen |
 | 2 | This document + `candidate-schema.json` | **Accepted — 2026-08-29** |
-| 3 | `GATE_MON-G2-OF_EVALUATION.md` + instances | **Complete — awaiting review** (2026-08-29) |
-| 4 | Gate closeout | Blocked until Step 3 complete |
+| 3 | `GATE_MON-G2-OF_EVALUATION.md` + instances | **Accepted — 2026-08-29** |
+| 4 | Gate closeout | **Authorized — next step** |
 
 **Schema amendment rule:** If Step 3 reveals that the schema needs change, stop evaluation, return to Step 2, review the schema amendment, then re-test. Do **not** silently amend the schema inside evaluation, and do **not** alter any MON-G1-S1–S8 case to fit the schema.

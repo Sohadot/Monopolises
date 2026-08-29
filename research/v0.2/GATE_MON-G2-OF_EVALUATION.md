@@ -4,7 +4,8 @@
 **Gate spec:** `ONTOLOGY_FIDELITY_GATE.md` (DESIGN FROZEN — accepted 2026-08-29)
 **Schema under test:** `ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` + `ontology/candidate-schema.json` (`schema_version`: `mon-g2-of-candidate-v0.2`)
 **Evaluation date:** 2026-08-29
-**Revision:** full-content compare (requested changes on PR #15)
+**Revision:** full-content compare — **Step 3 Accepted 2026-08-29**
+**Status:** Evaluation accepted; provisional Gate verdict PASS; gate closeout (Step 4) authorized but not enacted in this artifact.
 **Branch checkpoint base:** `bed909b` (candidate schema merge)
 **Method:** Encode → Validate → Generic extract → Normalize → **Full-content** field-by-field compare
 **Runner:** `ontology/tools/run_roundtrip.py` (`compare_mode: full_content`)
@@ -52,7 +53,7 @@
 | Structural round-trip (full content) | **8/8 PASS** |
 | Gate falsifiers triggered | **None** |
 | Blocker (return to Step 2) | **No** |
-| Gate closeout | **Not enacted** — awaiting review; Step 4 blocked |
+| Gate closeout | **Not enacted** — Step 4 authorized; separate closeout required |
 
 **Provisional evaluation verdict (not a closeout decision):** under full-content compare, candidate ontology `mon-g2-of-candidate-v0.2` survived lossless structural round-trip on the fixed eight-case set with no falsifier trigger.
 
@@ -138,6 +139,8 @@ If this strengthened evaluation is accepted:
 
 ---
 
-## 8. Stop point
+## 8. Disposition
 
-Step 3 revision complete: **comparator strengthened; instances untouched; 8/8 full-content PASS provisional.** Awaiting review before Step 4.
+**Step 3 — Accepted 2026-08-29.** Provisional Gate verdict: PASS. No return to Step 2.
+
+**Next:** Step 4 closeout only — record final gate verdict, adopt `mon-g2-of-candidate-v0.2` as the ontology conforming to DEC-005, and authorize opening the successor gate for the interface thesis. No interface implementation, data architecture, scores, entity pages, or monetization from Step 4 alone.
