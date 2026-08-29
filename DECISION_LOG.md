@@ -157,7 +157,7 @@ This PASS authorizes, **in order**, and only from this decision onward: a layer 
 
 ### Discipline for the successor build
 
-- Every published record carries `System × Layer × Control Mechanism × Evidence` with a **dated, jurisdiction-scoped** claim boundary.
+- Every published record carries `System × Layer × Control Mechanism × Evidence` with a **dated, scope-bounded** claim boundary, **including jurisdiction where jurisdiction is load-bearing**.
 - No market-share/dominance figure **alone**, and no antitrust/competition conclusion, may carry a classification (S2 stays excluded).
 - Dated findings are records of their date; later change does not erase them, and present-tense restatement requires current primary evidence.
 
