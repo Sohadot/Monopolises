@@ -2,19 +2,22 @@
 
 **Gate ID:** MON-G2-OF
 **Version:** 0.2
-**Status:** **DESIGN FROZEN — accepted 2026-08-29**
+**Status:** **Closed — PASS**
 **Opened:** 2026-08-29
-**Closed:** —
+**Closed:** 2026-08-29
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, ratified by DEC-005)
-**Evaluation:** `GATE_MON-G2-OF_EVALUATION.md` (Step 3 **Accepted — 2026-08-29**; provisional Gate verdict PASS; gate not closed)
-**Decision:** pending gate close (Step 4 authorized)
+**Evaluation:** `GATE_MON-G2-OF_EVALUATION.md` — **Accepted** (2026-08-29): 8/8 schema validation PASS; 8/8 full-content structural round-trip PASS; no falsifiers triggered
+**Decision:** `DECISION_LOG.md` DEC-006
 **Predecessor gate:** MON-G1-LI — Closed PASS (`LAYER_IDENTIFIABILITY_GATE.md`, `GATE_MON-G1-LI_EVALUATION.md`)
+**Adopted ontology version:** `mon-g2-of-candidate-v0.2` (tested version; `schema_version` unchanged)
 
-> This gate tests whether the four ratified control layers can be **represented as a stable ontology** without losing the evidence boundaries that made MON-G1-LI reproducible. The gate **design is frozen** as of 2026-08-29 (revision 4). **Step 2 — candidate ontology schema** is **Accepted** (2026-08-29). **Step 3 — round-trip evaluation** is **Accepted** (2026-08-29; provisional Gate verdict PASS). **Step 4 — gate closeout** is **Authorized — next step**. The gate remains open until Step 4 is recorded.
+> **Verdict.** Yes — the four ratified control layers can be represented as a stable ontology without losing the evidence boundaries that made MON-G1-LI reproducible. On the fixed eight-case set, encode → validate → generic extract → full-content compare produced **no loss, inflation, distortion, or tautology**, and **no MON-G2-OF falsifier triggered**. The tested schema version `mon-g2-of-candidate-v0.2` is adopted as the ontology conforming to DEC-005. This closeout does **not** reopen MON-G1-LI, alter the four-layer taxonomy, or amend PASS criteria, falsifiers, or the fixed test set.
 
 ## Governing question
 
 > Can the four ratified control layers be represented as a stable ontology **without losing the evidence boundaries** that made MON-G1-LI reproducible?
+
+**Answer (closed):** **Yes** — on the performance of the fixed eight-case set under full-content round-trip (`GATE_MON-G2-OF_EVALUATION.md`), with the honest limit that `ambiguous_layer` was structurally supported but not live-instanced in the fixed set.
 
 Note what the question is not: it is not "what is the best ontology design," not "how should we model markets," and not "can we add useful derived fields." It is a question about whether a **formal representation** can carry the same discriminations — outcome, layer, mechanism, locus, holder, claim boundary — that the gate cases already established, **without distortion, inflation, or silent inference**.
 
@@ -379,9 +382,9 @@ The gate FAILS if **any** of the following hold:
 1. This gate spec design is **frozen** as of 2026-08-29. Amendments require a documented revision and re-review.
 2. The eight MON-G1-LI cases are the **only** round-trip test set for MON-G2-OF v0.2. No case may be swapped, dropped, or added to rescue a weak schema.
 3. MON-G1-LI classifications are ground truth. Re-classification is out of scope.
-4. Candidate ontology schema (Step 2) may proceed on a branch from the merged checkpoint. Production adoption awaits gate closeout (Step 4).
-5. The round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) is the only closeout artifact. The gate closes on round-trip performance, not on aesthetic schema elegance.
-6. A PASS adopts the tested ontology version; it does not authorize skipping ahead in the DEC-005 build sequence.
+4. Candidate ontology schema (Step 2) proceeded from the frozen gate checkpoint; **production adoption is enacted by DEC-006** on the tested version `mon-g2-of-candidate-v0.2` only.
+5. The round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) is the only evaluation / closeout evidence artifact (no separate closeout document). The gate closed on round-trip performance, not on aesthetic schema elegance.
+6. This PASS adopts the tested ontology version and authorizes opening the interface-thesis successor gate only; it does not authorize skipping ahead to data architecture or implementation.
 
 ## Evaluation order (fixed for auditability)
 
@@ -400,21 +403,21 @@ Round-trip evaluation proceeds in the same order as MON-G1-LI extraction (not a 
 
 | Step | Artifact | Status |
 |---|---|---|
-| 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Frozen — accepted 2026-08-29 (revision 4)** |
-| 2 | Candidate ontology schema (`ontology/CANDIDATE_ONTOLOGY_SCHEMA.md`, `ontology/candidate-schema.json`) | **Accepted — 2026-08-29** |
-| 3 | Round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) + instances | **Accepted — 2026-08-29** |
-| 4 | Gate closeout decision | **Authorized — next step** |
+| 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Frozen design; gate Closed — PASS (2026-08-29)** |
+| 2 | Candidate ontology schema (`ontology/CANDIDATE_ONTOLOGY_SCHEMA.md`, `ontology/candidate-schema.json`) | **Accepted — 2026-08-29**; adopted as `mon-g2-of-candidate-v0.2` |
+| 3 | Round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) + instances | **Accepted — 2026-08-29** (8/8 full-content PASS; no falsifiers) |
+| 4 | Gate closeout decision | **Closed — PASS** (`DECISION_LOG.md` DEC-006) |
 
-**Do not skip steps.** Schema amendments discovered in Step 3 require return to Step 2 and re-review — never silent in-evaluation edits, and never rewriting MON-G1-S1–S8 to fit the schema.
+**Do not skip steps.** Schema amendments discovered in Step 3 require return to Step 2 and re-review — never silent in-evaluation edits, and never rewriting MON-G1-S1–S8 to fit the schema. After closeout, PASS criteria, falsifiers, and the fixed test set are not amended retroactively.
 
-## What a PASS authorizes — and only then
+## What this PASS authorized — and only that
 
-A PASS authorizes:
+This PASS (enacted by DEC-006) authorizes:
 
-- **Adoption of the tested ontology version** as the ontology conforming to DEC-005 (four active layers; primitive separation; evidence discipline as specified here).
+- **Adoption of the tested ontology version** `mon-g2-of-candidate-v0.2` as the ontology conforming to DEC-005 (four active layers; primitive separation; evidence discipline as specified here).
 - **Opening the successor gate** for the interface thesis (the next step in the DEC-005 build sequence).
 
-A PASS does **not** authorize:
+This PASS does **not** authorize:
 
 - Interface **implementation** or UI surfaces (the interface thesis has its own gate)
 - Data architecture or production surfaces (separate gate, after interface thesis)
@@ -423,9 +426,10 @@ A PASS does **not** authorize:
 - Admission of research candidate layers without a new gate
 - Monetization
 
-DEC-005 build order remains: **ontology → interface thesis → data architecture**. A PASS on MON-G2-OF completes the ontology step and opens the interface-thesis gate only. It does not skip to data architecture.
+DEC-005 build order remains: **ontology → interface thesis → data architecture**. MON-G2-OF completes the ontology step and opens the interface-thesis gate only. It does not skip to data architecture.
 
-A FAIL is recorded honestly. The schema is revised or abandoned. MON-G1-LI is not reopened.
+MON-G1-LI is not reopened. The four-layer active taxonomy is unchanged.
+
 
 ## Relationship to MON-G1-LI
 

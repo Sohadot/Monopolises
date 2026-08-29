@@ -3,12 +3,12 @@
 **Gate:** MON-G2-OF (Ontology Fidelity)
 **Schema ID:** `mon-g2-of-candidate-v0.2`
 **Version:** 0.2-candidate
-**Status:** **Accepted for Step 3 — 2026-08-29**; Step 3 evaluation **Accepted — 2026-08-29**; candidate ontology version under test until Step 4 closeout (`schema_version` unchanged)
-**Gate spec:** `../ONTOLOGY_FIDELITY_GATE.md` (DESIGN FROZEN — accepted 2026-08-29)
+**Status:** **ADOPTED — MON-G2-OF Closed PASS — 2026-08-29** (`schema_version` remains `mon-g2-of-candidate-v0.2`; no untested renumbering)
+**Gate spec:** `../ONTOLOGY_FIDELITY_GATE.md` (Closed — PASS; DEC-006)
 **Machine-readable companion:** `candidate-schema.json` (JSON Schema draft 2020-12; validation aid only)
 **Opened:** 2026-08-29
 
-> This document is the **canonical** definition of the candidate ontology schema. The JSON Schema companion expresses the same constraints for machine validation; it is not the ontology. **No MON-G1 instances, no round-trip evaluation, and no gate closeout** are included in Step 2.
+> This document is the **canonical** definition of the adopted layered-monopolisation ontology schema (`mon-g2-of-candidate-v0.2`). The JSON Schema companion expresses the same constraints for machine validation; it is not the ontology. **Primitives, fields, and constraints are frozen as tested.** Amendments require a new falsifiable gate.
 
 ## Purpose
 
@@ -411,9 +411,9 @@ The candidate schema **does not define** and **must not be extended** with:
 
 | Step | Artifact | Status |
 |---|---|---|
-| 1 | `ONTOLOGY_FIDELITY_GATE.md` | Frozen |
-| 2 | This document + `candidate-schema.json` | **Accepted — 2026-08-29** |
-| 3 | `GATE_MON-G2-OF_EVALUATION.md` + instances | **Accepted — 2026-08-29** |
-| 4 | Gate closeout | **Authorized — next step** |
+| 1 | `ONTOLOGY_FIDELITY_GATE.md` | Closed — PASS |
+| 2 | This document + `candidate-schema.json` | **ADOPTED — 2026-08-29** (`mon-g2-of-candidate-v0.2`) |
+| 3 | `GATE_MON-G2-OF_EVALUATION.md` + instances | Accepted — 2026-08-29 |
+| 4 | Gate closeout | **Closed — PASS** (DEC-006) |
 
-**Schema amendment rule:** If Step 3 reveals that the schema needs change, stop evaluation, return to Step 2, review the schema amendment, then re-test. Do **not** silently amend the schema inside evaluation, and do **not** alter any MON-G1-S1–S8 case to fit the schema.
+**Schema amendment rule:** After adoption, do **not** silently amend primitives, fields, or constraints. A schema change requires a new falsifiable gate. Do **not** alter any MON-G1-S1–S8 case to fit a schema.
