@@ -124,8 +124,9 @@ Each `EvidenceBinding` is a **Claim–evidence row** with fixed columns/fields i
 
 **Rules:**
 
-- Rows live **inside** their Layer panel (or inside Negative/Ambiguity body when citing examined material — never as a system-wide evidence bag).
-- No detached “Sources” appendix that lists facts without their claims.
+- **EvidenceBinding rows render only inside evidenced Layer panels.** Zero-record assessments (NegativeAssessment, AmbiguityAssessment) render **only** their ontology-owned assessment fields; **no structured claim–evidence rows are invented.**
+- Material that appears inside examined, claim-boundary prose, or other assessment text remains **assessment text as owned by the ontology** — it must not be restructured into EvidenceBinding presentation primitives the ontology does not attach to that assessment.
+- No detached system-wide “Sources” cabinet that lists facts without their claims on a Layer panel.
 - No aggregation of all bindings into a single paragraph that drops claim attachment.
 - S0 vs S1 must remain visually distinguishable as class marks, not as confidence meters.
 
