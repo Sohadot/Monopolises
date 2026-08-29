@@ -79,7 +79,9 @@ EvidenceBinding  * ──? 0..1 SourceLabel        (optional; never required)
 
 ## 2. Cardinalities and integrity constraints
 
-These mirror `mon-g2-of-candidate-v0.2` and are **enforced on write** (see §3).
+These mirror `mon-g2-of-candidate-v0.2` and are **enforced on write** (see §3). They are **architecture-critical highlights** for review — not a replacement validation schema.
+
+> **Canonical ontology precedence:** write validity is determined by the **complete** adopted `mon-g2-of-candidate-v0.2` ontology, including its primitive constraints and **INV-1…INV-11** (Locus/Holder separation, mechanism/evidence separation, jurisdiction load-bearing rules, RefusalReference semantics, `DateExpression` constraints, no-tautology fields, and all other schema invariants). The constraints summarized in the table below are architecture-critical highlights, **not** a replacement or weaker validation schema.
 
 | Constraint | Rule |
 |---|---|
@@ -109,20 +111,23 @@ A complete ontology instance conforming to `mon-g2-of-candidate-v0.2` (`schema_v
 | Ontology-**valid** SystemRecord | Persist **losslessly**: every semantic field stored under its owning logical record; no silent drop, merge, inference, auto-fill, promote, or rewrite |
 | Ontology-**invalid** semantic write | **Reject explicitly**; do not persist a coerced “fixed” record |
 
-Frozen gating probes (from gate; complete set):
+Frozen gating probes (from gate; **complete gating probe set** — not an exhaustive definition of ontology validity):
 
 - **W1:** `S0` binding with `derivation` present → reject  
 - **W2:** `outcome = no_evidenced_control_layer` with non-empty layers → reject  
 
+Any write that fails **any** adopted ontology constraint must be rejected, even if it is not one of W1/W2.
+
 ### 3.3 Write steps (logical)
 
-1. Validate outcome ↔ layer-count ↔ assessment placement ↔ S0/S1 ↔ ActiveLayerType ↔ refusal placement.
-2. If invalid → return explicit rejection; stop.
-3. Create a new **immutable** SystemSnapshot (new technical snapshot id).
-4. If an external lineage key is provided, attach the snapshot to that SystemLineage (create lineage if needed). Do **not** copy the lineage key into snapshot semantic fields.
-5. Persist child records by ownership (layers or zero-record assessment path).
-6. Optionally upsert EntityLabel / SourceLabel rows keyed by normalized string — **never** fail a write because a label table row is missing.
-7. Optionally update a lineage “latest” pointer to this snapshot — without mutating or deleting prior snapshots.
+1. **Validate the complete write against the adopted canonical ontology** (`mon-g2-of-candidate-v0.2` — all primitives, enums, cross-field rules, and INV-1…INV-11).
+2. **Enforce architecture ownership/history constraints** (per-layer ownership, no system-level evidence/boundary/jurisdiction, immutable snapshots, lineage outside SystemRecord, lossless-or-reject).
+3. If invalid → return explicit rejection; stop.
+4. Create a new **immutable** SystemSnapshot (new technical snapshot id).
+5. If an external lineage key is provided, attach the snapshot to that SystemLineage (create lineage if needed). Do **not** copy the lineage key into snapshot semantic fields.
+6. Persist child records by ownership (layers or zero-record assessment path).
+7. Optionally upsert EntityLabel / SourceLabel rows keyed by normalized string — **never** fail a write because a label table row is missing.
+8. Optionally update a lineage “latest” pointer to this snapshot — without mutating or deleting prior snapshots.
 
 ### 3.4 Immutability
 
@@ -142,12 +147,12 @@ Secondary indexes (holder, entity, source, layer_type, date, lineage) may locate
 
 ### 4.2 Generic reconstruction algorithm (case-independent)
 
-Given snapshot id (or equivalent technical handle):
+Given snapshot id (or equivalent technical handle), reconstruct a **`SystemRecord` object** using the **same ontology field names and wrappers** as `mon-g2-of-candidate-v0.2` — not flattened equivalents. See §4.4 for the canonical serialization mapping.
 
-1. Load SystemSnapshot → emit `scope`, `date`, `outcome`.
-2. Load all EvidencedLayer children → for each, emit layer_type, mechanism, locus, optional layer scope/date/jurisdiction, holders[], evidence_bindings[], claim_boundary.
-3. If zero layers: load the required NegativeAssessment or AmbiguityAssessment (per outcome) with nested refusals / competing interpretations / boundary.
-4. If positive outcome: load optional RefusalAssessment.
+1. Load SystemSnapshot → emit system-level `scope`, `date` (`DateExpression`), `outcome`.
+2. Load all EvidencedLayer children → for each, emit an `EvidencedLayerRecord` with ontology-shaped fields (§4.4).
+3. If zero layers: load the required `negative_assessment` or `ambiguity_assessment` (per outcome) with nested `refusal_references`, `competing_interpretations`, and `claim_boundary` using ontology names.
+4. If positive outcome: load optional `refusal_assessment` with `refusal_references`.
 5. Emit `evidenced_layer_records` as an **array always present** (`[]` when zero layers — never null/omitted).
 6. Emit **no** technical ids, lineage keys, EntityLabel surrogates, or SourceLabel surrogates in the SystemRecord.
 7. Resolve optional label FKs back to the **original semantic strings** stored on HolderOccurrence / EvidenceBinding (or denormalized copies kept on those rows at write time so read never requires the optional tables).
@@ -155,6 +160,62 @@ Given snapshot id (or equivalent technical handle):
 ### 4.3 Read completeness
 
 Reconstruction is **lossless** relative to the written SystemRecord. Comparator-side canonicalization of unordered collections (per gate) is outside the architecture; the architecture must not drop members or collapse multiplicity.
+
+### 4.4 Canonical serialization mapping
+
+The canonical read returns a **`system` object** conforming to adopted ontology `SystemRecord` shape. Field names and wrappers below are **normative** — not shorthand.
+
+#### SystemRecord (`system`)
+
+| Field | Canonical read shape |
+|---|---|
+| `scope` | string |
+| `date` | `DateExpression` object (`as_of` / `start` / `end` / `label` as written) |
+| `outcome` | `Outcome` enum |
+| `evidenced_layer_records` | array — **always present**; `[]` when zero layers |
+| `negative_assessment` | present iff outcome requires it; absent otherwise — **not** fabricated |
+| `ambiguity_assessment` | present iff outcome requires it; absent otherwise — **not** fabricated |
+| `refusal_assessment` | present iff positive outcome and refusals exist; absent otherwise — **not** fabricated |
+
+#### EvidencedLayerRecord (each element of `evidenced_layer_records`)
+
+| Field | Canonical read shape |
+|---|---|
+| `layer_type` | `ActiveLayerType` enum |
+| `control_mechanism` | `{ "statement": string }` |
+| `locus` | `{ "statement": string }` |
+| `holders` | `[{ "label": string }, …]` — `[]` when absent holders; never omitted when layer exists |
+| `evidence_bindings` | array of binding objects (below) |
+| `claim_boundary` | `{ "admissible": string, "excluded": string[] }` |
+| `scope` | string — present only if written on layer; absent if not written |
+| `date` | `DateExpression` — present only if written on layer; absent if not written |
+| `jurisdiction` | `{ "statement": string }` — present only if load-bearing on layer; absent if not written |
+
+#### EvidenceBinding (each element of `evidence_bindings`)
+
+| Field | Canonical read shape |
+|---|---|
+| `claim` | string |
+| `evidence_class` | `S0` \| `S1` |
+| `source` | string |
+| `fact` | string |
+| `derivation` | string — **present only** when `evidence_class = S1`; **absent** when `S0` |
+
+#### Assessments (ontology names preserved)
+
+- `negative_assessment`: `{ examined, refusal_references[], claim_boundary }`
+- `ambiguity_assessment`: `{ competing_interpretations[], separation_gap, refusal_references[]?, claim_boundary }`
+- `refusal_assessment`: `{ refusal_references[] }`
+- `refusal_references[]`: `{ candidate_label, status, reason }`
+- `competing_interpretations[]`: `{ interpretation, active_layer_type_considered? }`
+
+#### Optional-field and envelope rules
+
+| Rule | Requirement |
+|---|---|
+| **Optional-field fidelity** | Except `evidenced_layer_records` (always `[]` at zero), **optional-field presence/absence is preserved as written**. No null fabrication, no default empty objects, no inferring absent fields from storage convenience. |
+| **`schema_version`** | **Ontology-envelope metadata only** — not a `SystemRecord` field. Write validates against adopted `mon-g2-of-candidate-v0.2`; read returns **`system` only** inside the canonical read model. If history/evaluation needs to re-wrap a fixture envelope, do so deterministically with `schema_version: "mon-g2-of-candidate-v0.2"` outside the SystemRecord — never inside canonical root. |
+| **Write input vs read output** | Write accepts a full ontology instance (`schema_version` + `system`). Canonical read returns `SystemRecord` (`system` object) conforming to adopted ontology — the gate’s comparison target. |
 
 ---
 
@@ -271,7 +332,7 @@ Boxes are logical records. Lines are ownership. Optional `?` edges are non-autho
 | Ownership / relationship model | §1 |
 | Cardinalities and integrity constraints | §2 |
 | Canonical write contract (incl. lossless-or-reject) | §3 |
-| Canonical read model | §4 |
+| Canonical read model | §4 (incl. §4.4 serialization mapping) |
 | Identifier strategy / access paths | §5 |
 | Version / history policy | §6 |
 | Layer-specific evidence / boundaries / jurisdiction | §7 |
