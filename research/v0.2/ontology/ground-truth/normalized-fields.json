@@ -1,0 +1,165 @@
+{
+  "_comment": "Normalized ground truth from MON-G1-LI case records / gate closeout. Used ONLY after generic extract, keyed by audit case id for comparison selection — never as extract input.",
+  "cases": {
+    "MON-G1-S8": {
+      "outcome": "evidenced_control_layer",
+      "evidenced_layer_count": 1,
+      "layers": [
+        {
+          "layer_type": "legal_exclusivity",
+          "mechanism": "Statutory restriction on compensated private carriage of letters over post routes, with legislatively and regulatorily defined exceptions and suspensions.",
+          "locus": "Letters over post routes",
+          "holders": ["USPS"],
+          "jurisdiction_present": false,
+          "evidence_binding_count": 3,
+          "evidence_classes": ["S0", "S0", "S0"],
+          "claim_boundary_excluded_count": 3
+        }
+      ],
+      "refusal_references": [],
+      "negative_assessment_present": false,
+      "ambiguity_assessment_present": false
+    },
+    "MON-G1-S1": {
+      "outcome": "evidenced_control_layer",
+      "evidenced_layer_count": 1,
+      "layers": [
+        {
+          "layer_type": "capacity_control",
+          "mechanism": "Sole present productive capacity for the EUV lithography scanner — the exposure tool a primary U.S. government review states is essential for producing integrated circuits at ≤5 nm and is produced by only one supplier — with the EUV light source vertically integrated into the same producer.",
+          "locus": "EUV scanner production (manufacture of the complete EUV stepper/scanner system)",
+          "holders": ["ASML"],
+          "jurisdiction_present": false,
+          "evidence_binding_count": 4,
+          "evidence_classes": ["S0", "S0", "S0", "S1"],
+          "claim_boundary_excluded_count": 3
+        }
+      ],
+      "refusal_references": [],
+      "negative_assessment_present": false,
+      "ambiguity_assessment_present": false
+    },
+    "MON-G1-S2": {
+      "outcome": "evidenced_control_layer",
+      "evidenced_layer_count": 1,
+      "layers": [
+        {
+          "layer_type": "capacity_control",
+          "mechanism": "Leading-edge logic HVM at the 2021 frontier (5 nm) is a documented productive capacity through which that function must pass, concentrated in the only two source-evidenced HVM producers, and presently hard to bypass — the largest non-participant economy (the U.S.) lacks the capability and a major alternative foundry cited by the source (SMIC) was at 14 nm, i.e. not at the frontier.",
+          "locus": "2021 leading-edge (5 nm) HVM logic capacity set",
+          "holders": ["Samsung", "TSMC"],
+          "jurisdiction_present": false,
+          "evidence_binding_count": 5,
+          "evidence_classes": ["S0", "S0", "S0", "S0", "S1"],
+          "claim_boundary_excluded_count": 5
+        }
+      ],
+      "refusal_references": [],
+      "negative_assessment_present": false,
+      "ambiguity_assessment_present": false
+    },
+    "MON-G1-S6": {
+      "outcome": "multiple_evidenced_layers",
+      "evidenced_layer_count": 2,
+      "layers": [
+        {
+          "layer_type": "capacity_control",
+          "mechanism": "Concentrated all-stage NdFeB productive capacity that the function must pass through and was hard to bypass within the dated scope.",
+          "locus": "China-dominated NdFeB value-chain capacity",
+          "holders": [],
+          "jurisdiction_present": false,
+          "evidence_binding_count": 3,
+          "evidence_classes": ["S0", "S0", "S1"],
+          "claim_boundary_excluded_count": 2
+        },
+        {
+          "layer_type": "access_gatekeeping",
+          "mechanism": "Source-origin admission restriction governing delivery of covered-nation NdFeB magnets into the DoD procurement channel, subject to exceptions and a nonavailability determination.",
+          "locus": "U.S. defense procurement channel",
+          "holders": [],
+          "jurisdiction_present": true,
+          "evidence_binding_count": 3,
+          "evidence_classes": ["S0", "S0", "S1"],
+          "claim_boundary_excluded_count": 3
+        }
+      ],
+      "refusal_references": [
+        { "candidate_label": "qualification_control", "status": "not_established" }
+      ],
+      "negative_assessment_present": false,
+      "ambiguity_assessment_present": false
+    },
+    "MON-G1-S4": {
+      "outcome": "evidenced_control_layer",
+      "evidenced_layer_count": 1,
+      "layers": [
+        {
+          "layer_type": "access_gatekeeping",
+          "mechanism": "Apple's App Review Guidelines require general-public native iOS apps to reach users through the App Store, where Apple reviews and approves/rejects every app distributed through the App Store; and within the US scope no alternative marketplace or web-distribution route is available (only Brazil, Japan, and the EU can install apps through alternative distribution). Apple therefore controls admission to the sole sanctioned channel for general-public native iOS apps to US users.",
+          "locus": "General-public App Store channel for native iOS app distribution to US users",
+          "holders": ["Apple"],
+          "jurisdiction_present": true,
+          "evidence_binding_count": 4,
+          "evidence_classes": ["S0", "S0", "S0", "S1"],
+          "claim_boundary_excluded_count": 5
+        }
+      ],
+      "refusal_references": [],
+      "negative_assessment_present": false,
+      "ambiguity_assessment_present": false
+    },
+    "MON-G1-S5": {
+      "outcome": "evidenced_control_layer",
+      "evidenced_layer_count": 1,
+      "layers": [
+        {
+          "layer_type": "access_gatekeeping",
+          "mechanism": "Visa controls admission to the Visa network: access to Visa systems is limited to Visa-approved use; direct participation requires a Visa-issued BIN or Acquiring Identifier license; and merchants are admitted to acceptance through a licensed acquiring relationship that Visa holds responsible for their compliance.",
+          "locus": "Visa-network admission — direct participation and sponsored acceptance access",
+          "holders": ["Visa"],
+          "jurisdiction_present": true,
+          "evidence_binding_count": 4,
+          "evidence_classes": ["S0", "S0", "S0", "S1"],
+          "claim_boundary_excluded_count": 6
+        }
+      ],
+      "refusal_references": [
+        { "candidate_label": "standard_interface_control", "status": "not_established" }
+      ],
+      "negative_assessment_present": false,
+      "ambiguity_assessment_present": false
+    },
+    "MON-G1-S3": {
+      "outcome": "no_evidenced_control_layer",
+      "evidenced_layer_count": 0,
+      "layers": [],
+      "refusal_references": [
+        { "candidate_label": "standard_interface_control", "status": "not_established" },
+        { "candidate_label": "switching_dependency", "status": "probe_not_triggered" }
+      ],
+      "negative_assessment_present": true,
+      "ambiguity_assessment_present": false
+    },
+    "MON-G1-S7": {
+      "outcome": "evidenced_control_layer",
+      "evidenced_layer_count": 1,
+      "layers": [
+        {
+          "layer_type": "switching_dependency",
+          "mechanism": "Egress charges incurred in moving workload data away from an incumbent provider for switching and/or multi-cloud, remaining applicable in 2025 outside bounded, conditional free-switching programme exemptions.",
+          "locus": "Provider-specific data-egress / switching boundary",
+          "holders": ["AWS", "Civo", "Google", "Microsoft"],
+          "jurisdiction_present": true,
+          "evidence_binding_count": 4,
+          "evidence_classes": ["S0", "S0", "S0", "S1"],
+          "claim_boundary_excluded_count": 5
+        }
+      ],
+      "refusal_references": [
+        { "candidate_label": "standard_interface_control", "status": "not_established" }
+      ],
+      "negative_assessment_present": false,
+      "ambiguity_assessment_present": false
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "mon-g2-of-candidate-v0.2",
+  "system": {
+    "scope": "U.S. carriage of defined letters over post routes",
+    "date": { "label": "Private Express Statutes as presently in force (U.S.C. / CFR)" },
+    "outcome": "evidenced_control_layer",
+    "evidenced_layer_records": [
+      {
+        "layer_type": "legal_exclusivity",
+        "control_mechanism": {
+          "statement": "Statutory restriction on compensated private carriage of letters over post routes, with legislatively and regulatorily defined exceptions and suspensions."
+        },
+        "locus": {
+          "statement": "Letters over post routes"
+        },
+        "holders": [
+          { "label": "USPS" }
+        ],
+        "evidence_bindings": [
+          {
+            "claim": "Federal law restricts private express carriage of letters over post routes",
+            "evidence_class": "S0",
+            "source": "18 U.S.C. § 1696 — Private express for letters and packets",
+            "fact": "Federal law establishes penalties for establishing a private express for the conveyance of letters or packets over post routes, subject to enumerated statutory exceptions."
+          },
+          {
+            "claim": "Exclusivity is bounded and conditional for letters carried out of the mail",
+            "evidence_class": "S0",
+            "source": "39 U.S.C. § 601 — Letters carried out of the mail",
+            "fact": "Defines the conditions under which a letter may lawfully be carried out of the mail (including specified price/weight and other regulatory conditions and exceptions)."
+          },
+          {
+            "claim": "An implementing regulatory regime defines exceptions and suspensions",
+            "evidence_class": "S0",
+            "source": "39 CFR Part 310 — Enforcement of the Private Express Statutes",
+            "fact": "A dedicated federal regulatory part exists specifically to enforce and define the operation of the Private Express Statutes, including exceptions and suspensions."
+          }
+        ],
+        "claim_boundary": {
+          "admissible": "Within the U.S. letter-carriage system, federal law creates a legal-exclusivity layer by restricting private carriage of defined letters over post routes, subject to enumerated exceptions and suspensions.",
+          "excluded": [
+            "USPS monopolises delivery.",
+            "USPS has a legal monopoly over all mail.",
+            "Any claim extending the layer to parcels, freight, or electronic communication."
+          ]
+        }
+      }
+    ]
+  }
+}

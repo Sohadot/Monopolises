@@ -1,0 +1,99 @@
+{
+  "schema_version": "mon-g2-of-candidate-v0.2",
+  "system": {
+    "scope": "NdFeB permanent magnets and their upstream processing / defense-channel delivery",
+    "date": { "label": "BIS Section 232 (2022) and 10 U.S.C. § 4872 / DFARS regime (through 2026 scope)" },
+    "outcome": "multiple_evidenced_layers",
+    "evidenced_layer_records": [
+      {
+        "layer_type": "capacity_control",
+        "control_mechanism": {
+          "statement": "Concentrated all-stage NdFeB productive capacity that the function must pass through and was hard to bypass within the dated scope."
+        },
+        "locus": {
+          "statement": "China-dominated NdFeB value-chain capacity"
+        },
+        "holders": [],
+        "evidence_bindings": [
+          {
+            "claim": "Documented China-dominated all-stage NdFeB capacity",
+            "evidence_class": "S0",
+            "source": "U.S. Dept. of Commerce / BIS, Section 232 NdFeB Permanent Magnets report, June 2022, p. 7",
+            "fact": "The United States has no domestic production of rare earth oxides or metal. The United States is dependent on foreign sources, especially China, for NdFeB magnets. China dominates all steps of the global NdFeB magnet value chain. In 2020, China controlled about 92 percent of the global NdFeB magnet and magnet alloy market. China is the only country with operations in all steps of the NdFeB magnet value chain."
+          },
+          {
+            "claim": "U.S. dependence and limited domestic sintered production",
+            "evidence_class": "S0",
+            "source": "U.S. Dept. of Commerce / BIS, Section 232 NdFeB Permanent Magnets report, June 2022, p. 6",
+            "fact": "There is currently only one firm in the United States, Noveon (formerly Urban Mining Company), that produces sintered NdFeB magnets; in 2021, the United States imported 75 percent of its sintered NdFeB magnet supply from China."
+          },
+          {
+            "claim": "Hard to bypass — function cannot presently be routed off the China-dominated value chain",
+            "evidence_class": "S1",
+            "source": "Conjunction of BIS Section 232 S0 facts (pp. 6–7)",
+            "fact": "No domestic oxide/metal production + single small domestic magnet producer + China all-stage dominance.",
+            "derivation": "Mechanical conjunction of S0 no-domestic-upstream and all-stage-dominance facts under the frozen capacity_control three-element test."
+          }
+        ],
+        "claim_boundary": {
+          "admissible": "A capacity_control layer at a China-dominated NdFeB value-chain capacity locus — the 2022 BIS report states that China controlled ~92% of the 2020 magnet/alloy market and was the only country operating across all value-chain steps, and that the U.S. had no domestic rare-earth oxide/metal production and a single small sintered-magnet producer.",
+          "excluded": [
+            "China monopolises magnets.",
+            "Any sufficiency / replacement claim."
+          ]
+        },
+        "date": { "start": "2020-01-01", "end": "2022-06-30", "label": "2020–2022 BIS-dated finding" }
+      },
+      {
+        "layer_type": "access_gatekeeping",
+        "control_mechanism": {
+          "statement": "Source-origin admission restriction governing delivery of covered-nation NdFeB magnets into the DoD procurement channel, subject to exceptions and a nonavailability determination."
+        },
+        "locus": {
+          "statement": "U.S. defense procurement channel"
+        },
+        "holders": [],
+        "evidence_bindings": [
+          {
+            "claim": "Statute restricts DoD acquisition of covered sensitive materials including NdFeB by source-origin",
+            "evidence_class": "S0",
+            "source": "10 U.S.C. § 4872 — Acquisition of sensitive materials from non-allied foreign nations",
+            "fact": "Restricts DoD acquisition of covered sensitive materials — expressly including neodymium-iron-boron permanent magnets — by source-origin (covered nations)."
+          },
+          {
+            "claim": "Implementing DFARS prohibits acquisition of covered material from covered countries",
+            "evidence_class": "S0",
+            "source": "DFARS 252.225-7052 / 225.7018-2",
+            "fact": "do not acquire any covered material melted or produced in any covered country, or any end item, manufactured in any covered country, that contains a covered material. Covered countries include DPRK, PRC, Russian Federation, Iran."
+          },
+          {
+            "claim": "A documented rule governing admission to the procurement channel is access_gatekeeping",
+            "evidence_class": "S1",
+            "source": "Conjunction of 10 U.S.C. § 4872 and DFARS 252.225-7052 S0 facts",
+            "fact": "Origin-based restriction on delivery into the DoD procurement channel with exceptions/waiver (nonavailability determination).",
+            "derivation": "The instrument is a documented rule governing admission to a channel under the frozen access_gatekeeping definition; it is not a credential test."
+          }
+        ],
+        "claim_boundary": {
+          "admissible": "An access_gatekeeping layer in the U.S. defense procurement channel — 10 U.S.C. § 4872 / DFARS 252.225-7052 restrict, by source-origin, delivery of covered-nation (PRC/DPRK/Russia/Iran) NdFeB magnets to DoD, on a dated scope (melting-and-after through 2026; full chain from 2027) and subject to exceptions and a nonavailability determination.",
+          "excluded": [
+            "Covered-country magnets are banned from DoD without qualification.",
+            "Calling this layer qualification_control or legal_exclusivity.",
+            "Any sufficiency of compliant supply or waiver-frequency claim."
+          ]
+        },
+        "date": { "label": "through Dec 31, 2026 melting-and-after scope; expands Jan 1, 2027" },
+        "jurisdiction": { "statement": "United States — DoD procurement channel" }
+      }
+    ],
+    "refusal_assessment": {
+      "refusal_references": [
+        {
+          "candidate_label": "qualification_control",
+          "status": "not_established",
+          "reason": "The defense instrument is origin-based admission plus exceptions/waiver, not a certification/approval/qualification an alternative must hold and does not. No credential test is present in 10 U.S.C. § 4872 / DFARS."
+        }
+      ]
+    }
+  }
+}

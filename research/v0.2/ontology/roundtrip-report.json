@@ -1,0 +1,393 @@
+{
+  "summary": {
+    "schema_validation_pass_count": 8,
+    "structural_round_trip_pass_count": 8,
+    "total_cases": 8,
+    "any_blocker": false,
+    "extractor_tautology_flags": [],
+    "gate_verdict_candidate": "PASS"
+  },
+  "cases": [
+    {
+      "case_id": "MON-G1-S8",
+      "instance_path": "research\\v0.2\\ontology\\instances\\MON-G1-S8.json",
+      "schema_validation": "PASS",
+      "structural_round_trip": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "extracted": {
+        "outcome": "evidenced_control_layer",
+        "evidenced_layer_count": 1,
+        "scope_present": true,
+        "date_present": true,
+        "layers": [
+          {
+            "layer_type": "legal_exclusivity",
+            "mechanism": "Statutory restriction on compensated private carriage of letters over post routes, with legislatively and regulatorily defined exceptions and suspensions.",
+            "locus": "Letters over post routes",
+            "holders": [
+              "USPS"
+            ],
+            "jurisdiction_present": false,
+            "evidence_binding_count": 3,
+            "evidence_classes": [
+              "S0",
+              "S0",
+              "S0"
+            ],
+            "claim_boundary_excluded_count": 3,
+            "claim_boundary_admissible_present": true,
+            "scope_override_present": false,
+            "date_override_present": false
+          }
+        ],
+        "refusal_references": [],
+        "negative_assessment_present": false,
+        "ambiguity_assessment_present": false,
+        "refusal_assessment_present": false
+      }
+    },
+    {
+      "case_id": "MON-G1-S1",
+      "instance_path": "research\\v0.2\\ontology\\instances\\MON-G1-S1.json",
+      "schema_validation": "PASS",
+      "structural_round_trip": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "extracted": {
+        "outcome": "evidenced_control_layer",
+        "evidenced_layer_count": 1,
+        "scope_present": true,
+        "date_present": true,
+        "layers": [
+          {
+            "layer_type": "capacity_control",
+            "mechanism": "Sole present productive capacity for the EUV lithography scanner — the exposure tool a primary U.S. government review states is essential for producing integrated circuits at ≤5 nm and is produced by only one supplier — with the EUV light source vertically integrated into the same producer.",
+            "locus": "EUV scanner production (manufacture of the complete EUV stepper/scanner system)",
+            "holders": [
+              "ASML"
+            ],
+            "jurisdiction_present": false,
+            "evidence_binding_count": 4,
+            "evidence_classes": [
+              "S0",
+              "S0",
+              "S0",
+              "S1"
+            ],
+            "claim_boundary_excluded_count": 3,
+            "claim_boundary_admissible_present": true,
+            "scope_override_present": false,
+            "date_override_present": true
+          }
+        ],
+        "refusal_references": [],
+        "negative_assessment_present": false,
+        "ambiguity_assessment_present": false,
+        "refusal_assessment_present": false
+      }
+    },
+    {
+      "case_id": "MON-G1-S2",
+      "instance_path": "research\\v0.2\\ontology\\instances\\MON-G1-S2.json",
+      "schema_validation": "PASS",
+      "structural_round_trip": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "extracted": {
+        "outcome": "evidenced_control_layer",
+        "evidenced_layer_count": 1,
+        "scope_present": true,
+        "date_present": true,
+        "layers": [
+          {
+            "layer_type": "capacity_control",
+            "mechanism": "Leading-edge logic HVM at the 2021 frontier (5 nm) is a documented productive capacity through which that function must pass, concentrated in the only two source-evidenced HVM producers, and presently hard to bypass — the largest non-participant economy (the U.S.) lacks the capability and a major alternative foundry cited by the source (SMIC) was at 14 nm, i.e. not at the frontier.",
+            "locus": "2021 leading-edge (5 nm) HVM logic capacity set",
+            "holders": [
+              "Samsung",
+              "TSMC"
+            ],
+            "jurisdiction_present": false,
+            "evidence_binding_count": 5,
+            "evidence_classes": [
+              "S0",
+              "S0",
+              "S0",
+              "S0",
+              "S1"
+            ],
+            "claim_boundary_excluded_count": 5,
+            "claim_boundary_admissible_present": true,
+            "scope_override_present": false,
+            "date_override_present": true
+          }
+        ],
+        "refusal_references": [],
+        "negative_assessment_present": false,
+        "ambiguity_assessment_present": false,
+        "refusal_assessment_present": false
+      }
+    },
+    {
+      "case_id": "MON-G1-S6",
+      "instance_path": "research\\v0.2\\ontology\\instances\\MON-G1-S6.json",
+      "schema_validation": "PASS",
+      "structural_round_trip": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "extracted": {
+        "outcome": "multiple_evidenced_layers",
+        "evidenced_layer_count": 2,
+        "scope_present": true,
+        "date_present": true,
+        "layers": [
+          {
+            "layer_type": "capacity_control",
+            "mechanism": "Concentrated all-stage NdFeB productive capacity that the function must pass through and was hard to bypass within the dated scope.",
+            "locus": "China-dominated NdFeB value-chain capacity",
+            "holders": [],
+            "jurisdiction_present": false,
+            "evidence_binding_count": 3,
+            "evidence_classes": [
+              "S0",
+              "S0",
+              "S1"
+            ],
+            "claim_boundary_excluded_count": 2,
+            "claim_boundary_admissible_present": true,
+            "scope_override_present": false,
+            "date_override_present": true
+          },
+          {
+            "layer_type": "access_gatekeeping",
+            "mechanism": "Source-origin admission restriction governing delivery of covered-nation NdFeB magnets into the DoD procurement channel, subject to exceptions and a nonavailability determination.",
+            "locus": "U.S. defense procurement channel",
+            "holders": [],
+            "jurisdiction_present": true,
+            "evidence_binding_count": 3,
+            "evidence_classes": [
+              "S0",
+              "S0",
+              "S1"
+            ],
+            "claim_boundary_excluded_count": 3,
+            "claim_boundary_admissible_present": true,
+            "scope_override_present": false,
+            "date_override_present": true
+          }
+        ],
+        "refusal_references": [
+          {
+            "candidate_label": "qualification_control",
+            "status": "not_established"
+          }
+        ],
+        "negative_assessment_present": false,
+        "ambiguity_assessment_present": false,
+        "refusal_assessment_present": true
+      }
+    },
+    {
+      "case_id": "MON-G1-S4",
+      "instance_path": "research\\v0.2\\ontology\\instances\\MON-G1-S4.json",
+      "schema_validation": "PASS",
+      "structural_round_trip": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "extracted": {
+        "outcome": "evidenced_control_layer",
+        "evidenced_layer_count": 1,
+        "scope_present": true,
+        "date_present": true,
+        "layers": [
+          {
+            "layer_type": "access_gatekeeping",
+            "mechanism": "Apple's App Review Guidelines require general-public native iOS apps to reach users through the App Store, where Apple reviews and approves/rejects every app distributed through the App Store; and within the US scope no alternative marketplace or web-distribution route is available (only Brazil, Japan, and the EU can install apps through alternative distribution). Apple therefore controls admission to the sole sanctioned channel for general-public native iOS apps to US users.",
+            "locus": "General-public App Store channel for native iOS app distribution to US users",
+            "holders": [
+              "Apple"
+            ],
+            "jurisdiction_present": true,
+            "evidence_binding_count": 4,
+            "evidence_classes": [
+              "S0",
+              "S0",
+              "S0",
+              "S1"
+            ],
+            "claim_boundary_excluded_count": 5,
+            "claim_boundary_admissible_present": true,
+            "scope_override_present": false,
+            "date_override_present": true
+          }
+        ],
+        "refusal_references": [],
+        "negative_assessment_present": false,
+        "ambiguity_assessment_present": false,
+        "refusal_assessment_present": false
+      }
+    },
+    {
+      "case_id": "MON-G1-S5",
+      "instance_path": "research\\v0.2\\ontology\\instances\\MON-G1-S5.json",
+      "schema_validation": "PASS",
+      "structural_round_trip": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "extracted": {
+        "outcome": "evidenced_control_layer",
+        "evidenced_layer_count": 1,
+        "scope_present": true,
+        "date_present": true,
+        "layers": [
+          {
+            "layer_type": "access_gatekeeping",
+            "mechanism": "Visa controls admission to the Visa network: access to Visa systems is limited to Visa-approved use; direct participation requires a Visa-issued BIN or Acquiring Identifier license; and merchants are admitted to acceptance through a licensed acquiring relationship that Visa holds responsible for their compliance.",
+            "locus": "Visa-network admission — direct participation and sponsored acceptance access",
+            "holders": [
+              "Visa"
+            ],
+            "jurisdiction_present": true,
+            "evidence_binding_count": 4,
+            "evidence_classes": [
+              "S0",
+              "S0",
+              "S0",
+              "S1"
+            ],
+            "claim_boundary_excluded_count": 6,
+            "claim_boundary_admissible_present": true,
+            "scope_override_present": false,
+            "date_override_present": true
+          }
+        ],
+        "refusal_references": [
+          {
+            "candidate_label": "standard_interface_control",
+            "status": "not_established"
+          }
+        ],
+        "negative_assessment_present": false,
+        "ambiguity_assessment_present": false,
+        "refusal_assessment_present": true
+      }
+    },
+    {
+      "case_id": "MON-G1-S3",
+      "instance_path": "research\\v0.2\\ontology\\instances\\MON-G1-S3.json",
+      "schema_validation": "PASS",
+      "structural_round_trip": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "extracted": {
+        "outcome": "no_evidenced_control_layer",
+        "evidenced_layer_count": 0,
+        "scope_present": true,
+        "date_present": true,
+        "layers": [],
+        "refusal_references": [
+          {
+            "candidate_label": "standard_interface_control",
+            "status": "not_established"
+          },
+          {
+            "candidate_label": "switching_dependency",
+            "status": "probe_not_triggered"
+          }
+        ],
+        "negative_assessment_present": true,
+        "ambiguity_assessment_present": false,
+        "refusal_assessment_present": false
+      }
+    },
+    {
+      "case_id": "MON-G1-S7",
+      "instance_path": "research\\v0.2\\ontology\\instances\\MON-G1-S7.json",
+      "schema_validation": "PASS",
+      "structural_round_trip": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "extracted": {
+        "outcome": "evidenced_control_layer",
+        "evidenced_layer_count": 1,
+        "scope_present": true,
+        "date_present": true,
+        "layers": [
+          {
+            "layer_type": "switching_dependency",
+            "mechanism": "Egress charges incurred in moving workload data away from an incumbent provider for switching and/or multi-cloud, remaining applicable in 2025 outside bounded, conditional free-switching programme exemptions.",
+            "locus": "Provider-specific data-egress / switching boundary",
+            "holders": [
+              "AWS",
+              "Civo",
+              "Google",
+              "Microsoft"
+            ],
+            "jurisdiction_present": true,
+            "evidence_binding_count": 4,
+            "evidence_classes": [
+              "S0",
+              "S0",
+              "S0",
+              "S1"
+            ],
+            "claim_boundary_excluded_count": 5,
+            "claim_boundary_admissible_present": true,
+            "scope_override_present": false,
+            "date_override_present": true
+          }
+        ],
+        "refusal_references": [
+          {
+            "candidate_label": "standard_interface_control",
+            "status": "not_established"
+          }
+        ],
+        "negative_assessment_present": false,
+        "ambiguity_assessment_present": false,
+        "refusal_assessment_present": true
+      }
+    }
+  ]
+}
