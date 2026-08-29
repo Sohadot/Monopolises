@@ -51,14 +51,14 @@ result = evidenced_control_layer
 ### E03 — The free-switching programmes are bounded (claim-limiting, not layer-defeating)
 **Source:** CMA *Appendix N — Egress fees: free switching programmes*.
 **Verbatim:** "Free egress for switching is **only available (and subject to requirements and restrictions in some cases)** for the customers of AWS, Microsoft, Google and Civo. UK customers of other cloud providers do not benefit"; the programme matrix marks **"Ongoing multi-cloud use (non-switching)" as "Not eligible"** (AWS, Google); Google's programme "applies to customers who want to do a **complete exit** from Google Cloud"; AWS requires customers to "**delete all remaining data and workloads**."
-**Class:** S0. The remediation covers **full exit only** — not ongoing multi-cloud, and partial switching is restricted — so the egress switching cost **persists in 2025** for the uncovered cases.
+**Class:** S0. Free egress is universally eligible for a **full exit**, but **partial switching is provider-specific and restricted** (AWS: single-service switches may be eligible; Google: partial/single-service exit case-by-case; Microsoft: partial switching not covered), and **ongoing multi-cloud is not eligible** under the standard programmes — which also require prior application, defined windows, eligibility conditions, and turn substantially on provider discretion. Egress charges therefore **remained applicable in 2025 outside those bounded, conditional exemptions**.
 
 ## 3. Layer classification — switching_dependency (held-out probe → TRIGGERED)
 
 - **Held-out probe:** switching cost / difficulty of migration. `switching_dependency` is not one of the six frozen layers; the thesis holds it out, to be added **only if a case shows it is genuinely needed and distinct**. This case is that test.
 - **Instrument (S0):** an egress charge incurred **specifically in moving workload data away** from an incumbent provider, for switching and/or multi-cloud (E01), still applicable in 2025 outside the bounded free-switching programmes (E03).
 - **Derivation (S1):** a charge incurred specifically in **leaving/moving data away** from the current provider is *mechanically* a cost of switching ⇒ `switching_dependency`. No S2 judgment about magnitude is needed to identify the mechanism.
-- **Why this is the first trigger:** unlike CUDA (S3), where **no** specific switching instrument was in the admitted evidence, here the instrument is **named and source-native** (a per-provider egress charge tied to data exit). The held-out layer was **not** a theoretical addition — the data demanded it. This satisfies the thesis's condition for adding `switching_dependency` to the taxonomy.
+- **Why this is the first trigger:** unlike CUDA (S3), where **no** specific switching instrument was in the admitted evidence, here the instrument is **named and source-native** (a per-provider egress charge tied to data exit). The held-out layer was **not** a theoretical addition — the data demanded it. This **triggers the held-out probe and makes `switching_dependency` a candidate for admission at full-set closeout** — the admission decision itself belongs to the MON-G1-LI full-set evaluation / DEC-005, not to this single case.
 - **Locus is provider-specific, not market-wide:** each incumbent's egress pricing raises the cost of leaving **that** provider. Consistent with the S2 lesson (Monopolises does not require a single actor), the layer is a mechanism instantiated at each provider's exit boundary, not a claim that one firm controls the market.
 
 ## 4. What is deliberately excluded (S2)
@@ -83,7 +83,7 @@ The CMA also cites "differentiation of features and interfaces." That is a marke
 ## 7. Claim boundary
 
 ### Admissible record (dated, UK)
-> For UK large-scale (IaaS) cloud infrastructure in **2025**, primary evidence (UK CMA final decision, 31 July 2025) establishes a `switching_dependency` layer at the **provider-specific data-egress boundary**: an egress charge is incurred in moving workload data away from an incumbent provider for switching and/or multi-cloud; the providers' free-switching programmes cover **full exit only** (ongoing multi-cloud not covered, partial switching restricted), so the cost persisted in 2025. This triggers the previously held-out `switching_dependency` layer for the first time.
+> For UK large-scale (IaaS) cloud infrastructure in **2025**, primary evidence (UK CMA final decision, 31 July 2025) establishes a `switching_dependency` layer at the **provider-specific data-egress boundary**: an egress charge is incurred in moving workload data away from an incumbent provider for switching and/or multi-cloud; the providers' free-switching programmes universally cover **full exit**, but **partial switching is provider-specific and restricted** and **ongoing multi-cloud is not eligible** under the standard programmes, so egress charges **remained applicable in 2025 outside those bounded, conditional exemptions**. This triggers the previously held-out `switching_dependency` probe for the first time.
 
 ### Not admissible
 - ❌ "Cloud is monopolised" / "AWS or Microsoft controls cloud." — market-level single-actor control is **not** the claim.
@@ -103,7 +103,7 @@ The CMA also cites "differentiation of features and interfaces." That is a marke
 - S3 → `no_evidenced_control_layer`
 - S7 → `switching_dependency` (held-out probe **triggered**)
 
-The skeptical case did the deeper job: it did not merely "resist" a control finding — it **discriminated**. Where CUDA (S3) offered no source-native switching instrument and returned the negative, cloud (S7) offered a **named, source-native** one (per-provider data-egress on exit) and **triggered the held-out layer**. `switching_dependency` was therefore not a theoretical add-on; the evidence demanded it — exactly the thesis's condition for admitting it. **Four mechanisms are now evidenced** (`legal_exclusivity`, `capacity_control`, `access_gatekeeping`, `switching_dependency`); `standard_interface_control`, `qualification_control`, and `temporal_constraint` remain unproven; one case (S3) returned the honest negative.
+The skeptical case did the deeper job: it did not merely "resist" a control finding — it **discriminated**. Where CUDA (S3) offered no source-native switching instrument and returned the negative, cloud (S7) offered a **named, source-native** one (per-provider data-egress on exit) and **triggered the held-out layer**. `switching_dependency` was therefore not a theoretical add-on; the evidence demanded it — so it becomes a **candidate for admission**, to be decided at full-set closeout, not by this case. **Four mechanisms are now evidenced** (`legal_exclusivity`, `capacity_control`, `access_gatekeeping`, `switching_dependency`); `standard_interface_control`, `qualification_control`, and `temporal_constraint` remain unproven; one case (S3) returned the honest negative.
 
 ## 9. Next step
 
