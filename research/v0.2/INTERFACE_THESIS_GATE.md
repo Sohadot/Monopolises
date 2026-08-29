@@ -2,7 +2,7 @@
 
 **Gate ID:** MON-G3-IT
 **Version:** 0.2
-**Status:** **Open — draft for review** (not frozen; Step 1 — gate specification only)
+**Status:** **Open — draft for review** (not frozen; revision 2 pending acceptance; Step 1 — gate specification only)
 **Opened:** 2026-08-29
 **Closed:** —
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, DEC-005) via adopted ontology `mon-g2-of-candidate-v0.2` (DEC-006)
@@ -23,6 +23,8 @@ Note what the question is not: it is not "can we design a beautiful interface," 
 
 > **The interface must make the ontology easier to read, never easier to overclaim.**
 
+This principle guides design. It is **not** itself a PASS condition. Falsifiable salience is stated as PASS-9 (Boundary salience) below.
+
 ## Provenance — what this gate does *not* inherit as binding
 
 | Source | Role for MON-G3-IT |
@@ -42,8 +44,8 @@ This gate tests **semantic interface fidelity**: whether a candidate interface t
 | Semantic/readback evaluation on the eight frozen cases | Re-classification of MON-G1-LI cases |
 | Visual encoding rules that preserve categorical (non-ordinal) meaning | Scores, rankings, dominance meters, monopoly probability |
 | Negative and ambiguity outcomes as first-class readable states | Data architecture, APIs, persistence |
-| Structural representability of `ambiguous_layer` | Adding a ninth rescue case |
-| | Mockups used as substitute for a frozen thesis (mockups only after Step 1 freeze, and only as thesis illustrations in Step 2 if needed) |
+| Structural representability of `ambiguous_layer` (conformance check, not a ninth case) | Adding a ninth rescue case |
+| | Mockups used as substitute for a frozen thesis (illustrative wires optional in Step 2 only after DESIGN FROZEN) |
 
 ## Ontology binding (frozen input)
 
@@ -89,6 +91,23 @@ These rules freeze **meaning**, not pixels. A later candidate thesis must satisf
 | **Visual encoding** | Categorical / non-ordinal. Color, size, weight, or motion must **not** encode dominance, severity, score, or rank. |
 | **Evidence certainty** | The interface must not appear more precise or certain than the sources allow (no fake live meters, no over-resolved maps). |
 
+## Step 2 artifact requirements (frozen — testable interface grammar)
+
+A candidate interface thesis (Step 2) is **incomplete** — and Step 3 must not begin — unless it specifies **all** of the following as an explicit, testable **interface grammar**. Prose aspiration without these mappings fails Step 2 completeness. Pixels and components are **not** required. Illustrative wires are **optional**.
+
+| Required section | What it must define |
+|---|---|
+| **Primitive → presentation role** | For each ontology primitive (`SystemRecord`, `Outcome`, `EvidencedLayerRecord`, `ActiveLayerType`, `ControlMechanism`, `Locus`, `Holder`, `EvidenceBinding`, `ClaimBoundary`, assessments, metadata): the presentation role it occupies in the reading unit (what the reader is meant to take it as). |
+| **Reading order / information hierarchy** | The order in which a reader encounters system identity, outcome, bounds (date/scope/jurisdiction), layer record(s), mechanism, locus, holders, evidence–claim pairs, and claim boundary — sufficient to test hierarchy/falsifier claims. |
+| **Outcome-state rules (all four)** | Distinct presentation rules for `evidenced_control_layer`, `multiple_evidenced_layers`, `ambiguous_layer`, and `no_evidenced_control_layer`. |
+| **Multi-layer treatment** | How ≥2 evidenced layer records on one system remain independent (no merge, rank, or primary/secondary). |
+| **Evidence → claim relationship** | How each evidence binding stays attached to its claim in presentation (no detached evidence bag). |
+| **Claim-boundary placement** | Where admissible + excluded appear relative to the record (must be co-present with the reading unit, not footer-only). |
+| **Refusal / ambiguity treatment** | How refusal references and ambiguity assessments render as assessment context only — never as layer types or ghost layers. |
+| **Visual-encoding policy** | Explicit non-ordinal policy: which visual variables are allowed, and that color/size/weight/motion do **not** encode dominance, severity, score, or rank. |
+
+Without this grammar, ordinal-encoding and hierarchy falsifiers cannot be tested; a vague thesis that “feels readable” is out of process.
+
 ## Fixed evaluation set
 
 The **same eight MON-G1-LI systems**, in the same audit order. No swap, no drop, no ninth rescue case. Cases are **not** re-classified; they are readback fixtures for the interface thesis.
@@ -104,18 +123,49 @@ The **same eight MON-G1-LI systems**, in the same audit order. No swap, no drop,
 | 7 | S3 | Negative outcome must read as a full result, not empty UI |
 | 8 | S7 | Provider-specific egress boundary; must not lift to market-level cloud control |
 
-**`ambiguous_layer`:** no live instance in the fixed set. The gate requires **structural representability** in the interface thesis (zero layers + ambiguity assessment readable as first-class). No artificial ninth case.
+### `ambiguous_layer` — structural conformance only (not a ninth case)
+
+There is **no** live `ambiguous_layer` instance in the fixed eight. Step 3 therefore runs a **structural conformance check only** for this outcome — **outside** the 8/8 readback denominator:
+
+| Required | Forbidden |
+|---|---|
+| Interface grammar defines presentation for `outcome = ambiguous_layer` | Treating the check as a ninth evaluation case |
+| Representation shows `evidenced_layer_records = []` | Promoting competing interpretations to evidenced layer records |
+| Populated ambiguity assessment is readable as first-class | Ghost / provisional / faded “possible layer” chrome |
+| ≥2 competing interpretations visible as assessment content | Counting this check toward 8/8 readback PASS/FAIL |
+
+This check may PASS or FAIL independently; it does **not** enter the eight-case readback tally.
 
 ## Evaluation method (Step 3 — frozen now, executed later)
 
-After a candidate interface thesis exists (Step 2), evaluation is a **semantic readback**, not a beauty contest:
+After a complete Step 2 candidate interface thesis exists, evaluation has two parts:
 
-1. Present each of the eight records through the candidate interface thesis (static description / wire specification sufficient; production code not required).
-2. An independent reader (or scripted readback checklist) recovers normalized fields: outcome, layer type(s), mechanism, locus, holders, evidence–claim bindings, claim boundary, date/scope/jurisdiction, assessments/refusals.
-3. Compare recovered meaning to MON-G1 / ontology ground truth (full-content discipline inherited from MON-G2-OF).
-4. Score only PASS/FAIL per case on loss / inflation / semantic distortion / tautology of presentation — **no aesthetic score.**
+### A. Eight-case semantic readback (denominator = 8)
 
-**Reader-failure falsifier (decisive):**
+1. Present each of the eight records through the candidate interface thesis (static description / optional illustrative wire sufficient; production code not required).
+2. A reader or scripted extractor recovers normalized fields from **that representation alone**.
+3. After readback, map case identity → ground truth for comparison only.
+4. Case verdict = PASS/FAIL on loss / inflation / semantic distortion / tautology — **no aesthetic score.**
+
+### Blind readback protocol (anti-tautology — mandatory)
+
+Inherited discipline from MON-G2-OF, applied to interface readback:
+
+| Rule | Requirement |
+|---|---|
+| **No case ID at readback** | The reader/extractor must not see `MON-G1-S1`…`S8` or equivalent case identity while recovering fields. |
+| **No ground truth at readback** | Must not see MON-G1 original case files, locked ground-truth JSON, or `expected_outcome` / `expected_layer` / equivalent stored answers. |
+| **Representation only** | Input to readback is solely the presentation produced by applying the candidate interface thesis to the record. |
+| **Uniform extraction rules** | The same display/extraction rules apply to all eight cases; **no branching on case identity** (`S1`…`S8`). |
+| **Case identity after readback only** | Used only to select ground truth for comparison — never to produce the extracted fields. |
+
+If evaluation is scripted, the same anti-tautology controls apply (static scan / no case-keyed recovery paths), making **Falsifier 15** enforceable rather than aspirational.
+
+### B. `ambiguous_layer` structural conformance (outside 8/8)
+
+Verify the Step 2 grammar + a non-case illustration or schema-level presentation rule for ambiguity against the structural table above. Not counted in the eight-case denominator.
+
+**Reader-failure falsifier (decisive for evidenced cases):**
 
 > **If a reader can correctly name the company but cannot correctly state the bounded locus and mechanism, the interface thesis has failed.**
 
@@ -129,11 +179,12 @@ The gate PASSES only if **all** hold:
 2. **Primary-unit discipline.** `SystemRecord` remains the primary reading unit; company/entity is never the primary object.
 3. **Primitive separation in presentation.** Mechanism ≠ layer label; Locus ≠ Holder; Evidence stays claim-bound; Claim Boundary is co-present with the record.
 4. **Multiple-layer independence.** S6’s two layers remain separately legible without merge or rank.
-5. **Negative / ambiguity semantics.** `no_evidenced_control_layer` and (structurally) `ambiguous_layer` are complete readable states — not blanks, errors, or provisional layers.
-6. **Refusal hygiene.** Refused/research candidates appear only as assessment context — never as visual layer types.
-7. **Non-ordinal encoding.** No score, intensity, rank, dominance, or monopoly-probability encoding — explicit or via color/size/motion.
-8. **No overclaim affordance.** Date/scope/jurisdiction and claim boundaries prevent treating a bounded record as a general monopoly claim.
-9. **Governing principle.** The thesis demonstrably makes underclaim/boundary easier to see than overclaim.
+5. **Negative semantics.** `no_evidenced_control_layer` is a complete readable state — not blank, error, or “data unavailable.”
+6. **Ambiguity structural conformance.** The structural check for `ambiguous_layer` PASSes (outside 8/8): empty layer array + ambiguity assessment + ≥2 competing interpretations + no visual promotion to layer records.
+7. **Refusal hygiene.** Refused/research candidates appear only as assessment context — never as visual layer types.
+8. **Non-ordinal encoding.** No score, intensity, rank, dominance, or monopoly-probability encoding — explicit or via color/size/motion.
+9. **Boundary salience.** A reader must recover the bounded scope/date/jurisdiction and the admissible-vs-excluded claim boundary from the **same reading unit**, before or alongside any holder/entity interpretation; no surface may present an unbounded holder/company headline as the record’s primary takeaway.
+10. **Blind protocol.** Step 3 readback obeyed the anti-tautology protocol; no case-id branching or stored-answer escape hatch.
 
 ## Falsifier
 
@@ -151,15 +202,18 @@ The gate FAILS if **any** of the following hold:
 10. **Unsupported spatial rhetoric.** Graph, map, network, or “connection” visuals that the ontology/evidence do not support.
 11. **Hierarchy implies wider claim.** Visual hierarchy invites a claim broader than the admissible record (e.g. S7 → “cloud is monopolised”; S8 → “USPS monopolises delivery”; S4 → global iOS monopoly).
 12. **Reader-failure test.** A reader can name the company but cannot correctly state bounded locus and mechanism.
-13. **History changed to fit UI.** Any MON-G1 classification is altered softed, or relabeled to make the interface work.
+13. **History changed to fit UI.** Any MON-G1 classification is altered, softened, or relabeled to make the interface work.
 14. **Case-specific UI tailoring.** Layout or component exceptions keyed to case identity (`S1`…`S8`) rather than general ontology states.
-15. **Tautological readback.** Evaluation “succeeds” only via stored expected labels, case-id branching, or free-text escape hatches that bypass structural readback.
+15. **Tautological readback.** Evaluation “succeeds” only via stored expected labels, case-id branching, ground-truth leakage into the readback input, or free-text escape hatches that bypass structural readback. **If extraction/readback must know which case it is handling to succeed → FAIL.**
+16. **Incomplete Step 2 grammar.** Candidate interface thesis lacks any required Step 2 section (primitive mapping, reading order, four outcome rules, multi-layer treatment, evidence→claim, claim-boundary placement, refusal/ambiguity treatment, or visual-encoding policy).
+17. **Boundary salience failure.** Scope/date/jurisdiction or admissible-vs-excluded boundary cannot be recovered from the same reading unit before/alongside holder interpretation; or an unbounded company/holder headline is the primary takeaway.
+18. **Ambiguity conformance failure.** Structural check for `ambiguous_layer` fails (missing empty array semantics, missing assessment, fewer than 2 competing interpretations, or visual promotion to layer records).
 
 ## Freeze rules
 
 1. This gate **design** freezes only upon review acceptance (`DESIGN FROZEN`). Until then it is draft for review.
-2. The eight MON-G1 cases are the only evaluation set. No ninth case. No re-classification.
-3. Candidate interface thesis (Step 2) must derive from DEC-005 + DEC-006 + adopted ontology — not from archived `INTERFACE_THESIS.md` as binding input.
+2. The eight MON-G1 cases are the only readback evaluation set. No ninth case. No re-classification. `ambiguous_layer` is structural conformance only.
+3. Candidate interface thesis (Step 2) must derive from DEC-005 + DEC-006 + adopted ontology — not from archived `INTERFACE_THESIS.md` as binding input — and must satisfy the Step 2 artifact requirements above.
 4. No production interface, component system, site change, or data architecture until this gate closes PASS (and even then, PASS authorizes only adoption of the interface thesis and opening a **data-architecture gate** — not implementation).
 5. Evaluation (`GATE_MON-G3-IT_EVALUATION.md`) is the sole closeout evidence artifact for this gate. No separate beauty-score report.
 6. A FAIL returns to revise the interface thesis (or abandon it). It does not reopen MON-G2-OF or MON-G1-LI.
@@ -168,12 +222,12 @@ The gate FAILS if **any** of the following hold:
 
 | Step | Artifact | Status |
 |---|---|---|
-| 1 | This gate spec (`INTERFACE_THESIS_GATE.md`) | **Current — draft for review** |
-| 2 | Candidate interface thesis (document mapping ontology → readable surfaces; optional illustrative wires only) | Blocked until Step 1 **DESIGN FROZEN** |
-| 3 | Semantic/readback evaluation on S8…S7 (`GATE_MON-G3-IT_EVALUATION.md`) | Blocked until Step 2 exists |
+| 1 | This gate spec (`INTERFACE_THESIS_GATE.md`) | **Current — draft for review (revision 2)** |
+| 2 | Candidate interface thesis meeting **Step 2 artifact requirements** (optional illustrative wires only) | Blocked until Step 1 **DESIGN FROZEN** |
+| 3 | Semantic/readback evaluation on S8…S7 + `ambiguous_layer` structural conformance (`GATE_MON-G3-IT_EVALUATION.md`) | Blocked until Step 2 exists and is complete |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
 
-**Do not skip steps.** A UI build before this gate freezes is out of process.
+**Do not skip steps.** A UI build before this gate freezes is out of process. A Step 2 document without the required interface grammar is incomplete.
 
 ## What a PASS authorizes — and only then
 
