@@ -1,0 +1,315 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://monopolises.local/schemas/mon-g2-of-candidate-v0.2.json",
+  "title": "Monopolises MON-G2-OF Candidate Ontology Instance",
+  "description": "Machine-readable validation companion to CANDIDATE_ONTOLOGY_SCHEMA.md. Canonical meaning and constraints live in that document.",
+  "type": "object",
+  "required": ["schema_version", "system"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "mon-g2-of-candidate-v0.2"
+    },
+    "system": {
+      "$ref": "#/$defs/SystemRecord"
+    }
+  },
+  "$defs": {
+    "Outcome": {
+      "type": "string",
+      "enum": [
+        "evidenced_control_layer",
+        "multiple_evidenced_layers",
+        "ambiguous_layer",
+        "no_evidenced_control_layer"
+      ]
+    },
+    "ActiveLayerType": {
+      "type": "string",
+      "enum": [
+        "legal_exclusivity",
+        "capacity_control",
+        "access_gatekeeping",
+        "switching_dependency"
+      ]
+    },
+    "EvidenceClass": {
+      "type": "string",
+      "enum": ["S0", "S1"]
+    },
+    "RefusalStatus": {
+      "type": "string",
+      "enum": ["refused", "not_established", "probe_not_triggered"]
+    },
+    "DateExpression": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "as_of": { "type": "string", "format": "date" },
+        "start": { "type": "string", "format": "date" },
+        "end": { "type": "string", "format": "date" },
+        "label": { "type": "string", "minLength": 1 }
+      },
+      "anyOf": [
+        { "required": ["as_of"] },
+        { "required": ["start"] },
+        { "required": ["label"] }
+      ]
+    },
+    "JurisdictionExpression": {
+      "type": "object",
+      "required": ["statement"],
+      "additionalProperties": false,
+      "properties": {
+        "statement": { "type": "string", "minLength": 1 }
+      }
+    },
+    "ClaimBoundary": {
+      "type": "object",
+      "required": ["admissible", "excluded"],
+      "additionalProperties": false,
+      "properties": {
+        "admissible": { "type": "string", "minLength": 1 },
+        "excluded": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "ControlMechanism": {
+      "type": "object",
+      "required": ["statement"],
+      "additionalProperties": false,
+      "properties": {
+        "statement": { "type": "string", "minLength": 1 }
+      }
+    },
+    "Locus": {
+      "type": "object",
+      "required": ["statement"],
+      "additionalProperties": false,
+      "properties": {
+        "statement": { "type": "string", "minLength": 1 }
+      }
+    },
+    "Holder": {
+      "type": "object",
+      "required": ["label"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "minLength": 1 }
+      }
+    },
+    "EvidenceBinding": {
+      "type": "object",
+      "required": ["claim", "evidence_class", "source", "fact"],
+      "additionalProperties": false,
+      "properties": {
+        "claim": { "type": "string", "minLength": 1 },
+        "evidence_class": { "$ref": "#/$defs/EvidenceClass" },
+        "source": { "type": "string", "minLength": 1 },
+        "fact": { "type": "string", "minLength": 1 },
+        "derivation": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "evidence_class": { "const": "S1" } },
+            "required": ["evidence_class"]
+          },
+          "then": { "required": ["derivation"] }
+        },
+        {
+          "if": {
+            "properties": { "evidence_class": { "const": "S0" } },
+            "required": ["evidence_class"]
+          },
+          "then": {
+            "not": { "required": ["derivation"] }
+          }
+        }
+      ]
+    },
+    "RefusalReference": {
+      "type": "object",
+      "required": ["candidate_label", "status", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "candidate_label": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/RefusalStatus" },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "CompetingInterpretation": {
+      "type": "object",
+      "required": ["interpretation"],
+      "additionalProperties": false,
+      "properties": {
+        "interpretation": { "type": "string", "minLength": 1 },
+        "active_layer_type_considered": { "$ref": "#/$defs/ActiveLayerType" }
+      }
+    },
+    "RefusalAssessment": {
+      "type": "object",
+      "required": ["refusal_references"],
+      "additionalProperties": false,
+      "properties": {
+        "refusal_references": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/RefusalReference" }
+        }
+      }
+    },
+    "NegativeAssessment": {
+      "type": "object",
+      "required": ["examined", "claim_boundary"],
+      "additionalProperties": false,
+      "properties": {
+        "examined": { "type": "string", "minLength": 1 },
+        "refusal_references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RefusalReference" }
+        },
+        "claim_boundary": { "$ref": "#/$defs/ClaimBoundary" }
+      }
+    },
+    "AmbiguityAssessment": {
+      "type": "object",
+      "required": ["competing_interpretations", "separation_gap", "claim_boundary"],
+      "additionalProperties": false,
+      "properties": {
+        "competing_interpretations": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/CompetingInterpretation" }
+        },
+        "separation_gap": { "type": "string", "minLength": 1 },
+        "claim_boundary": { "$ref": "#/$defs/ClaimBoundary" },
+        "refusal_references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RefusalReference" }
+        }
+      }
+    },
+    "EvidencedLayerRecord": {
+      "type": "object",
+      "required": [
+        "layer_type",
+        "control_mechanism",
+        "locus",
+        "evidence_bindings",
+        "claim_boundary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "layer_type": { "$ref": "#/$defs/ActiveLayerType" },
+        "control_mechanism": { "$ref": "#/$defs/ControlMechanism" },
+        "locus": { "$ref": "#/$defs/Locus" },
+        "holders": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Holder" }
+        },
+        "evidence_bindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/EvidenceBinding" }
+        },
+        "claim_boundary": { "$ref": "#/$defs/ClaimBoundary" },
+        "scope": { "type": "string", "minLength": 1 },
+        "date": { "$ref": "#/$defs/DateExpression" },
+        "jurisdiction": { "$ref": "#/$defs/JurisdictionExpression" }
+      }
+    },
+    "SystemRecord": {
+      "type": "object",
+      "required": ["scope", "date", "outcome", "evidenced_layer_records"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "type": "string", "minLength": 1 },
+        "date": { "$ref": "#/$defs/DateExpression" },
+        "outcome": { "$ref": "#/$defs/Outcome" },
+        "evidenced_layer_records": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/EvidencedLayerRecord" }
+        },
+        "ambiguity_assessment": { "$ref": "#/$defs/AmbiguityAssessment" },
+        "negative_assessment": { "$ref": "#/$defs/NegativeAssessment" },
+        "refusal_assessment": { "$ref": "#/$defs/RefusalAssessment" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "outcome": { "const": "evidenced_control_layer" } },
+            "required": ["outcome"]
+          },
+          "then": {
+            "properties": {
+              "evidenced_layer_records": { "minItems": 1, "maxItems": 1 }
+            },
+            "not": {
+              "anyOf": [
+                { "required": ["ambiguity_assessment"] },
+                { "required": ["negative_assessment"] }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "outcome": { "const": "multiple_evidenced_layers" } },
+            "required": ["outcome"]
+          },
+          "then": {
+            "properties": {
+              "evidenced_layer_records": { "minItems": 2 }
+            },
+            "not": {
+              "anyOf": [
+                { "required": ["ambiguity_assessment"] },
+                { "required": ["negative_assessment"] }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "outcome": { "const": "ambiguous_layer" } },
+            "required": ["outcome"]
+          },
+          "then": {
+            "properties": {
+              "evidenced_layer_records": { "maxItems": 0 }
+            },
+            "required": ["ambiguity_assessment"],
+            "not": {
+              "anyOf": [
+                { "required": ["negative_assessment"] },
+                { "required": ["refusal_assessment"] }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "outcome": { "const": "no_evidenced_control_layer" } },
+            "required": ["outcome"]
+          },
+          "then": {
+            "properties": {
+              "evidenced_layer_records": { "maxItems": 0 }
+            },
+            "required": ["negative_assessment"],
+            "not": {
+              "anyOf": [
+                { "required": ["ambiguity_assessment"] },
+                { "required": ["refusal_assessment"] }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
