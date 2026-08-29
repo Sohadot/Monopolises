@@ -119,6 +119,15 @@
             "required": ["evidence_class"]
           },
           "then": { "required": ["derivation"] }
+        },
+        {
+          "if": {
+            "properties": { "evidence_class": { "const": "S0" } },
+            "required": ["evidence_class"]
+          },
+          "then": {
+            "not": { "required": ["derivation"] }
+          }
         }
       ]
     },
@@ -139,6 +148,18 @@
       "properties": {
         "interpretation": { "type": "string", "minLength": 1 },
         "active_layer_type_considered": { "$ref": "#/$defs/ActiveLayerType" }
+      }
+    },
+    "RefusalAssessment": {
+      "type": "object",
+      "required": ["refusal_references"],
+      "additionalProperties": false,
+      "properties": {
+        "refusal_references": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/RefusalReference" }
+        }
       }
     },
     "NegativeAssessment": {
@@ -165,7 +186,11 @@
           "items": { "$ref": "#/$defs/CompetingInterpretation" }
         },
         "separation_gap": { "type": "string", "minLength": 1 },
-        "claim_boundary": { "$ref": "#/$defs/ClaimBoundary" }
+        "claim_boundary": { "$ref": "#/$defs/ClaimBoundary" },
+        "refusal_references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RefusalReference" }
+        }
       }
     },
     "EvidencedLayerRecord": {
@@ -210,7 +235,8 @@
           "items": { "$ref": "#/$defs/EvidencedLayerRecord" }
         },
         "ambiguity_assessment": { "$ref": "#/$defs/AmbiguityAssessment" },
-        "negative_assessment": { "$ref": "#/$defs/NegativeAssessment" }
+        "negative_assessment": { "$ref": "#/$defs/NegativeAssessment" },
+        "refusal_assessment": { "$ref": "#/$defs/RefusalAssessment" }
       },
       "allOf": [
         {
@@ -257,7 +283,12 @@
               "evidenced_layer_records": { "maxItems": 0 }
             },
             "required": ["ambiguity_assessment"],
-            "not": { "required": ["negative_assessment"] }
+            "not": {
+              "anyOf": [
+                { "required": ["negative_assessment"] },
+                { "required": ["refusal_assessment"] }
+              ]
+            }
           }
         },
         {
@@ -270,7 +301,12 @@
               "evidenced_layer_records": { "maxItems": 0 }
             },
             "required": ["negative_assessment"],
-            "not": { "required": ["ambiguity_assessment"] }
+            "not": {
+              "anyOf": [
+                { "required": ["ambiguity_assessment"] },
+                { "required": ["refusal_assessment"] }
+              ]
+            }
           }
         }
       ]

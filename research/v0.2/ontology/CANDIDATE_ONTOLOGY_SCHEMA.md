@@ -23,7 +23,7 @@ The schema is designed from **general semantic primitives**, not from individual
 3. **Locus ≠ Holder.** Locus is *where* control sits. Holders are *who* occupies the locus — optional, 0..n, absent when discrete actors are not evidenced.
 4. **Per-record ownership.** Each evidenced layer record owns its mechanism, locus, holders, evidence bindings, claim boundary, and layer-scoped metadata.
 5. **Assessments for zero-record outcomes.** `ambiguous_layer` and `no_evidenced_control_layer` require populated assessments; zero layer records is not missing data.
-6. **Refusal references only.** Research candidates and refused/untriggered probes appear as assessment references (open labels), never as active-layer enum values or classifiable layer records.
+6. **Refusal references only.** Research candidates and refused/untriggered probes appear as assessment references (open labels), never as active-layer enum values or classifiable layer records. They live in `RefusalAssessment` (positive outcomes), `NegativeAssessment`, or `AmbiguityAssessment` — never as layer values.
 7. **No inference surface.** The schema carries structure only. It does not compute outcomes, assign layers, or rank records.
 8. **No case identity.** No `case_id`, `expected_*`, or ground-truth escape fields.
 
@@ -33,12 +33,12 @@ The schema is designed from **general semantic primitives**, not from individual
 
 ### `Outcome` (case-level — exactly four values)
 
-| Value | Evidenced layer records | Required assessment |
-|---|---|---|
-| `evidenced_control_layer` | exactly `1` | none |
-| `multiple_evidenced_layers` | `≥ 2` | none |
-| `ambiguous_layer` | exactly `0` | `ambiguity_assessment` |
-| `no_evidenced_control_layer` | exactly `0` | `negative_assessment` |
+| Value | `evidenced_layer_records` | Required outcome assessment | Optional refusal path |
+|---|---|---|---|
+| `evidenced_control_layer` | exactly `1` | none | `refusal_assessment` |
+| `multiple_evidenced_layers` | `≥ 2` | none | `refusal_assessment` |
+| `ambiguous_layer` | exactly `0` (`[]`) | `ambiguity_assessment` | refusals inside that assessment |
+| `no_evidenced_control_layer` | exactly `0` (`[]`) | `negative_assessment` | refusals inside that assessment |
 
 `ambiguous_layer` and `no_evidenced_control_layer` are **not** layer types.
 
@@ -55,10 +55,10 @@ No other values. Research candidates (`qualification_control`, `standard_interfa
 
 ### `EvidenceClass` (evidence bindings only)
 
-| Value | May establish classification? |
-|---|---|
-| `S0` | Yes — source-native fact |
-| `S1` | Yes — reproducible mechanical derivation from S0 |
+| Value | May establish classification? | `derivation` |
+|---|---|---|
+| `S0` | Yes — source-native fact | **Forbidden** |
+| `S1` | Yes — reproducible mechanical derivation from S0 | **Required** |
 
 `S2` is **excluded** from evidence bindings. The schema has no field for interpretive synthesis that carries classification.
 
@@ -83,9 +83,12 @@ The bounded function or market structure under analysis. Unit of a single classi
 | `scope` | 1 | **yes** | Bounded critical function under analysis (not an entire industry by default). |
 | `date` | 1 | **yes** | Temporal anchor for the system record (`DateExpression`). |
 | `outcome` | 1 | **yes** | Case-level `Outcome`. |
-| `evidenced_layer_records` | 0..n | conditional | Independent evidenced control layers. Cardinality governed by `outcome` (see Invariants). |
+| `evidenced_layer_records` | 0..n | **yes — always present** | Independent evidenced control layers. Always present as an array. Cardinality governed by `outcome` (see Invariants). Zero-record outcomes use an explicit empty array `[]`, never null or omission. |
 | `ambiguity_assessment` | 0..1 | conditional | Required iff `outcome = ambiguous_layer`; forbidden otherwise. |
 | `negative_assessment` | 0..1 | conditional | Required iff `outcome = no_evidenced_control_layer`; forbidden otherwise. |
+| `refusal_assessment` | 0..1 | conditional | Optional iff `outcome` is `evidenced_control_layer` or `multiple_evidenced_layers`; forbidden for zero-record outcomes (refusals live inside the required outcome assessment instead). |
+
+**Serialization contract for `evidenced_layer_records`:** the field is always present; cardinality is 0..n according to outcome. Zero-record outcomes use an explicit empty array, never null or omission. This keeps `zero records ≠ missing data` machine-distinguishable.
 
 **Forbidden on `SystemRecord`:** system-level `evidence_bindings`, system-level `claim_boundary`, `score`, `ranking`, `case_id`, `expected_*`, `ground_truth`, inference rules.
 
@@ -93,7 +96,7 @@ The bounded function or market structure under analysis. Unit of a single classi
 
 ### `EvidencedLayerRecord`
 
-One independently evidenced control layer. Exists only when `outcome` is `evidenced_control_layer` or `multiple_evidenced_layers`.
+One independently evidenced control layer. Present in `evidenced_layer_records` only when `outcome` is `evidenced_control_layer` or `multiple_evidenced_layers`.
 
 | Field | Cardinality | Required | Description |
 |---|---|---|---|
@@ -159,7 +162,14 @@ One S0 or S1 fact bound to a specific claim within a layer record.
 | `evidence_class` | 1 | **yes** | `S0` or `S1` only. |
 | `source` | 1 | **yes** | Source citation (title, locator, identifier sufficient to retrieve the primary material). |
 | `fact` | 1 | **yes** | Source-native fact (S0) or input fact(s) for derivation. |
-| `derivation` | 0..1 | required if `evidence_class = S1` | Reproducible, non-interpretive derivation steps from `fact`. |
+| `derivation` | 0..1 | see class rule | Reproducible, non-interpretive derivation steps from `fact`. |
+
+**Evidence-class derivation rule (mandatory):**
+
+| `evidence_class` | `derivation` |
+|---|---|
+| `S0` | **Forbidden** — must be absent |
+| `S1` | **Required** — must be present |
 
 **Invariant:** Every binding attaches to a `claim`. Unattached evidence lists are forbidden.
 
@@ -175,6 +185,28 @@ What the record does and does not say.
 | `excluded` | 0..n | **yes** (may be empty list) | Explicit exclusions — claims the framework must not make. |
 
 Used on `EvidencedLayerRecord`, `NegativeAssessment`, and `AmbiguityAssessment` — never as a system-level shared bag across layer records.
+
+---
+
+### `RefusalAssessment`
+
+Optional assessment for **positive** outcomes that need to record refused/untriggered candidates without changing the outcome or creating layer records.
+
+| Field | Cardinality | Required | Description |
+|---|---|---|---|
+| `refusal_references` | 1..n | **yes** | One or more assessment-only refusal references. |
+
+**Validity:** Present only when `outcome` is `evidenced_control_layer` or `multiple_evidenced_layers`. Forbidden when `outcome` is `ambiguous_layer` or `no_evidenced_control_layer` (those outcomes carry refusals inside their required assessment).
+
+**Does not:** create `evidenced_layer_records`, change `outcome`, or extend `ActiveLayerType`.
+
+**Assessment placement rule:**
+
+| Outcome kind | Where refusals live |
+|---|---|
+| Positive (`evidenced_control_layer`, `multiple_evidenced_layers`) | `refusal_assessment` (optional) |
+| Negative (`no_evidenced_control_layer`) | `negative_assessment.refusal_references` |
+| Ambiguity (`ambiguous_layer`) | `ambiguity_assessment.refusal_references` (optional) |
 
 ---
 
@@ -199,6 +231,7 @@ Required when `outcome = ambiguous_layer`.
 | `competing_interpretations` | 2..n | **yes** | Two or more source-defensible readings that remain in play. |
 | `separation_gap` | 1 | **yes** | Why no source-native rule separates the interpretations. |
 | `claim_boundary` | 1 | **yes** | Admissible record and exclusions for the ambiguous result. |
+| `refusal_references` | 0..n | no | Optional refused/research-candidate references (assessment only). |
 
 **Invariant:** Competing interpretations are assessment content only. They **must not** be promoted to `evidenced_layer_records`.
 
@@ -258,13 +291,16 @@ Present only when jurisdiction is load-bearing.
 SystemRecord
   scope, date, outcome
   ├── ambiguity_assessment?     (required iff outcome = ambiguous_layer)
+  │     └── refusal_references? (optional)
   ├── negative_assessment?      (required iff outcome = no_evidenced_control_layer)
-  └── evidenced_layer_records[] (cardinality per outcome)
+  │     └── refusal_references? (optional)
+  ├── refusal_assessment?       (optional iff positive outcome; 1..n refusal_references)
+  └── evidenced_layer_records[] (always present; [] when zero-record outcome)
         ├── layer_type          ActiveLayerType
         ├── control_mechanism   ControlMechanism.statement
         ├── locus               Locus.statement
         ├── holders[]           Holder.label  (0..n)
-        ├── evidence_bindings[] EvidenceBinding (claim-bound)
+        ├── evidence_bindings[] EvidenceBinding (claim-bound; S0 forbids derivation; S1 requires it)
         ├── claim_boundary      ClaimBoundary
         └── scope?, date?, jurisdiction?  (layer-scoped overrides)
 ```
@@ -275,14 +311,14 @@ SystemRecord
 
 These constraints are **general** — they do not reference case identities.
 
-### INV-1 — Outcome ↔ layer-record cardinality
+### INV-1 — Outcome ↔ layer-record cardinality and assessments
 
-| `outcome` | `len(evidenced_layer_records)` | Assessments |
-|---|---|---|
-| `evidenced_control_layer` | `= 1` | no `ambiguity_assessment`; no `negative_assessment` |
-| `multiple_evidenced_layers` | `≥ 2` | no `ambiguity_assessment`; no `negative_assessment` |
-| `ambiguous_layer` | `= 0` | `ambiguity_assessment` required; no `negative_assessment` |
-| `no_evidenced_control_layer` | `= 0` | `negative_assessment` required; no `ambiguity_assessment` |
+| `outcome` | `evidenced_layer_records` | Outcome assessments | `refusal_assessment` |
+|---|---|---|---|
+| `evidenced_control_layer` | always present; length `= 1` | no `ambiguity_assessment`; no `negative_assessment` | optional |
+| `multiple_evidenced_layers` | always present; length `≥ 2` | no `ambiguity_assessment`; no `negative_assessment` | optional |
+| `ambiguous_layer` | always present; length `= 0` (`[]`) | `ambiguity_assessment` required; no `negative_assessment` | **forbidden** (use assessment-local refusals) |
+| `no_evidenced_control_layer` | always present; length `= 0` (`[]`) | `negative_assessment` required; no `ambiguity_assessment` | **forbidden** (use assessment-local refusals) |
 
 ### INV-2 — Active layer enum ceiling
 
@@ -300,13 +336,13 @@ These constraints are **general** — they do not reference case identities.
 
 `evidence_bindings` and `claim_boundary` are owned by each `EvidencedLayerRecord`. No system-level evidence or boundary field may substitute.
 
-### INV-6 — S2 exclusion
+### INV-6 — S0/S1 derivation discipline
 
-No field may carry S2 interpretive synthesis as classification-bearing evidence. `evidence_class` accepts only `S0` and `S1`.
+`evidence_class` accepts only `S0` and `S1`. For `S0`, `derivation` is forbidden. For `S1`, `derivation` is required. No field may carry S2 interpretive synthesis as classification-bearing evidence.
 
 ### INV-7 — Refusal references are not layers
 
-`refusal_references[].candidate_label` and `competing_interpretations[]` are assessment content. They do not create `evidenced_layer_records` and do not extend `ActiveLayerType`.
+`refusal_references[].candidate_label` and `competing_interpretations[]` are assessment content. They do not create `evidenced_layer_records` and do not extend `ActiveLayerType`. Refusals on positive outcomes live only in `refusal_assessment`; refusals on zero-record outcomes live only inside the required outcome assessment.
 
 ### INV-8 — Jurisdiction conditional
 
@@ -319,6 +355,10 @@ Multiple `evidenced_layer_records` have no `rank`, `primary`, `weight`, or `merg
 ### INV-10 — No tautology fields
 
 The schema defines no `case_id`, `expected_outcome`, `expected_layer`, `original_result`, `raw_case`, `ground_truth`, or equivalent stored-answer fields.
+
+### INV-11 — Empty array for zero records
+
+When outcome requires zero evidenced layer records, `evidenced_layer_records` must be present as `[]`. Null and omission are invalid.
 
 ---
 
@@ -358,7 +398,9 @@ The candidate schema **does not define** and **must not be extended** with:
 | Locus carries who | Separate `Locus` and `Holder`; INV-4 |
 | Shared evidence/boundary bag | Per-record ownership; INV-5; forbidden system-level fields |
 | Cannot represent ambiguity/negative | `AmbiguityAssessment`, `NegativeAssessment`; INV-1 |
+| Cannot represent positive-outcome refusals (R7) | `RefusalAssessment` on positive outcomes; assessment-local refusals on zero-record outcomes; INV-7 |
 | Research slots | Four-value `ActiveLayerType` only; INV-2, INV-7 |
+| S0/S1 collapse | INV-6 (`S0` forbids `derivation`; `S1` requires it) |
 | Tautological round-trip | INV-10; prohibited constructs |
 | Case-specific tailoring | General primitives only; no case-keyed fields |
 | Quantitative / inference surfaces | Prohibited constructs |
