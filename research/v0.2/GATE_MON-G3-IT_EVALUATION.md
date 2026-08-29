@@ -5,7 +5,7 @@
 **Thesis under test:** `CANDIDATE_INTERFACE_THESIS.md` (`thesis_id`: `mon-g3-it-candidate-v0.2`) — **Accepted for Step 3 — 2026-08-29** (unchanged in this evaluation)
 **Ontology binding:** `mon-g2-of-candidate-v0.2` (DEC-006); instances in `ontology/instances/`
 **Evaluation date:** 2026-08-29
-**Status:** **Draft for review** (Step 3 complete for human acceptance; Step 4 blocked)
+**Status:** **Accepted — 2026-08-29** (Step 3; Step 4 closeout authorized — not enacted here)
 **Branch checkpoint base:** `fad4849` (candidate interface thesis merge)
 **Method:** Instance → grammar render (§1–§8 only) → blind extract → full-content compare to locked GT
 **Runner:** `interface/tools/run_interface_readback.py`
@@ -49,7 +49,7 @@ Same field set as MON-G2-OF Step 3: outcome, system scope/date, per-layer type/m
 | Blocker (return to Step 2) | **No** |
 | Thesis amended during evaluation | **No** |
 
-**Provisional evaluation verdict (not a closeout decision):** under full-content compare via the accepted interface grammar, all eight frozen cases read back without loss, inflation, or semantic distortion; ambiguity structural conformance PASSes outside the denominator.
+**Evaluation verdict (Accepted — 2026-08-29; not a closeout decision):** under full-content compare via the accepted interface grammar, all eight frozen cases read back without loss, inflation, or semantic distortion; ambiguity structural conformance PASSes outside the denominator. Gate remains open until Step 4.
 
 ---
 
@@ -135,20 +135,19 @@ Representation: `interface/representations/ambiguous_layer_structural.md`
 
 ---
 
-## 7. Recommended disposition (for review — not enacted)
+## 7. Authorized next (not enacted here)
 
-If this evaluation is accepted:
+Step 3 acceptance authorizes **Step 4 closeout only**. Step 4 alone may:
 
-1. Proceed to **Step 4 closeout only** — adopt `mon-g3-it-candidate-v0.2` as the interface thesis conforming to DEC-005 / DEC-006.
-2. Only then authorize opening the successor **data-architecture** gate.
-3. Do **not** authorize interface implementation, site rewrite, scores, entity pages, or monetization from this evaluation alone.
+1. Close MON-G3-IT as PASS and adopt `mon-g3-it-candidate-v0.2` as the interface thesis conforming to DEC-005 / DEC-006.
+2. Authorize opening the successor **data-architecture** gate only.
 
-If any material defect in the **grammar** is found on review: reject this evaluation, **return formally to Step 2**, and amend the thesis there — do not patch the thesis inside this evaluation artifact.
+Not authorized by Step 3 alone: interface implementation, site rewrite, scores, entity pages, monetization, or data architecture itself.
 
 ---
 
 ## 8. Disposition
 
-**Step 3 — awaiting review.** Provisional: 8/8 readback PASS; ambiguity structural PASS (outside 8/8); no falsifiers; thesis unchanged.
+**Step 3 — Accepted — 2026-08-29.** 8/8 readback PASS; ambiguity structural PASS (outside 8/8); no falsifiers; thesis unchanged; no return to Step 2.
 
-**Step 4 — Blocked** until Step 3 is accepted.
+**Step 4 — Authorized — next step** (closeout only). This evaluation does **not** close the gate, adopt the thesis, or open data architecture. Gate remains open until Step 4.
