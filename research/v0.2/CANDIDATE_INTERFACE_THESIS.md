@@ -65,19 +65,21 @@ A single **System Reading Unit** is encountered top-to-bottom in this **mandator
 
 ### Inside each Layer panel (positive outcomes)
 
-Mandatory order within the panel:
+Mandatory **linear reading order** within the panel (PASS-9 / Falsifier 17):
 
 ```
 a. Layer type mark
 b. Instrument block (mechanism)
 c. Where block (locus)
-d. Who list (holders) — or explicit “holders not resolved at discrete-actor level”
-e. Layer-bound labels (scope/date/jurisdiction overrides when present)
-f. Claim–evidence rows (each binding)
-g. Boundary block (admissible + excluded)
+d. Layer-bound labels (scope / date / jurisdiction overrides when present)
+e. Boundary block (admissible + excluded)
+f. Who list (holders) — or explicit “holders not resolved at discrete-actor level”
+g. Claim–evidence rows (each EvidenceBinding)
 ```
 
-**Hierarchy rule for falsifiers:** The primary takeaway of the unit is **outcome + bounded system + (for evidenced cases) locus + mechanism**. An unbounded holder/company name must not appear above or instead of steps 1–3 and (for evidenced) panel items b–c as the headline of the unit.
+**Boundary salience rule:** Layer-scoped bounds and the Claim Boundary appear **before** the Who list (or may be presented in parallel with it in a non-linear layout, but **never after** holder/entity interpretation in the linear order). A reader must not encounter holder/company interpretation before recovering bounds and admissible-vs-excluded boundary from the same panel.
+
+**Hierarchy rule for falsifiers:** The primary takeaway of the unit is **outcome + bounded system + (for evidenced cases) locus + mechanism + bounds/boundary**. An unbounded holder/company name must not appear above or instead of steps 1–3 and panel items b–e as the headline of the unit.
 
 ---
 
@@ -133,9 +135,9 @@ Each `EvidenceBinding` is a **Claim–evidence row** with fixed columns/fields i
 
 | Context | Placement |
 |---|---|
-| Each Layer panel | **Boundary block** is the **last required block inside that panel** (after claim–evidence rows). |
-| Negative result body | Boundary block is **inside the negative body**, after examined + refusals. |
-| Ambiguity result body | Boundary block is **inside the ambiguity body**, after competing interpretations + separation gap. |
+| Each Layer panel | **Boundary block** appears **after** layer-bound labels and **before** Who list and Claim–evidence rows (panel order §2: … bounds → **boundary** → holders → evidence). |
+| Negative result body | Boundary block is **inside the negative body**, after examined + refusals. No EvidenceBinding rows. |
+| Ambiguity result body | Boundary block is **inside the ambiguity body**, after competing interpretations + separation gap. No EvidenceBinding rows. |
 
 **Admissible** and **excluded** are both required surfaces:
 
@@ -218,10 +220,10 @@ ASCII sketch of grammar only — not a component spec:
 │ │ TYPE: <ActiveLayerType>                               │ │
 │ │ INSTRUMENT: <mechanism statement>                     │ │
 │ │ WHERE: <locus>                                        │ │
-│ │ WHO: <holders…> | “not resolved at discrete-actor…” │ │
 │ │ [layer date/scope/jurisdiction if present]            │ │
-│ │ Claim–evidence rows…                                  │ │
 │ │ BOUNDARY: admissible / excluded…                      │ │
+│ │ WHO: <holders…> | “not resolved at discrete-actor…” │ │
+│ │ Claim–evidence rows…                                  │ │
 │ └───────────────────────────────────────────────────────┘ │
 │ (repeat panel for multiple_evidenced_layers)              │
 │ — or Negative / Ambiguity body instead of panels —        │
@@ -235,17 +237,19 @@ For `multiple_evidenced_layers`, two panels stack with equal weight. For zero-re
 
 ## 10. Pressure-case application notes (grammar only — not evaluation)
 
-These notes show how the grammar *intends* to carry known pressures. They are **not** Step 3 results and must not leak into blind readback inputs.
+These notes show how the grammar *intends* to carry known pressures. They are **not** Step 3 results.
 
-| Pressure | Grammar application |
+> **Non-operative review provenance.** These notes must **not** be consulted when generating Step 3 representations. Step 3 representation generation must use **only** the general interface grammar (§1–§8) and must **not** branch on case identity (`S1`…`S8`) or on this section. Using §10 to tailor presentation is out of process (Falsifier 14 / blind protocol).
+
+| Pressure | Grammar application (review aid only) |
 |---|---|
 | S2 collective locus | WHERE = capacity set; WHO = TSMC + Samsung as holder list — holder names must not replace WHERE in the headline strip |
 | S6 two layers | Two equal panels; holders absent shown explicitly; qualification refusal = Refusal note after panels |
-| S3 negative | Negative body + zero layers; not blank |
+| S3 negative | Negative body + zero layers; not blank; no invented EvidenceBinding rows |
 | S7 provider boundary | WHERE = egress/switching boundary; WHO = named providers; no market-level outcome banner |
-| S4/S5 jurisdiction | Bounds (including jurisdiction) in strip / layer labels before unconstrained reading |
+| S4/S5 jurisdiction | Bounds (including jurisdiction) in strip / layer labels before unconstrained reading; boundary before WHO in panel order |
 | S8 legal exclusivity | TYPE + INSTRUMENT stay statute-bounded; excluded list blocks “USPS monopolises delivery” |
-| Ambiguity (structural) | Ambiguity body only; ≥2 option lines; no layer panels |
+| Ambiguity (structural) | Ambiguity body only; ≥2 option lines; no layer panels; no EvidenceBinding rows |
 
 ---
 
