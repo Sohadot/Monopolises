@@ -38,7 +38,7 @@ It is **not** a relational redesign that makes company/entity the root, shares b
 |---|---|---|
 | **SystemSnapshot** | One immutable write of a dated system finding: system `scope`, `date`, `outcome`, and pointers to child records | **Yes** — participates in canonical read root |
 | **SystemLineage** (technical only) | Optional opaque grouping of snapshots that are successive dated states of the “same logical system” for history/access | **No** — harness/external keys and internal lineage IDs never appear in canonical `SystemRecord` |
-| **EvidencedLayer** | One evidenced layer under exactly one SystemSnapshot | **Yes** — layer owner |
+| **EvidencedLayer** | One evidenced layer under exactly one SystemSnapshot; may carry non-semantic presence marker for optional `holders` | **Yes** — layer owner |
 | **HolderOccurrence** | One holder label occurrence under exactly one EvidencedLayer | **Yes** as layer-owned list member; label string is semantic |
 | **EvidenceBinding** | One claim↔class↔source↔fact↔(derivation?) under exactly one EvidencedLayer | **Yes** — binding owned by that layer |
 | **ClaimBoundary** | Admissible + excluded[] owned by exactly one EvidencedLayer **or** exactly one zero-record assessment | **Yes** — not shared |
@@ -89,12 +89,22 @@ These mirror `mon-g2-of-candidate-v0.2` and are **enforced on write** (see §3).
 | Outcome ↔ assessments | `ambiguous_layer` ↔ AmbiguityAssessment required, NegativeAssessment forbidden; `no_evidenced_control_layer` ↔ NegativeAssessment required, AmbiguityAssessment forbidden; positive outcomes forbid both zero-record assessments |
 | RefusalAssessment | Allowed only on positive outcomes; zero-record outcomes carry RefusalReference only inside Negative/Ambiguity assessment |
 | Layer type | `ActiveLayerType` ×4 only |
-| Holders | 0..n HolderOccurrence per layer; empty set is explicit (no invented actor) |
+| Holders | 0..n HolderOccurrence per layer; **absent** `holders` field vs explicit `holders: []` must be distinguishable in storage and preserved on read (see optional collection presence fidelity) |
 | EvidenceBinding | ≥1 per EvidencedLayer; S0 ⇒ no derivation; S1 ⇒ derivation required |
 | ClaimBoundary | Exactly one per EvidencedLayer; exactly one per Negative/Ambiguity assessment; never one shared across layers or at SystemSnapshot |
 | Jurisdiction | Optional on EvidencedLayer only; never on SystemSnapshot as semantic field |
 | CompetingInterpretation | ≥2 when AmbiguityAssessment present |
 | No scores | No score/rank/confidence/dominance/probability attributes on any logical record that participates in classification |
+
+> **Optional collection presence fidelity:** for ontology-optional collection fields, normalized storage must preserve whether the field was **absent** versus **explicitly present as an empty array** (`[]`). Child-row count alone is insufficient. A non-semantic presence marker (or equivalent storage mechanism) may be used on the owning logical record, but it **must not** appear in the canonical `SystemRecord`. **No defaulting** from omitted → `[]`.
+
+Frozen optional collections covered by this rule (minimum):
+
+| Field | Written `[]` | Written omitted |
+|---|---|---|
+| `EvidencedLayerRecord.holders` | Read returns `"holders": []` | Read omits `holders` |
+| `negative_assessment.refusal_references` | Read returns `"refusal_references": []` | Read omits `refusal_references` |
+| `ambiguity_assessment.refusal_references` | Read returns `"refusal_references": []` | Read omits `refusal_references` |
 
 ---
 
@@ -125,7 +135,7 @@ Any write that fails **any** adopted ontology constraint must be rejected, even 
 3. If invalid → return explicit rejection; stop.
 4. Create a new **immutable** SystemSnapshot (new technical snapshot id).
 5. If an external lineage key is provided, attach the snapshot to that SystemLineage (create lineage if needed). Do **not** copy the lineage key into snapshot semantic fields.
-6. Persist child records by ownership (layers or zero-record assessment path).
+6. Persist child records by ownership (layers or zero-record assessment path), including **non-semantic presence markers** for optional collections where absent vs `[]` must be distinguished (§2).
 7. Optionally upsert EntityLabel / SourceLabel rows keyed by normalized string — **never** fail a write because a label table row is missing.
 8. Optionally update a lineage “latest” pointer to this snapshot — without mutating or deleting prior snapshots.
 
@@ -184,7 +194,7 @@ The canonical read returns a **`system` object** conforming to adopted ontology 
 | `layer_type` | `ActiveLayerType` enum |
 | `control_mechanism` | `{ "statement": string }` |
 | `locus` | `{ "statement": string }` |
-| `holders` | `[{ "label": string }, …]` — `[]` when absent holders; never omitted when layer exists |
+| `holders` | `[{ "label": string }, …]` — **present as `[]` only if written `[]`**; **omitted if `holders` was absent on write**; never default omitted → `[]` |
 | `evidence_bindings` | array of binding objects (below) |
 | `claim_boundary` | `{ "admissible": string, "excluded": string[] }` |
 | `scope` | string — present only if written on layer; absent if not written |
@@ -203,9 +213,9 @@ The canonical read returns a **`system` object** conforming to adopted ontology 
 
 #### Assessments (ontology names preserved)
 
-- `negative_assessment`: `{ examined, refusal_references[], claim_boundary }`
-- `ambiguity_assessment`: `{ competing_interpretations[], separation_gap, refusal_references[]?, claim_boundary }`
-- `refusal_assessment`: `{ refusal_references[] }`
+- `negative_assessment`: `{ examined, refusal_references[]?, claim_boundary }` — `refusal_references` present as `[]` only if written `[]`; omitted if absent on write
+- `ambiguity_assessment`: `{ competing_interpretations[], separation_gap, refusal_references[]?, claim_boundary }` — same `refusal_references` presence rule
+- `refusal_assessment`: `{ refusal_references[] }` — required when assessment exists; array members as written
 - `refusal_references[]`: `{ candidate_label, status, reason }`
 - `competing_interpretations[]`: `{ interpretation, active_layer_type_considered? }`
 
@@ -214,6 +224,7 @@ The canonical read returns a **`system` object** conforming to adopted ontology 
 | Rule | Requirement |
 |---|---|
 | **Optional-field fidelity** | Except `evidenced_layer_records` (always `[]` at zero), **optional-field presence/absence is preserved as written**. No null fabrication, no default empty objects, no inferring absent fields from storage convenience. |
+| **Optional collection presence fidelity** | For ontology-optional collections (`holders`, `negative_assessment.refusal_references`, `ambiguity_assessment.refusal_references`): storage must record absent vs explicit `[]`; canonical read restores exactly as written — **no defaulting omitted → `[]`**. Presence markers are storage-only and never emitted in the read model. |
 | **`schema_version`** | **Ontology-envelope metadata only** — not a `SystemRecord` field. Write validates against adopted `mon-g2-of-candidate-v0.2`; read returns **`system` only** inside the canonical read model. If history/evaluation needs to re-wrap a fixture envelope, do so deterministically with `schema_version: "mon-g2-of-candidate-v0.2"` outside the SystemRecord — never inside canonical root. |
 | **Write input vs read output** | Write accepts a full ontology instance (`schema_version` + `system`). Canonical read returns `SystemRecord` (`system` object) conforming to adopted ontology — the gate’s comparison target. |
 
@@ -301,6 +312,7 @@ Interface grammar (§1–§8 of the interface thesis) consumes the reconstructed
 | Mutable in-place overwrite of snapshot semantics | Destructive history |
 | Lineage key or snapshot_id inside canonical SystemRecord | Technical id as meaning |
 | Silent coerce-on-write paths | Lossless-or-reject |
+| Default omitted optional collections to `[]` | Optional collection presence fidelity |
 | Case-id / expected_* storage fields driving read | Tautology |
 
 ---
