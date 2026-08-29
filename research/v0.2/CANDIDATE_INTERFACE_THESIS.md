@@ -2,7 +2,7 @@
 
 **Gate:** MON-G3-IT (Interface Thesis)
 **Thesis ID:** `mon-g3-it-candidate-v0.2`
-**Status:** **Draft for review** (Step 2 — grammar only; no evaluation; no implementation)
+**Status:** **Accepted for Step 3 — 2026-08-29** (candidate interface thesis under test; no evaluation in this artifact)
 **Gate spec:** `INTERFACE_THESIS_GATE.md` (DESIGN FROZEN — accepted 2026-08-29, revision 2)
 **Ontology binding:** `mon-g2-of-candidate-v0.2` (DEC-006 adopted)
 **Authority:** DEC-005 + DEC-006 + frozen MON-G3-IT gate — **not** archived `INTERFACE_THESIS.md`
@@ -274,8 +274,8 @@ These notes show how the grammar *intends* to carry known pressures. They are **
 | Step | Status |
 |---|---|
 | 1 Gate design | DESIGN FROZEN |
-| 2 This candidate interface thesis | **Draft for review** |
-| 3 Readback evaluation | Blocked |
+| 2 This candidate interface thesis | **Accepted — 2026-08-29** |
+| 3 Readback evaluation | **Authorized — next step** |
 | 4 Closeout | Blocked |
 
-**Stop point:** Review this grammar. No HTML/CSS/JS. No site change. No `GATE_MON-G3-IT_EVALUATION.md` until this thesis is accepted.
+**Stop point:** Step 2 accepted. Step 3 (blind readback) proceeds on a separate branch. Do not amend this thesis inside evaluation; grammar defects require return to Step 2.

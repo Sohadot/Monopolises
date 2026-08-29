@@ -223,8 +223,8 @@ The gate FAILS if **any** of the following hold:
 | Step | Artifact | Status |
 |---|---|---|
 | 1 | This gate spec (`INTERFACE_THESIS_GATE.md`) | **Frozen — accepted 2026-08-29 (revision 2)** |
-| 2 | Candidate interface thesis meeting **Step 2 artifact requirements** (`CANDIDATE_INTERFACE_THESIS.md`) | **Draft for review** (branch `research/mon-g3-it-candidate-thesis`) |
-| 3 | Semantic/readback evaluation on S8…S7 + `ambiguous_layer` structural conformance (`GATE_MON-G3-IT_EVALUATION.md`) | Blocked until Step 2 exists and is complete |
+| 2 | Candidate interface thesis meeting **Step 2 artifact requirements** (`CANDIDATE_INTERFACE_THESIS.md`) | **Accepted — 2026-08-29** |
+| 3 | Semantic/readback evaluation on S8…S7 + `ambiguous_layer` structural conformance (`GATE_MON-G3-IT_EVALUATION.md`) | **Authorized — next step** |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
 
 **Do not skip steps.** A UI build before Step 2 acceptance is out of process. A Step 2 document without the required interface grammar is incomplete.
