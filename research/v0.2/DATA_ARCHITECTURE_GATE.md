@@ -2,7 +2,7 @@
 
 **Gate ID:** MON-G4-DA
 **Version:** 0.2
-**Status:** **Open — draft for review — not DESIGN FROZEN** (revision 2 — required changes applied)
+**Status:** **DESIGN FROZEN — accepted 2026-08-29** (revision 2)
 **Opened:** 2026-08-29
 **Closed:** —
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, DEC-005) via adopted ontology `mon-g2-of-candidate-v0.2` (DEC-006) and adopted interface thesis `mon-g3-it-candidate-v0.2` (DEC-007)
@@ -12,7 +12,7 @@
 **Adopted ontology:** `research/v0.2/ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` (`schema_version`: `mon-g2-of-candidate-v0.2`)
 **Adopted interface thesis:** `research/v0.2/CANDIDATE_INTERFACE_THESIS.md` (`thesis_id`: `mon-g3-it-candidate-v0.2`)
 
-> This gate tests whether the **adopted Layered Monopolisation ontology and interface thesis** can be carried by a **data architecture** that stores and retrieves bounded `SystemRecord`s without semantic distortion. This document is **Open — draft for review** (revision 2). It is **not** DESIGN FROZEN. Step 2 (candidate logical data architecture) must not begin until this gate design is accepted and frozen. This is a **fidelity gate**, not a database-design gate and not an implementation gate.
+> This gate tests whether the **adopted Layered Monopolisation ontology and interface thesis** can be carried by a **data architecture** that stores and retrieves bounded `SystemRecord`s without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate logical data architecture** is **Authorized — next step**. Step 3 (persistence/retrieval evaluation) and Step 4 (closeout) remain blocked until Step 2 exists and is complete. This is a **fidelity gate**, not a database-design gate and not an implementation gate.
 
 ## Governing question
 
@@ -390,8 +390,8 @@ The gate FAILS if **any** of the following hold:
 
 | Step | Artifact | Status |
 |---|---|---|
-| 1 | This gate spec (`DATA_ARCHITECTURE_GATE.md`) | **Open — draft for review — not DESIGN FROZEN** (revision 2) |
-| 2 | Candidate logical data architecture meeting **Step 2 artifact requirements** | Blocked until Step 1 DESIGN FROZEN |
+| 1 | This gate spec (`DATA_ARCHITECTURE_GATE.md`) | **Frozen — accepted 2026-08-29** (revision 2) |
+| 2 | Candidate logical data architecture meeting **Step 2 artifact requirements** | **Authorized — next step** |
 | 3 | Persistence/retrieval fidelity evaluation on S8…S7 + structural checks (`GATE_MON-G4-DA_EVALUATION.md`) | Blocked until Step 2 exists and is complete |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
 
@@ -419,6 +419,6 @@ Any move from **adopted data architecture** to **production implementation** req
 | MON-G1-LI | Can control layers be identified reproducibly from primary evidence? → **PASS** |
 | MON-G2-OF | Can those identifications survive formal ontology without distortion? → **PASS** |
 | MON-G3-IT | Can that ontology be translated into an interface thesis that stays legible without making overclaim easier? → **PASS** |
-| MON-G4-DA | Can that ontology + interface thesis be carried by a data architecture that stores/retrieves bounded SystemRecords without semantic ownership loss? → **under draft (revision 2)** |
+| MON-G4-DA | Can that ontology + interface thesis be carried by a data architecture that stores/retrieves bounded SystemRecords without semantic ownership loss? → **design frozen; under test** |
 
 MON-G4-DA does not re-test identifiability, ontology fidelity, or interface grammar. It tests whether **storage and retrieval** preserve what the **instrument**, **container**, and **surface** already proved.
