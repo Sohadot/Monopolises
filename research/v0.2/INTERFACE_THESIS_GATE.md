@@ -2,16 +2,17 @@
 
 **Gate ID:** MON-G3-IT
 **Version:** 0.2
-**Status:** **DESIGN FROZEN — accepted 2026-08-29** (revision 2)
+**Status:** **Closed — PASS**
 **Opened:** 2026-08-29
-**Closed:** —
+**Closed:** 2026-08-29
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, DEC-005) via adopted ontology `mon-g2-of-candidate-v0.2` (DEC-006)
-**Evaluation:** `GATE_MON-G3-IT_EVALUATION.md` (**Accepted — 2026-08-29**)
-**Decision:** pending gate close
+**Evaluation:** `GATE_MON-G3-IT_EVALUATION.md` — **Accepted** (2026-08-29): 8/8 blind semantic readback PASS; `ambiguous_layer` structural PASS (outside 8/8); no falsifiers triggered
+**Decision:** `DECISION_LOG.md` DEC-007
 **Predecessor gate:** MON-G2-OF — Closed PASS (`ONTOLOGY_FIDELITY_GATE.md`, DEC-006)
 **Adopted ontology:** `research/v0.2/ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` (`schema_version`: `mon-g2-of-candidate-v0.2`)
+**Adopted interface thesis:** `mon-g3-it-candidate-v0.2` (tested version; `thesis_id` unchanged)
 
-> This gate tests whether the **adopted Layered Monopolisation ontology** can be translated into an **interface thesis** that makes bounded control legible without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate interface thesis** is **Accepted** (2026-08-29). **Step 3 — blind semantic/readback evaluation** is **Accepted** (2026-08-29). **Step 4 — closeout** is **Authorized — next step**. Gate remains **open** (not Closed PASS) until Step 4.
+> **Verdict.** Yes — the adopted Layered Monopolisation ontology can be translated into an interface thesis that makes bounded control legible without implying legal monopoly status, ranking, dominance, or evidence beyond the record. On the fixed eight-case set under blind semantic/readback (`GATE_MON-G3-IT_EVALUATION.md`), grammar render → blind extract → full-content compare produced **no loss, inflation, distortion, or tautology**; `ambiguous_layer` structural conformance **PASS** (outside 8/8); **no MON-G3-IT falsifier triggered**. The tested thesis version `mon-g3-it-candidate-v0.2` is adopted as the interface thesis conforming to DEC-005 / DEC-006. This closeout does **not** reopen MON-G1-LI or MON-G2-OF, alter the four-layer taxonomy, or amend PASS criteria, falsifiers, or the fixed test set.
 
 ## Governing question
 
@@ -225,7 +226,7 @@ The gate FAILS if **any** of the following hold:
 | 1 | This gate spec (`INTERFACE_THESIS_GATE.md`) | **Frozen — accepted 2026-08-29 (revision 2)** |
 | 2 | Candidate interface thesis meeting **Step 2 artifact requirements** (`CANDIDATE_INTERFACE_THESIS.md`) | **Accepted — 2026-08-29** |
 | 3 | Semantic/readback evaluation on S8…S7 + `ambiguous_layer` structural conformance (`GATE_MON-G3-IT_EVALUATION.md`) | **Accepted — 2026-08-29** |
-| 4 | Gate closeout decision | **Authorized — next step** |
+| 4 | Gate closeout decision | **Closed — PASS — 2026-08-29** (DEC-007) |
 
 **Do not skip steps.** A UI build before Step 2 acceptance is out of process. A Step 2 document without the required interface grammar is incomplete.
 
@@ -251,6 +252,6 @@ DEC-005 build order remains: **ontology → interface thesis → data architectu
 |---|---|
 | MON-G1-LI | Can control layers be identified reproducibly from primary evidence? → **PASS** |
 | MON-G2-OF | Can those identifications survive formal ontology without distortion? → **PASS** |
-| MON-G3-IT | Can that ontology be translated into an interface thesis that stays legible **without making overclaim easier?** → **under test** |
+| MON-G3-IT | Can that ontology be translated into an interface thesis that stays legible **without making overclaim easier?** → **PASS** |
 
 MON-G3-IT does not re-test identifiability or ontology fidelity. It tests whether the **surface** preserves what the **container** and **instrument** already proved.
