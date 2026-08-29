@@ -1,0 +1,35 @@
+{
+  "schema_version": "mon-g2-of-candidate-v0.2",
+  "system": {
+    "scope": "MON-G4-DA history fixture — synthetic capacity probe (not a MON-G1 case)",
+    "date": { "as_of": "2020-01-01", "label": "History fixture snapshot A — 2020" },
+    "outcome": "evidenced_control_layer",
+    "evidenced_layer_records": [
+      {
+        "layer_type": "capacity_control",
+        "control_mechanism": {
+          "statement": "Fixture-only: sole dated productive capacity for the synthetic probe tool in snapshot A."
+        },
+        "locus": { "statement": "Synthetic probe-tool production (fixture locus A)" },
+        "holders": [{ "label": "FixtureHolder" }],
+        "evidence_bindings": [
+          {
+            "claim": "Fixture A — sole producer statement for the synthetic tool",
+            "evidence_class": "S0",
+            "source": "MON-G4-DA history fixture source A (non-published)",
+            "fact": "Snapshot A states FixtureHolder is the sole producer of the synthetic probe tool as of 2020-01-01."
+          }
+        ],
+        "claim_boundary": {
+          "admissible": "Fixture A admits only a dated 2020 capacity_control record at the synthetic probe-tool locus for FixtureHolder.",
+          "excluded": [
+            "Any present-tense restatement of snapshot A.",
+            "Any claim that this fixture is a MON-G1 classification case.",
+            "Any sufficiency or market-monopoly claim."
+          ]
+        },
+        "date": { "as_of": "2020-01-01", "label": "Snapshot A layer date" }
+      }
+    ]
+  }
+}

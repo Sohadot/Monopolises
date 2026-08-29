@@ -1,0 +1,139 @@
+{
+  "summary": {
+    "persistence_round_trip_pass_count": 8,
+    "total_cases": 8,
+    "denominator": 8,
+    "any_blocker": false,
+    "write_read_tautology_flags": [],
+    "ambiguous_layer_structural": "PASS",
+    "history_preservation_structural": "PASS",
+    "write_integrity_structural": "PASS",
+    "compare_mode": "full_content_after_semantic_canonicalization",
+    "gate_verdict_candidate": "PASS"
+  },
+  "cases": [
+    {
+      "case_id": "MON-G1-S8",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "snapshot_id": "snap-94dd972313e3"
+    },
+    {
+      "case_id": "MON-G1-S1",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "snapshot_id": "snap-1537d4cad8ba"
+    },
+    {
+      "case_id": "MON-G1-S2",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "snapshot_id": "snap-306e77e86947"
+    },
+    {
+      "case_id": "MON-G1-S6",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "snapshot_id": "snap-3e8ed67ea619"
+    },
+    {
+      "case_id": "MON-G1-S4",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "snapshot_id": "snap-21f09a6cdea6"
+    },
+    {
+      "case_id": "MON-G1-S5",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "snapshot_id": "snap-e96a4048cca7"
+    },
+    {
+      "case_id": "MON-G1-S3",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "snapshot_id": "snap-1db23fee8b75"
+    },
+    {
+      "case_id": "MON-G1-S7",
+      "persistence_round_trip": "PASS",
+      "interface_composability": "PASS",
+      "gate_falsifiers_triggered": [],
+      "blocker": false,
+      "loss": false,
+      "inflation": false,
+      "distortion": false,
+      "tautology": false,
+      "diffs": [],
+      "snapshot_id": "snap-5acf812793f2"
+    }
+  ],
+  "ambiguous_layer_structural": {
+    "verdict": "PASS",
+    "outside_8_of_8": true,
+    "failures": []
+  },
+  "history_preservation_structural": {
+    "verdict": "PASS",
+    "outside_8_of_8": true,
+    "failures": []
+  },
+  "write_integrity_structural": {
+    "verdict": "PASS",
+    "outside_8_of_8": true,
+    "probes": {
+      "W1": "PASS — rejected",
+      "W2": "PASS — rejected"
+    },
+    "failures": []
+  }
+}
