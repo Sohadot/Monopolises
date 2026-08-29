@@ -2,7 +2,7 @@
 
 **Gate:** MON-G4-DA (Data Architecture Fidelity)
 **Architecture ID:** `mon-g4-da-candidate-v0.2`
-**Status:** **Accepted for Step 3 — 2026-08-29** (candidate logical data architecture under test; no evaluation in this artifact)
+**Status:** **ADOPTED — MON-G4-DA Closed PASS — 2026-08-29**
 **Gate spec:** `DATA_ARCHITECTURE_GATE.md` (DESIGN FROZEN — accepted 2026-08-29, revision 2)
 **Ontology binding:** `mon-g2-of-candidate-v0.2` (DEC-006 adopted)
 **Interface binding:** `mon-g3-it-candidate-v0.2` (DEC-007 adopted)
@@ -360,7 +360,7 @@ Boxes are logical records. Lines are ownership. Optional `?` edges are non-autho
 |---|---|
 | 1 Gate design | DESIGN FROZEN — accepted 2026-08-29 (revision 2) |
 | 2 This candidate logical data architecture | **Accepted — 2026-08-29** |
-| 3 Persistence/retrieval evaluation | **Authorized — next step** |
-| 4 Closeout | Blocked |
+| 3 Persistence/retrieval evaluation | **Accepted — 2026-08-29** |
+| 4 Closeout | **Closed — PASS — 2026-08-29** (DEC-008) |
 
-**Stop point:** Step 2 accepted. Step 3 (persistence/retrieval evaluation) proceeds on a separate branch. Do not amend this architecture inside evaluation; contract defects require return to Step 2.
+**Stop point:** Gate MON-G4-DA closed PASS. Architecture `mon-g4-da-candidate-v0.2` adopted. This adoption does **not** authorize production database, API, UI/interface implementation, publishing system, or other operationalization — separate authorization required.
