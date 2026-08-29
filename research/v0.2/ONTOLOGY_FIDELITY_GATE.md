@@ -2,7 +2,7 @@
 
 **Gate ID:** MON-G2-OF
 **Version:** 0.2
-**Status:** **Open — draft for review** (not frozen; revision 3 pending acceptance)
+**Status:** **Open — draft for review** (not frozen; revision 4 pending acceptance)
 **Opened:** 2026-08-29
 **Closed:** —
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, ratified by DEC-005)
@@ -305,7 +305,7 @@ Round-trip comparison operates on these fields, normalized to a canonical form b
 | **evidenced_layer_count** | System | Matches outcome (0, 1, or ≥2) |
 | **ambiguity_assessment** | System | Present and complete when outcome = `ambiguous_layer`; competing interpretations not promoted to layer records |
 | **negative_assessment** | System | Present and complete when outcome = `no_evidenced_control_layer`; includes refused/triggered probes |
-| **layer_type** | Layer record | Same active layer(s); same refused/untriggered probes |
+| **layer_type** | Layer record | Same evidenced active layer type(s) only. Refused/untriggered probes are compared within the applicable assessment, never as layer-type values. |
 | **mechanism** | Layer record | Same concrete control instrument/mechanism (from S0/S1); distinct from evidence source citations |
 | **locus** | Layer record | Same **where** — without actor identity smuggled in |
 | **holder** | Layer record | Same **who** — when evidenced; absent when not |
@@ -343,7 +343,7 @@ The gate PASSES only if **all** of the following hold:
 4. **Locus/holder separation.** Locus carries *where*; Holder carries *who*. Actor identity does not appear in locus fields.
 5. **Per-layer-record ownership.** Each evidenced layer record independently carries its own evidence bindings and claim boundary. S6 round-trips both records without shared bags.
 6. **Four-layer ceiling.** Only the four active layers appear as classifiable layer-type values. Research candidates do not appear as reserved schema slots.
-7. **Negative representability.** `no_evidenced_control_layer` (zero layer records + negative assessment) and refused-layer outcomes are first-class.
+7. **Negative representability.** `no_evidenced_control_layer` (zero layer records + negative assessment) is first-class, and refused/untriggered layer references are representable inside the applicable assessment without entering the active-layer enum.
 8. **Ambiguity representability.** `ambiguous_layer` (zero layer records + ambiguity assessment) is first-class. The ontology must represent genuine ambiguity without forcing classification into a positive or negative outcome. Competing interpretations stay in the assessment; they do not become evidenced layer records.
 9. **Mechanism/evidence separation.** Control Mechanism is distinct from Evidence bindings. A source citation (e.g. a government report) is evidence, not a mechanism.
 10. **Metadata discipline.** Date and scope are mandatory; jurisdiction is present only when load-bearing, at the appropriate record level.
@@ -400,7 +400,7 @@ Round-trip evaluation proceeds in the same order as MON-G1-LI extraction (not a 
 
 | Step | Artifact | Status |
 |---|---|---|
-| 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Current — draft for review (revision 3)** |
+| 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Current — draft for review (revision 4)** |
 | 2 | Candidate ontology schema (classes, fields, constraints) | Blocked until Step 1 accepted |
 | 3 | Round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) | Blocked until Step 2 exists |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
