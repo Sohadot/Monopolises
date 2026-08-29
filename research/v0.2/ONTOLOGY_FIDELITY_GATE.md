@@ -2,7 +2,7 @@
 
 **Gate ID:** MON-G2-OF
 **Version:** 0.2
-**Status:** **Open — draft for review** (not frozen; revision 4 pending acceptance)
+**Status:** **DESIGN FROZEN — accepted 2026-08-29**
 **Opened:** 2026-08-29
 **Closed:** —
 **Thesis under test:** Layered Monopolisation v0.2 (`THESIS_CANDIDATE.md`, ratified by DEC-005)
@@ -10,7 +10,7 @@
 **Decision:** pending gate close
 **Predecessor gate:** MON-G1-LI — Closed PASS (`LAYER_IDENTIFIABILITY_GATE.md`, `GATE_MON-G1-LI_EVALUATION.md`)
 
-> This gate tests whether the four ratified control layers can be **represented as a stable ontology** without losing the evidence boundaries that made MON-G1-LI reproducible. It is deliberately small, fail-fast, and precedes any production ontology, schema, or class definitions. **No ontology artifact may be built until this gate spec is reviewed and accepted.** The first deliverable is this document; the second (only after acceptance) is a candidate schema; the third is the round-trip evaluation.
+> This gate tests whether the four ratified control layers can be **represented as a stable ontology** without losing the evidence boundaries that made MON-G1-LI reproducible. The gate **design is frozen** as of 2026-08-29 (revision 4). **Step 2 — candidate ontology schema** — is now authorized. Step 3 (round-trip evaluation) and gate closeout remain blocked until Step 2 exists.
 
 ## Governing question
 
@@ -376,10 +376,10 @@ The gate FAILS if **any** of the following hold:
 
 ## Freeze rules
 
-1. This gate spec is frozen upon review acceptance. Changes require a documented amendment and re-review before schema work proceeds.
+1. This gate spec design is **frozen** as of 2026-08-29. Amendments require a documented revision and re-review.
 2. The eight MON-G1-LI cases are the **only** round-trip test set for MON-G2-OF v0.2. No case may be swapped, dropped, or added to rescue a weak schema.
 3. MON-G1-LI classifications are ground truth. Re-classification is out of scope.
-4. No schema, class definitions, or ontology instances may be committed as production artifacts until this gate spec is accepted.
+4. Candidate ontology schema (Step 2) may proceed on a branch from the merged checkpoint. Production adoption awaits gate closeout (Step 4).
 5. The round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) is the only closeout artifact. The gate closes on round-trip performance, not on aesthetic schema elegance.
 6. A PASS adopts the tested ontology version; it does not authorize skipping ahead in the DEC-005 build sequence.
 
@@ -400,12 +400,12 @@ Round-trip evaluation proceeds in the same order as MON-G1-LI extraction (not a 
 
 | Step | Artifact | Status |
 |---|---|---|
-| 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Current — draft for review (revision 4)** |
-| 2 | Candidate ontology schema (classes, fields, constraints) | Blocked until Step 1 accepted |
+| 1 | This gate spec (`ONTOLOGY_FIDELITY_GATE.md`) | **Frozen — accepted 2026-08-29 (revision 4)** |
+| 2 | Candidate ontology schema (classes, fields, constraints) | **Authorized — next step** |
 | 3 | Round-trip evaluation (`GATE_MON-G2-OF_EVALUATION.md`) | Blocked until Step 2 exists |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
 
-**Do not skip steps.** A schema built before this spec is accepted is out of process.
+**Do not skip steps.** A round-trip evaluation before a candidate schema exists is out of process.
 
 ## What a PASS authorizes — and only then
 
