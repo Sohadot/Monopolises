@@ -2,7 +2,7 @@
 
 **Gate:** MON-G4-DA (Data Architecture Fidelity)
 **Architecture ID:** `mon-g4-da-candidate-v0.2`
-**Status:** **Draft for review** (Step 2 — logical architecture only; no evaluation; no implementation)
+**Status:** **Accepted for Step 3 — 2026-08-29** (candidate logical data architecture under test; no evaluation in this artifact)
 **Gate spec:** `DATA_ARCHITECTURE_GATE.md` (DESIGN FROZEN — accepted 2026-08-29, revision 2)
 **Ontology binding:** `mon-g2-of-candidate-v0.2` (DEC-006 adopted)
 **Interface binding:** `mon-g3-it-candidate-v0.2` (DEC-007 adopted)
@@ -359,8 +359,8 @@ Boxes are logical records. Lines are ownership. Optional `?` edges are non-autho
 | Step | Status |
 |---|---|
 | 1 Gate design | DESIGN FROZEN — accepted 2026-08-29 (revision 2) |
-| 2 This candidate logical data architecture | **Draft for review** |
-| 3 Persistence/retrieval evaluation | Blocked |
+| 2 This candidate logical data architecture | **Accepted — 2026-08-29** |
+| 3 Persistence/retrieval evaluation | **Authorized — next step** |
 | 4 Closeout | Blocked |
 
-**Stop point:** Review this logical architecture. No DDL/DB/API/ORM. No `GATE_MON-G4-DA_EVALUATION.md` until this architecture is accepted. Do not amend the frozen gate fixtures or W1/W2 set inside this artifact.
+**Stop point:** Step 2 accepted. Step 3 (persistence/retrieval evaluation) proceeds on a separate branch. Do not amend this architecture inside evaluation; contract defects require return to Step 2.
