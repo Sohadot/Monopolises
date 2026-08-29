@@ -22,7 +22,7 @@ The active research line is **Layered Monopolisation v0.2**. Its logical specifi
 
 **Unit of record:** `System × Layer × Control Mechanism × Evidence`
 
-**Build policy:** The logical specification chain is complete. **Production implementation is not authorized** — no production database, API, UI, publishing pipeline, scores, rankings, entity pages, or monetization without a separate binding decision and falsifiable gate.
+**Build policy:** The logical specification chain is complete. **Production implementation is not authorized.** Any production database, API, UI/interface implementation, publishing system, or other operationalization requires separate authorization under a new falsifiable gate **or** binding decision (DEC-008). Scored, ranked, or scaled surfaces — and admission of new layers — require a new decision **and** a new falsifiable gate (DEC-005). Monetization remains unauthorized.
 
 ---
 

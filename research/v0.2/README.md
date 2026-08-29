@@ -24,7 +24,7 @@ Follow this path top to bottom. Each step has a gate that tested a specific ques
 |---|---|
 | [`LAYER_IDENTIFIABILITY_GATE.md`](LAYER_IDENTIFIABILITY_GATE.md) | Governing question, PASS criteria, falsifiers |
 | [`cases/`](cases/) | Eight fixed evidence cases (`MON-G1-S1` … `MON-G1-S8`) |
-| [`GATE_MON-G1-LI_EVALUATION.md`](GATE_MON-G1-LI_EVALUATION.md) | Evaluation record (8/8 PASS) |
+| [`GATE_MON-G1-LI_EVALUATION.md`](GATE_MON-G1-LI_EVALUATION.md) | Full-set evaluation — Gate PASS; 7/8 second-review convergence, S2 marginal |
 | [`SOURCE_REGISTER_v0.2.md`](SOURCE_REGISTER_v0.2.md) | Primary sources for the eight cases |
 
 **Outcome:** DEC-005 ratifies the thesis and authorizes ontology → interface → data architecture (in that order).
