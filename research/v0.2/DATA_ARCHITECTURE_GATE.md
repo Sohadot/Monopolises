@@ -256,7 +256,9 @@ Harness procedure (fixed): write A under external lineage key `mon-g4-da-history
 
 #### C. Write-integrity / lossless-or-reject (structural, outside 8/8)
 
-Architecture must **reject explicitly** ontology-invalid semantic writes. It must **not** silently coerce them into validity. Minimum frozen negative probes (illustrative; Step 3 may add equivalent probes under the same rule):
+Architecture must **reject explicitly** ontology-invalid semantic writes. It must **not** silently coerce them into validity.
+
+**W1 and W2 are the complete frozen gating probes for MON-G4-DA Step 3 write-integrity.** Additional probes may be run only as **non-gating diagnostics**; they cannot alter the gate verdict unless this gate is formally revised and re-frozen before Step 2 / evaluation.
 
 | Probe | Invalid condition | Required behavior |
 |---|---|---|
