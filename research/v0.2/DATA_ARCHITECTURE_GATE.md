@@ -12,7 +12,7 @@
 **Adopted ontology:** `research/v0.2/ontology/CANDIDATE_ONTOLOGY_SCHEMA.md` (`schema_version`: `mon-g2-of-candidate-v0.2`)
 **Adopted interface thesis:** `research/v0.2/CANDIDATE_INTERFACE_THESIS.md` (`thesis_id`: `mon-g3-it-candidate-v0.2`)
 
-> This gate tests whether the **adopted Layered Monopolisation ontology and interface thesis** can be carried by a **data architecture** that stores and retrieves bounded `SystemRecord`s without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate logical data architecture** is **Authorized — next step**. Step 3 (persistence/retrieval evaluation) and Step 4 (closeout) remain blocked until Step 2 exists and is complete. This is a **fidelity gate**, not a database-design gate and not an implementation gate.
+> This gate tests whether the **adopted Layered Monopolisation ontology and interface thesis** can be carried by a **data architecture** that stores and retrieves bounded `SystemRecord`s without semantic distortion. The gate **design is frozen** as of 2026-08-29 (revision 2). **Step 2 — candidate logical data architecture** is **Draft for review** (`CANDIDATE_DATA_ARCHITECTURE.md`). Step 3 (persistence/retrieval evaluation) and Step 4 (closeout) remain blocked until Step 2 is accepted. This is a **fidelity gate**, not a database-design gate and not an implementation gate.
 
 ## Governing question
 
@@ -378,7 +378,7 @@ The gate FAILS if **any** of the following hold:
 
 ## Freeze rules
 
-1. This gate **design is not frozen** until accepted on review. Amendments before freeze require documented revision and re-review. After DESIGN FROZEN, amendments require a documented revision before Step 2 proceeds or restarts.
+1. This gate **design is frozen** as of 2026-08-29 (revision 2). Amendments require a documented revision and re-review before Step 2 proceeds further or restarts.
 2. The eight MON-G1 cases are the only semantic evaluation set. No ninth semantic case. No re-classification. `ambiguous_layer`, history-preservation, and write-integrity are structural conformance only (outside 8/8).
 3. Structural fixtures for ambiguity (MON-G3-IT reuse) and history (payloads A/B + lineage key) are **frozen in this gate** before Step 2 — not designed by the candidate architecture.
 4. Candidate data architecture (Step 2) must derive from DEC-005 + DEC-006 + DEC-007 + adopted ontology + adopted interface thesis, and must satisfy the Step 2 artifact requirements above.
@@ -391,7 +391,7 @@ The gate FAILS if **any** of the following hold:
 | Step | Artifact | Status |
 |---|---|---|
 | 1 | This gate spec (`DATA_ARCHITECTURE_GATE.md`) | **Frozen — accepted 2026-08-29** (revision 2) |
-| 2 | Candidate logical data architecture meeting **Step 2 artifact requirements** | **Authorized — next step** |
+| 2 | Candidate logical data architecture meeting **Step 2 artifact requirements** (`CANDIDATE_DATA_ARCHITECTURE.md`) | **Draft for review** |
 | 3 | Persistence/retrieval fidelity evaluation on S8…S7 + structural checks (`GATE_MON-G4-DA_EVALUATION.md`) | Blocked until Step 2 exists and is complete |
 | 4 | Gate closeout decision | Blocked until Step 3 complete |
 
