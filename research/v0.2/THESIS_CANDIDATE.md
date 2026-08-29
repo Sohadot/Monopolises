@@ -1,12 +1,12 @@
 # Thesis Candidate — Monopolises v0.2: Layered Monopolisation
 
-**Version:** 0.2 (candidate)
-**Status:** UNRATIFIED — working hypothesis under test
+**Version:** 0.2
+**Status:** **Ratified** by DEC-005 (2026-08-29) after MON-G1-LI closed PASS
 **Opened:** 2026-08-28
 **Predecessor:** Strategic Replaceability v0.1 — rejected as primary measurement thesis (see `../GATE_0_CLOSEOUT.md` and `DECISION_LOG.md` DEC-004)
-**Governing gate:** `LAYER_IDENTIFIABILITY_GATE.md`
+**Governing gate:** `LAYER_IDENTIFIABILITY_GATE.md` (Closed — PASS); evaluation `GATE_MON-G1-LI_EVALUATION.md`
 
-> This is a candidate thesis. It is not ratified, not a public claim, and not authorized for the site, an ontology, a score, or any scaled surface. It becomes a build thesis only if its gate passes and a new decision (DEC-005) is recorded.
+> This thesis was ratified by **DEC-005** after its gate (MON-G1-LI) closed **PASS** on the fixed eight-case set. The **active taxonomy is exactly four evidenced layers** — `legal_exclusivity`, `capacity_control`, `access_gatekeeping`, `switching_dependency`. The provisional six-layer list below is the **test instrument** used by the gate; `qualification_control`, `standard_interface_control`, and `temporal_constraint` were **not evidenced** and remain research candidates **outside** the active taxonomy (not placeholders). `switching_dependency`, held out below, was evidenced by S7 and admitted. Ratification authorizes an ontology/interface/data architecture on the four active layers only — not scores, rankings, entity pages, or monetization.
 
 ## Candidate thesis
 

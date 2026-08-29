@@ -2,12 +2,15 @@
 
 **Gate ID:** MON-G1-LI
 **Version:** 0.2
-**Status:** DESIGN FROZEN — evidence extraction not started
+**Status:** **Closed — PASS** (2026-08-29)
 **Opened:** 2026-08-28
-**Thesis under test:** `THESIS_CANDIDATE.md` (Layered Monopolisation v0.2)
+**Closed:** 2026-08-29
+**Thesis under test:** `THESIS_CANDIDATE.md` (Layered Monopolisation v0.2 — ratified by DEC-005)
+**Evaluation:** `GATE_MON-G1-LI_EVALUATION.md`
+**Decision:** `DECISION_LOG.md` DEC-005
 **Predecessor gate:** MON-G0-RH — Closed FAIL (`../GATE_0.md`, `../GATE_0_CLOSEOUT.md`)
 
-> This gate tests whether the v0.2 thesis is buildable at all. It is deliberately smaller and harder than Gate 0. Nothing here authorizes the site, an ontology, a score, or DEC-005. Only a PASS on the fixed case set below does.
+> This gate tested whether the v0.2 thesis is buildable at all. It is deliberately smaller and harder than Gate 0. It **closed PASS** on the fixed eight-case set (all four pass conditions hold; no falsifier triggers). The PASS authorizes — only from DEC-005 onward, and in order — a layer ontology, an interface thesis, and a data architecture on the four evidenced layers (`legal_exclusivity`, `capacity_control`, `access_gatekeeping`, `switching_dependency`); it does **not** authorize scores, rankings, entity pages, or monetization. The design and fixed set below are retained as the gate of record.
 
 ## Governing question
 
