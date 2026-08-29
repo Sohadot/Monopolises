@@ -220,3 +220,60 @@ DEC-005 build order remains: **ontology → interface thesis → data architectu
 ### Next-gate rule
 
 The interface thesis may proceed only under a **new falsifiable gate**. MON-G2-OF is not reopened, broadened, or retroactively redefined to authorize work beyond ontology adoption and opening that successor gate.
+
+---
+
+## DEC-007 — Close MON-G3-IT and Adopt the Layered Monopolisation Interface Thesis v0.2
+
+**Date:** 2026-08-29
+**Status:** Closed / Binding
+**Gate:** MON-G3-IT — Closed / PASS
+**Supersedes:** nothing in DEC-005's taxonomy or DEC-006's ontology adoption (DEC-005 and DEC-006 stand; this decision completes the interface-thesis step DEC-006 authorized)
+
+### Decision
+
+Close gate `MON-G3-IT` (Interface Thesis) **PASS**, and adopt the **tested** interface thesis version `mon-g3-it-candidate-v0.2` as the Layered Monopolisation interface thesis conforming to DEC-005 / DEC-006.
+
+### Basis
+
+Evaluation `research/v0.2/GATE_MON-G3-IT_EVALUATION.md` (Accepted 2026-08-29), machine report `research/v0.2/interface/readback-report.json`:
+
+- **8/8** blind semantic readback PASS (grammar render → blind extract → full-content compare)
+- **`ambiguous_layer` structural conformance PASS** (outside the 8/8 denominator)
+- **No** MON-G3-IT falsifier triggered (including tautology / Falsifier 15)
+- **No** return to Step 2 required
+
+Governing-question answer: the adopted ontology can be translated into an interface thesis that makes bounded control legible **without** loss, inflation, or semantic distortion on the fixed MON-G1-LI eight-case set.
+
+### Adopted artifact (exact tested version)
+
+- Canonical: `research/v0.2/CANDIDATE_INTERFACE_THESIS.md`
+- **`thesis_id`:** `mon-g3-it-candidate-v0.2` — **unchanged** (no untested renumbering)
+
+### Unchanged by this decision
+
+- DEC-005 active taxonomy remains exactly four layers: `legal_exclusivity`, `capacity_control`, `access_gatekeeping`, `switching_dependency`
+- DEC-006 adopted ontology `mon-g2-of-candidate-v0.2` remains unchanged
+- Research candidates remain outside the active taxonomy
+- MON-G1-LI and MON-G2-OF remain Closed PASS; their classifications and ontology are not reopened or rewritten
+- MON-G3-IT PASS criteria, falsifiers, and fixed test set are not amended after close
+
+### Construction consequence
+
+**Interface-thesis step complete. Authorization now extends only to opening the successor falsifiable gate for Data Architecture.**
+
+This decision does **not** authorize:
+
+- Interface implementation, production pages, or component libraries
+- Site redesign or “shipping the UI”
+- Data architecture itself (before its own gate)
+- Scores, rankings, severity, dominance levels, or monopoly probability
+- Entity or sector pages
+- Admission of new layers without a new gate
+- Monetization
+
+DEC-005 build order remains: **ontology → interface thesis → data architecture**.
+
+### Next-gate rule
+
+Data architecture may proceed only under a **new falsifiable gate**. MON-G3-IT is not reopened, broadened, or retroactively redefined to authorize work beyond interface-thesis adoption and opening that successor gate.

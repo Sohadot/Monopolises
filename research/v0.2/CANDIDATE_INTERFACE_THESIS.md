@@ -2,7 +2,7 @@
 
 **Gate:** MON-G3-IT (Interface Thesis)
 **Thesis ID:** `mon-g3-it-candidate-v0.2`
-**Status:** **Accepted for Step 3 — 2026-08-29** (candidate interface thesis under test; no evaluation in this artifact)
+**Status:** **ADOPTED — MON-G3-IT Closed PASS — 2026-08-29**
 **Gate spec:** `INTERFACE_THESIS_GATE.md` (DESIGN FROZEN — accepted 2026-08-29, revision 2)
 **Ontology binding:** `mon-g2-of-candidate-v0.2` (DEC-006 adopted)
 **Authority:** DEC-005 + DEC-006 + frozen MON-G3-IT gate — **not** archived `INTERFACE_THESIS.md`
@@ -275,7 +275,7 @@ These notes show how the grammar *intends* to carry known pressures. They are **
 |---|---|
 | 1 Gate design | DESIGN FROZEN |
 | 2 This candidate interface thesis | **Accepted — 2026-08-29** |
-| 3 Readback evaluation | **Authorized — next step** |
-| 4 Closeout | Blocked |
+| 3 Readback evaluation | **Accepted — 2026-08-29** |
+| 4 Closeout | **Closed — PASS — 2026-08-29** (DEC-007) |
 
-**Stop point:** Step 2 accepted. Step 3 (blind readback) proceeds on a separate branch. Do not amend this thesis inside evaluation; grammar defects require return to Step 2.
+**Stop point:** Gate MON-G3-IT closed PASS. Thesis `mon-g3-it-candidate-v0.2` adopted. Authorization extends only to opening the successor falsifiable gate for data architecture — not implementation.
