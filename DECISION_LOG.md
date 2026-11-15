@@ -370,3 +370,33 @@ The public reading layer must make the already ratified Layered Monopolisation v
 ### Acceptance
 
 Before merge, validate internal routes, outbound reference paths, unique canonical URLs, source/statements alignment, semantic HTML, sitemap and `llms.txt` consistency, and desktop/mobile presentation. A completed PR under this decision records an editorial alignment, **not** a successor gate PASS or production authorization.
+
+---
+
+## DEC-010 — Authorize Bounded Institutional Visual Redesign
+
+**Date:** 2026-11-15
+
+**Status:** Binding upon merge of the visual-design PR
+
+**Scope:** Presentation and responsive navigation across the six existing static public routes
+
+**Basis:** Owner approval of an institutional, conceptual and commercially legible reading experience, with purple, copper, carbon black and champagne-gray identity
+
+### Decision
+
+Authorize a visual redesign of the already published research foundation: purple family for identity and hierarchy, dark copper for editorial provenance cues, carbon-black typography, and champagne-gray background. The first page introduces a four-question reading instrument and selected source-linked case records; the five companion routes retain their established research content with the same visual grammar.
+
+The objective is to make the documented reference work **discoverable, navigable, readable, and credible to its intended professional and public audiences**, without representing evidence as endorsement or commercial traction.
+
+### Boundaries
+
+- **Research is immutable under this decision.** No changes to the eight cases, source register, verdicts, fixed gates, ontology, logical data architecture, or archived Gate 0 FAIL.
+- **Presentation is not evidence.** Purple shades, copper accents, diagram order, and case placement are editorial hierarchy only—not scores, severity, market power, rankings, or the strength of a claim.
+- **Static publishing only.** This decision does not authorize production databases, ingestion, search systems, APIs, entity pages, monetization, testimonials, or expansion beyond the six existing public routes.
+- **Traceable summaries.** The public evidence examples must link to their canonical case documents and preserve negative or marginal outcomes.
+- **Accessibility by construction.** Responsive reflow, legible contrast, visible keyboard focus, meaningful headings and landmarks, and reduced-motion support are acceptance conditions. The content must work without JavaScript.
+
+### Acceptance
+
+Check all six routes at mobile and desktop widths, keyboard navigation, contrast of body and control text, link targets, canonical metadata, evidence fidelity, and the existing public-reference test suite. If a visual-browser check cannot run, record that limitation honestly and keep the pull request in draft until a visual review is completed.
