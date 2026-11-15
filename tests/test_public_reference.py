@@ -126,6 +126,27 @@ class PublicReferenceTests(unittest.TestCase):
             self.assertIn(url, llms)
         self.assertIn("DEC-008", llms)
 
+    def test_visual_identity_and_non_operational_homepage(self):
+        css = (ROOT / "styles.css").read_text(encoding="utf-8")
+        for token in ("#E9E3E0", "#1B191E", "#4A275D", "#6A3B7B", "#8A4C2E"):
+            self.assertIn(token, css)
+        self.assertIn("prefers-reduced-motion", css)
+        for route, (_, content) in self.pages.items():
+            with self.subTest(route=route):
+                self.assertIn('<meta name="theme-color" content="#E9E3E0">', content)
+                self.assertIn('class="skip-link"', content)
+                self.assertIn('class="nav-links" aria-label="Primary"', content)
+                self.assertIn('class="nav-evidence"', content)
+        home = self.pages["/"][1]
+        self.assertIn('class="instrument-steps"', home)
+        self.assertIn('class="evidence-ledger"', home)
+        for term in ("System", "Layer", "Mechanism", "Evidence"):
+            self.assertIn(f'class="instrument-term">{term}</span>', home)
+        for code in ("S8", "S6", "S3"):
+            self.assertIn(f"MON-G1-{code}.md", home)
+        self.assertIn("no evidenced control layer", home)
+        self.assertIn("DEC-010", (ROOT / "DECISION_LOG.md").read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()
