@@ -148,6 +148,17 @@ class PublicReferenceTests(unittest.TestCase):
         self.assertIn("no evidenced control layer", home)
         self.assertIn("DEC-010", (ROOT / "DECISION_LOG.md").read_text(encoding="utf-8"))
 
+    def test_intermediate_width_reflows_research_sections(self):
+        css = (ROOT / "styles.css").read_text(encoding="utf-8")
+        tablet = css.split("@media (max-width: 1020px) {", 1)[1].split(
+            "@media (max-width: 560px) {", 1
+        )[0]
+        for selector in (".nav-links a", ".grid-2", ".case-grid", ".evidence-row"):
+            self.assertIn(selector, tablet)
+        self.assertIn("min-height: 44px", tablet)
+        self.assertIn("overflow-x: auto", tablet)
+        self.assertNotIn("@media (max-width: 800px)", css)
+
 
 if __name__ == "__main__":
     unittest.main()

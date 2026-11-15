@@ -209,15 +209,16 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 @media (max-width: 1020px) {
   .nav { flex-wrap: wrap; gap: .15rem; padding-block: 1.15rem .45rem; }
-  .nav-links { width: 100%; justify-content: flex-start; gap: 1.5rem; }
+  .nav-links { width: 100%; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; gap: 1.2rem; scrollbar-width: thin; }
+  .nav-links a { display: inline-flex; flex: 0 0 auto; align-items: center; min-height: 44px; font-size: 1rem; white-space: nowrap; }
   .hero-layout { grid-template-columns: minmax(0, 1fr); }
   .hero h1 { max-width: 14ch; }
   .instrument { border-top: 1px solid var(--line); border-left: 0; padding: 2.2rem 0 0; }
-}
-@media (max-width: 800px) {
+  /* Reading columns must collapse together at the same breakpoint as the hero. */
   .cards, .cards-4, .case-grid, .grid-2 { grid-template-columns: minmax(0, 1fr); }
   .evidence-row { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
-  .evidence-row a { border-left: 0; padding: 0 0 .1rem; }
+  .evidence-row p:not(.case-id) { font-size: 1.03rem; }
+  .evidence-row a { border-left: 0; padding: 0 0 .1rem; font-size: 1rem; }
   .section { padding-block: 3.5rem; }
   .status-strip span:not(:last-child)::after { content: ""; padding-left: 0; }
 }
