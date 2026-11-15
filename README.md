@@ -89,4 +89,6 @@ For Gate 0 history only: [`research/GATE_0.md`](research/GATE_0.md) and [`resear
 
 ## Public site
 
-The public site is intentionally small and may lag the repository. For current adopted status, use this README and [`DECISION_LOG.md`](DECISION_LOG.md).
+The six public research pages are a **curated reading layer** for the adopted v0.2 record: [home](https://monopolises.com/), [thesis](https://monopolises.com/thesis/), [methodology](https://monopolises.com/methodology/), [sources](https://monopolises.com/sources/), [research](https://monopolises.com/research/), and [about](https://monopolises.com/about/). They show the active thesis, evidence cases, gate outcomes, and limitations, while preserving Gate 0's closed FAIL as historical provenance. Public case summaries link back to canonical GitHub source documents; they do not form a live case database.
+
+For binding research status, use this README and [`DECISION_LOG.md`](DECISION_LOG.md). Editorial public-state synchronization under DEC-009 does **not** authorize production implementation, scored/ranked pages, new layers, or monetization.

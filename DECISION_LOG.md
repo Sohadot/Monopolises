@@ -340,3 +340,33 @@ DEC-005 build order **ontology → interface thesis → data architecture** is c
 ### Next-gate rule
 
 Any move from **adopted data architecture** to **production implementation** requires a **new falsifiable gate or binding decision**. MON-G4-DA is not reopened, broadened, or retroactively redefined to authorize work beyond data-architecture adoption.
+
+---
+
+## DEC-009 — Authorize Public Research-State Synchronization (v0.2)
+
+**Date:** 2026-11-15
+
+**Status:** Binding upon merge of the public-state synchronization PR
+
+**Scope:** Editorial alignment of the existing six static public research routes only
+**Basis:** Owner direction to make the adopted research state visible to the intended audience
+
+### Decision
+
+Authorize a **bounded, factual editorial update** of the existing public foundation at `/`, `/thesis/`, `/methodology/`, `/sources/`, `/research/`, and `/about/`, together with their metadata, styling for legibility, `llms.txt`, and sitemap modification dates.
+
+The public reading layer must make the already ratified Layered Monopolisation v0.2 thesis visible; clearly distinguish it from the archived Strategic Replaceability v0.1 FAIL; disclose the full fixed eight-case set, source-register scope, four research-gate verdicts, and the most important negative, marginal, and multi-layer findings. Every case summary must lead to its canonical repository artifact.
+
+### Constraints
+
+- **GitHub is authoritative.** This editorial sync cannot amend case results, source registers, ontology, interface thesis, data architecture, or the existing closed gates.
+- **No overclaim.** Dated and jurisdiction-bounded research findings are not statements about current market status, legal monopoly power, wrongdoing, or a general ranking. Gate PASS means exactly what each gate tested, not operational certification.
+- **No operationalization.** Do not add a database, API, live ingestion, publishing system, interactive case search, entity/sector pages, public scores, dominance scales, or monetization. DEC-008's implementation boundary remains unchanged.
+- **No fabricated authority.** No unsupported audience testimonials, external endorsements, current usage metrics, or commercial outcomes.
+- **No history erasure.** Gate MON-G0-RH remains FAIL and its sources and cases remain discoverable as provenance.
+- **Accessibility and link integrity.** Content must be legible without JavaScript, responsive, keyboard navigable, and linked back to canonical evidence.
+
+### Acceptance
+
+Before merge, validate internal routes, outbound reference paths, unique canonical URLs, source/statements alignment, semantic HTML, sitemap and `llms.txt` consistency, and desktop/mobile presentation. A completed PR under this decision records an editorial alignment, **not** a successor gate PASS or production authorization.
