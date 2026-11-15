@@ -17,7 +17,7 @@ Excluded: legal or antitrust conclusions; monopoly/dominance classification; ent
 
 ## Fixed case design
 
-- **Calibration case (retrospective):** MON-SI-001 (NVIDIA, cutoff 2026-05-12T23:59Z). It tests **process** criteria P1–P4 only. It is excluded from the predictive criterion P5 because its outcome was known before the research began.
+- **Calibration case (retrospective):** MON-SI-001 (NVIDIA, cutoff 2026-05-12T23:59Z). It tests **process** criteria P1–P4 only. It is **permanently excluded from P5**, because its outcome was known before the research began. Agreement between its reconstruction and later events is labelled *retrospectively consistent — no prospective credit* and never counts as a prediction.
 - **Prospective cases:** at least **5** cases registered under §6 below, each with ≥1 pre-registered risk condition, observation windows of 90–365 days, registered at different dates over ≥ 90 days of calendar time. Case selection criteria are written down before any case is chosen.
 
 ## Pass criteria (all must hold)
@@ -59,10 +59,10 @@ Prospective validation will **not** be claimed until real observation windows ha
 
 | Criterion | State |
 |---|---|
-| P1 | MON-SI-001 passes the automated check (process evidence only) |
+| P1 | MON-SI-001 passes the automated check (process evidence only). Second pass (2026-11-15): freeze hashes, availability review and dated errata added; one source (SI1-SRC-013) rated insufficiently demonstrated, carrying S2 only |
 | P2 | Not run — no second reviewer yet |
 | P3 | MON-SI-001: mechanism and mechanical sensitivity documented |
 | P4 | MON-SI-001: negatives and unresolved items documented |
-| P5 | **Not started** — zero prospective cases registered |
+| P5 | **Not started** — zero prospective cases registered; MON-SI-001 contributes nothing to P5 |
 
 **Verdict: none (PROPOSED).**

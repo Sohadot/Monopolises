@@ -1,0 +1,19 @@
+{
+  "purpose": "Freeze record for the MON-SI-001 pre-event reconstruction. Tests verify these hashes so the frozen state cannot change silently. Corrections are appended as dated errata only.",
+  "frozen_commit": "5b3b756",
+  "frozen_date": "2026-11-15",
+  "files": {
+    "PRE_EVENT_ANALYSIS.md": {
+      "method": "sha256 of file content before the line '<!-- errata-pointer -->' (whole file if absent)",
+      "sha256": "fdebff41f6531be7f8ea61d4a1da77cf7daf92923fdfc2ba71c1f2ae85cd3318"
+    },
+    "register.pre-event.json": {
+      "method": "sha256 of canonical JSON (sort_keys, compact separators, UTF-8) of keys case_id, register, cutoff_utc, frozen, sources, claims",
+      "sha256": "b49762532416be393bebcd38f48b34471881dd95ed6fdff584eac299f8c57fb2"
+    },
+    "event-study-pre-event.json": {
+      "method": "sha256 of file content",
+      "sha256": "60e09c53e997bd484d445c1807a8d4d3aa018e9d75adeb62574dfff65cfab1cc"
+    }
+  }
+}

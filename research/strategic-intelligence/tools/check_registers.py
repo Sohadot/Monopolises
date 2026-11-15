@@ -11,6 +11,7 @@ the research is correct or that any forecast is accurate.
 
 from datetime import datetime
 from pathlib import Path
+import hashlib
 import json
 import re
 import sys
@@ -28,10 +29,20 @@ EVIDENCE_CLASSES = {"S0", "S1", "S2"}
 NON_FINDING_CLASSES = {"secondary_lead", "short_seller_report", "proprietary"}
 # Keys that would turn a research register into a scored / classified product.
 FORBIDDEN_KEYS = {"score", "rank", "ranking", "layer", "severity", "dominance",
-                  "monopoly_probability", "price_target", "signal", "rating"}
-VALIDATION_CLASSES = ("Independently anticipated", "Partially corroborated later",
-                      "Unresolved", "Contradicted",
-                      "Not discoverable with the pre-event evidence")
+                  "monopoly_probability", "probability", "price_target", "target_price",
+                  "signal", "trading_signal", "rating", "recommendation"}
+EVIDENTIARY_STATUS = ("Confirmed", "Partially corroborated", "Unresolved", "Contradicted",
+                      "Not established")
+RETROSPECTIVE_RELATION = ("Retrospectively consistent — no prospective credit",
+                          "Not discoverable with the pre-event evidence", "Not applicable")
+# Labels that would award prediction credit to a retrospective case.
+PROSPECTIVE_CREDIT_LABELS = ("independently anticipated", "anticipated", "predicted",
+                             "prospectively validated", "forecast confirmed")
+AVAILABILITY_LEVELS = ("demonstrated", "inferred_from_official_date",
+                       "insufficiently_demonstrated")
+CLAIM_CATEGORIES = ("A_documented_primary_fact", "B_reproducible_calculation",
+                    "C_allegation_or_hypothesis", "D_unsupported_or_unresolved")
+ERRATA_FIELDS = ("date", "affects", "correction", "interpretation_changed", "reason")
 # Facts first public after the MON-SI-001 cutoff. They may appear in the
 # pre-event analysis only inside the hindsight-disclosure block.
 POST_EVENT_TERMS = {
@@ -124,6 +135,36 @@ def check_register(reg, period, errors, label):
                 errors.append(f"{label}:{cid} cites excluded source {ref}")
             elif c["evidence_class"] in ("S0", "S1") and src["source_class"] in NON_FINDING_CLASSES:
                 errors.append(f"{label}:{cid} S0/S1 claim rests on non-primary source {ref}")
+        cat = c.get("claim_category")
+        if cat is not None:
+            if cat not in CLAIM_CATEGORIES:
+                errors.append(f"{label}:{cid} bad claim_category {cat!r}")
+            elif cat == "A_documented_primary_fact" and c["evidence_class"] != "S0":
+                errors.append(f"{label}:{cid} category A requires S0")
+            elif cat == "C_allegation_or_hypothesis" and c["evidence_class"] != "S2":
+                errors.append(f"{label}:{cid} allegations must stay S2")
+    addenda = reg.get("addenda", {})
+    for e in addenda.get("errata", []):
+        eid = e.get("erratum_id", "?")
+        missing = [f for f in ERRATA_FIELDS if f not in e]
+        if missing:
+            errors.append(f"{label}:{eid} erratum missing {missing}")
+        elif e["date"] < reg.get("frozen", "0000-00-00"):
+            errors.append(f"{label}:{eid} erratum predates the freeze")
+    review = {r["source_id"]: r for r in addenda.get("availability_review", [])}
+    if period == "pre_event" and review:
+        for sid, s in sources.items():
+            if s["status"] == "admitted" and sid not in review:
+                errors.append(f"{label}:{sid} admitted but missing from availability_review")
+        for sid, r in review.items():
+            if r.get("demonstrated_public_availability") not in AVAILABILITY_LEVELS:
+                errors.append(f"{label}:{sid} bad availability level")
+        for cid, c in claims.items():
+            if c["evidence_class"] in ("S0", "S1") and c["source_ids"] and all(
+                    review.get(ref, {}).get("demonstrated_public_availability")
+                    == "insufficiently_demonstrated" for ref in c["source_ids"]):
+                errors.append(f"{label}:{cid} S0/S1 claim rests only on sources with "
+                              "insufficiently demonstrated availability")
     return sources, claims
 
 
@@ -137,12 +178,19 @@ def check_case(case_dir, errors):
     post_src, post_claims = check_register(post, "post_event", errors, f"{label}/post")
     cutoff = parse_utc(pre["cutoff_utc"])
     for sid, s in post_src.items():
-        if s["status"] == "admitted" and s["availability_utc"] and parse_utc(s["availability_utc"]) <= cutoff:
+        if (s["status"] == "admitted" and s["availability_utc"]
+                and parse_utc(s["availability_utc"]) <= cutoff
+                and not s.get("pre_cutoff_document_located_post_hoc")):
             errors.append(f"{label}/post:{sid} is pre-cutoff; it belongs in the pre-event register")
 
     analysis = (case_dir / "PRE_EVENT_ANALYSIS.md").read_text(encoding="utf-8")
-    body = DISCLOSURE.sub("", analysis)
-    if body == analysis:
+    manifest_path = case_dir / "FREEZE_MANIFEST.json"
+    if manifest_path.exists():
+        check_freeze(case_dir, json.loads(manifest_path.read_text(encoding="utf-8")),
+                     pre, analysis, errors, label)
+    frozen_analysis = analysis.split("\n" + ERRATA_POINTER, 1)[0]
+    body = DISCLOSURE.sub("", frozen_analysis)
+    if body == frozen_analysis:
         errors.append(f"{label}: PRE_EVENT_ANALYSIS.md lacks a hindsight-disclosure block")
     for ref in set(ID_REF.findall(analysis)):
         if ref not in pre_src and ref not in pre_claims:
@@ -160,13 +208,48 @@ def check_case(case_dir, errors):
     if not section:
         errors.append(f"{label}: validation lacks a section 2 classification table")
         return len(pre_src), len(post_src)
-    classified = re.findall(r"^\|[^|]+\|[^|]+\|\s*\*\*([^*]+)\*\*", section.group(0), re.M)
-    if not classified:
+    rows = re.findall(r"^\|([^|]+)\|([^|]+)\|\s*\*\*([^*]+)\*\*\s*\|([^|]+)\|\s*$",
+                      section.group(0), re.M)
+    if not rows:
         errors.append(f"{label}: no classified rows in validation section 2")
-    for row in classified:
-        if row.strip() not in VALIDATION_CLASSES:
-            errors.append(f"{label}: unknown validation class {row.strip()!r}")
+    for item, _evidence, status, relation in rows:
+        if status.strip() not in EVIDENTIARY_STATUS:
+            errors.append(f"{label}: unknown evidentiary status {status.strip()!r}")
+        if relation.strip() not in RETROSPECTIVE_RELATION:
+            errors.append(f"{label}: unknown retrospective relation {relation.strip()!r}")
+        for bad in PROSPECTIVE_CREDIT_LABELS:
+            if bad in (status + relation).lower():
+                errors.append(f"{label}: prospective-credit label {bad!r} in {item.strip()!r}")
+    if "**Prospective credit:** **none." not in validation:
+        errors.append(f"{label}: validation must state that no prospective credit is awarded")
     return len(pre_src), len(post_src)
+
+
+ERRATA_POINTER = "<!-- errata-pointer -->"
+
+
+def canonical_core(reg):
+    core = {k: reg[k] for k in ("case_id", "register", "cutoff_utc", "frozen", "sources", "claims")}
+    return json.dumps(core, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()
+
+
+def check_freeze(case_dir, manifest, pre, analysis, errors, label):
+    """Frozen pre-event content may only be extended by dated, appended errata."""
+    files = manifest["files"]
+    actual = {
+        "PRE_EVENT_ANALYSIS.md": hashlib.sha256(
+            analysis.split("\n" + ERRATA_POINTER, 1)[0].encode("utf-8")).hexdigest(),
+        "register.pre-event.json": hashlib.sha256(canonical_core(pre)).hexdigest(),
+        "event-study-pre-event.json": hashlib.sha256(
+            (case_dir / "event-study-pre-event.json").read_bytes()).hexdigest(),
+    }
+    for name, digest in actual.items():
+        if files.get(name, {}).get("sha256") != digest:
+            errors.append(f"{label}: frozen file {name} changed since {manifest['frozen_commit']}")
+    tail = analysis.split(ERRATA_POINTER, 1)[1] if ERRATA_POINTER in analysis else ""
+    for term in POST_EVENT_TERMS.get(label, ()):
+        if term.lower() in tail.lower():
+            errors.append(f"{label}: post-event term {term!r} in pre-event errata pointer")
 
 
 def check_gate(errors):
@@ -176,6 +259,8 @@ def check_gate(errors):
         errors.append("GATE_MON-SI-G0.md status must remain PROPOSED until owner authorization")
     if re.search(r"^\*\*Verdict:\*\*\s*(PASS|FAIL)", gate, re.M):
         errors.append("GATE_MON-SI-G0.md must not declare a verdict")
+    if "permanently excluded from P5" not in gate:
+        errors.append("GATE_MON-SI-G0.md must state that retrospective cases are permanently excluded from P5")
 
 
 def run():

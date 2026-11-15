@@ -47,9 +47,9 @@ The output is **research records**, not reports for sale, trading signals, price
 
 ## 5. Independence and conflicts of interest (required disclosure for every case)
 
-- The preparer holds **no position** in any security discussed and has no client, sponsor, or compensation tied to any outcome.
+- **MON-SI-001 disclosure status: Not independently verified / declaration pending.** No signed declaration of positions, funding, or engagements exists for this case. A declaration is required from the repository owner and from each human contributor or reviewer before any further use. *Correction (2026-11-15): the first pass stated that the preparer held no position; that statement was not based on a verified declaration and is withdrawn.*
 - Every future case must record: researcher positions (including derivatives and short positions), funding source, any engagement with a party named in the case, and any reliance on a party with a disclosed position (e.g. a short-seller report).
-- A short-seller or activist report may be used **only** in a post-event validation section, labelled with the author's disclosed position.
+- A short-seller or activist report may be used **only** in a post-event validation section, labelled with the author's disclosed position. Such a report is primary evidence of **what its author alleged**, never of the truth of the allegations, and it is S0 only for the existence and wording of the allegation, and only where the document itself was examined.
 
 ## 6. Publication and commercialization restrictions
 

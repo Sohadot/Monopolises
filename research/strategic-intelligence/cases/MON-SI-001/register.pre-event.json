@@ -644,5 +644,167 @@
       ],
       "counterevidence_or_alternative": "Windows contain other news (earnings, tariff and macro headlines) not controlled for; SMH contains NVDA."
     }
-  ]
+  ],
+  "addenda": {
+    "note": "Append-only. Added after the freeze (see FREEZE_MANIFEST.json). Nothing here changes the frozen sources or claims; corrections are stated, not applied.",
+    "availability_review": [
+      {
+        "source_id": "SI1-SRC-001",
+        "document_date": "2025-02-26",
+        "official_publication_date": "2025-02-26",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-002",
+        "document_date": "2025-04-15",
+        "official_publication_date": "2025-04-15",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-003",
+        "document_date": "2025-05-28",
+        "official_publication_date": "2025-05-28",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-004",
+        "document_date": "2025-08-27",
+        "official_publication_date": "2025-08-27",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-005",
+        "document_date": "2025-11-19",
+        "official_publication_date": "2025-11-19",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-006",
+        "document_date": "2026-02-25",
+        "official_publication_date": "2026-02-25",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-007",
+        "document_date": "2026-02-25",
+        "official_publication_date": "2026-02-25",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-008",
+        "document_date": "2025-02-18",
+        "official_publication_date": "2025-02-18",
+        "demonstrated_public_availability": "inferred_from_official_date",
+        "evidence": "Parliamentary reply dated 18 Feb 2025 on the official ministry site; the page notes it was migrated from an earlier site, so the current copy does not itself show when it was first posted. Oral replies are delivered in open Parliament, which supports, but does not prove, same-day public availability of this text.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-009",
+        "document_date": "2025-05-13",
+        "official_publication_date": "2025-05-13",
+        "demonstrated_public_availability": "inferred_from_official_date",
+        "evidence": "Release header 'FOR IMMEDIATE RELEASE | May 13, 2025'. No independent capture from that date was retrieved.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-011",
+        "document_date": "2025-07-14",
+        "official_publication_date": "2025-07-14",
+        "demonstrated_public_availability": "inferred_from_official_date",
+        "evidence": "Statement dated 14 July 2025. The PDF CreationDate (2025-07-14T02:07:38Z) shows when the file was created, not when it was posted publicly.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-012",
+        "document_date": "2025-11-20",
+        "official_publication_date": "2025-11-20",
+        "demonstrated_public_availability": "inferred_from_official_date",
+        "evidence": "Release dated Thursday, November 20, 2025 (release number 25-1101). No independent capture from that date was retrieved.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-013",
+        "document_date": "2025-10-13",
+        "official_publication_date": "not_shown",
+        "demonstrated_public_availability": "insufficiently_demonstrated",
+        "evidence": "The letter is dated 13 Oct 2025. Its PDF CreationDate (2025-10-13T20:55:36Z) and ModDate (2025-10-14T12:53:02Z) record file creation and modification only; no posting date or contemporaneous capture was found. Pre-cutoff availability is likely but not demonstrated.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-020",
+        "document_date": "2025-01-02 to 2026-05-12",
+        "official_publication_date": "n/a",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "Exchange prices are public when they are printed. The data vintage is not contemporaneous: adjusted closes were retrieved on 2026-11-15 (see SI1-E-04).",
+        "retrieval_date": "2026-11-15"
+      }
+    ],
+    "errata": [
+      {
+        "erratum_id": "SI1-E-01",
+        "date": "2026-11-15",
+        "type": "methodological_overstatement",
+        "affects": [
+          "SI1-C-21",
+          "PRE_EVENT_ANALYSIS.md §2 F6, §7"
+        ],
+        "original_text_preserved": true,
+        "correction": "SI1-C-21 called two windows 'significantly negative (|t|>2 against both SMH and SPY models)'. That used per-test thresholds across 24 tests (6 events × 2 windows × 2 benchmarks). With a Bonferroni-adjusted two-sided 5% threshold (|t| > 3.08), only 14–15 Oct 2025 vs SMH (t = −3.10) and 26–27 Feb 2026 vs SPY (t = −3.11) exceed it, each marginally. 'Significant' should read 'nominally significant; marginal after multiple-comparison adjustment'.",
+        "interpretation_changed": false,
+        "reason": "The original text already declined to attribute either move to the paired document; the correction weakens the statistics further, in the same direction."
+      },
+      {
+        "erratum_id": "SI1-E-02",
+        "date": "2026-11-15",
+        "type": "evidence_status_note",
+        "affects": [
+          "SI1-SRC-014"
+        ],
+        "original_text_preserved": true,
+        "correction": "SI1-SRC-014 (MHA transcript, 3 March 2025) was found on 2026-11-15 at a new URL (https://www.mha.gov.sg/media-room/newsroom/transcript-of-media-conference-with-mr-k-shanmugam-minister-for-home-affairs-and-minister-for-law-regarding-the-case-involving-the-three-men-who-were-charged-on-27-february-2025-for-fraud-by-false-representation/), through a link in a post-event document (SI1-PST-013). It stays EXCLUDED from the pre-event inference. The discovery path is post-event, and pre-cutoff availability rests only on the date shown on the page plus a web-archive index entry for the former URL (capture timestamp 2025-05-28) whose content was not retrieved. Its content is used only in POST_EVENT_VALIDATION.md.",
+        "interpretation_changed": false,
+        "reason": "The pre-event findings are not strengthened; the document is assessed after the fact as material a blind analyst could have obtained."
+      },
+      {
+        "erratum_id": "SI1-E-03",
+        "date": "2026-11-15",
+        "type": "availability_basis_clarification",
+        "affects": [
+          "availability_utc of SI1-SRC-008, -009, -011, -012, -013"
+        ],
+        "original_text_preserved": true,
+        "correction": "For government documents, availability_utc was set to the end of the official document date, or to PDF metadata time. These values show the document date or file creation, not demonstrated public accessibility. The availability_review addendum separates document date, official publication date, demonstrated availability and retrieval date. SI1-SRC-013 is rated insufficiently_demonstrated.",
+        "interpretation_changed": false,
+        "reason": "SI1-SRC-013 supports only S2 claims (SI1-C-19, SI1-C-20), which carry no findings. No S0 or S1 claim depends solely on a source rated insufficiently_demonstrated (machine-checked)."
+      },
+      {
+        "erratum_id": "SI1-E-04",
+        "date": "2026-11-15",
+        "type": "data_vintage_disclosure",
+        "affects": [
+          "SI1-SRC-020",
+          "SI1-C-21",
+          "event-study-pre-event.json"
+        ],
+        "original_text_preserved": true,
+        "correction": "The pre-event event study used adjusted closes retrieved on 2026-11-15, i.e. a post-cutoff data vintage. Recomputing on unadjusted closes changed every pre-event CAR[0,+1] by at most 0.03 percentage points. Event windows were chosen by the researcher when the analysis was run; they were not pre-registered.",
+        "interpretation_changed": false,
+        "reason": "The vintage effect is negligible. Non-registered windows are a disclosed limitation."
+      }
+    ]
+  }
 }

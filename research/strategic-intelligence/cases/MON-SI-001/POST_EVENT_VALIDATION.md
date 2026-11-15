@@ -1,50 +1,56 @@
 # MON-SI-001 — Post-event validation (preliminary)
 
-**Written after** `PRE_EVENT_ANALYSIS.md` and `register.pre-event.json` were completed. Nothing below has been fed back into the pre-event files.
+**Written after** `PRE_EVENT_ANALYSIS.md` and `register.pre-event.json` were frozen at commit `5b3b756` (hashes in [`FREEZE_MANIFEST.json`](FREEZE_MANIFEST.json)). Nothing below feeds back into the pre-event files. Corrections to those files appear only as dated errata (`register.pre-event.json` → `addenda.errata`).
 **Register:** [`register.post-event.json`](register.post-event.json) · **Market data:** [`event-study-post-event.json`](event-study-post-event.json)
-**Validation horizon:** 13 May 2026 – 15 Nov 2026 (about six months; the 12-month risk-condition windows are still open)
-**Status:** preliminary. Not counted toward MON-SI-G0 criterion P5, because the case is retrospective and the outcome was known in advance.
+**Validation horizon:** 13 May 2026 – 15 Nov 2026 (about six months; the 12-month risk-condition windows remain open)
+**Prospective credit:** **none.** MON-SI-001 is retrospective, its research question was framed with the outcome known, and it is permanently excluded from MON-SI-G0 criterion P5.
 
 ## 1. What could be checked against what
 
-| Comparator requested | What was actually available | Evidence class |
+| Comparator | What was actually examined | Evidence class |
 |---|---|---|
-| Culper Research report, 13 May 2026 | Original PDF **not retrieved** (HTTP 403). Content known only through two secondary summaries | S2 |
-| Later Singapore government statements | Singapore Police Force statement, 30 Oct 2026 | S0 |
-| Later Malaysian regulatory disclosures | **No primary disclosure located**; one paywalled headline (13 Nov 2026) | unresolved |
-| Later U.S. enforcement actions | **No new primary charging document located** naming the channel; secondary reports of a criminal investigation | unresolved |
-| Later NVIDIA disclosures | 10-Q Q1 and Q2 FY2027; 8-K of 12 Nov 2026 | S0 |
-| Stock-market performance | NVDA vs SMH and SPY: event study and buy-and-hold | S1 |
+| Culper Research report, 13 May 2026 | **Not directly examined.** The PDF and every culperresearch.com page returned HTTP 403 to direct retrieval and to the fetch tool (two passes, 2026-11-15). Content is known only through search-index excerpts (SI1-PST-016) and secondary summaries (SI1-PST-009, -010) | S2 |
+| Singapore government | MHA press release, 12 Nov 2026 (SI1-PST-013); SPF statement, 30 Oct 2026 (SI1-PST-004); MHA transcript, 3 Mar 2025, located post hoc (SI1-PST-015) | S0 |
+| Malaysian regulator | MITI statement, 13 Nov 2026 (SI1-PST-014) | S0 |
+| U.S. enforcement | No new U.S. charging document located. Singapore's account of a BIS post-shipment check (SI1-V-08) and of limited U.S. assistance (SI1-V-10) | S0 (as Singapore's statements) |
+| NVIDIA disclosures | 10-Q Q1 and Q2 FY2027; 8-Ks of 20 May, 3 Sep and 12 Nov 2026 | S0 |
+| Market performance | NVDA vs SMH and SPY | S1 |
 
-## 2. Classification of pre-event findings and risk conditions
+Neither the MHA (12 Nov 2026) nor the MITI (13 Nov 2026) statement mentions **NVIDIA** or **China**. The only primary government text linking the Singapore server case to NVIDIA is the March 2025 remark that the servers "may contain Nvidia chips … the highest I can put it at" (SI1-V-13).
 
-Allowed classes: *Independently anticipated* · *Partially corroborated later* · *Unresolved* · *Contradicted* · *Not discoverable with the pre-event evidence*.
+## 2. Classification
 
-| Pre-event item | Later evidence | Classification | Note |
+**Evidentiary status:** *Confirmed* (official statement or documented procedural fact) · *Partially corroborated* (mechanism supported, full allegation not established) · *Unresolved* (direct evidence missing) · *Contradicted* (credible evidence establishes the contrary) · *Not established* (allegation that cannot be raised to a finding).
+**Retrospective relation:** *Retrospectively consistent — no prospective credit* · *Not discoverable with the pre-event evidence* · *Not applicable*. No item in this case is, or can become, a prospective prediction.
+
+| Item | Later evidence | Evidentiary status | Retrospective relation |
 |---|---|---|---|
-| F1 — geographic disclosures do not reveal end use | NVIDIA adds that it lacks "physical control of our products after sale" and relies on customers' compliance programs (SI1-V-01) | **Partially corroborated later** | Corroborates the observability gap, not any diversion volume |
-| F2 — Singapore billing line is not by itself a China signal | Nothing primary contradicts it; per secondary summaries, the short report's headline estimate did not rest on Singapore billing | **Unresolved** | No later primary data on Singapore-billed end use |
-| F3 — indirect channels could carry China-linked demand; magnitude unknown | Short-seller estimate of >20% of FY2026 compute revenue (S2, disputed); no primary corroboration of any magnitude | **Unresolved** | The pre-event analysis declined to size this; that refusal still stands |
-| F4 — Southeast Asian route tightening exposes indirect demand | Paywalled report of a Malaysian customs check; no primary text | **Unresolved** | — |
-| F5 — a named Singapore intermediary under public allegation (S2 lead) | SPF: "Investigations into Megaspeed are ongoing" (SI1-V-03) | **Partially corroborated later** | Corroborates that an investigation exists, **not** an unlawful final destination or any wrongdoing |
-| F6 — diversion signals had not visibly moved the price before the cutoff | Immediate reaction to the report was **positive** (CAR[0,+1] +4.6% vs SMH, t = 2.2) | **Partially corroborated later** | Consistent with the market not treating the report's content as new on day 0–1; it does not show the risk was priced |
-| RC1 — government statement on a named intermediary within 12 months | SI1-V-03 (30 Oct 2026) | **Independently anticipated** (hindsight caveat) | Derived from pre-cutoff primary evidence without the report; the research question itself was outcome-informed |
-| RC2 — NVIDIA changes diversion or end-use disclosure within 12 months | SI1-V-01 (20 May 2026) | **Independently anticipated** (hindsight caveat) | Same caveat. Seven days after the report, so the trigger cannot be identified |
-| RC3 — new Southeast Asian permit or licence measure within 12 months | None found (window open to 12 May 2027) | **Unresolved** | — |
-| Short-report claims on intermediary financing, upstream server supply and executive relationships (S2) | Not corroborated by any primary source located | **Not discoverable with the pre-event evidence** | They rest on registry and trade data and interviews that this prototype did not access; their truth is also **unresolved** |
-| Short-report claim that ">20% of compute revenue was China-driven" | No primary corroboration | **Not discoverable with the pre-event evidence** | It rests on market-share estimates and price assumptions, not on filings |
-| Hypothesis "the report caused the subsequent share-price decline" | Positive day 0–1 abnormal return; later decline confounded | **Contradicted** for the immediate window; **Unresolved** for longer horizons | See §3 |
+| F1 — geographic disclosures do not reveal end use | NVIDIA: no "physical control of our products after sale" (SI1-V-01). MITI: chip imports into Malaysia need no permit; re-exports are under check (SI1-V-12) | **Partially corroborated** | Retrospectively consistent — no prospective credit |
+| F2 — the Singapore billing line is not by itself a China signal | MHA: servers transited Singapore to Malaysia "without entering the Singapore market" (SI1-V-07). This concerns physical transit by Singapore companies, not NVIDIA's billing line. No later data on Singapore-billed end use | **Unresolved** | Not applicable |
+| F3a — mechanism: China-linked demand could be served via Southeast Asian intermediaries outside China-HQ revenue | Servers bought by Singapore companies went to Malaysia while their onward destination is investigated (SI1-V-07); a Malaysian data-centre tenant imports its own servers and AI chips (SI1-V-12). Neither statement names NVIDIA content or a China end use | **Partially corroborated** | Retrospectively consistent — no prospective credit |
+| F3b — magnitude of that demand | None of the new sources gives quantities, values or NVIDIA revenue attribution | **Unresolved** | Not applicable |
+| F4 — tightening Southeast Asian controls expose route-dependent demand | MITI confirms the July 2025 permit regime and that it "is considering further measures" (SI1-V-12) | **Partially corroborated** | Retrospectively consistent — no prospective credit |
+| F5a — the named Singapore intermediary is under official investigation | Singapore investigation since Feb 2025, "ongoing" (SI1-V-07, SI1-V-09); MITI re-export check (SI1-V-12) | **Confirmed** | Retrospectively consistent — no prospective credit |
+| F5b — that the intermediary diverted controlled chips to China | Governments describe servers moving to Malaysia; onward movement is the open question; MITI states it has "never cleared" the companies, which is not an adverse finding | **Not established** | Not applicable |
+| RC1 — government statement on a named intermediary within 12 months | SI1-V-03, SI1-V-07, SI1-V-12 | **Confirmed** | Retrospectively consistent — no prospective credit |
+| RC2 — NVIDIA changes diversion or end-use disclosure within 12 months | SI1-V-01 (20 May 2026) | **Confirmed** | Retrospectively consistent — no prospective credit |
+| RC3 — new Southeast Asian permit or licence measure within 12 months | MITI is "considering further measures"; none adopted in the record | **Unresolved** | Not applicable |
+| U.S. BIS post-shipment check at the intermediary, 24 Jun 2025 | Disclosed only in SI1-V-08 (Nov 2026), although the check predates the cutoff | **Confirmed** | Not discoverable with the pre-event evidence |
+| Short report: >20% of FY2026 compute revenue China-driven | Reported derivation uses third-party share estimates and price assumptions (SI1-V-14); no primary source examined supports a magnitude | **Not established** | Not discoverable with the pre-event evidence |
+| Short report: intermediary financing, upstream server supply, balance-sheet figures | Registry and trade data not accessed; the original report was not examined (SI1-V-14) | **Not established** | Not discoverable with the pre-event evidence |
+| Hypothesis that the report triggered an immediate share-price decline | NVDA rose 6.8% over days 0–1, a positive abnormal return (§3) | **Contradicted** | Not applicable |
+| Hypothesis that the report caused the six-month underperformance | Confounded (§3) | **Unresolved** | Not applicable |
 
-**Validation, not verdict:** none of the above establishes that any party broke any law. Supply-chain relationships corroborated later are not proof of an unlawful final destination.
+**No finding of unlawful conduct.** Investigations, a customs check, a post-shipment verification and a statement that a regulator "has never cleared" a company are procedural facts. None establishes an offence, an unlawful final destination, or responsibility by NVIDIA or any intermediary. Singapore's insufficient-evidence conclusion about one officer (SI1-V-09) is equally not an exoneration of the company.
 
-## 3. Market performance (descriptive, no causal attribution)
+## 3. Market performance (descriptive; no causal attribution)
 
-Base: close of 12 May 2026 (day −1). Day 0 is 13 May 2026; the report was announced around 18:04 UTC (14:04 New York), during the session. Market model estimated over 4 Nov 2025 – 28 Apr 2026 (120 sessions).
+Base: close of 12 May 2026 (day −1). Day 0 is 13 May 2026; the report was announced around 18:04 UTC (14:04 New York), during the session. Market model by OLS over 4 Nov 2025 – 28 Apr 2026 (120 sessions).
 
-| Window | NVDA | vs SMH model (CAR, t) | vs SPY model (CAR, t) |
+| Window | Observed NVDA return | Abnormal vs SMH (CAR, t) | Abnormal vs SPY (CAR, t) |
 |---|---|---|---|
 | [0,0] | +2.29% | +0.8% (0.58) | +1.3% (0.78) |
-| [0,+1] | +6.78% cumulative | **+4.6% (2.22)** | +4.2% (1.84) |
+| [0,+1] | +6.78% | +4.6% (2.22) | +4.2% (1.84) |
 | [0,+5] | — | +1.8% (0.51) | +0.8% (0.20) |
 | [0,+10] | — | −6.5% (−1.35) | −6.6% (−1.22) |
 
@@ -55,20 +61,45 @@ Base: close of 12 May 2026 (day −1). Day 0 is 13 May 2026; the report was anno
 | 12 Aug 2026 | +1.6% | +4.2% | +4.9% | −2.6 pp | −3.3 pp |
 | 13 Nov 2026 | −26.1% | −13.3% | +2.7% | −12.8 pp | −28.8 pp |
 
-**Confounders known to the researcher inside these windows:** Q1 FY2027 results after the close on day +5 (SI1-PST-006); an $11.9bn acquisition agreement, 2 Sep 2026 (SI1-PST-005); the CEO resignation, 11–12 Nov 2026 (SI1-PST-003); sector-wide moves (SMH −13.3% to 13 Nov). Note that SMH contains NVDA.
+**Keeping five things separate:**
 
-**Reading:** NVDA underperformed both benchmarks over six months. A directional "NVDA falls after the report" outcome is observed **but not explained**: the immediate reaction ran the other way, relative performance had recovered to −2.6 pp vs SMH by mid-August, and most of the later gap opened in October–November alongside events the pre-event analysis did not, and could not, anticipate. A correct direction is not evidence for the report's causal account.
+1. **Observed movement.** NVDA rose on days 0 and +1 and fell about 26% over six months.
+2. **Abnormal return.** Benchmark-adjusted moves were positive on days 0–1 and negative over [0,+10].
+3. **Statistical significance.** Eight tests were run (4 windows × 2 benchmarks). The Bonferroni-adjusted two-sided 5% threshold is |t| > 2.73. **None of the post-event CARs clears it.** The first pass described CAR[0,+1] vs SMH (t = 2.22) without this adjustment; it is nominally significant only (correction SI1-PE-02 below).
+4. **Economic materiality.** A 4–6% move in a company of this size is economically large in dollar terms, but materiality of a price move is not evidence about its cause.
+5. **Causal attribution.** **None.**
+   - Earnings were released after the close on day +5 (SI1-PST-006).
+   - An $11.9bn acquisition was announced on 2 Sep 2026 (SI1-PST-005).
+   - The Singapore and Malaysian statements of 12–13 Nov 2026 fall in the last sessions of the window.
+   - The CEO resigned on 11–12 Nov 2026 (SI1-PST-003).
+   - The sector fell 13.3% (SMH).
+   - Any same-day news was not screened.
 
-## 4. Lessons for the method (calibration, not performance)
+**Method limitations:**
+- Event windows and horizons were chosen by the researcher, not pre-registered.
+- SMH holds NVDA, which biases NVDA-vs-SMH comparisons toward zero.
+- t-statistics assume normal, independent residuals over a 120-session estimation window.
+- Adjusted closes were retrieved after the events (2026-11-15). Recomputing on unadjusted closes changes the post-event CARs by at most 0.07 pp.
+- A decline after an event does not show the event caused it.
 
-1. **Primary filings carried the mechanism but not the magnitude.** The decisive quantities in the short report came from data this prototype treats as proprietary or unverified: trade records, registries and third-party share estimates. A future gate case must decide in advance whether registry access is in scope.
-2. **The disclosure-basis change (Q3 FY2026) was a real, primary-sourced observability signal.** It deserves a standing rule: changes to segment or geographic attribution bases are logged as research leads.
-3. **Legislative letters are an early, dated, primary record of allegations.** They are useful for timestamping S2 leads, never as findings.
-4. **Price reaction and research correctness came apart.** Day 0–1 returns were positive. Market data should stay descriptive in this discipline and must never be a success criterion.
+## 4. What changed in this pass (2026-11-15, second pass)
+
+| Change | Reason |
+|---|---|
+| Added SI1-PST-013 (MHA), SI1-PST-014 (MITI) and SI1-PST-015 (3 Mar 2025 transcript, located post hoc), with claims SI1-V-07 to SI1-V-13 | Primary sources retrieved directly (HTTP 200) and checked against their text |
+| Culper report status restated: not directly examined; index excerpts recorded as SI1-PST-016 / SI1-V-14 (S2) | The earlier "secondary summaries" status was accurate; this pass adds index excerpts without presenting them as direct examination |
+| Replaced "Independently anticipated" with a separate retrospective-relation column | The case was reconstructed with the outcome known; the old label overstated predictive validity |
+| F5 split into F5a (investigation exists: Confirmed) and F5b (diversion to China: Not established) | A government investigation proves neither an unlawful act nor a final destination |
+| Corrected SI1-V-03 (erratum SI1-PE-01) | The original paraphrase dropped "such" |
+| Added a multiple-comparison note to the market section (SI1-PE-02) | The first pass reported nominal significance only |
+| Pre-event statistics and availability corrections SI1-E-01 to SI1-E-04 | Recorded as append-only errata; no pre-event interpretation changed |
+
+**SI1-PE-02 (2026-11-15).** The first pass reported "CAR[0,+1] +4.6% vs SMH, t = 2.2" as part of the F6 row without a multiple-comparison adjustment. After Bonferroni adjustment it is not significant. The direction stands; its statistical weight is lower. The F6 row has been replaced by the two market-hypothesis rows above.
 
 ## 5. What this case does not show
 
-- That MON-SI methods predict anything: the case is retrospective and its question was outcome-informed.
-- That NVIDIA, Megaspeed or any other party acted unlawfully.
+- That MON-SI methods predict anything.
+- That NVIDIA, Megaspeed, Speedmatrix or any other party acted unlawfully.
+- That any NVIDIA chip reached China through the channels examined.
 - That the short report's figures are right or wrong.
-- That any share-price change was caused by the report, the investigation or any disclosure.
+- That any share-price change was caused by the report, the investigations or any disclosure.

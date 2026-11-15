@@ -1,0 +1,30 @@
+# Read-only research integrity checks. No deployment, publication, secrets,
+# or third-party packages: standard-library Python tests only.
+name: research-checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Make origin/main available for change-scope tests
+        run: git fetch --no-tags origin main:refs/remotes/origin/main || true
+      - name: Unit tests (public reference + strategic intelligence)
+        run: python3 -m unittest discover -s tests -v
+      - name: Research register checker
+        run: python3 research/strategic-intelligence/tools/check_registers.py
+      - name: Whitespace check
+        if: github.event_name == 'pull_request'
+        run: git diff --check "origin/${{ github.base_ref }}...HEAD"

@@ -16,6 +16,17 @@ Information flows **pre → post only**. The pre-event analysis may not cite a p
 
 ## 2. Publication date ≠ availability date
 
+Four dates are kept apart (second pass, 2026-11-15):
+
+| Date | Meaning | What establishes it |
+|---|---|---|
+| Document date / creation | When the document was written or the file was created | The date on its face; PDF CreationDate/ModDate |
+| Official publication date | When the issuer says it released the document | Release header, filing date |
+| Demonstrated public availability | When anyone could in fact have read it | EDGAR acceptance (dissemination); a contemporaneous independent capture; same-day third-party citation |
+| Research retrieval date | When this project fetched it | Retrieval log |
+
+PDF metadata and an official date **do not by themselves demonstrate** public availability. Each pre-event register carries an append-only `addenda.availability_review` rating every admitted source `demonstrated`, `inferred_from_official_date` or `insufficiently_demonstrated`. An S0/S1 claim may not rest solely on sources rated `insufficiently_demonstrated` (machine-checked). Frozen `availability_utc` values are not rewritten.
+
 - `publication_date` — the date the document bears.
 - `availability_utc` — the earliest moment the document is **demonstrably** public, with `availability_basis` stating how that was established (e.g. EDGAR acceptance timestamp, official release date, PDF metadata consistent with the stated date).
 - If availability before the cutoff cannot be demonstrated, the source is **excluded** from inference (`status: "excluded"`) and the uncertainty is recorded. Example in MON-SI-001: the BIS diversion-guidance PDF now served carries 2026 creation metadata, so its red-flag text is excluded even though the 13 May 2025 press release that links it is admitted.
@@ -48,12 +59,18 @@ No claim may move from one of these to another without a source that bridges the
 - Confounding events inside a window (earnings, other corporate actions, macro shocks) are listed whenever the researcher knows of them; an unlisted confounder is not evidence that none existed.
 - Raw vendor price files are not committed (redistribution terms); the retrieval source and date are recorded, and the computation is reproducible with `tools/event_study.py`.
 
+## 6a. Market-reaction limits (second pass)
+
+Report the following as five separate things: observed price movement; benchmark-relative abnormal return; statistical significance after multiple-comparison adjustment (Bonferroni across every window × benchmark test run for the case); economic materiality; and causal attribution, which is never inferred from co-movement. Also disclose: whether windows were pre-registered; known confounders; benchmark contamination; and the data vintage (adjusted prices retrieved after the event, with a raw-close sensitivity check).
+
 ## 7. Hindsight controls (retrospective cases)
 
 1. Cutoff fixed before analysis; pre-event register frozen before the validation file is written.
 2. The outcome document (e.g. a short-seller report) is never a pre-event source.
 3. The researcher's prior knowledge of the outcome, and the effect it had on the research question and on search queries, is disclosed in the case.
-4. Retrospective agreement with the outcome is **never** presented as predictive performance.
+4. Retrospective agreement with the outcome is **never** presented as predictive performance. Validation uses two columns: an evidentiary status (Confirmed · Partially corroborated · Unresolved · Contradicted · Not established) and a retrospective relation (Retrospectively consistent — no prospective credit · Not discoverable with the pre-event evidence · Not applicable). Labels such as "anticipated" or "predicted" are rejected by the checker.
+5. **Freeze and errata.** After a pre-event reconstruction is complete, its hashes are recorded in `FREEZE_MANIFEST.json`. Later corrections are appended as dated errata stating the original text, the correction, and whether the interpretation changes; the frozen text is never edited. A pre-cutoff document located after the fact through post-event material stays out of the pre-event inference and is flagged `pre_cutoff_document_located_post_hoc` in the post-event register.
+6. **Allegation documents.** Claims from an allegation document are classed A (documented primary fact, verified in a primary source), B (reproducible calculation from public inputs), C (allegation or hypothesis, S2) or D (unsupported or unresolved). A regulator's investigation, check or refusal to "clear" a company is a procedural fact, not evidence of an offence.
 
 ## 8. Source discipline
 
