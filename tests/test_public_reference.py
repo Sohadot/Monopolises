@@ -137,6 +137,7 @@ class PublicReferenceTests(unittest.TestCase):
                 self.assertIn('class="skip-link"', content)
                 self.assertIn('class="nav-links" aria-label="Primary"', content)
                 self.assertIn('class="nav-evidence"', content)
+                self.assertNotIn("↗", content, "Decorative arrows must not depend on a missing glyph")
         home = self.pages["/"][1]
         self.assertIn('class="instrument-steps"', home)
         self.assertIn('class="evidence-ledger"', home)
