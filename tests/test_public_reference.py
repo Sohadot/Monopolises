@@ -7,6 +7,7 @@ No third-party packages or network connection required.
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
+import re
 import unittest
 import xml.etree.ElementTree as ET
 
@@ -147,6 +148,26 @@ class PublicReferenceTests(unittest.TestCase):
             self.assertIn(f"MON-G1-{code}.md", home)
         self.assertIn("no evidenced control layer", home)
         self.assertIn("DEC-010", (ROOT / "DECISION_LOG.md").read_text(encoding="utf-8"))
+
+    def test_native_mobile_menu_matches_desktop_navigation(self):
+        css = (ROOT / "styles.css").read_text(encoding="utf-8")
+        mobile_rules = css.split("@media (max-width: 560px) {", 1)[1]
+        self.assertIn(".nav-links { display: none; }", mobile_rules)
+        self.assertIn(".mobile-nav { display: block;", mobile_rules)
+        self.assertIn(".mobile-nav[open] summary", css)
+        self.assertIn("min-height: 44px", css)
+        for route, (_, content) in self.pages.items():
+            with self.subTest(route=route):
+                self.assertIn('<details class="mobile-nav">', content)
+                self.assertIn("<summary>Menu</summary>", content)
+                desktop = re.search(
+                    r'<nav class="nav-links" aria-label="Primary">(.*?)</nav>',
+                    content,
+                )
+                mobile = re.search(r'<nav aria-label="Mobile primary">(.*?)</nav>', content)
+                self.assertIsNotNone(desktop)
+                self.assertIsNotNone(mobile)
+                self.assertEqual(desktop.group(1), mobile.group(1))
 
 
 if __name__ == "__main__":
