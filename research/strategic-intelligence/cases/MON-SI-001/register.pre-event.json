@@ -1,0 +1,872 @@
+{
+  "case_id": "MON-SI-001",
+  "register": "pre_event",
+  "cutoff_utc": "2026-05-12T23:59:00Z",
+  "frozen": "2026-11-15",
+  "sources": [
+    {
+      "source_id": "SI1-SRC-001",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 10-K, fiscal year ended 26 Jan 2025",
+      "canonical_ref": "Accession 0001045810-25-000023",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2025-02-26",
+      "availability_utc": "2025-02-26T21:48:33Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "EDGAR filing index for CIK 1045810, enumerated by form type and date",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-002",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 8-K, Item 8.01 (H20 licence requirement)",
+      "canonical_ref": "Accession 0001045810-25-000082",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000082/nvda-20250409.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2025-04-15",
+      "availability_utc": "2025-04-15T21:22:59Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "EDGAR filing index",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-003",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 10-Q, quarter ended 27 Apr 2025 (Q1 FY2026)",
+      "canonical_ref": "Accession 0001045810-25-000116",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2025-05-28",
+      "availability_utc": "2025-05-28T20:32:57Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "EDGAR filing index",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-004",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 10-Q, quarter ended 27 Jul 2025 (Q2 FY2026)",
+      "canonical_ref": "Accession 0001045810-25-000209",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2025-08-27",
+      "availability_utc": "2025-08-27T20:52:07Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "EDGAR filing index",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-005",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 10-Q, quarter ended 26 Oct 2025 (Q3 FY2026)",
+      "canonical_ref": "Accession 0001045810-25-000230",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2025-11-19",
+      "availability_utc": "2025-11-19T21:36:17Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "EDGAR filing index",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-006",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 10-K, fiscal year ended 25 Jan 2026",
+      "canonical_ref": "Accession 0001045810-26-000021",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2026-02-25",
+      "availability_utc": "2026-02-25T21:42:19Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "EDGAR filing index; latest periodic report before the cutoff",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-007",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 8-K exhibits: Q4 FY2026 press release and CFO commentary",
+      "canonical_ref": "Accession 0001045810-26-000019 (q4fy26pr.htm, q4fy26cfocommentary.htm)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26cfocommentary.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2026-02-25",
+      "availability_utc": "2026-02-25T21:31:25Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "EDGAR filing index",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-008",
+      "status": "admitted",
+      "publisher": "Singapore Ministry of Trade and Industry",
+      "title": "Oral reply to PQs on Singapore's approach to export controls",
+      "canonical_ref": "Parliamentary reply, 18 February 2025",
+      "url": "https://mti.gov.sg/Newsroom/Parliamentary-Replies/2025/02/Oral-reply-to-PQs-on-Singapores-approach-to-export-controls",
+      "source_class": "primary_government",
+      "publication_date": "2025-02-18",
+      "availability_utc": "2025-02-18T23:59:00Z",
+      "availability_basis": "Official page dated 18 February 2025 (page notes migration from earlier site; text dated, availability taken as end of stated day)",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Web search for Singapore government statements on Nvidia chips (query wording informed by the research question)",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-009",
+      "status": "admitted",
+      "publisher": "U.S. Department of Commerce, Bureau of Industry and Security",
+      "title": "Department of Commerce Announces Rescission of Biden-Era Artificial Intelligence Diffusion Rule, Strengthens Chip-Related Export Controls",
+      "canonical_ref": "BIS press release, 13 May 2025",
+      "url": "https://www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens",
+      "source_class": "primary_government",
+      "publication_date": "2025-05-13",
+      "availability_utc": "2025-05-13T23:59:00Z",
+      "availability_basis": "Official release header 'FOR IMMEDIATE RELEASE | May 13, 2025'",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Targeted retrieval of BIS 2025 guidance (known regulatory event)",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-011",
+      "status": "admitted",
+      "publisher": "Malaysia Ministry of Investment, Trade and Industry (MITI)",
+      "title": "Export, transshipment and transit of high-performance AI chips of US origin now subject to a Strategic Trade Permit",
+      "canonical_ref": "MITI press statement, 14 July 2025",
+      "url": "https://www.miti.gov.my/miti/resources/Media%20Release/[FINAL]%5FMITI%5FPress%5FStmt%5FMalaysia%5FRegulates%5FTrade%5Fof%5FUS%5FAI%5FChips%5F2025-07-14.pdf",
+      "source_class": "primary_government",
+      "publication_date": "2025-07-14",
+      "availability_utc": "2025-07-14T23:59:00Z",
+      "availability_basis": "Statement dated 14 July 2025; PDF CreationDate 2025-07-14T02:07:38Z consistent",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Web search for Malaysian permit regime",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-012",
+      "status": "admitted",
+      "publisher": "U.S. Department of Justice, Office of Public Affairs",
+      "title": "U.S. Citizens and Chinese Nationals Arrested for Exporting Artificial Intelligence Technology to China",
+      "canonical_ref": "Press Release Number 25-1101, 20 November 2025",
+      "url": "https://www.justice.gov/opa/pr/us-citizens-and-chinese-nationals-arrested-exporting-artificial-intelligence-technology",
+      "source_class": "primary_enforcement",
+      "publication_date": "2025-11-20",
+      "availability_utc": "2025-11-20T23:59:00Z",
+      "availability_basis": "Release dated Thursday, November 20, 2025",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Web search for DOJ diversion prosecutions",
+      "hindsight_flag": false
+    },
+    {
+      "source_id": "SI1-SRC-013",
+      "status": "admitted",
+      "publisher": "Office of U.S. Senator Tom Cotton",
+      "title": "Letter to Secretary of Commerce Howard Lutnick regarding Megaspeed",
+      "canonical_ref": "Letter dated 13 October 2025",
+      "url": "https://www.cotton.senate.gov/imo/media/doc/101325lutnickletter.pdf",
+      "source_class": "primary_legislative_correspondence",
+      "publication_date": "2025-10-13",
+      "availability_utc": "2025-10-14T12:53:02Z",
+      "availability_basis": "PDF ModDate 2025-10-14T12:53:02Z (CreationDate 2025-10-13T20:55:36Z); web posting time not independently verified, so the later metadata time is used",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Surfaced by a search on Megaspeed whose results included post-event coverage",
+      "hindsight_flag": true,
+      "notes": "Primary as to the fact that the allegation was publicly made by a U.S. Senator; its factual content relays a New York Times report (S2)."
+    },
+    {
+      "source_id": "SI1-SRC-010",
+      "status": "excluded",
+      "publisher": "U.S. Department of Commerce, Bureau of Industry and Security",
+      "title": "Industry Guidance to Prevent Diversion of Advanced Computing Integrated Circuits",
+      "canonical_ref": "Guidance dated 13 May 2025 (bis.gov/media/1576)",
+      "url": "https://www.bis.gov/media/1576",
+      "source_class": "primary_government",
+      "publication_date": "2025-05-13",
+      "availability_utc": null,
+      "availability_basis": "Linked from SI1-SRC-009; currently served PDF has CreationDate 2026-10-15, after the cutoff",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Link from SI1-SRC-009",
+      "hindsight_flag": false,
+      "exclusion_reason": "Textual identity of the currently served PDF with the May 2025 version cannot be verified (archive access blocked); red-flag wording excluded from pre-event inference."
+    },
+    {
+      "source_id": "SI1-SRC-014",
+      "status": "excluded",
+      "publisher": "Singapore Ministry of Home Affairs",
+      "title": "Transcript of media conference with Minister K Shanmugam on the case of three men charged on 27 February 2025",
+      "canonical_ref": "MHA transcript, early March 2025",
+      "url": "https://www.mha.gov.sg/mediaroom/speeches/transcript-of-media-conference-with-mr-k-shanmugam-minister-for-home-affairs-and-minister-for-law-regarding-the-case-involving-the-three-men-who-were-charged-on-27-february-2025-for-fraud-by-false-representation/",
+      "source_class": "primary_government",
+      "publication_date": "2025-03-03",
+      "availability_utc": null,
+      "availability_basis": "Not verified",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Web search",
+      "hindsight_flag": false,
+      "exclusion_reason": "Official URL returns 404; web archive blocked by egress policy. Content known only from secondary reports; not used."
+    },
+    {
+      "source_id": "SI1-SRC-015",
+      "status": "excluded",
+      "publisher": "U.S. Attorney's Office (reported S.D.N.Y.)",
+      "title": "Indictment of three individuals including a Super Micro co-founder for conspiring to divert servers to China",
+      "canonical_ref": "Reported unsealed 19 March 2026",
+      "url": null,
+      "source_class": "primary_enforcement",
+      "publication_date": "2026-03-19",
+      "availability_utc": null,
+      "availability_basis": "Primary document not retrieved; only secondary coverage seen",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Web search whose results mixed pre- and post-event coverage",
+      "hindsight_flag": true,
+      "exclusion_reason": "Primary charging document / DOJ release not located. Retained as an unverified lead only."
+    },
+    {
+      "source_id": "SI1-SRC-016",
+      "status": "excluded",
+      "publisher": "The New York Times",
+      "title": "Report on Megaspeed and Nvidia chips (cited in SI1-SRC-013 footnote 1)",
+      "canonical_ref": "nytimes.com/2025/10/09/technology/nvidia-chips-china-megaspeed.html",
+      "url": "https://www.nytimes.com/2025/10/09/technology/nvidia-chips-china-megaspeed.html",
+      "source_class": "secondary_lead",
+      "publication_date": "2025-10-09",
+      "availability_utc": null,
+      "availability_basis": "Not inspected (paywall)",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Footnote in SI1-SRC-013",
+      "hindsight_flag": true,
+      "exclusion_reason": "Secondary and not inspected; its existence is evidenced only through SI1-SRC-013."
+    },
+    {
+      "source_id": "SI1-SRC-017",
+      "status": "excluded",
+      "publisher": "Singapore ACRA / Malaysia SSM corporate registries",
+      "title": "Financial statements and charges of Megaspeed and related entities",
+      "canonical_ref": null,
+      "url": null,
+      "source_class": "primary_registry",
+      "publication_date": null,
+      "availability_utc": null,
+      "availability_basis": "Not accessed",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Gap identified during analysis",
+      "hindsight_flag": false,
+      "exclusion_reason": "Paid registries not accessed in this prototype; a known evidence gap (see PRE_EVENT_ANALYSIS §7)."
+    },
+    {
+      "source_id": "SI1-SRC-018",
+      "status": "excluded",
+      "publisher": "Commercial trade/customs and consensus-estimate databases",
+      "title": "Shipment-level trade records; sell-side consensus estimates",
+      "canonical_ref": null,
+      "url": null,
+      "source_class": "proprietary",
+      "publication_date": null,
+      "availability_utc": null,
+      "availability_basis": "Not accessed",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Gap identified during analysis",
+      "hindsight_flag": false,
+      "exclusion_reason": "Proprietary; not reproduced. Market expectations are therefore measured only through observed prices and company guidance."
+    },
+    {
+      "source_id": "SI1-SRC-019",
+      "status": "excluded",
+      "publisher": "U.S. Department of Justice",
+      "title": "Release concerning ALX Solutions defendants (reported August 2025)",
+      "canonical_ref": null,
+      "url": null,
+      "source_class": "primary_enforcement",
+      "publication_date": "2025-08-05",
+      "availability_utc": null,
+      "availability_basis": "Primary release not located",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Web search",
+      "hindsight_flag": false,
+      "exclusion_reason": "Primary release not located; secondary only."
+    },
+    {
+      "source_id": "SI1-SRC-020",
+      "status": "admitted",
+      "publisher": "Yahoo Finance chart API (vendor market data)",
+      "title": "Daily adjusted closes for NVDA, SMH, SPY, restricted to sessions on or before 2026-05-12",
+      "canonical_ref": "query1.finance.yahoo.com/v8/finance/chart",
+      "url": null,
+      "source_class": "market_data",
+      "publication_date": "2026-05-12",
+      "availability_utc": "2026-05-12T20:00:00Z",
+      "availability_basis": "Only price rows dated on or before 2026-05-12 are used (tools/event_study.py --data-cutoff 2026-05-12); adjusted closes reflect adjustments known at retrieval",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Standard market-data retrieval",
+      "hindsight_flag": false,
+      "notes": "Raw prices not committed (redistribution terms). Adjustment factors were computed at retrieval (2026-11-15); any later dividend adjustment rescales levels but not daily returns materially."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "SI1-C-01",
+      "source_ids": [
+        "SI1-SRC-001"
+      ],
+      "assertion": "In FY2025, revenue attributed to Singapore by customer billing location was $23,684m (18% of total), while shipments to Singapore were under 2% of total revenue.",
+      "pinpoint": "10-K FY2025, Note 17 geographic table and footnote (1)",
+      "supporting_passage": "\"Singapore represented 18% of fiscal year 2025 total revenue based upon customer billing location. Customers use Singapore to centralize invoicing while our products are almost always shipped elsewhere. Shipments to Singapore were less than 2% of fiscal year 2025 total revenue.\"",
+      "evidence_class": "S0",
+      "scope": "NVIDIA consolidated revenue, FY ended 26 Jan 2025; geography by billing location",
+      "excluded_implications": [
+        "That Singapore-billed revenue was destined for China",
+        "That Singapore-billed revenue was destined for Singapore"
+      ],
+      "counterevidence_or_alternative": "Billing centralization by multinational (including U.S.) customers is the company's stated explanation."
+    },
+    {
+      "claim_id": "SI1-C-02",
+      "source_ids": [
+        "SI1-SRC-001"
+      ],
+      "assertion": "At least about $21.1bn of FY2025 revenue was billed to Singapore but shipped elsewhere (23,684 − <2% × 130,497 = 23,684 − <2,610).",
+      "pinpoint": "10-K FY2025 geographic table",
+      "supporting_passage": "Derived from SI1-C-01 inputs and total revenue $130,497m",
+      "evidence_class": "S1",
+      "scope": "FY2025",
+      "excluded_implications": [
+        "Any statement about the actual destinations of that revenue"
+      ],
+      "counterevidence_or_alternative": "The <2% figure is an upper bound, so the residual is a lower bound."
+    },
+    {
+      "claim_id": "SI1-C-03",
+      "source_ids": [
+        "SI1-SRC-003",
+        "SI1-SRC-004"
+      ],
+      "assertion": "For Q1 and Q2 FY2026, NVIDIA stated that over 99% of controlled Data Center compute revenue billed to Singapore was for orders from U.S.-based customers; Singapore-billed revenue was $9,017m (20%) and $10,156m (22%).",
+      "pinpoint": "10-Q Q1 FY2026 and Q2 FY2026, revenue-by-geography note, footnote (1)",
+      "supporting_passage": "\"Over 99% of controlled Data Center compute revenue billed to Singapore was for orders from U.S.-based customers.\"",
+      "evidence_class": "S0",
+      "scope": "Controlled products meeting ECCN 3A090.a / 4A090.a; Q1–Q2 FY2026",
+      "excluded_implications": [
+        "That the end users or physical destinations were in the U.S.",
+        "That non-controlled products follow the same pattern"
+      ],
+      "counterevidence_or_alternative": "'U.S.-based customers' describes the ordering party; downstream resale, deployment location and remote access by third parties are not addressed."
+    },
+    {
+      "claim_id": "SI1-C-04",
+      "source_ids": [
+        "SI1-SRC-005",
+        "SI1-SRC-006"
+      ],
+      "assertion": "From Q3 FY2026 NVIDIA changed geographic revenue attribution from customer billing location to customer headquarters and recast prior periods; the Singapore line no longer appears.",
+      "pinpoint": "10-Q Q3 FY2026 geographic note footnote (1); 10-K FY2026 Note 16 footnote (1)",
+      "supporting_passage": "\"Previously, revenue by geographic area was reported based on the billing location of our customers, which often reflected a customer's centralized invoicing location, even though our products were almost always shipped elsewhere.\"",
+      "evidence_class": "S0",
+      "scope": "Disclosure basis from Q3 FY2026 onward",
+      "excluded_implications": [
+        "That the change was made to conceal anything",
+        "That the change altered reported totals"
+      ],
+      "counterevidence_or_alternative": "The company's stated rationale is a 'better representation of the geographic profile'. Either basis leaves end-use location undisclosed except for the Taiwan footnote."
+    },
+    {
+      "claim_id": "SI1-C-05",
+      "source_ids": [
+        "SI1-SRC-006"
+      ],
+      "assertion": "Both bases disclaim end-use: 'The end customer and shipping location may be different from our customers' headquarters location.'",
+      "pinpoint": "10-K FY2026 Note 16",
+      "supporting_passage": "\"The end customer and shipping location may be different from our customers' headquarters location.\"",
+      "evidence_class": "S0",
+      "scope": "FY2026 disclosures",
+      "excluded_implications": [
+        "That end-customer location differs materially (only that it may)"
+      ],
+      "counterevidence_or_alternative": "—"
+    },
+    {
+      "claim_id": "SI1-C-06",
+      "source_ids": [
+        "SI1-SRC-006"
+      ],
+      "assertion": "FY2026 revenue by customer HQ: U.S. $149,617m; Taiwan $42,345m; China (incl. Hong Kong) $19,677m; Other $4,299m; total $215,938m. NVIDIA estimates 76% of Data Center revenue from Taiwan-headquartered customers was attributed to end customers in the U.S. and Europe.",
+      "pinpoint": "10-K FY2026 Note 16 geographic table and footnote (2)",
+      "supporting_passage": "\"In fiscal year 2026, we estimate 76% of Data Center revenue from Taiwan-headquartered customers was attributed to end customers based in the United States and Europe.\"",
+      "evidence_class": "S0",
+      "scope": "FY ended 25 Jan 2026",
+      "excluded_implications": [
+        "That the remaining 24% went to China",
+        "Any split of Taiwan-HQ revenue between Data Center and other segments"
+      ],
+      "counterevidence_or_alternative": "The residual 24% includes Taiwan, other Asia, the Middle East and elsewhere."
+    },
+    {
+      "claim_id": "SI1-C-07",
+      "source_ids": [
+        "SI1-SRC-006"
+      ],
+      "assertion": "Upper bound only: Taiwan-HQ Data Center revenue attributed to end customers outside the U.S. and Europe was at most about $10.2bn in FY2026 (24% × $42,345m, treating all Taiwan-HQ revenue as Data Center, which overstates the base).",
+      "pinpoint": "Derived from SI1-C-06",
+      "supporting_passage": "24% × 42,345 = 10,163",
+      "evidence_class": "S1",
+      "scope": "FY2026",
+      "excluded_implications": [
+        "A China-specific figure",
+        "A point estimate"
+      ],
+      "counterevidence_or_alternative": "The Data Center share of Taiwan-HQ revenue is not disclosed; the true figure is lower by an unknown amount."
+    },
+    {
+      "claim_id": "SI1-C-08",
+      "source_ids": [
+        "SI1-SRC-005",
+        "SI1-SRC-006"
+      ],
+      "assertion": "China (incl. Hong Kong) HQ revenue: first half FY2026 $13,644m combined; Q3 $2,973m; Q4 $3,060m (derived: 19,677 − 16,617).",
+      "pinpoint": "10-Q Q3 FY2026 (nine-month $16,617m; Q3 $2,973m); 10-K FY2026 ($19,677m)",
+      "supporting_passage": "Nine months 16,617; Q3 2,973; FY 19,677",
+      "evidence_class": "S1",
+      "scope": "Customer-HQ basis",
+      "excluded_implications": [
+        "That residual ~$3bn/quarter China-HQ revenue is Data Center compute"
+      ],
+      "counterevidence_or_alternative": "The company says it was effectively foreclosed from China data-center compute, so the residual is likely other segments or networking, but the filings do not split it."
+    },
+    {
+      "claim_id": "SI1-C-09",
+      "source_ids": [
+        "SI1-SRC-002",
+        "SI1-SRC-006"
+      ],
+      "assertion": "The April 2025 H20 licence requirement produced a $4.5bn charge; licensed H20 sales later generated about $60m; an H200 licence (Feb 2026) had produced no revenue; NVIDIA states it was 'effectively foreclosed' from China's data-center compute market at FY2026 year-end.",
+      "pinpoint": "8-K 15 Apr 2025 Item 8.01; 10-K FY2026 Item 1 and Item 1A (export controls)",
+      "supporting_passage": "\"As of the end of fiscal year 2026, we were effectively foreclosed from competing in China's data center computing/compute market\"",
+      "evidence_class": "S0",
+      "scope": "China data-center compute, FY2026",
+      "excluded_implications": [
+        "That China-linked demand for NVIDIA products ceased"
+      ],
+      "counterevidence_or_alternative": "Foreclosure describes NVIDIA's direct, licensed participation; it does not address indirect demand outside China-HQ customers."
+    },
+    {
+      "claim_id": "SI1-C-10",
+      "source_ids": [
+        "SI1-SRC-007"
+      ],
+      "assertion": "The Q1 FY2027 outlook ($78.0bn ± 2%) assumed no Data Center compute revenue from China.",
+      "pinpoint": "Q4 FY2026 CFO commentary, Outlook",
+      "supporting_passage": "\"We are not assuming any Data Center compute revenue from China in our outlook.\"",
+      "evidence_class": "S0",
+      "scope": "Q1 FY2027 outlook as of 25 Feb 2026",
+      "excluded_implications": [
+        "What sell-side consensus assumed"
+      ],
+      "counterevidence_or_alternative": "Company guidance is evidence of the company's stated assumption, not of market expectations."
+    },
+    {
+      "claim_id": "SI1-C-11",
+      "source_ids": [
+        "SI1-SRC-006"
+      ],
+      "assertion": "NVIDIA identified reports of diversion as a business risk even when unsubstantiated, and disclosed that a substantial portion of products are warehoused in and distributed from Hong Kong.",
+      "pinpoint": "10-K FY2026 Item 1A",
+      "supporting_passage": "\"reports of diversion of controlled products, even when unsubstantiated and untrue, may negatively impact our business, relationships with partners and customers, and our reputation\"; \"a substantial portion of our products, which are warehoused in and distributed from Hong Kong\"",
+      "evidence_class": "S0",
+      "scope": "FY2026 risk factors",
+      "excluded_implications": [
+        "That diversion occurred",
+        "That NVIDIA was aware of any specific diversion"
+      ],
+      "counterevidence_or_alternative": "Risk-factor language is precautionary and broad."
+    },
+    {
+      "claim_id": "SI1-C-12",
+      "source_ids": [
+        "SI1-SRC-006"
+      ],
+      "assertion": "Export-control licence conditions already limit foreign firms' ability to offer large GPU clusters as a service, i.e. cloud access is itself a regulated channel distinct from chip ownership.",
+      "pinpoint": "10-K FY2026 Item 1A",
+      "supporting_passage": "\"the USG already imposed license conditions that limit the ability of foreign firms to create and offer as a service large-scale GPU clusters\"",
+      "evidence_class": "S0",
+      "scope": "U.S. export-control licence conditions, as described by NVIDIA",
+      "excluded_implications": [
+        "That any specific provider offered compute to Chinese users"
+      ],
+      "counterevidence_or_alternative": "—"
+    },
+    {
+      "claim_id": "SI1-C-13",
+      "source_ids": [
+        "SI1-SRC-006"
+      ],
+      "assertion": "Revenue concentration: one direct customer was 22% and another 14% of FY2026 revenue (Compute & Networking).",
+      "pinpoint": "10-K FY2026 Item 1A and Note 16",
+      "supporting_passage": "\"sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue\"",
+      "evidence_class": "S0",
+      "scope": "FY2026",
+      "excluded_implications": [
+        "The identities of these customers"
+      ],
+      "counterevidence_or_alternative": "—"
+    },
+    {
+      "claim_id": "SI1-C-14",
+      "source_ids": [
+        "SI1-SRC-006"
+      ],
+      "assertion": "FY2026 Data Center revenue $193,737m (compute $162,361m; networking $31,376m); gross margin 71.1% (75.0% in FY2025).",
+      "pinpoint": "10-K FY2026 Note 16 end-market table; MD&A",
+      "supporting_passage": "Data Center 193,737; Compute 162,361; Networking 31,376; 'Gross margins decreased to 71.1% in fiscal year 2026 from 75.0%'",
+      "evidence_class": "S0",
+      "scope": "FY2026",
+      "excluded_implications": [
+        "Margin on any specific channel"
+      ],
+      "counterevidence_or_alternative": "—"
+    },
+    {
+      "claim_id": "SI1-C-15",
+      "source_ids": [
+        "SI1-SRC-008"
+      ],
+      "assertion": "Singapore's trade ministry stated that physical deliveries of Nvidia products to Singapore were under 1% of Nvidia's revenue, that the rest of the revenue billed to Singapore entities involved no physical shipment into Singapore, and that Singapore has no legal obligation to enforce other countries' unilateral export controls.",
+      "pinpoint": "MTI oral reply, paras 3 and 6",
+      "supporting_passage": "\"physical delivery of products sold by Nvidia to Singapore represent less than 1% of Nvidia's overall revenue\"; \"While we currently do not have legal obligations to enforce the unilateral export controls of other countries\"",
+      "evidence_class": "S0",
+      "scope": "Singapore, as of 18 Feb 2025",
+      "excluded_implications": [
+        "That Singapore entities violated U.S. law"
+      ],
+      "counterevidence_or_alternative": "Singapore states it will act against deceptive or dishonest practices under its own laws."
+    },
+    {
+      "claim_id": "SI1-C-16",
+      "source_ids": [
+        "SI1-SRC-009"
+      ],
+      "assertion": "On 13 May 2025 BIS announced rescission of the AI Diffusion Rule, diversion-tactics guidance to industry, and 'additional export licensing requirements for exports of SI chips to Malaysia and Thailand, due to known instances of diversion'.",
+      "pinpoint": "BIS press release, 13 May 2025",
+      "supporting_passage": "\"Imposing additional export licensing requirements for exports of SI chips to Malaysia and Thailand, due to known instances of diversion.\"",
+      "evidence_class": "S0",
+      "scope": "U.S. export-control policy, May 2025",
+      "excluded_implications": [
+        "That a final rule with that content was in force by the cutoff (not verified in this prototype)"
+      ],
+      "counterevidence_or_alternative": "The press release states an intention; the implementing rule text was not retrieved."
+    },
+    {
+      "claim_id": "SI1-C-17",
+      "source_ids": [
+        "SI1-SRC-011"
+      ],
+      "assertion": "From 14 July 2025 Malaysia requires a Strategic Trade Permit for all exports, transshipments and transits of high-performance AI chips of U.S. origin, under the catch-all provision of section 12 of the Strategic Trade Act 2010.",
+      "pinpoint": "MITI press statement, paras 1–2",
+      "supporting_passage": "\"effective immediately, all exports, tranships and transits of high-performance AI chips of US origin are subject to a Strategic Trade Permit\"",
+      "evidence_class": "S0",
+      "scope": "Malaysia, from 14 July 2025",
+      "excluded_implications": [
+        "That the permit regime covers in-country deployment or remote (cloud) access"
+      ],
+      "counterevidence_or_alternative": "The measure targets physical outbound movement; chips installed in Malaysian data centres and accessed remotely are not addressed by its text."
+    },
+    {
+      "claim_id": "SI1-C-18",
+      "source_ids": [
+        "SI1-SRC-012"
+      ],
+      "assertion": "DOJ charged U.S. citizens and Chinese nationals with exporting NVIDIA GPUs to the PRC through Malaysia and Thailand between September 2023 and November 2025 (400 A100 exported; H100/H200 attempts disrupted).",
+      "pinpoint": "DOJ release 25-1101",
+      "supporting_passage": "\"illegally exporting advanced GPUs to the PRC through Malaysia and Thailand\"; \"An indictment is merely an allegation and every defendant is presumed innocent\"",
+      "evidence_class": "S0",
+      "scope": "U.S. federal case, M.D. Fla.; allegation stage",
+      "excluded_implications": [
+        "That NVIDIA was involved or aware",
+        "That the routing scale is material to NVIDIA revenue"
+      ],
+      "counterevidence_or_alternative": "The volumes in this case are small relative to NVIDIA revenue; it evidences the mechanism (U.S.-based reseller → Southeast Asia → PRC), not its magnitude."
+    },
+    {
+      "claim_id": "SI1-C-19",
+      "source_ids": [
+        "SI1-SRC-013"
+      ],
+      "assertion": "By 14 October 2025 a U.S. Senator had publicly named Megaspeed (Singapore) as an alleged diversion channel, relaying reports that its NVIDIA purchases equalled 'nearly two percent of worldwide datacenter sales last year', that chips moved through Malaysia and Singapore, and that Megaspeed stopped ordering after Malaysian and Singaporean crackdowns in mid-2025; he asked Commerce to investigate.",
+      "pinpoint": "Letter, paras 1–3",
+      "supporting_passage": "\"This totaled nearly two percent of worldwide datacenter sales last year for this U.S. company.\"; \"Once Malaysian and Singaporean officials began cracking down on chip smuggling this summer, Megaspeed stopped ordering from Nvidia.\"",
+      "evidence_class": "S2",
+      "scope": "Allegation as of Oct 2025",
+      "excluded_implications": [
+        "Any finding that Megaspeed or NVIDIA broke any law",
+        "That the two-percent figure is accurate"
+      ],
+      "counterevidence_or_alternative": "The letter relays newspaper reporting; it is primary evidence only that the allegation was public."
+    },
+    {
+      "claim_id": "SI1-C-20",
+      "source_ids": [
+        "SI1-SRC-013",
+        "SI1-SRC-001"
+      ],
+      "assertion": "Conditional arithmetic only: if the relayed 'nearly two percent' referred to FY2025 Data Center revenue ($115,186m), it would correspond to roughly $2.3bn.",
+      "pinpoint": "Derived from SI1-C-19 and FY2025 Data Center revenue",
+      "supporting_passage": "0.02 × 115,186 ≈ 2,304",
+      "evidence_class": "S2",
+      "scope": "Hypothetical sizing of an S2 claim",
+      "excluded_implications": [
+        "Any reliance on the figure as a finding"
+      ],
+      "counterevidence_or_alternative": "The base ('worldwide datacenter sales last year') is ambiguous; classed S2 because the input is S2."
+    },
+    {
+      "claim_id": "SI1-C-21",
+      "source_ids": [
+        "SI1-SRC-020"
+      ],
+      "assertion": "Across two-session windows [0,+1] around six earlier public signals, NVDA's cumulative abnormal return was insignificant in four (three negative, one positive) and significantly negative (|t|>2 against both SMH and SPY models) in two: 14–15 Oct 2025 (after the Senator letter; −5.3% vs both models) and 26–27 Feb 2026 (FY2026 results/10-K; −5.3% vs SMH, −7.4% vs SPY). Neither move is attributable to the paired document on this evidence.",
+      "pinpoint": "cases/MON-SI-001/event-study-pre-event.json",
+      "supporting_passage": "Computed with tools/event_study.py --data-cutoff 2026-05-12",
+      "evidence_class": "S1",
+      "scope": "NVDA vs SMH/SPY, Feb 2025 – Feb 2026",
+      "excluded_implications": [
+        "That any price move was caused by the paired disclosure",
+        "That the market had or had not priced the diversion risk"
+      ],
+      "counterevidence_or_alternative": "Windows contain other news (earnings, tariff and macro headlines) not controlled for; SMH contains NVDA."
+    }
+  ],
+  "addenda": {
+    "note": "Append-only. Added after the freeze (see FREEZE_MANIFEST.json). Nothing here changes the frozen sources or claims; corrections are stated, not applied.",
+    "availability_review": [
+      {
+        "source_id": "SI1-SRC-001",
+        "document_date": "2025-02-26",
+        "official_publication_date": "2025-02-26",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-002",
+        "document_date": "2025-04-15",
+        "official_publication_date": "2025-04-15",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-003",
+        "document_date": "2025-05-28",
+        "official_publication_date": "2025-05-28",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-004",
+        "document_date": "2025-08-27",
+        "official_publication_date": "2025-08-27",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-005",
+        "document_date": "2025-11-19",
+        "official_publication_date": "2025-11-19",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-006",
+        "document_date": "2026-02-25",
+        "official_publication_date": "2026-02-25",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-007",
+        "document_date": "2026-02-25",
+        "official_publication_date": "2026-02-25",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "EDGAR acceptance timestamp: EDGAR disseminates a filing publicly once it is accepted",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-008",
+        "document_date": "2025-02-18",
+        "official_publication_date": "2025-02-18",
+        "demonstrated_public_availability": "inferred_from_official_date",
+        "evidence": "Parliamentary reply dated 18 Feb 2025 on the official ministry site; the page notes it was migrated from an earlier site, so the current copy does not itself show when it was first posted. Oral replies are delivered in open Parliament, which supports, but does not prove, same-day public availability of this text.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-009",
+        "document_date": "2025-05-13",
+        "official_publication_date": "2025-05-13",
+        "demonstrated_public_availability": "inferred_from_official_date",
+        "evidence": "Release header 'FOR IMMEDIATE RELEASE | May 13, 2025'. No independent capture from that date was retrieved.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-011",
+        "document_date": "2025-07-14",
+        "official_publication_date": "2025-07-14",
+        "demonstrated_public_availability": "inferred_from_official_date",
+        "evidence": "Statement dated 14 July 2025. The PDF CreationDate (2025-07-14T02:07:38Z) shows when the file was created, not when it was posted publicly.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-012",
+        "document_date": "2025-11-20",
+        "official_publication_date": "2025-11-20",
+        "demonstrated_public_availability": "inferred_from_official_date",
+        "evidence": "Release dated Thursday, November 20, 2025 (release number 25-1101). No independent capture from that date was retrieved.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-013",
+        "document_date": "2025-10-13",
+        "official_publication_date": "not_shown",
+        "demonstrated_public_availability": "insufficiently_demonstrated",
+        "evidence": "The letter is dated 13 Oct 2025. Its PDF CreationDate (2025-10-13T20:55:36Z) and ModDate (2025-10-14T12:53:02Z) record file creation and modification only; no posting date or contemporaneous capture was found. Pre-cutoff availability is likely but not demonstrated.",
+        "retrieval_date": "2026-11-15"
+      },
+      {
+        "source_id": "SI1-SRC-020",
+        "document_date": "2025-01-02 to 2026-05-12",
+        "official_publication_date": "n/a",
+        "demonstrated_public_availability": "demonstrated",
+        "evidence": "Exchange prices are public when they are printed. The data vintage is not contemporaneous: adjusted closes were retrieved on 2026-11-15 (see SI1-E-04).",
+        "retrieval_date": "2026-11-15"
+      }
+    ],
+    "errata": [
+      {
+        "erratum_id": "SI1-E-01",
+        "date": "2026-11-15",
+        "type": "methodological_overstatement",
+        "affects": [
+          "SI1-C-21",
+          "PRE_EVENT_ANALYSIS.md §2 F6, §7"
+        ],
+        "original_text_preserved": true,
+        "correction": "SI1-C-21 called two windows 'significantly negative (|t|>2 against both SMH and SPY models)'. That used per-test thresholds across 24 tests (6 events × 2 windows × 2 benchmarks). With a Bonferroni-adjusted two-sided 5% threshold (|t| > 3.08), only 14–15 Oct 2025 vs SMH (t = −3.10) and 26–27 Feb 2026 vs SPY (t = −3.11) exceed it, each marginally. 'Significant' should read 'nominally significant; marginal after multiple-comparison adjustment'.",
+        "interpretation_changed": false,
+        "reason": "The original text already declined to attribute either move to the paired document; the correction weakens the statistics further, in the same direction."
+      },
+      {
+        "erratum_id": "SI1-E-02",
+        "date": "2026-11-15",
+        "type": "evidence_status_note",
+        "affects": [
+          "SI1-SRC-014"
+        ],
+        "original_text_preserved": true,
+        "correction": "SI1-SRC-014 (MHA transcript, 3 March 2025) was found on 2026-11-15 at a new URL (https://www.mha.gov.sg/media-room/newsroom/transcript-of-media-conference-with-mr-k-shanmugam-minister-for-home-affairs-and-minister-for-law-regarding-the-case-involving-the-three-men-who-were-charged-on-27-february-2025-for-fraud-by-false-representation/), through a link in a post-event document (SI1-PST-013). It stays EXCLUDED from the pre-event inference. The discovery path is post-event, and pre-cutoff availability rests only on the date shown on the page plus a web-archive index entry for the former URL (capture timestamp 2025-05-28) whose content was not retrieved. Its content is used only in POST_EVENT_VALIDATION.md.",
+        "interpretation_changed": false,
+        "reason": "The pre-event findings are not strengthened; the document is assessed after the fact as material a blind analyst could have obtained."
+      },
+      {
+        "erratum_id": "SI1-E-03",
+        "date": "2026-11-15",
+        "type": "availability_basis_clarification",
+        "affects": [
+          "availability_utc of SI1-SRC-008, -009, -011, -012, -013"
+        ],
+        "original_text_preserved": true,
+        "correction": "For government documents, availability_utc was set to the end of the official document date, or to PDF metadata time. These values show the document date or file creation, not demonstrated public accessibility. The availability_review addendum separates document date, official publication date, demonstrated availability and retrieval date. SI1-SRC-013 is rated insufficiently_demonstrated.",
+        "interpretation_changed": false,
+        "reason": "SI1-SRC-013 supports only S2 claims (SI1-C-19, SI1-C-20), which carry no findings. No S0 or S1 claim depends solely on a source rated insufficiently_demonstrated (machine-checked)."
+      },
+      {
+        "erratum_id": "SI1-E-04",
+        "date": "2026-11-15",
+        "type": "data_vintage_disclosure",
+        "affects": [
+          "SI1-SRC-020",
+          "SI1-C-21",
+          "event-study-pre-event.json"
+        ],
+        "original_text_preserved": true,
+        "correction": "The pre-event event study used adjusted closes retrieved on 2026-11-15, i.e. a post-cutoff data vintage. Recomputing on unadjusted closes changed every pre-event CAR[0,+1] by at most 0.03 percentage points. Event windows were chosen by the researcher when the analysis was run; they were not pre-registered.",
+        "interpretation_changed": false,
+        "reason": "The vintage effect is negligible. Non-registered windows are a disclosed limitation."
+      },
+      {
+        "erratum_id": "SI1-E-05",
+        "date": "2026-11-15",
+        "type": "statistical_correction",
+        "supersedes": "SI1-E-01",
+        "affects": [
+          "SI1-C-21",
+          "SI1-E-01",
+          "PRE_EVENT_ANALYSIS.md §2 F6, §7"
+        ],
+        "original_text_preserved": true,
+        "correction": "SI1-E-01 used normal critical values (|t| > 3.08 for 24 tests) with t-statistics from an estimated market model, and concluded that two windows exceeded it. Under the documented inference (Student-t, df = 118, Bonferroni at 5% two-sided over 24 tests) the threshold is |t| > 3.148. The frozen statistics (−3.099 and −3.112) do not exceed it. Recomputed with n − 2 residual variance and estimation-error-adjusted CAR variance, they are −3.060 and −3.056 (Bonferroni p = 0.066 and 0.067; event-study-inference-correction.json). NO pre-event window is statistically significant after multiple-comparison adjustment. SI1-E-01's statement that two windows exceed the threshold is withdrawn.",
+        "interpretation_changed": true,
+        "reason": "The earlier statement about statistical significance is reversed: neither window is significant after adjustment. Observed returns are unchanged. The original pre-event text already declined causal attribution, so the substantive conclusion (no evidence that the market reacted to the paired disclosures) is unchanged or strengthened."
+      },
+      {
+        "erratum_id": "SI1-E-06",
+        "date": "2026-11-15",
+        "type": "provenance_criterion_inconsistency",
+        "affects": [
+          "SI1-SRC-013",
+          "SI1-SRC-008",
+          "SI1-SRC-009",
+          "SI1-SRC-011",
+          "SI1-SRC-012",
+          "SI1-C-15",
+          "SI1-C-16",
+          "SI1-C-17",
+          "SI1-C-18",
+          "SI1-C-19",
+          "SI1-C-20",
+          "GATE_MON-SI-G0.md P1"
+        ],
+        "original_text_preserved": true,
+        "correction": "EVIDENCE_PROTOCOL.md §2 says a source whose pre-cutoff availability cannot be demonstrated is excluded from inference. SI1-SRC-013 is rated insufficiently_demonstrated but was admitted in the frozen register; that admission was inconsistent with the protocol. The frozen record is preserved. For any use, treat SI1-SRC-013 and the S2 claims SI1-C-19 and SI1-C-20 as carrying no evidential weight, beyond recording that a lead existed. SI1-SRC-008, -009, -011 and -012 are rated inferred_from_official_date: their existence and official dates are evidenced, but public availability before the cutoff is not demonstrated. The S0 claims SI1-C-15 to SI1-C-18 are therefore conditional on that inference. Under the unchanged criterion, P1 is NOT ESTABLISHED for MON-SI-001 (8 of 13 admitted sources demonstrated). The gate's P1 measurement column ('tools/check_registers.py passes on every case') was read in the first two passes as if structural checks satisfied the criterion. The criterion text governs and is not redefined. The checker now reports structural consistency separately from P1 status, and it fails if the gate reports P1 as satisfied while any admitted source lacks demonstrated availability.",
+        "interpretation_changed": true,
+        "reason": "The first and second passes described P1 as passing on the strength of the structural checker. That overstated it. Pre-event findings F4 (regulatory tightening) and F5 (named-intermediary lead) rest on the conditional or insufficient sources and are downgraded to conditional. F1–F3 and F6 rest on EDGAR filings (demonstrated) and are unaffected, except where they cite the Singapore MTI reply (SI1-C-15) as corroboration."
+      }
+    ],
+    "p1_assessment": {
+      "date": "2026-11-15",
+      "criterion": "GATE_MON-SI-G0.md P1, unchanged",
+      "status": "NOT_ESTABLISHED",
+      "A_date_consistency": "13/13 admitted",
+      "B_document_existence": "13/13 admitted (document dates)",
+      "C_demonstrated_public_availability": "8/13 (SI1-SRC-001..007, SI1-SRC-020)",
+      "inferred_only": [
+        "SI1-SRC-008",
+        "SI1-SRC-009",
+        "SI1-SRC-011",
+        "SI1-SRC-012"
+      ],
+      "insufficient": [
+        "SI1-SRC-013"
+      ],
+      "D_findings_conditional": [
+        "SI1-C-15",
+        "SI1-C-16",
+        "SI1-C-17",
+        "SI1-C-18"
+      ],
+      "what_would_establish_it": "For each inferred source, an independent contemporaneous record (e.g. a web-archive capture dated before 2026-05-12, or a dated third-party citation), or exclusion of the source and its claims in a new, separately registered reconstruction. The frozen record is not edited."
+    }
+  }
+}

@@ -1,0 +1,544 @@
+{
+  "case_id": "MON-SI-001",
+  "register": "post_event",
+  "cutoff_utc": "2026-05-12T23:59:00Z",
+  "frozen": "2026-11-15",
+  "sources": [
+    {
+      "source_id": "SI1-PST-001",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 10-Q, quarter ended 26 Apr 2026 (Q1 FY2027)",
+      "canonical_ref": "Accession 0001045810-26-000052",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2026-05-20",
+      "availability_utc": "2026-05-20T20:35:52Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true
+    },
+    {
+      "source_id": "SI1-PST-002",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 10-Q, quarter ended 26 Jul 2026 (Q2 FY2027)",
+      "canonical_ref": "Accession 0001045810-26-000075",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2026-08-26",
+      "availability_utc": "2026-08-26T20:36:00Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true
+    },
+    {
+      "source_id": "SI1-PST-003",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 8-K Item 5.02 and Exhibit 99.1 'NVIDIA Announces CEO Transition'",
+      "canonical_ref": "Accession 0001045810-26-000082",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2026-11-12",
+      "availability_utc": "2026-11-12T13:52:41Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true
+    },
+    {
+      "source_id": "SI1-PST-004",
+      "status": "admitted",
+      "publisher": "Singapore Police Force",
+      "title": "Clarification statement on Wall Street Journal's article",
+      "canonical_ref": "SPF news, 30 October 2026",
+      "url": "https://www.police.gov.sg/media-hub/news/2026/10/20261030_clarification_statement_on_wall_street_journals_article",
+      "source_class": "primary_government",
+      "publication_date": "2026-10-30",
+      "availability_utc": "2026-10-30T23:59:00Z",
+      "availability_basis": "Official page dated 30 October 2026",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true
+    },
+    {
+      "source_id": "SI1-PST-005",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 8-K Item 8.01 (agreement to acquire Hugging Face)",
+      "canonical_ref": "Accession 0001045810-26-000078",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000078/nvda-20260902.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2026-09-03",
+      "availability_utc": "2026-09-03T12:03:56Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "notes": "Listed as a confounding corporate event in the long-horizon window."
+    },
+    {
+      "source_id": "SI1-PST-006",
+      "status": "admitted",
+      "publisher": "NVIDIA Corporation (SEC)",
+      "title": "Form 8-K Item 2.02, Q1 FY2027 results",
+      "canonical_ref": "Accession 0001045810-26-000051",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/nvda-20260520.htm",
+      "source_class": "primary_corporate_filing",
+      "publication_date": "2026-05-20",
+      "availability_utc": "2026-05-20T20:21:19Z",
+      "availability_basis": "EDGAR acceptanceDateTime as reported by data.sec.gov submissions API",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "notes": "Confounding event inside the [0,+10] window (earnings released after close on day +5)."
+    },
+    {
+      "source_id": "SI1-PST-007",
+      "status": "admitted",
+      "publisher": "Yahoo Finance chart API (vendor market data)",
+      "title": "Daily adjusted closes, NVDA/SMH/SPY, 2024-01-02 to 2026-11-13",
+      "canonical_ref": "query1.finance.yahoo.com/v8/finance/chart",
+      "url": null,
+      "source_class": "market_data",
+      "publication_date": "2026-11-13",
+      "availability_utc": "2026-11-13T21:00:00Z",
+      "availability_basis": "Retrieved 2026-11-15; raw prices not committed (redistribution terms)",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true
+    },
+    {
+      "source_id": "SI1-PST-008",
+      "status": "excluded",
+      "publisher": "Culper Research",
+      "title": "NVIDIA (NVDA): The China Problem (short-seller report; author disclosed a short position)",
+      "canonical_ref": "Report dated 13 May 2026",
+      "url": "https://culperresearch.com/wp-content/uploads/2026/05/Culper_NVDA_5-13-2026.pdf",
+      "source_class": "short_seller_report",
+      "publication_date": "2026-05-13",
+      "availability_utc": "2026-05-13T18:04:17Z",
+      "availability_basis": "Time of the author's announcement post on X (post id 2054623784452120917, snowflake timestamp); report page time not shown",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "exclusion_reason": "Original PDF and every culperresearch.com page returned HTTP 403 to direct retrieval (curl) and to the fetch tool on 2026-11-15, as on the first pass. The document was NOT directly examined. Its content is known only through search-index excerpts (SI1-PST-016) and secondary summaries (SI1-PST-009, SI1-PST-010), all treated as S2. If obtained directly, it would be primary evidence of what Culper alleged, not of the truth of those allegations."
+    },
+    {
+      "source_id": "SI1-PST-009",
+      "status": "admitted",
+      "publisher": "Activ8 Insights",
+      "title": "Culper Research Report on NVIDIA Corp (summary)",
+      "canonical_ref": "activ8insights.com/report/nvda-culper-research-05-13-26",
+      "url": "https://activ8insights.com/report/nvda-culper-research-05-13-26",
+      "source_class": "secondary_lead",
+      "publication_date": "2026-05-13",
+      "availability_utc": null,
+      "availability_basis": "Secondary summary; date of posting not verified",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "notes": "Used only to list what Culper alleged; S2."
+    },
+    {
+      "source_id": "SI1-PST-010",
+      "status": "admitted",
+      "publisher": "Quantral",
+      "title": "Culper Research Nvidia short: what the May report said",
+      "canonical_ref": "quantral.com/blog/culper-research-nvidia-short",
+      "url": "https://quantral.com/blog/culper-research-nvidia-short",
+      "source_class": "secondary_lead",
+      "publication_date": null,
+      "availability_utc": null,
+      "availability_basis": "Secondary summary; date not verified",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "notes": "Used only to list what Culper alleged; S2."
+    },
+    {
+      "source_id": "SI1-PST-011",
+      "status": "excluded",
+      "publisher": "Bloomberg",
+      "title": "Malaysia checks whether chips were re-exported by Megaspeed unit",
+      "canonical_ref": "bloomberg.com/news/articles/2026-11-13/...",
+      "url": "https://www.bloomberg.com/news/articles/2026-11-13/malaysia-checks-whether-chips-were-reexported-by-megaspeed-unit",
+      "source_class": "secondary_lead",
+      "publication_date": "2026-11-13",
+      "availability_utc": null,
+      "availability_basis": "Headline only; paywalled",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "exclusion_reason": "Not inspected; no primary Malaysian disclosure located. Recorded as an unresolved lead. Superseded by the primary MITI statement SI1-PST-014."
+    },
+    {
+      "source_id": "SI1-PST-012",
+      "status": "excluded",
+      "publisher": "NBC News / CBS News (secondary)",
+      "title": "Reports that Megaspeed is under U.S. criminal investigation; Megaspeed denies wrongdoing",
+      "canonical_ref": "nbcnews.com, cbsnews.com (Nov 2026)",
+      "url": null,
+      "source_class": "secondary_lead",
+      "publication_date": "2026-11-01",
+      "availability_utc": null,
+      "availability_basis": "Secondary reporting; no charging document located",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "exclusion_reason": "No primary U.S. enforcement document located; unresolved. SI1-PST-013 para 6 records Singapore's requests to DOJ/FBI but states no U.S. charge."
+    },
+    {
+      "source_id": "SI1-PST-013",
+      "status": "admitted",
+      "publisher": "Singapore Ministry of Home Affairs",
+      "title": "Singapore's Investigations into Alice Huang (Huang Le) and Megaspeed International Pte Ltd",
+      "canonical_ref": "MHA press release, 12 November 2026",
+      "url": "https://www.mha.gov.sg/media-room/newsroom/singapore-investigations-into-alice-huang-huang-le-and-megaspeed-international-pte-ltd/",
+      "source_class": "primary_government",
+      "publication_date": "2026-11-12",
+      "availability_utc": "2026-11-12T23:59:00Z",
+      "availability_basis": "Official press release dated 12 November 2026 (site footer: last updated 13 November 2026); retrieved directly by curl, HTTP 200",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "notes": "Mentions neither NVIDIA nor China (text search, 0 matches)."
+    },
+    {
+      "source_id": "SI1-PST-014",
+      "status": "admitted",
+      "publisher": "Malaysia Ministry of Investment, Trade and Industry (MITI)",
+      "title": "MITI statement on Megaspeed International Pte Ltd and Speedmatrix Sdn Bhd",
+      "canonical_ref": "MITI media statement, 13 November 2026",
+      "url": "https://www.miti.gov.my/miti/resources/Speech/MEDIA_STATEMENT_13112026.pdf",
+      "source_class": "primary_government",
+      "publication_date": "2026-11-13",
+      "availability_utc": "2026-11-13T23:59:00Z",
+      "availability_basis": "Statement dated 13 November 2026; PDF CreationDate 2026-11-13T02:29:48Z (file creation, not proof of posting time); retrieved directly by curl, HTTP 200",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "notes": "Two pages. Mentions neither NVIDIA nor China (text search, 0 matches)."
+    },
+    {
+      "source_id": "SI1-PST-015",
+      "status": "admitted",
+      "publisher": "Singapore Ministry of Home Affairs",
+      "title": "Transcript of media conference with Mr K Shanmugam regarding the case involving the three men charged on 27 February 2025 for fraud by false representation",
+      "canonical_ref": "MHA transcript, 3 March 2025",
+      "url": "https://www.mha.gov.sg/media-room/newsroom/transcript-of-media-conference-with-mr-k-shanmugam-minister-for-home-affairs-and-minister-for-law-regarding-the-case-involving-the-three-men-who-were-charged-on-27-february-2025-for-fraud-by-false-representation/",
+      "source_class": "primary_government",
+      "publication_date": "2025-03-03",
+      "availability_utc": "2025-03-03T23:59:00Z",
+      "availability_basis": "Dated 3 March 2025 on the official site; a web-archive index entry exists for the former URL (capture 2025-05-28), but its content was not retrieved. Located on 2026-11-15 through a link in SI1-PST-013",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "pre_cutoff_document_located_post_hoc": true,
+      "notes": "This is the pre-event source SI1-SRC-014, located after the fact. It stays excluded from the pre-event inference (erratum SI1-E-02) and is used here for validation only."
+    },
+    {
+      "source_id": "SI1-PST-016",
+      "status": "admitted",
+      "publisher": "Web search index (excerpts of culperresearch.com PDF)",
+      "title": "Search-engine excerpts of 'NVIDIA (NVDA): The China Problem'",
+      "canonical_ref": "Search restricted to culperresearch.com; result URL matches SI1-PST-008",
+      "url": null,
+      "source_class": "secondary_lead",
+      "publication_date": "2026-05-13",
+      "availability_utc": null,
+      "availability_basis": "Index excerpts mediated and summarised by a search tool; not a direct examination of the PDF; wording not verbatim-verified",
+      "retrieved": "2026-11-15",
+      "discovery_path": "Post-event validation retrieval",
+      "hindsight_flag": true,
+      "notes": "Used only to record what the report reportedly alleges; S2."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "SI1-V-01",
+      "source_ids": [
+        "SI1-PST-001",
+        "SI1-PST-002"
+      ],
+      "assertion": "From the Q1 FY2027 10-Q onward, NVIDIA's risk factors add that it has assisted authorities regarding attempted diversion and that it lacks physical control of products after sale, relying on customers' and partners' compliance programs. The phrase 'physical control' is absent from the FY2026 10-K and Q3 FY2026 10-Q.",
+      "pinpoint": "10-Q Q1 FY2027 Item 1A; 10-Q Q2 FY2027 Item 1A",
+      "supporting_passage": "\"We have provided and will continue to provide assistance to authorities regarding attempted diversion, but as we do not have physical control of our products after sale, we must also rely on the compliance programs of our customers and partners.\"",
+      "evidence_class": "S0",
+      "scope": "Disclosure change, filed 20 May 2026",
+      "excluded_implications": [
+        "That diversion of NVIDIA products at scale occurred",
+        "That the change was a response to the short report"
+      ],
+      "counterevidence_or_alternative": "The change could reflect the DOJ cases already public, routine legal review, or the short report; the filing does not say.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-02",
+      "source_ids": [
+        "SI1-PST-001",
+        "SI1-PST-002"
+      ],
+      "assertion": "China (incl. Hong Kong) HQ revenue was $4,550m in Q1 FY2027 and $7,880m in Q2 FY2027. NVIDIA states Hopper Data Center shipments to China in Q2 FY2027 were under 1% of Data Center revenue ($89.0bn), and that it shipped uncontrolled products such as gaming and workstation GPUs to China.",
+      "pinpoint": "10-Q Q1 and Q2 FY2027, geographic note; MD&A; Item 1A",
+      "supporting_passage": "\"Shipments of Data Center Hopper products to China during the second quarter of fiscal year 2027 were less than 1% of Data Center revenue.\"",
+      "evidence_class": "S0",
+      "scope": "Customer-HQ basis, FY2027 H1",
+      "excluded_implications": [
+        "That China-linked demand outside China-HQ customers rose or fell"
+      ],
+      "counterevidence_or_alternative": "Higher China-HQ revenue is consistent with uncontrolled-product sales; it neither confirms nor refutes indirect channels.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-03",
+      "source_ids": [
+        "SI1-PST-004"
+      ],
+      "assertion": "The Singapore Police Force stated on 30 October 2026 that 'Investigations into Megaspeed are ongoing' and that Singapore does not implement foreign unilateral export controls but acts against fraud. In response to a newspaper report, it stated that 'there were no such investigations conducted in respect of' the individual named in that report; 'such' refers to investigations into alleged ties to the NVIDIA CEO or to PRC intelligence.",
+      "pinpoint": "SPF clarification statement, Government response paras 1–3 and statement para 3",
+      "supporting_passage": "\"Investigations into Megaspeed are ongoing. We are unable to comment further at this juncture.\"",
+      "evidence_class": "S0",
+      "scope": "Singapore, as of 30 Oct 2026",
+      "excluded_implications": [
+        "Any finding of wrongdoing by Megaspeed or NVIDIA"
+      ],
+      "counterevidence_or_alternative": "An ongoing investigation is not an adverse finding.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-04",
+      "source_ids": [
+        "SI1-PST-003"
+      ],
+      "assertion": "NVIDIA's board accepted the CEO's resignation on 11 November 2026 and appointed the CFO interim CEO; the 8-K and press release state no reason.",
+      "pinpoint": "8-K Item 5.02; Exhibit 99.1",
+      "supporting_passage": "\"the Board of Directors, or the Board, of NVIDIA Corporation accepted the resignation of Jen-Hsun Huang\"",
+      "evidence_class": "S0",
+      "scope": "Corporate governance event, Nov 2026",
+      "excluded_implications": [
+        "Any link between the resignation and supply-chain or export-control matters"
+      ],
+      "counterevidence_or_alternative": "Press reports attribute the resignation to personal conduct; the primary filing does not.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-05",
+      "source_ids": [
+        "SI1-PST-007"
+      ],
+      "assertion": "From the 12 May 2026 close: NVDA +2.29% on 13 May and +4.39% on 14 May; market-model CAR[0,+1] = +4.6% vs SMH (t = 2.22) and +4.2% vs SPY (t = 1.84). CAR[0,+10] = −6.5% vs both (t ≈ −1.3). Buy-and-hold to 13 Nov 2026: NVDA −26.1%, SMH −13.3%, SPY +2.7%.",
+      "pinpoint": "cases/MON-SI-001/event-study-post-event.json",
+      "supporting_passage": "Computed with tools/event_study.py",
+      "evidence_class": "S1",
+      "scope": "NVDA vs SMH/SPY, 13 May – 13 Nov 2026",
+      "excluded_implications": [
+        "That the report caused any of these moves"
+      ],
+      "counterevidence_or_alternative": "Earnings on day +5 (SI1-PST-006), an acquisition (SI1-PST-005), the CEO resignation (SI1-PST-003) and sector moves sit inside the windows. No CAR exceeds the Bonferroni-adjusted Student-t threshold (|t| > 2.784 for 8 tests, df = 118); the t-values listed use the original method; corrected values are in event-study-inference-correction.json (errata SI1-PE-02, SI1-PE-03).",
+      "claim_category": "B_reproducible_calculation"
+    },
+    {
+      "claim_id": "SI1-V-06",
+      "source_ids": [
+        "SI1-PST-009",
+        "SI1-PST-010"
+      ],
+      "assertion": "Per secondary summaries, the short report alleged that over 20% of FY2026 compute revenue remained China-driven via diversion and Southeast Asian intermediaries, derived from third-party market-share estimates and per-unit price assumptions, and it relied on trade records, Singapore/Malaysia corporate filings and interviews.",
+      "pinpoint": "Secondary summaries of the report",
+      "supporting_passage": "Not quoted from the original (not retrieved)",
+      "evidence_class": "S2",
+      "scope": "Allegation by a disclosed short seller, 13 May 2026",
+      "excluded_implications": [
+        "Any finding that the allegation is true"
+      ],
+      "counterevidence_or_alternative": "NVIDIA and Megaspeed are reported to dispute it; no primary corroboration located.",
+      "claim_category": "C_allegation_or_hypothesis"
+    },
+    {
+      "claim_id": "SI1-V-07",
+      "source_ids": [
+        "SI1-PST-013"
+      ],
+      "assertion": "SPF and Singapore Customs opened an independent investigation in February 2025 into several companies, including Megaspeed International Pte Ltd, and their key officers, for suspected domestic offences concerning potential false declarations in the purchase of servers. The servers had been exported through Singapore to Malaysia without entering the Singapore market. SPF was investigating whether they were later routed from Malaysia to another destination, contrary to declarations made in Singapore.",
+      "pinpoint": "MHA 12 Nov 2026, paras 2 and 5",
+      "supporting_passage": "\"The physical servers had been purchased by companies (which were under investigation) and exported through Singapore to Malaysia without entering the Singapore market.\"",
+      "evidence_class": "S0",
+      "scope": "Singapore investigation, Feb 2025 – Nov 2026",
+      "excluded_implications": [
+        "That the servers reached China or any destination beyond Malaysia",
+        "That the servers contained NVIDIA products (the statement does not say)",
+        "That any offence was committed"
+      ],
+      "counterevidence_or_alternative": "Transit through Singapore with a documented next hop (Malaysia) is established; the final destination is the open question of the investigation.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-08",
+      "source_ids": [
+        "SI1-PST-013"
+      ],
+      "assertion": "On 24 June 2025 the U.S. Bureau of Industry and Security carried out a voluntary Post-Shipment Verification check at Megaspeed. MHA states this was the first time Singapore learned of U.S. interest in Megaspeed.",
+      "pinpoint": "MHA 12 Nov 2026, para 4",
+      "supporting_passage": "\"On 24 June 2025, the US Bureau of Industry and Security (\\\"BIS\\\") conducted a voluntary Post-Shipment Verification (\\\"PSV\\\") check at Megaspeed\"",
+      "evidence_class": "S0",
+      "scope": "U.S. export-control end-use check in Singapore, June 2025",
+      "excluded_implications": [
+        "That the check found a violation",
+        "That NVIDIA was involved"
+      ],
+      "counterevidence_or_alternative": "A PSV check is a routine end-use verification tool; its outcome is not stated.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-09",
+      "source_ids": [
+        "SI1-PST-013"
+      ],
+      "assertion": "In February 2026 SPF, in consultation with the Attorney-General's Chambers, concluded there was insufficient evidence that Megaspeed's then-CEO had committed offences relating to the possible inaccurate declarations under investigation. Investigations into Megaspeed and six other individuals remain ongoing.",
+      "pinpoint": "MHA 12 Nov 2026, paras 3, 7 and 9",
+      "supporting_passage": "\"SPF's investigations into Megaspeed and six other individuals are ongoing.\"",
+      "evidence_class": "S0",
+      "scope": "Singapore investigation status as of 12 Nov 2026",
+      "excluded_implications": [
+        "Any finding about Megaspeed itself",
+        "Any finding about U.S. export-control compliance (outside Singapore's remit)"
+      ],
+      "counterevidence_or_alternative": "An ongoing investigation is not a charge; an insufficient-evidence conclusion about one officer is not an exoneration of the company.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-10",
+      "source_ids": [
+        "SI1-PST-013"
+      ],
+      "assertion": "Singapore states that the U.S.-based server supplier Supermicro gave limited cooperation, and that since September 2025 Singapore has repeatedly asked DOJ and FBI for assistance and received limited information.",
+      "pinpoint": "MHA 12 Nov 2026, para 6",
+      "supporting_passage": "\"Despite these repeated requests, Singapore has to date received limited information or assistance in respect of the company.\"",
+      "evidence_class": "S0",
+      "scope": "Cross-border evidence gathering, Jul 2025 – Nov 2026",
+      "excluded_implications": [
+        "That the supplier acted unlawfully"
+      ],
+      "counterevidence_or_alternative": "This is one government's account of the cooperation; no U.S. response was examined.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-11",
+      "source_ids": [
+        "SI1-PST-013"
+      ],
+      "assertion": "Between February 2025 and July 2026 Singapore charged four individuals and four companies with offences including fraud by false representation in relation to the purchase of servers.",
+      "pinpoint": "MHA 12 Nov 2026, para 10",
+      "supporting_passage": "\"Singapore has charged four individuals and four companies in Court between February 2025 and July 2026\"",
+      "evidence_class": "S0",
+      "scope": "Singapore criminal charges",
+      "excluded_implications": [
+        "That these charges concern Megaspeed (the statement does not link them)",
+        "That any conviction has occurred",
+        "That the servers contained NVIDIA products"
+      ],
+      "counterevidence_or_alternative": "Charges are allegations under Singapore law until adjudicated.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-12",
+      "source_ids": [
+        "SI1-PST-014"
+      ],
+      "assertion": "MITI states that it has never cleared Megaspeed International or its Malaysian affiliate Speedmatrix Sdn Bhd, and that verification visits are routine monitoring, not clearance. Speedmatrix is a data-centre tenant that brings its own servers and AI chips into Malaysia, and bringing AI chips into Malaysia does not currently require a permit. Since July 2025, exporting, re-exporting, transshipping or transiting high-performance U.S. AI chips requires a MITI permit. MITI is working with Royal Malaysian Customs to determine whether any chips have since been re-exported and whether lawfully, and it is working with Singapore and U.S. authorities.",
+      "pinpoint": "MITI 13 Nov 2026, paras 1–5",
+      "supporting_passage": "\"it has never cleared Singapore based Megaspeed International Pte Ltd or its Malaysian affiliate, Speedmatrix Sdn Bhd\"; \"Bringing AI chips into Malaysia does not currently require a permit or a licence.\"",
+      "evidence_class": "S0",
+      "scope": "Malaysia, as of 13 Nov 2026",
+      "excluded_implications": [
+        "That any chips were re-exported",
+        "That compute was rented to users in China (the statement is silent on remote access)",
+        "That Speedmatrix or Megaspeed broke Malaysian law",
+        "That 'not cleared' means 'found non-compliant'"
+      ],
+      "counterevidence_or_alternative": "'Never cleared' denies a clearance; it is not an adverse finding.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-13",
+      "source_ids": [
+        "SI1-PST-015"
+      ],
+      "assertion": "On 3 March 2025 Singapore's Home Affairs Minister said servers supplied by Dell and Supermicro to Singapore-based companies went to Malaysia. Whether Malaysia was the final destination was not known. Singapore assessed only that the servers 'may contain Nvidia chips' and described the case as an independent investigation 'unrelated' to U.S. export-control circumvention.",
+      "pinpoint": "MHA transcript 3 Mar 2025, Minister's opening remarks and answers to questions",
+      "supporting_passage": "\"We assessed that the servers may contain Nvidia chips. I think that's the highest I can put it at, at this point.\"",
+      "evidence_class": "S0",
+      "scope": "Singapore, 3 March 2025 (a pre-cutoff document located post hoc)",
+      "excluded_implications": [
+        "That NVIDIA chips were confirmed",
+        "That any chips reached China"
+      ],
+      "counterevidence_or_alternative": "The Minister declined to speculate on onward movement.",
+      "claim_category": "A_documented_primary_fact"
+    },
+    {
+      "claim_id": "SI1-V-14",
+      "source_ids": [
+        "SI1-PST-016",
+        "SI1-PST-009",
+        "SI1-PST-010"
+      ],
+      "assertion": "The short report reportedly alleges that over 20% of NVIDIA's FY2026 compute revenue remained China-driven. Its reported derivation combines third-party market-share estimates with NVIDIA's H20 revenue and per-unit price assumptions. It reportedly alleges that Megaspeed's assets rose from $33m to $3.0bn in 2024, driven by $2.9bn of 'refundable deposits'; that Speedmatrix pledged its business to Apex Enterprise Solutions, whose parent per Singapore filings is Alibaba; and that Aivres (formerly Inspur Systems) supplied over $4bn of servers to Megaspeed/Speedmatrix that NVIDIA would report as U.S. sales. The author disclosed a short position.",
+      "pinpoint": "Search-index excerpts and secondary summaries; page numbers unavailable",
+      "supporting_passage": "Not verbatim-verified (original not examined)",
+      "evidence_class": "S2",
+      "scope": "Allegations by a disclosed short seller, 13 May 2026",
+      "excluded_implications": [
+        "That any allegation is true",
+        "That a financing relationship implies control of end use",
+        "That chips reached China"
+      ],
+      "counterevidence_or_alternative": "No allegation was traced to a primary document examined in this pass. The registry and trade data it cites were not accessed.",
+      "claim_category": "C_allegation_or_hypothesis"
+    }
+  ],
+  "addenda": {
+    "errata": [
+      {
+        "erratum_id": "SI1-PE-01",
+        "date": "2026-11-15",
+        "affects": [
+          "SI1-V-03"
+        ],
+        "original_text": "The Singapore Police Force stated on 30 October 2026 that 'Investigations into Megaspeed are ongoing', that Singapore does not implement foreign unilateral export controls but acts against fraud, and that no investigation was conducted in respect of the individual named in the WSJ article.",
+        "correction": "The original paraphrase dropped the qualifier 'such' and could be read as saying no investigation of the named individual took place. SI1-PST-013 (paras 3, 7–8) shows she was investigated for suspected domestic offences. The assertion now quotes the qualifier.",
+        "interpretation_changed": true,
+        "reason": "The original wording overstated what the SPF statement denied."
+      },
+      {
+        "erratum_id": "SI1-PE-02",
+        "date": "2026-11-15",
+        "affects": [
+          "POST_EVENT_VALIDATION.md first-pass F6 row",
+          "SI1-V-05"
+        ],
+        "original_text": "F6 ... Immediate reaction to the report was positive (CAR[0,+1] +4.6% vs SMH, t = 2.2)",
+        "correction": "Eight post-event tests were run (4 windows × 2 benchmarks); the Bonferroni-adjusted two-sided 5% threshold is |t| > 2.73. CAR[0,+1] vs SMH (t = 2.22) is nominally significant only. The direction (positive) stands.",
+        "interpretation_changed": false,
+        "reason": "The first pass never relied on significance for attribution; the statistical weight of the result is reduced."
+      },
+      {
+        "erratum_id": "SI1-PE-03",
+        "date": "2026-11-15",
+        "supersedes": "SI1-PE-02",
+        "affects": [
+          "POST_EVENT_VALIDATION.md §3",
+          "SI1-V-05"
+        ],
+        "original_text": "the Bonferroni-adjusted two-sided 5% threshold is |t| > 2.73",
+        "correction": "2.73 was a normal critical value. Under Student-t with df = 118 the 8-test Bonferroni threshold is |t| > 2.784. The corrected statistics (n − 2 residual variance, estimation-error-adjusted CAR variance) have a maximum |t| of 2.184 (CAR[0,+1] vs SMH; Bonferroni p = 0.25). No post-event result is significant under either reference.",
+        "interpretation_changed": false,
+        "reason": "Same conclusion as SI1-PE-02, now stated with a consistent reference distribution."
+      }
+    ]
+  }
+}
