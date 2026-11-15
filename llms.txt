@@ -1,14 +1,17 @@
-# Monopolises
+# Monopolises — Evidence-Governed Research Reference
 
-Monopolises is a governed research asset.
+Canonical URL: https://monopolises.com/
+Maintainer: Sohadot (https://sohadot.com)
+Repository and binding decisions: https://github.com/Sohadot/Monopolises
 
-Current status: Gate MON-G0-RH is closed as FAIL.
+Current adopted research thesis (DEC-005, 2026-08-29): Layered Monopolisation v0.2.
+Unit: System × Layer × Control Mechanism × Evidence.
+Four evidenced layer types: legal_exclusivity; capacity_control; access_gatekeeping; switching_dependency.
+Research gates: MON-G1-LI PASS; MON-G2-OF PASS; MON-G3-IT PASS; MON-G4-DA PASS.
+Evidence scope: eight fixed cases and 17 v0.2 source-register entries (not necessarily 17 independent publications).
+Not a live database, monopoly-power verdict, antitrust opinion, ranking, score, or production implementation.
 
-The first repository-era thesis, Strategic Replaceability / Replacement Horizon, was tested across five fixed cases. All five produced useful evidence-bounded transition records, but none produced a single canonical strategic Replacement Horizon without unresolved methodological choice.
-
-No successor category thesis is currently authorized.
-
-Canonical public pages:
+Canonical public reading pages:
 - https://monopolises.com/
 - https://monopolises.com/thesis/
 - https://monopolises.com/methodology/
@@ -16,5 +19,13 @@ Canonical public pages:
 - https://monopolises.com/research/
 - https://monopolises.com/about/
 
-Important boundary:
-The failed Gate does not authorize replacement scores, rankings, a global replacement graph, or scaled entity pages.
+Primary research artifacts:
+- https://github.com/Sohadot/Monopolises/blob/main/README.md
+- https://github.com/Sohadot/Monopolises/blob/main/DECISION_LOG.md
+- https://github.com/Sohadot/Monopolises/blob/main/research/v0.2/README.md
+- https://github.com/Sohadot/Monopolises/blob/main/research/v0.2/SOURCE_REGISTER_v0.2.md
+- https://github.com/Sohadot/Monopolises/tree/main/research/v0.2/cases
+
+Archive: Strategic Replaceability v0.1 / Replacement Horizon closed Gate MON-G0-RH as FAIL, with five case records retained. It is not the active thesis.
+The research cases are dated, scoped, and evidence-bounded. Current-state claims require updated primary verification.
+Implementation, scaled or scored surfaces, and monetization remain unauthorized by DEC-008; DEC-009 permits editorial public-state synchronization only.
