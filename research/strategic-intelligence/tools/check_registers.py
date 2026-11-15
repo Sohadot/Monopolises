@@ -14,9 +14,15 @@ from pathlib import Path
 import hashlib
 import json
 import re
+import subprocess
 import sys
 
 SI_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = SI_ROOT.parents[1]
+# Immutable anchor for the MON-SI-001 pre-event freeze. Pinned in code (not only in
+# the manifest) so that editing the manifest cannot move the anchor silently.
+FREEZE_ANCHORS = {"MON-SI-001": "5b3b756caaf1b084752981528ec1aceea3bb05c4"}
+FROZEN_CUTOFFS = {"MON-SI-001": "2026-05-12T23:59:00Z"}
 CASES = SI_ROOT / "cases"
 
 SOURCE_FIELDS = ("source_id", "status", "publisher", "title", "canonical_ref", "url",
@@ -186,8 +192,14 @@ def check_case(case_dir, errors):
     analysis = (case_dir / "PRE_EVENT_ANALYSIS.md").read_text(encoding="utf-8")
     manifest_path = case_dir / "FREEZE_MANIFEST.json"
     if manifest_path.exists():
-        check_freeze(case_dir, json.loads(manifest_path.read_text(encoding="utf-8")),
-                     pre, analysis, errors, label)
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        check_freeze(case_dir, manifest, pre, analysis, errors, label)
+        if label in FREEZE_ANCHORS and case_dir.name == label and case_dir.parent == CASES:
+            verify_freeze_against_git(label, analysis, pre,
+                                      (case_dir / "event-study-pre-event.json").read_bytes(),
+                                      manifest, errors)
+    elif label in FREEZE_ANCHORS:
+        errors.append(f"{label}: FREEZE_MANIFEST.json missing for an anchored case")
     frozen_analysis = analysis.split("\n" + ERRATA_POINTER, 1)[0]
     body = DISCLOSURE.sub("", frozen_analysis)
     if body == frozen_analysis:
@@ -252,6 +264,76 @@ def check_freeze(case_dir, manifest, pre, analysis, errors, label):
             errors.append(f"{label}: post-event term {term!r} in pre-event errata pointer")
 
 
+def git_show(commit, repo_path):
+    """Return the bytes of repo_path at commit, or None if git/commit unavailable."""
+    try:
+        return subprocess.run(["git", "show", f"{commit}:{repo_path}"], cwd=REPO_ROOT,
+                              capture_output=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def verify_freeze_against_git(label, analysis, pre, event_bytes, manifest, errors):
+    """Compare frozen content with the original Git objects at the pinned anchor.
+
+    Permitted after the freeze: an `addenda` key in the pre-event register and text
+    after the errata pointer in PRE_EVENT_ANALYSIS.md. Everything else must be
+    byte-identical (analysis, event study) or canonically identical (register core)
+    to the anchor commit. The manifest must also agree with hashes computed from
+    the Git objects, so changing content and manifest together is still detected.
+    """
+    anchor = FREEZE_ANCHORS.get(label)
+    if anchor is None:
+        errors.append(f"{label}: no pinned freeze anchor")
+        return
+    if manifest.get("frozen_commit") and not anchor.startswith(manifest["frozen_commit"]):
+        errors.append(f"{label}: manifest frozen_commit differs from pinned anchor {anchor[:7]}")
+    rel = f"research/strategic-intelligence/cases/{label}/"
+    originals = {name: git_show(anchor, rel + name) for name in
+                 ("PRE_EVENT_ANALYSIS.md", "register.pre-event.json", "event-study-pre-event.json")}
+    missing = [n for n, v in originals.items() if v is None]
+    if missing:
+        errors.append(f"{label}: cannot read {missing} at freeze anchor {anchor[:7]} "
+                      "(full git history required; freeze not verified)")
+        return
+    git_reg = json.loads(originals["register.pre-event.json"])
+    if "addenda" in git_reg:
+        errors.append(f"{label}: anchor register unexpectedly has addenda")
+    frozen_text = analysis.split("\n" + ERRATA_POINTER, 1)[0].encode("utf-8")
+    if frozen_text != originals["PRE_EVENT_ANALYSIS.md"]:
+        errors.append(f"{label}: PRE_EVENT_ANALYSIS.md differs from anchor {anchor[:7]}")
+    if canonical_core(pre) != canonical_core(git_reg):
+        errors.append(f"{label}: register.pre-event.json sources/claims differ from anchor {anchor[:7]}")
+    if pre.get("cutoff_utc") != git_reg.get("cutoff_utc") or pre.get("cutoff_utc") != FROZEN_CUTOFFS.get(label):
+        errors.append(f"{label}: cutoff changed from frozen {FROZEN_CUTOFFS.get(label)}")
+    if event_bytes != originals["event-study-pre-event.json"]:
+        errors.append(f"{label}: event-study-pre-event.json differs from anchor {anchor[:7]}")
+    expected = {
+        "PRE_EVENT_ANALYSIS.md": hashlib.sha256(originals["PRE_EVENT_ANALYSIS.md"]).hexdigest(),
+        "register.pre-event.json": hashlib.sha256(canonical_core(git_reg)).hexdigest(),
+        "event-study-pre-event.json": hashlib.sha256(originals["event-study-pre-event.json"]).hexdigest(),
+    }
+    for name, digest in expected.items():
+        if manifest.get("files", {}).get(name, {}).get("sha256") != digest:
+            errors.append(f"{label}: manifest hash for {name} does not match the anchor Git object")
+
+
+def p1_status(pre):
+    """MON-SI-G0 P1 provenance status under the unchanged criterion.
+
+    P1 requires *demonstrated* public availability at or before the cutoff for every
+    admitted pre-event source (EVIDENCE_PROTOCOL.md section 2). Date consistency,
+    document existence and an official date are recorded but do not satisfy it.
+    """
+    review = {r["source_id"]: r["demonstrated_public_availability"]
+              for r in pre.get("addenda", {}).get("availability_review", [])}
+    admitted = [s["source_id"] for s in pre["sources"] if s["status"] == "admitted"]
+    unresolved = {sid: review.get(sid, "not_reviewed") for sid in admitted
+                  if review.get(sid) != "demonstrated"}
+    return {"established": not unresolved, "admitted": len(admitted),
+            "demonstrated": len(admitted) - len(unresolved), "unresolved": unresolved}
+
+
 def check_gate(errors):
     gate = (SI_ROOT / "GATE_MON-SI-G0.md").read_text(encoding="utf-8")
     status = re.search(r"^\*\*Status:\*\*\s*(\S+)", gate, re.M)
@@ -259,6 +341,18 @@ def check_gate(errors):
         errors.append("GATE_MON-SI-G0.md status must remain PROPOSED until owner authorization")
     if re.search(r"^\*\*Verdict:\*\*\s*(PASS|FAIL)", gate, re.M):
         errors.append("GATE_MON-SI-G0.md must not declare a verdict")
+    state = gate.split("## Current evaluation state", 1)
+    p1_row = re.search(r"^\| P1 \|(.*)\|\s*$", state[1], re.M) if len(state) == 2 else None
+    p1_open = any(not p1_status(json.loads((d / "register.pre-event.json").read_text(
+        encoding="utf-8")))["established"] for d in CASES.iterdir() if d.is_dir()
+        and (d / "register.pre-event.json").exists())
+    if not p1_row:
+        errors.append("GATE_MON-SI-G0.md lacks a P1 status row")
+    elif p1_open:
+        text = p1_row.group(1)
+        if "NOT ESTABLISHED" not in text or re.search(r"\b(passes|passed|PASS)\b", text):
+            errors.append("GATE_MON-SI-G0.md must report P1 as NOT ESTABLISHED while availability "
+                          "conditions remain unresolved, and must not say it passes")
     if "permanently excluded from P5" not in gate:
         errors.append("GATE_MON-SI-G0.md must state that retrospective cases are permanently excluded from P5")
 
@@ -275,7 +369,13 @@ def main():
     errors = run()
     for e in errors:
         print("FAIL", e)
-    print("OK" if not errors else f"{len(errors)} problem(s)")
+    for case_dir in sorted(p for p in CASES.iterdir() if p.is_dir()):
+        st = p1_status(json.loads((case_dir / "register.pre-event.json").read_text(encoding="utf-8")))
+        print(f"{case_dir.name}: P1 {'ESTABLISHED' if st['established'] else 'NOT ESTABLISHED'} "
+              f"({st['demonstrated']}/{st['admitted']} admitted sources with demonstrated availability)"
+              + (f"; unresolved: {st['unresolved']}" if st["unresolved"] else ""))
+    print("Structural checks: " + ("OK" if not errors else f"{len(errors)} problem(s)")
+          + " (structural consistency only; not a gate verdict)")
     return 1 if errors else 0
 
 

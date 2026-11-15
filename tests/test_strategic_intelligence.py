@@ -137,7 +137,7 @@ class FreezeAndProvenanceTests(unittest.TestCase):
         core = check_registers.canonical_core(pre).decode("utf-8")
         for marker in ("SI1-PST-", "MEDIA_STATEMENT_13112026", "megaspeed-international-pte-ltd"):
             self.assertNotIn(marker, core)
-        self.assertEqual(set(pre["addenda"]), {"note", "availability_review", "errata"})
+        self.assertEqual(set(pre["addenda"]), {"note", "availability_review", "errata", "p1_assessment"})
         for e in pre["addenda"]["errata"]:
             self.assertNotIn("sources", e)
             self.assertNotIn("claims", e)
@@ -181,6 +181,178 @@ class FreezeAndProvenanceTests(unittest.TestCase):
                 with self.subTest(erratum=e["erratum_id"]):
                     for field in check_registers.ERRATA_FIELDS:
                         self.assertIn(field, e)
+
+
+def _git_available():
+    return check_registers.git_show(check_registers.FREEZE_ANCHORS["MON-SI-001"],
+                                    "research/strategic-intelligence/cases/MON-SI-001/register.pre-event.json") is not None
+
+
+@unittest.skipUnless(_git_available(), "freeze anchor commit not in local git history")
+class GitAnchoredFreezeTests(unittest.TestCase):
+    """Freeze verification anchored to the original Git objects at 5b3b756."""
+
+    def setUp(self):
+        self.analysis = (CASE / "PRE_EVENT_ANALYSIS.md").read_text(encoding="utf-8")
+        self.pre = load("register.pre-event.json")
+        self.event = (CASE / "event-study-pre-event.json").read_bytes()
+        self.manifest = json.loads((CASE / "FREEZE_MANIFEST.json").read_text(encoding="utf-8"))
+
+    def verify(self, analysis=None, pre=None, event=None, manifest=None):
+        errors = []
+        check_registers.verify_freeze_against_git(
+            "MON-SI-001", self.analysis if analysis is None else analysis,
+            self.pre if pre is None else pre, self.event if event is None else event,
+            self.manifest if manifest is None else manifest, errors)
+        return errors
+
+    def test_current_state_matches_anchor(self):
+        self.assertEqual(self.verify(), [])
+
+    def test_anchor_is_pinned_in_code_and_matches_manifest(self):
+        self.assertEqual(check_registers.FREEZE_ANCHORS["MON-SI-001"],
+                         "5b3b756caaf1b084752981528ec1aceea3bb05c4")
+        self.assertTrue(check_registers.FREEZE_ANCHORS["MON-SI-001"].startswith(
+            self.manifest["frozen_commit"]))
+
+    def test_editing_frozen_content_alone_is_detected(self):
+        errors = self.verify(analysis=self.analysis.replace("could not", "could", 1))
+        self.assertTrue(any("differs from anchor" in e for e in errors))
+
+    def test_editing_content_and_manifest_together_is_detected(self):
+        pre = copy.deepcopy(self.pre)
+        pre["claims"][0]["assertion"] += " (rewritten)"
+        manifest = copy.deepcopy(self.manifest)
+        import hashlib
+        manifest["files"]["register.pre-event.json"]["sha256"] = hashlib.sha256(
+            check_registers.canonical_core(pre)).hexdigest()
+        errors = []
+        check_registers.check_freeze(CASE, manifest, pre, self.analysis, errors, "MON-SI-001")
+        self.assertEqual(errors, [])  # the manifest alone would be fooled ...
+        errors = self.verify(pre=pre, manifest=manifest)
+        self.assertTrue(any("differ from anchor" in e for e in errors))  # ... the Git anchor is not
+        self.assertTrue(any("does not match the anchor Git object" in e for e in errors))
+
+    def test_moving_the_manifest_anchor_is_detected(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["frozen_commit"] = "e8bd4ff"
+        self.assertTrue(any("differs from pinned anchor" in e for e in self.verify(manifest=manifest)))
+
+    def test_legitimate_dated_errata_remain_permitted(self):
+        pre = copy.deepcopy(self.pre)
+        pre["addenda"]["errata"].append({"erratum_id": "SI1-E-99", "date": "2026-12-01",
+                                         "affects": ["SI1-C-01"], "correction": "test",
+                                         "interpretation_changed": False, "reason": "test"})
+        analysis = self.analysis + "\nAdditional dated pointer text.\n"
+        self.assertEqual(self.verify(pre=pre, analysis=analysis), [])
+
+    def test_post_event_source_cannot_enter_frozen_findings(self):
+        pre = copy.deepcopy(self.pre)
+        post_src = load("register.post-event.json")["sources"][0]
+        pre["sources"].append(dict(post_src, source_id="SI1-SRC-099"))
+        pre["claims"][0]["source_ids"].append("SI1-SRC-099")
+        self.assertTrue(any("differ from anchor" in e for e in self.verify(pre=pre)))
+
+    def test_cutoff_cannot_change_silently(self):
+        pre = copy.deepcopy(self.pre)
+        pre["cutoff_utc"] = "2026-05-14T23:59:00Z"
+        self.assertTrue(any("cutoff changed" in e for e in self.verify(pre=pre)))
+        post = load("register.post-event.json")
+        self.assertEqual(post["cutoff_utc"], check_registers.FROZEN_CUTOFFS["MON-SI-001"])
+
+    def test_frozen_event_study_cannot_be_regenerated(self):
+        self.assertTrue(any("event-study-pre-event.json differs" in e
+                            for e in self.verify(event=self.event + b" ")))
+
+
+class StatisticalInferenceTests(unittest.TestCase):
+    """Third pass: consistent Student-t inference with Bonferroni control."""
+
+    @classmethod
+    def setUpClass(cls):
+        spec_i = importlib.util.spec_from_file_location("inference_correction",
+                                                        SI / "tools" / "inference_correction.py")
+        cls.inf = importlib.util.module_from_spec(spec_i)
+        spec_i.loader.exec_module(cls.inf)
+        cls.report = load("event-study-inference-correction.json")
+
+    def test_student_t_quantiles_match_reference_tables(self):
+        for alpha, df, expected in ((0.05, 10, 2.2281), (0.05, 30, 2.0423), (0.01, 20, 2.8453)):
+            self.assertAlmostEqual(self.inf.t_crit(alpha, df), expected, places=3)
+
+    def test_bonferroni_thresholds(self):
+        self.assertAlmostEqual(self.inf.t_crit(0.05 / 24, 118), 3.148, places=3)
+        self.assertAlmostEqual(self.inf.t_crit(0.05 / 8, 118), 2.784, places=3)
+        pre, post = self.report["pre_event_family"], self.report["post_event_family"]
+        self.assertEqual((pre["tests"], pre["df"], pre["critical_student_t"]), (24, 118, 3.1478))
+        self.assertEqual((post["tests"], post["df"], post["critical_student_t"]), (8, 118, 2.7843))
+
+    def test_no_result_significant_after_correction(self):
+        for fam in ("pre_event_family", "post_event_family"):
+            F = self.report[fam]
+            self.assertFalse(F["any_significant"])
+            for row in F["rows"]:
+                self.assertLess(abs(row["t_corrected"]), F["critical_student_t"])
+                self.assertLess(abs(row["t_original_method"]), F["critical_student_t"])
+
+    def test_original_method_reproduces_frozen_statistics(self):
+        frozen = load("event-study-pre-event.json")["runs"]
+        rows = {(r["event_day0_input"], r["benchmark"], r["window"]): r
+                for r in self.report["pre_event_family"]["rows"]}
+        for run in frozen:
+            for bench, cars in run["car"].items():
+                for window, v in cars.items():
+                    with self.subTest(day0=run["day0"], bench=bench, window=window):
+                        row = rows[(run["day0"], bench, window)]
+                        self.assertAlmostEqual(row["t_original_method"], v["t"], places=2)
+                        self.assertAlmostEqual(row["car"], v["car"], places=5)
+
+    def test_documents_use_consistent_thresholds(self):
+        protocol = (SI / "EVIDENCE_PROTOCOL.md").read_text(encoding="utf-8")
+        validation = (CASE / "POST_EVENT_VALIDATION.md").read_text(encoding="utf-8")
+        self.assertIn("3.148", protocol)
+        self.assertIn("2.784", protocol)
+        self.assertIn("2.784", validation)
+        self.assertNotIn("|t| > 2.73.", validation)
+        errata = {e["erratum_id"]: e for e in load("register.pre-event.json")["addenda"]["errata"]}
+        self.assertEqual(errata["SI1-E-05"]["supersedes"], "SI1-E-01")
+        self.assertIn("NO pre-event window is statistically significant", errata["SI1-E-05"]["correction"])
+        post_errata = {e["erratum_id"]: e for e in load("register.post-event.json")["addenda"]["errata"]}
+        self.assertEqual(post_errata["SI1-PE-03"]["supersedes"], "SI1-PE-02")
+
+
+class ProvenanceP1Tests(unittest.TestCase):
+    def test_p1_not_established_while_availability_unresolved(self):
+        st = check_registers.p1_status(load("register.pre-event.json"))
+        self.assertFalse(st["established"])
+        self.assertEqual(st["demonstrated"], 8)
+        self.assertEqual(st["unresolved"]["SI1-SRC-013"], "insufficiently_demonstrated")
+
+    def test_gate_cannot_claim_p1_while_unresolved(self):
+        gate = (SI / "GATE_MON-SI-G0.md").read_text(encoding="utf-8")
+        state = gate.split("## Current evaluation state", 1)[1]
+        self.assertRegex(state, r"\| P1 \| \*\*NOT ESTABLISHED\*\*")
+        original = gate
+        mutated = original.replace("| P1 | **NOT ESTABLISHED**", "| P1 | MON-SI-001 passes P1", 1)
+        path = SI / "GATE_MON-SI-G0.md"
+        try:
+            path.write_text(mutated, encoding="utf-8")
+            errors = []
+            check_registers.check_gate(errors)
+            self.assertTrue(any("P1 as NOT ESTABLISHED" in e for e in errors))
+        finally:
+            path.write_text(original, encoding="utf-8")
+
+    def test_p1_would_be_established_only_when_all_demonstrated(self):
+        pre = copy.deepcopy(load("register.pre-event.json"))
+        for r in pre["addenda"]["availability_review"]:
+            r["demonstrated_public_availability"] = "demonstrated"
+        self.assertTrue(check_registers.p1_status(pre)["established"])
+
+    def test_p1_assessment_recorded_append_only(self):
+        a = load("register.pre-event.json")["addenda"]["p1_assessment"]
+        self.assertEqual(a["status"], "NOT_ESTABLISHED")
+        self.assertEqual(a["insufficient"], ["SI1-SRC-013"])
 
 
 class NoProspectiveCreditTests(unittest.TestCase):

@@ -47,12 +47,14 @@ Neither the MHA (12 Nov 2026) nor the MITI (13 Nov 2026) statement mentions **NV
 
 Base: close of 12 May 2026 (day −1). Day 0 is 13 May 2026; the report was announced around 18:04 UTC (14:04 New York), during the session. Market model by OLS over 4 Nov 2025 – 28 Apr 2026 (120 sessions).
 
-| Window | Observed NVDA return | Abnormal vs SMH (CAR, t) | Abnormal vs SPY (CAR, t) |
+| Window | Observed NVDA return | Abnormal vs SMH (CAR; t original → corrected) | Abnormal vs SPY (CAR; t original → corrected) |
 |---|---|---|---|
-| [0,0] | +2.29% | +0.8% (0.58) | +1.3% (0.78) |
-| [0,+1] | +6.78% | +4.6% (2.22) | +4.2% (1.84) |
-| [0,+5] | — | +1.8% (0.51) | +0.8% (0.20) |
-| [0,+10] | — | −6.5% (−1.35) | −6.6% (−1.22) |
+| [0,0] | +2.29% | +0.8% (0.58 → 0.57) | +1.3% (0.78 → 0.78) |
+| [0,+1] | +6.78% | +4.6% (2.22 → 2.18) | +4.2% (1.84 → 1.81) |
+| [0,+5] | — | +1.8% (0.51 → 0.50) | +0.8% (0.20 → 0.20) |
+| [0,+10] | — | −6.5% (−1.35 → −1.28) | −6.6% (−1.22 → −1.16) |
+
+'Original' is the t-statistic in `event-study-post-event.json` (n − 1 residual s.d., no estimation-error term). 'Corrected' uses n − 2 and the estimation-error-adjusted CAR variance (`event-study-inference-correction.json`).
 
 | Buy-and-hold from 12 May close to | NVDA | SMH | SPY | NVDA − SMH | NVDA − SPY |
 |---|---|---|---|---|---|
@@ -65,7 +67,7 @@ Base: close of 12 May 2026 (day −1). Day 0 is 13 May 2026; the report was anno
 
 1. **Observed movement.** NVDA rose on days 0 and +1 and fell about 26% over six months.
 2. **Abnormal return.** Benchmark-adjusted moves were positive on days 0–1 and negative over [0,+10].
-3. **Statistical significance.** Eight tests were run (4 windows × 2 benchmarks). The Bonferroni-adjusted two-sided 5% threshold is |t| > 2.73. **None of the post-event CARs clears it.** The first pass described CAR[0,+1] vs SMH (t = 2.22) without this adjustment; it is nominally significant only (correction SI1-PE-02 below).
+3. **Statistical significance.** Eight tests were run (4 windows × 2 benchmarks). With Student-t inference (df = 118) and Bonferroni at 5% two-sided, the threshold is |t| > 2.784. The normal-approximation value of 2.734 quoted in the second pass is superseded (SI1-PE-03). **No post-event CAR clears either threshold**: the maximum corrected |t| is 2.18 (Bonferroni p = 0.25). CAR[0,+1] vs SMH is nominally significant at the per-test 5% level only.
 4. **Economic materiality.** A 4–6% move in a company of this size is economically large in dollar terms, but materiality of a price move is not evidence about its cause.
 5. **Causal attribution.** **None.**
    - Earnings were released after the close on day +5 (SI1-PST-006).
@@ -93,6 +95,8 @@ Base: close of 12 May 2026 (day −1). Day 0 is 13 May 2026; the report was anno
 | Corrected SI1-V-03 (erratum SI1-PE-01) | The original paraphrase dropped "such" |
 | Added a multiple-comparison note to the market section (SI1-PE-02) | The first pass reported nominal significance only |
 | Pre-event statistics and availability corrections SI1-E-01 to SI1-E-04 | Recorded as append-only errata; no pre-event interpretation changed |
+
+**Third pass (2026-11-15).** Inference is now on a consistent Student-t basis (df = 118) with corrected standard errors. No pre-event or post-event result is significant after Bonferroni adjustment (pre-event threshold 3.148, maximum corrected |t| 3.06; post-event threshold 2.784, maximum 2.18). The second pass's statement that two pre-event windows were marginally significant is withdrawn (SI1-E-05). Pre-event P1 provenance is NOT ESTABLISHED (SI1-E-06): F4 and F5 are conditional on sources without demonstrated pre-cutoff availability. That does not change any post-event classification, because those rest on post-event primary sources.
 
 **SI1-PE-02 (2026-11-15).** The first pass reported "CAR[0,+1] +4.6% vs SMH, t = 2.2" as part of the F6 row without a multiple-comparison adjustment. After Bonferroni adjustment it is not significant. The direction stands; its statistical weight is lower. The F6 row has been replaced by the two market-hypothesis rows above.
 

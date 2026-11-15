@@ -110,4 +110,4 @@ These are recorded here for transparency, but because the outcome was known in a
 <!-- errata-pointer -->
 ---
 
-**Post-freeze errata (2026-11-15).** The text above is preserved as frozen at commit `5b3b756`. Dated corrections SI1-E-01 to SI1-E-04 are recorded in `register.pre-event.json` → `addenda.errata`, and the availability review is in `addenda.availability_review`. No interpretation above is changed by them.
+**Post-freeze errata (2026-11-15).** The text above is preserved as frozen at commit `5b3b756`. Dated corrections SI1-E-01 to SI1-E-06 are recorded (SI1-E-05 supersedes SI1-E-01 on statistical significance; SI1-E-06 records that P1 provenance is not established) in `register.pre-event.json` → `addenda.errata`, and the availability review is in `addenda.availability_review`. SI1-E-05 reverses one statistical statement made in the errata, not in the text above; SI1-E-06 makes findings F4 and F5 conditional. The frozen text itself is unchanged.

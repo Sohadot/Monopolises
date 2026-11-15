@@ -59,6 +59,14 @@ No claim may move from one of these to another without a source that bridges the
 - Confounding events inside a window (earnings, other corporate actions, macro shocks) are listed whenever the researcher knows of them; an unlisted confounder is not evidence that none existed.
 - Raw vendor price files are not committed (redistribution terms); the retrieval source and date are recorded, and the computation is reproducible with `tools/event_study.py`.
 
+## 6b. Inference (third pass, 2026-11-15)
+
+- **Reference distribution:** Student-t with T − 2 = 118 degrees of freedom (120 estimation sessions; intercept and slope). Normal critical values may be quoted only as a labelled asymptotic reference.
+- **Residual variance** uses n − 2 degrees of freedom. `event_study.py` uses `statistics.stdev` (n − 1); its frozen outputs are kept, and the corrected values are in `event-study-inference-correction.json` (from `tools/inference_correction.py`).
+- **CAR standard error** includes market-model estimation error: Var(CAR) = s²·[L + L²/T + (Σ_event(R_m,t − R̄_m))² / S_xx] (Campbell, Lo and MacKinlay 1997, ch. 4).
+- **Family-wise control:** Bonferroni at 5% two-sided over every window × benchmark test reported for the case. MON-SI-001 thresholds: 24 pre-event tests → |t| > 3.148; 8 post-event tests → |t| > 2.784. Overlapping windows make Bonferroni conservative.
+- **Assumptions:** i.i.d. normal residuals with constant variance and no event-induced variance change. Daily returns have heavy tails and volatility clustering, so all statistics are approximate.
+
 ## 6a. Market-reaction limits (second pass)
 
 Report the following as five separate things: observed price movement; benchmark-relative abnormal return; statistical significance after multiple-comparison adjustment (Bonferroni across every window × benchmark test run for the case); economic materiality; and causal attribution, which is never inferred from co-movement. Also disclose: whether windows were pre-registered; known confounders; benchmark contamination; and the data vintage (adjusted prices retrieved after the event, with a raw-close sensitivity check).

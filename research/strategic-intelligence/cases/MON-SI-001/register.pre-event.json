@@ -804,7 +804,69 @@
         "correction": "The pre-event event study used adjusted closes retrieved on 2026-11-15, i.e. a post-cutoff data vintage. Recomputing on unadjusted closes changed every pre-event CAR[0,+1] by at most 0.03 percentage points. Event windows were chosen by the researcher when the analysis was run; they were not pre-registered.",
         "interpretation_changed": false,
         "reason": "The vintage effect is negligible. Non-registered windows are a disclosed limitation."
+      },
+      {
+        "erratum_id": "SI1-E-05",
+        "date": "2026-11-15",
+        "type": "statistical_correction",
+        "supersedes": "SI1-E-01",
+        "affects": [
+          "SI1-C-21",
+          "SI1-E-01",
+          "PRE_EVENT_ANALYSIS.md §2 F6, §7"
+        ],
+        "original_text_preserved": true,
+        "correction": "SI1-E-01 used normal critical values (|t| > 3.08 for 24 tests) with t-statistics from an estimated market model, and concluded that two windows exceeded it. Under the documented inference (Student-t, df = 118, Bonferroni at 5% two-sided over 24 tests) the threshold is |t| > 3.148. The frozen statistics (−3.099 and −3.112) do not exceed it. Recomputed with n − 2 residual variance and estimation-error-adjusted CAR variance, they are −3.060 and −3.056 (Bonferroni p = 0.066 and 0.067; event-study-inference-correction.json). NO pre-event window is statistically significant after multiple-comparison adjustment. SI1-E-01's statement that two windows exceed the threshold is withdrawn.",
+        "interpretation_changed": true,
+        "reason": "The earlier statement about statistical significance is reversed: neither window is significant after adjustment. Observed returns are unchanged. The original pre-event text already declined causal attribution, so the substantive conclusion (no evidence that the market reacted to the paired disclosures) is unchanged or strengthened."
+      },
+      {
+        "erratum_id": "SI1-E-06",
+        "date": "2026-11-15",
+        "type": "provenance_criterion_inconsistency",
+        "affects": [
+          "SI1-SRC-013",
+          "SI1-SRC-008",
+          "SI1-SRC-009",
+          "SI1-SRC-011",
+          "SI1-SRC-012",
+          "SI1-C-15",
+          "SI1-C-16",
+          "SI1-C-17",
+          "SI1-C-18",
+          "SI1-C-19",
+          "SI1-C-20",
+          "GATE_MON-SI-G0.md P1"
+        ],
+        "original_text_preserved": true,
+        "correction": "EVIDENCE_PROTOCOL.md §2 says a source whose pre-cutoff availability cannot be demonstrated is excluded from inference. SI1-SRC-013 is rated insufficiently_demonstrated but was admitted in the frozen register; that admission was inconsistent with the protocol. The frozen record is preserved. For any use, treat SI1-SRC-013 and the S2 claims SI1-C-19 and SI1-C-20 as carrying no evidential weight, beyond recording that a lead existed. SI1-SRC-008, -009, -011 and -012 are rated inferred_from_official_date: their existence and official dates are evidenced, but public availability before the cutoff is not demonstrated. The S0 claims SI1-C-15 to SI1-C-18 are therefore conditional on that inference. Under the unchanged criterion, P1 is NOT ESTABLISHED for MON-SI-001 (8 of 13 admitted sources demonstrated). The gate's P1 measurement column ('tools/check_registers.py passes on every case') was read in the first two passes as if structural checks satisfied the criterion. The criterion text governs and is not redefined. The checker now reports structural consistency separately from P1 status, and it fails if the gate reports P1 as satisfied while any admitted source lacks demonstrated availability.",
+        "interpretation_changed": true,
+        "reason": "The first and second passes described P1 as passing on the strength of the structural checker. That overstated it. Pre-event findings F4 (regulatory tightening) and F5 (named-intermediary lead) rest on the conditional or insufficient sources and are downgraded to conditional. F1–F3 and F6 rest on EDGAR filings (demonstrated) and are unaffected, except where they cite the Singapore MTI reply (SI1-C-15) as corroboration."
       }
-    ]
+    ],
+    "p1_assessment": {
+      "date": "2026-11-15",
+      "criterion": "GATE_MON-SI-G0.md P1, unchanged",
+      "status": "NOT_ESTABLISHED",
+      "A_date_consistency": "13/13 admitted",
+      "B_document_existence": "13/13 admitted (document dates)",
+      "C_demonstrated_public_availability": "8/13 (SI1-SRC-001..007, SI1-SRC-020)",
+      "inferred_only": [
+        "SI1-SRC-008",
+        "SI1-SRC-009",
+        "SI1-SRC-011",
+        "SI1-SRC-012"
+      ],
+      "insufficient": [
+        "SI1-SRC-013"
+      ],
+      "D_findings_conditional": [
+        "SI1-C-15",
+        "SI1-C-16",
+        "SI1-C-17",
+        "SI1-C-18"
+      ],
+      "what_would_establish_it": "For each inferred source, an independent contemporaneous record (e.g. a web-archive capture dated before 2026-05-12, or a dated third-party citation), or exclusion of the source and its claims in a new, separately registered reconstruction. The frozen record is not edited."
+    }
   }
 }

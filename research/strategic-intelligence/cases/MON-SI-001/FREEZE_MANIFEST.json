@@ -15,5 +15,9 @@
       "method": "sha256 of file content",
       "sha256": "60e09c53e997bd484d445c1807a8d4d3aa018e9d75adeb62574dfff65cfab1cc"
     }
+  },
+  "anchor": {
+    "commit": "5b3b756caaf1b084752981528ec1aceea3bb05c4",
+    "verification": "tools/check_registers.py compares the frozen content with `git show <anchor>:<path>` and checks these hashes against the Git objects; the anchor SHA is also pinned in the checker. The manifest is a convenience record, not the source of truth."
   }
 }

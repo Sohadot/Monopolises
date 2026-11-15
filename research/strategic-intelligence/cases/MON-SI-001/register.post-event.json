@@ -338,7 +338,7 @@
       "excluded_implications": [
         "That the report caused any of these moves"
       ],
-      "counterevidence_or_alternative": "Earnings on day +5 (SI1-PST-006), an acquisition (SI1-PST-005), the CEO resignation (SI1-PST-003) and sector moves sit inside the windows. No CAR exceeds the Bonferroni-adjusted threshold (|t| > 2.73 for 8 tests); see erratum SI1-PE-02.",
+      "counterevidence_or_alternative": "Earnings on day +5 (SI1-PST-006), an acquisition (SI1-PST-005), the CEO resignation (SI1-PST-003) and sector moves sit inside the windows. No CAR exceeds the Bonferroni-adjusted Student-t threshold (|t| > 2.784 for 8 tests, df = 118); the t-values listed use the original method; corrected values are in event-study-inference-correction.json (errata SI1-PE-02, SI1-PE-03).",
       "claim_category": "B_reproducible_calculation"
     },
     {
@@ -525,6 +525,19 @@
         "correction": "Eight post-event tests were run (4 windows × 2 benchmarks); the Bonferroni-adjusted two-sided 5% threshold is |t| > 2.73. CAR[0,+1] vs SMH (t = 2.22) is nominally significant only. The direction (positive) stands.",
         "interpretation_changed": false,
         "reason": "The first pass never relied on significance for attribution; the statistical weight of the result is reduced."
+      },
+      {
+        "erratum_id": "SI1-PE-03",
+        "date": "2026-11-15",
+        "supersedes": "SI1-PE-02",
+        "affects": [
+          "POST_EVENT_VALIDATION.md §3",
+          "SI1-V-05"
+        ],
+        "original_text": "the Bonferroni-adjusted two-sided 5% threshold is |t| > 2.73",
+        "correction": "2.73 was a normal critical value. Under Student-t with df = 118 the 8-test Bonferroni threshold is |t| > 2.784. The corrected statistics (n − 2 residual variance, estimation-error-adjusted CAR variance) have a maximum |t| of 2.184 (CAR[0,+1] vs SMH; Bonferroni p = 0.25). No post-event result is significant under either reference.",
+        "interpretation_changed": false,
+        "reason": "Same conclusion as SI1-PE-02, now stated with a consistent reference distribution."
       }
     ]
   }

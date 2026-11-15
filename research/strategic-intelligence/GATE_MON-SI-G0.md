@@ -59,7 +59,7 @@ Prospective validation will **not** be claimed until real observation windows ha
 
 | Criterion | State |
 |---|---|
-| P1 | MON-SI-001 passes the automated check (process evidence only). Second pass (2026-11-15): freeze hashes, availability review and dated errata added; one source (SI1-SRC-013) rated insufficiently demonstrated, carrying S2 only |
+| P1 | **NOT ESTABLISHED** for MON-SI-001 (third pass, 2026-11-15). The criterion is unchanged and requires demonstrated availability for every admitted source. (A) Machine-readable date consistency: holds for 13/13 admitted sources. (B) Document existence before the cutoff: evidenced for 13/13 by document dates. (C) Demonstrated public availability: 8/13 (seven EDGAR filings plus exchange price data); 4 inferred from official dates only (SI1-SRC-008, -009, -011, -012); 1 insufficiently demonstrated (SI1-SRC-013), whose admission was inconsistent with protocol §2 (erratum SI1-E-06). (D) Support for S0/S1 findings: SI1-C-15 to SI1-C-18 are conditional on the four inferred-availability sources. The structural checker passing is not a P1 pass. An earlier statement treating the automated check as satisfying P1 is withdrawn |
 | P2 | Not run — no second reviewer yet |
 | P3 | MON-SI-001: mechanism and mechanical sensitivity documented |
 | P4 | MON-SI-001: negatives and unresolved items documented |
